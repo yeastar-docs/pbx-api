@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="task_zm3_wdd_gdb">
+    <title>Enable API Access on PBX</title>
+    <shortdesc>Before you start, you need to enable API access on the PBX.</shortdesc>
+    <prolog>
+        <critdates>
+            <!--Carol-->
+            <revised modified="2018/06/05"/>
+            <!--Carol-->
+            <revised modified="2018/12/12"/>
+        </critdates>
+    </prolog>
+    <taskbody>
+        <steps id="steps_n1b_f2d_gdb">
+            <step>
+                <cmd>Log in the PBX web interface, go to <menucascade>
+                        <uicontrol>Settings</uicontrol>
+                        <uicontrol>PBX</uicontrol>
+                        <uicontrol>General</uicontrol>
+                        <uicontrol>API</uicontrol>
+                    </menucascade>.</cmd>
+            </step>
+            <step>
+                <cmd>Check the option <uicontrol>Enabled</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Set the <uicontrol>Username</uicontrol> and <uicontrol>Password</uicontrol>,
+                    click <uicontrol>Save</uicontrol> and <uicontrol>Apply</uicontrol>.</cmd>
+                <info>
+                    <p>
+                        <note>The 3rd-party software should use the user name and the password to
+                            connect to the PBX API.</note>
+                    </p>
+                </info>
+                <info><image href="../Images/enable_api.png" id="image_ctp_s2d_gdb"/></info>
+            </step>
+            <step id="api-extension-monitor">
+                <cmd importance="optional">Set whether to monitor extension status.</cmd>
+                <info>If the extension status is changed, the PBX will send report to the 3rd-party
+                    application server.</info>
+                <info><image href="../Images/enable_extension_status.png" id="image_lhz_chd_gdb"
+                        width="700"/></info>
+            </step>
+            <step>
+                <cmd importance="optional">Set whether to monitor trunks and control inbound calls
+                    on the 3rd-party application server. </cmd>
+                <info><image href="../Images/enable_trunk_status.png" width="700"
+                        id="image_pq2_whd_gdb"/></info>
+                <info>
+                    <ul id="ul_dly_whd_gdb">
+                        <li><uicontrol>Control Inbound Call Answering</uicontrol>: If this option is
+                            enabled, users can answer or decline this trunk's inbound calls on the
+                            3rd-party application within 10 seconds. If the user doesn't handle the
+                            call on the 3rd-party application, the call will be answered.<ul
+                                id="ul_ltc_zjd_gdb">
+                                <li>Answer the call: The call will be routed to the pre-configured
+                                    destination on the PBX.</li>
+                                <li>Decline the call: The call will not reach the PBX and the PBX
+                                    will not have this call log.</li>
+                            </ul></li>
+                        <li><uicontrol>Control Inbound Call Destination</uicontrol>: If this option
+                            is enabled, users can decide where the incoming calls go on the
+                            3rd-party application within 10 seconds.</li>
+                        <li id="api-trunk-monitor"><uicontrol>Status Monitor</uicontrol>: Monitor
+                            the trunk status. If the trunk status is changed, the PBX will send
+                            report to the 3rd-party application server. If the user doesn't handle
+                            the call on the 3rd-party application, the call will be routed to the
+                            pre-configured destination on the PBX.</li>
+                    </ul>
+                </info>
+            </step>
+        </steps>
+    </taskbody>
+</task>

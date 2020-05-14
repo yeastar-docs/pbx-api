@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mz2_zh2_hdb">
+  <title>Auto Dial (Ring Group)</title>
+  <shortdesc>The PBX will dial contact number automatically, after the call is answered, the PBX
+    will initiate the call to the Ring Group members.</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <ul id="ul_zlr_3g2_hdb">
+            <li>To make outbound calls, you need to add an extension that has outbound call
+              permission in the API request.</li>
+            <li>The dialed numbers should match the outbound route rules.</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/ringgroup/dial_outbound?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.42*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.08*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>ringgroupid</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The Ring Group number.</entry>
+              </row>
+              <row>
+                <entry><codeph>outto</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The dialed external number (the outbound dial pattern should be
+                  matched).</entry>
+              </row>
+              <row>
+                <entry><codeph>fromext</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Which extension's call permission will be applied.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="3" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique identifier for the call.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/ringgroup/dial_outbound?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "ringgroupid": "6200",
+    "outto": "118396210850",
+    "fromext": "1000"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "callid": "1495698843.215"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

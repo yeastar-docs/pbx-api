@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_jwd_ssb_wgb">
+    <title>API 快速入门</title>
+    <shortdesc>本文以朗视 API demo 为例，为你演示如何配置 API 、调用 API 接口以及如何查看事件报告。</shortdesc>
+    <body>
+        <section id="section_efq_xln_4jb">
+            <title>前提条件</title>
+            <p>在使用 API 之前，确保你已升级 PBX 固件，并在 PBX 网页启用 API 功能和做好相应的配置。</p>
+            <p>PBX 固件要求，请参见 <xref href="api-requirements.dita"/>。</p>
+            <p>PBX API 设置说明，请参见<xref href="pbx-api-settings.dita"/>。</p>
+        </section>
+        <section id="section_if5_hl4_4jb">
+            <title>API demo </title>
+            <dl>
+                <dlentry>
+                    <dt>下载 API demo</dt>
+                    <dd><xref href="https://www.yeastar.com/download/API-Demo2.0.zip" format="zip"
+                            scope="external">点击下载 API demo 2.0 工具</xref>。</dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>API demo 界面介绍</dt>
+                    <dd>查看下面图示，了解 API demo 工具的界面布局。</dd>
+                    <dd><image href="../Images/pbx-api/api-demo.png" id="image_ibz_kpr_rjb"
+                            width="700"/></dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_vmc_krn_4jb">
+            <title>API demo 测试示例</title>
+            <p>下面以朗视 API demo 作为 API 调用工具，为你演示如何使用 API 接口 <xref
+                    href="call-dial.dita#reference_b2r_p3g_jjb">call/dial</xref>
+                完成分机拨打分机的任务，以及如何查看相关的事件报告。</p>
+            <p>
+                <note>调用 API 之前，请根据 API 接口参考文档了解使用说明，并查询必需的请求参数。如果 API 调用出错，你可以根据<xref
+                        href="api_error_code.dita"/>进行分析和排查错误。</note>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt>API demo 设置</dt>
+                    <dd>
+                        <ol>
+                            <li>在 API demo 中填写 API 版本、 PBX 的 IP 地址和通信端口。<p><image
+                                        href="../Images/pbx-api/api-demo-setup1.png" width="500"
+                                        id="image_k15_ctr_rjb"/></p><ul id="ul_flf_3n4_4jb">
+                                    <li><uicontrol>版本号</uicontrol>：填写 API 版本号 <i>2.0.0</i>。<p>
+                                            <note>本文档中，所有接口和事件报告均采用的 API 版本为 2.0.0。</note>
+                                        </p></li>
+                                </ul><p>
+                                    <ul id="ul_gqh_rm4_4jb">
+                                        <li><uicontrol>HTTP/HTTPS</uicontrol>：选择通信协议。<p>
+                                                <note>本示例中使用的通信端口为 HTTPS 8088。如果你更改了 PBX
+                                                  的网页访问协议和端口，在 demo 中需要根据 PBX 的实际配置填写。</note>
+                                            </p></li>
+                                        <li><uicontrol>目标地址</uicontrol>：填写 PBX 的 IP 地址。</li>
+                                        <li><uicontrol>端口</uicontrol>：填写 PBX 的网页端口。本示例填写 8088。</li>
+                                    </ul>
+                                </p></li>
+                            <li>在 API demo 中配置监听端口，并点击 <uicontrol>打开服务器</uicontrol>，监听该端口。<p>PBX
+                                    会通过该端口发送事件报告。</p><p><image
+                                        href="../Images/pbx-api/api-demo-setup2.png" width="500"
+                                        id="image_lsw_ktr_rjb"/></p></li>
+                        </ol>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>获取 API 授权</dt>
+                    <dd>
+                        <ol id="ol_hp4_5sv_tjb">
+                            <li>调用 <xref href="login.dita#reference_blb_5ld_gdb">login</xref> 接口获取
+                                API token。<p><image href="../Images/pbx-api/api-demo-login.png"
+                                        width="500" id="image_lxh_w5r_rjb"/></p></li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>API 调用</dt>
+                    <dd>
+                        <ol id="ol_vtj_zq4_4jb">
+                            <li>调用 <xref href="call-dial.dita#reference_b2r_p3g_jjb"
+                                    >call/dial</xref> 向分机发起呼叫。<p>本例中，演示分机 1001 向分机 1018
+                                    发起呼叫，请求参数如下。</p><p>
+                                    <codeblock>{"caller": "1001","callee": "1018"}</codeblock>
+                                </p><p><image href="../Images/pbx-api/api-demo-calldial.png"
+                                        width="500" id="image_rqx_cwr_rjb"/></p></li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>观察调用结果</dt>
+                    <dd>
+                        <p>如果该 API 调用成功后，后续流程为：</p>
+                        <ol id="ol_yd2_fr4_4jb">
+                            <li>主叫分机 1001 先振铃。</li>
+                            <li>分机 1001 摘机后，被叫分机 1018 开始振铃。</li>
+                            <li>分机 1018 接听来电后，双方建立通话。</li>
+                            <li>任意一方挂机后，通话结束。</li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>查看事件报告</dt>
+                    <dd>
+                        <p>本次呼叫过程中，应用服务器会接收到通话状态变更事件（Call Status）和分机状态变更事件（ExtensionStatus）。</p>
+                        <ul id="ul_cph_v1p_4jb">
+                            <li>关于 CallStatus 事件的参数说明，请参见<xref href="event-CallStatus.dita"/>。</li>
+                            <li>关于 ExtensionStatus 事件的参数说明，请参见<xref
+                                    href="event-ExtensionStatus.dita"/>。</li>
+                        </ul>
+                        <p>通话结束后，应用服务器还会接收到一条通话记录事件（NewCdr）。</p>
+                        <p>
+                            <ul id="ul_pnd_w1p_4jb">
+                                <li>关于 NewCdr 事件的参数说明，请参见<xref href="event-NewCdr.dita"/>。</li>
+                            </ul>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+    </body>
+</topic>

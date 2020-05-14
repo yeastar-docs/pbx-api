@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_wwt_sq2_gdb">
+  <title>API Reports</title>
+  <shortdesc>The PBX will send call report to the application server automatically. Call event like
+    call transfer, call failure, call released, etc. will be reported.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Yeastar-->
+      <revised modified="2018/08/15"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+    </critdates>
+  </prolog>
+</topic>

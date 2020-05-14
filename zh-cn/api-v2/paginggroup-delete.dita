@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_z1j_yxf_vgb">
+    <title>删除广播组</title>
+    <shortdesc>删除单个广播组、多个广播组或所有广播组。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/paginggroup/delete?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.05*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*"/>
+                    <colspec colname="c4" colnum="4" colwidth="4.53*"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>是否必选</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>是</entry>
+                            <entry>Integer</entry>
+                            <entry>广播组号码。<p><b>取值范围</b>：</p><p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li>单个广播组号码：删除指定广播组。<p>例如：<codeph>"number":"6300"</codeph></p></li>
+                                        <li>多个广播组号码：删除多个广播组。多个广播组号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"6300,6301"</codeph></p></li>
+                                        <li>all：删除所有广播组。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_pxl_jh4_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.01*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.49*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_grk_jqm_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>删除广播组6300。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/paginggroup/delete?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph>Host: 192.168.5.150</ph>
+
+{
+    "number": "6300"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map xml:lang="en">
+ <title><ph keyref="product_name"/>- API</title>
+ <topicmeta>
+  <category>API Developer Guide</category>
+  <prodinfo>
+   <prodname>
+    <data><ph keyref="product_name"/></data>
+    <data>2.0.0</data>
+   </prodname>
+  </prodinfo>
+ </topicmeta>
+ <topichead navtitle="Introduction" id="api-intro">
+  <topicmeta>
+   <shortdesc>See what functions the <ph keyref="product_name"/> APIs can help you
+    achieve.</shortdesc>
+  </topicmeta>
+  <topicref href="api-v2/api-introduction.dita"/>
+  <topicref href="api-v2/api-interfaces-overview.dita"/>
+ </topichead>
+ <topichead navtitle="Quick Start" id="api-quick-start">
+  <topicmeta>
+   <shortdesc>Learn the basics of API requests and API events, and get started with the API with
+    Yeastar Demo.</shortdesc>
+  </topicmeta>
+  <topicref href="api-v2/api-requirements.dita"/>
+  <topicref href="api-v2/getting-started-api.dita"/>
+  <topichead navtitle="API Request Methods">
+   <topicref href="api-v2/api-requests.dita"/>
+   <topicref href="api-v2/api-request-structure.dita"/>
+   <topicref href="api-v2/api-response-results.dita"/>
+  </topichead>
+  <topicref href="api-v2/api-reports.dita"/>
+  <topicref href="api-v2/pbx-api-settings.dita"/>
+ </topichead>
+ <topichead navtitle="API References" id="api-references">
+  <topicmeta>
+   <shortdesc>References of API authentication, API interfaces and API events.</shortdesc>
+  </topicmeta>
+  <topichead navtitle="API Authentication">
+   <topicmeta>
+    <shortdesc> API authentication methods for API requests and API events. </shortdesc>
+   </topicmeta>
+   <topicref href="api-v2/api-authentication.dita"/>
+   <topicref href="api-v2/login.dita"/>
+   <topicref href="api-v2/token-refresh.dita" product="cloudpbx"/>
+   <topicref href="api-v2/heartbeat.dita" product="s-series"/>
+  </topichead>
+  <topichead navtitle="Feature Configuration APIs">
+   <topicmeta>
+    <shortdesc>References of the feature configuration APIs.</shortdesc>
+   </topicmeta>
+   <topichead navtitle="System">
+    <topicref href="api-v2/deviceinfo-query.dita"/>
+    <topicref href="api-v2/logout.dita"/>
+   </topichead>
+   <topichead navtitle="Extension">
+    <topicref href="api-v2/extension-list.dita"/>
+    <topicref href="api-v2/extension-query.dita"/>
+    <topicref href="api-v2/extension-add.dita"/>
+    <topicref href="api-v2/extension-update.dita"/>
+    <topicref href="api-v2/extension-delete.dita"/>
+   </topichead>
+   <topichead navtitle="Trunk">
+    <topicref href="api-v2/trunklist-query.dita"/>
+    <topicref href="api-v2/siptrunk-query.dita"/>
+    <topicref href="api-v2/siptrunk-add.dita"/>
+    <topicref href="api-v2/siptrunk-update.dita"/>
+    <topicref href="api-v2/siptrunk-delete.dita"/>
+   </topichead>
+   <topichead navtitle="Inbound route">
+    <topicref href="api-v2/inroute-query.dita"/>
+    <topicref href="api-v2/inroute-add.dita"/>
+    <topicref href="api-v2/inroute-update.dita"/>
+    <topicref href="api-v2/inroute-delete.dita"/>
+   </topichead>
+   <topichead navtitle="Outbound route">
+    <topicref href="api-v2/outroute-query.dita"/>
+    <topicref href="api-v2/outroute-add.dita"/>
+    <topicref href="api-v2/outroute-update.dita"/>
+    <topicref href="api-v2/outroute-delete.dita"/>
+   </topichead>
+   <topichead navtitle="Conference">
+    <topicref href="api-v2/conference-query.dita"/>
+    <topicref href="api-v2/instant-conference-query.dita"/>
+    <topicref href="api-v2/conference-query-in-session.dita"/>
+    <topicref href="api-v2/conference-update.dita"/>
+    <topicref href="api-v2/instant-conference-create.dita"/>
+    <topicref href="api-v2/conference-add-member.dita"/>
+    <topicref href="api-v2/conference-kick-member.dita"/>
+    <topicref href="api-v2/conference-mute.dita"/>
+    <topicref href="api-v2/conference-unmute.dita"/>
+   </topichead>
+   <topichead navtitle="IVR">
+    <topicref href="api-v2/ivr-query.dita"/>
+    <topicref href="api-v2/ivr-update.dita"/>
+   </topichead>
+   <topichead navtitle="Queue">
+    <topicref href="api-v2/queue-query.dita"/>
+    <topicref href="api-v2/queuestatus-query.dita"/>
+    <topicref href="api-v2/queue-update.dita"/>
+    <topicref href="api-v2/queue-add-dynamicagent.dita"/>
+    <topicref href="api-v2/queue-del-dynamicagent.dita"/>
+    <topicref href="api-v2/queue-pause-agent.dita"/>
+    <topicref href="api-v2/queue-unpause-agent.dita"/>
+   </topichead>
+   <topichead navtitle="Paging Group" product="k2 s-series">
+    <topicref href="api-v2/paginggrouplist-query.dita"/>
+    <topicref href="api-v2/paginggroup-query.dita"/>
+    <topicref href="api-v2/paginggroup-add.dita"/>
+    <topicref href="api-v2/paginggroup-update.dita"/>
+    <topicref href="api-v2/paginggroup-delete.dita"/>
+   </topichead>
+   <topichead navtitle="Voicemail">
+    <topicref href="api-v2/voicemail-query.dita"/>
+    <topicref href="api-v2/voicemail-delete.dita"/>
+    <topicref href="api-v2/voicemail-get-random.dita"/>
+   </topichead>
+   <topichead navtitle="CDR">
+    <topicref href="api-v2/cdr-get-random.dita"/>
+   </topichead>
+   <topichead navtitle="Recording">
+    <topicref href="api-v2/recording-get-random.dita"/>
+   </topichead>
+   <topichead navtitle="Hotel">
+    <topicref href="api-v2/wakeupcall-query.dita"/>
+    <topicref href="api-v2/wakeupcall-create.dita"/>
+    <topicref href="api-v2/wakeupcall-update.dita"/>
+    <topicref href="api-v2/wakeupcall-delete.dita"/>
+    <topicref href="api-v2/hotel-checkout.dita" product="s-series"/>
+   </topichead>
+   <topichead navtitle="SMS" product="s-series">
+    <topicref href="api-v2/sms-send.dita"/>
+   </topichead>
+  </topichead>
+  <topichead navtitle="Call Control APIs">
+   <topicmeta>
+    <shortdesc>References of the call control APIs.</shortdesc>
+   </topicmeta>
+   <topicref href="api-v2/call-query.dita"/>
+   <topicref href="api-v2/call-dial.dita"/>
+   <topicref href="api-v2/call-accept-inbound.dita"/>
+   <topicref href="api-v2/call-refuse-inbound.dita"/>
+   <topicref href="api-v2/call-listen.dita"/>
+   <topicref href="api-v2/call-hold.dita"/>
+   <topicref href="api-v2/call-unhold.dita"/>
+   <topicref href="api-v2/call-mute.dita"/>
+   <topicref href="api-v2/call-unmute.dita"/>
+   <topicref href="api-v2/call-transfer.dita"/>
+   <topichead navtitle="Attended Transfer a Call">
+    <topicref href="api-v2/call-attended-transfer.dita"/>
+    <topicref href="api-v2/call-attended-transfer-operate.dita"/>
+   </topichead>
+   <topicref href="api-v2/call-add-member.dita"/>
+   <topicref href="api-v2/call-playprompt.dita"/>
+   <topicref href="api-v2/hangup-paging-music.dita"/>
+   <topicref href="api-v2/call-hangup.dita"/>
+  </topichead>
+  <topichead navtitle="API Events">
+   <topicmeta>
+    <shortdesc>References of the API events.</shortdesc>
+   </topicmeta>
+   <topichead navtitle="System Event">
+    <topicref href="api-v2/event-BootUp.dita"/>
+    <topicref href="api-v2/event-ConfigChange.dita"/>
+   </topichead>
+   <topichead navtitle="Inbound Call Flows">
+    <topicref href="api-v2/event-Invite.dita"/>
+    <topicref href="api-v2/event-Incoming.dita"/>
+   </topichead>
+   <topicref href="api-v2/event-ExtensionStatus.dita"/>
+   <topicref href="api-v2/event-CallStatus.dita"/>
+   <topicref href="api-v2/event-NewCdr.dita"/>
+   <topicref href="api-v2/event-CallForward.dita"/>
+   <topicref href="api-v2/event-CallTransfer.dita"/>
+   <topicref href="api-v2/event-CallFailed.dita"/>
+   <topicref href="api-v2/event-DTMF.dita"/>
+   <topicref href="api-v2/event-PlayPromptEnd.dita"/>
+   <topicref href="api-v2/event-satisfaction.dita"/>
+   <topicref href="api-v2/event-sms-send.dita" product="s-series"/>
+   <topicref href="api-v2/event-conference-status.dita"/>
+  </topichead>
+  <topicref href="api-v2/api_error_code.dita"/>
+ </topichead>
+ <topichead navtitle="API Scenarios" id="api-changjing">
+  <topicmeta>
+   <shortdesc>Introduction of API scenarios for hotel, call center, paging system, and IVR
+    system.</shortdesc>
+  </topicmeta>
+  <topicref href="api-v2/api-application-hotel.dita"/>
+  <topicref href="api-v2/api-application-paging-system.dita"/>
+  <topicref href="api-v2/api-application-call-center.dita"/>
+  <topicref href="api-v2/api-application-call-alarm-system.dita"/>
+  <topicref href="api-v2/api-application-ivr-interaction.dita"/>
+ </topichead>
+ <keydef keys="product_name" product="s-series">
+  <topicmeta>
+   <keywords>
+    <keyword>Yeastar S-Series VoIP PBX</keyword>
+   </keywords>
+  </topicmeta>
+ </keydef>
+ <keydef keys="product_name" product="cloudpbx">
+  <topicmeta>
+   <keywords>
+    <keyword>Yeastar Cloud PBX</keyword>
+   </keywords>
+  </topicmeta>
+ </keydef>
+ <keydef keys="product_name" product="k2">
+  <topicmeta>
+   <keywords>
+    <keyword>Yeastar K2 VoIP PBX</keyword>
+   </keywords>
+  </topicmeta>
+ </keydef>
+</map>

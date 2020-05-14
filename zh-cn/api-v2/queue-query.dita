@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mr1_js2_gdb">
+  <title>查询队列</title>
+  <shortdesc>查询单个队列、多个队列或所有队列的详细信息。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="1.14*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.23*"/>
+          <colspec colname="c3" colnum="3" colwidth="1*"/>
+          <colspec colname="c4" colnum="4" colwidth="5.55*"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>是否必选</entry>
+              <entry> 类型</entry>
+              <entry> 描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry> number</entry>
+              <entry>是</entry>
+              <entry>Integer</entry>
+              <entry>队列号码。<p><b>取值范围</b>：</p><p>
+                  <ul>
+                    <li>单个队列号码：查询指定队列。<p>例如：<codeph>"number":"6700"</codeph></p></li>
+                    <li>多个队列号码：查询多个队列的信息。多个队列号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"6700,6701,6702"</codeph></p></li>
+                    <li>all：查询所有队列。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                  </ul>
+                </p></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section id="section_l4b_gz1_t2b">
+      <title>响应参数</title>
+      <table frame="all" id="table_drc_smm_qjb">
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+          <colspec colname="c2" colnum="2" colwidth="1.5*" colsep="1" rowsep="1"/>
+          <colspec colname="c3" colnum="3" colwidth="3.14*" colsep="1" rowsep="1"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>类型</entry>
+              <entry>描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>status</entry>
+              <entry>String</entry>
+              <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                  <li>Success：成功。</li>
+                  <li>Failed：失败。</li>
+                </ul></entry>
+            </row>
+            <row>
+              <entry>queues</entry>
+              <entry>Array <xref href="#reference_mr1_js2_gdb/queueInfo" format="dita"
+                  >&lt;QueueInfo></xref></entry>
+              <entry>队列信息列表。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <p>
+        <dl>
+          <dlentry>
+            <dt id="queueInfo">QueueInfo</dt>
+            <dd>
+              <table frame="all" id="table_pq5_ymm_qjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="3.19*" colsep="1" rowsep="1"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.3*" colsep="1" rowsep="1"/>
+                  <thead>
+                    <row>
+                      <entry>参数</entry>
+                      <entry>类型</entry>
+                      <entry>描述</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry>number</entry>
+                      <entry>Integer</entry>
+                      <entry>队列号码。</entry>
+                    </row>
+                    <row>
+                      <entry>password</entry>
+                      <entry>String</entry>
+                      <entry>加入队列动态坐席的密码。</entry>
+                    </row>
+                    <row>
+                      <entry>queuename</entry>
+                      <entry>String</entry>
+                      <entry>队列名称。</entry>
+                    </row>
+                    <row>
+                      <entry>ringstrategy</entry>
+                      <entry>String</entry>
+                      <entry>响铃策略。<ul id="ul_p5c_bnm_qjb">
+                          <li>Ring All：全部响铃。</li>
+                          <li>Least Recent：最近最少被叫响铃。</li>
+                          <li>Fewest Calls：最少接通响铃。</li>
+                          <li>Random：随机响铃。</li>
+                          <li>Rrmemory：顺序响铃。</li>
+                          <li>Linear：线性响铃。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>failoveraction</entry>
+                      <entry>String</entry>
+                      <entry>呼入失败目的地。<p>
+                          <ul id="ul_w5c_bnm_qjb">
+                            <li>Hang up：挂机。</li>
+                            <li>Extension：分机。</li>
+                            <li>Voicemail：语音信箱。</li>
+                            <li>IVR：IVR（自动话务员）。</li>
+                            <li>Ring Group：响铃组。</li>
+                            <li>Queue：队列。</li>
+                            <li>Conference：会议室。</li>
+                            <li>Fax to Email：传真到邮件。</li>
+                            <li>Dial by name：通过名字呼叫。</li>
+                          </ul>
+                        </p></entry>
+                    </row>
+                    <row>
+                      <entry>failoverdest</entry>
+                      <entry>String</entry>
+                      <entry>呼入失败具体目的地。</entry>
+                    </row>
+                    <row>
+                      <entry>agents</entry>
+                      <entry>String</entry>
+                      <entry>固定坐席。</entry>
+                    </row>
+                    <row>
+                      <entry>dynamicagents</entry>
+                      <entry>String</entry>
+                      <entry>动态坐席。</entry>
+                    </row>
+                    <row>
+                      <entry>agenttimeout</entry>
+                      <entry>String</entry>
+                      <entry>坐席响铃时间。</entry>
+                    </row>
+                    <row>
+                      <entry>agentannounce</entry>
+                      <entry>String</entry>
+                      <entry>坐席应答提示音。</entry>
+                    </row>
+                    <row>
+                      <entry>wrapuptime</entry>
+                      <entry>Integer</entry>
+                      <entry>坐席结束与客户的通话后，继续接听新来电的时间间隔。</entry>
+                    </row>
+                    <row>
+                      <entry>ringinuse</entry>
+                      <entry>String</entry>
+                      <entry>使用中振铃。<ul id="ul_dvc_bnm_qjb">
+                          <li>on：开启。</li>
+                          <li>off：关闭。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>retry</entry>
+                      <entry>Integer</entry>
+                      <entry>重试间隔时间。</entry>
+                    </row>
+                    <row>
+                      <entry>musiconhold</entry>
+                      <entry>String</entry>
+                      <entry>等待音乐。</entry>
+                    </row>
+                    <row>
+                      <entry>maxwaittime</entry>
+                      <entry>Integer</entry>
+                      <entry>最大等待时间。</entry>
+                    </row>
+                    <row>
+                      <entry>joinempty</entry>
+                      <entry>String</entry>
+                      <entry>无座席时允许呼入。<ul id="ul_ivc_bnm_qjb">
+                          <li>on：开启。</li>
+                          <li>off：关闭。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>leavewhenempty</entry>
+                      <entry>String</entry>
+                      <entry>无座席时结束等待。<ul id="ul_rvc_bnm_qjb">
+                          <li>on：开启。</li>
+                          <li>off：关闭。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>joinannounce</entry>
+                      <entry>String</entry>
+                      <entry>进入队列提示音。</entry>
+                    </row>
+                    <row>
+                      <entry>announcepos</entry>
+                      <entry>String</entry>
+                      <entry>公告当前位置。<ul id="ul_vvc_bnm_qjb">
+                          <li>on：开启。</li>
+                          <li>off：关闭。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>announcefreq</entry>
+                      <entry>String</entry>
+                      <entry>播放用户公告的频率。</entry>
+                    </row>
+                    <row>
+                      <entry>announceholdtime</entry>
+                      <entry>Integer</entry>
+                      <entry>公告等待时间。<ul id="ul_bwc_bnm_qjb">
+                          <li>on：开启。</li>
+                          <li>off：关闭。</li>
+                        </ul></entry>
+                    </row>
+                    <row>
+                      <entry>userannounce</entry>
+                      <entry>String</entry>
+                      <entry>系统公告提示音。</entry>
+                    </row>
+                    <row>
+                      <entry>userannouncefreq</entry>
+                      <entry>Integer</entry>
+                      <entry>播放系统公告的频率。</entry>
+                    </row>
+                    <row>
+                      <entry>breakoutkey</entry>
+                      <entry>String</entry>
+                      <entry>按键 DTMF。</entry>
+                    </row>
+                    <row>
+                      <entry>breakoutaction</entry>
+                      <entry>String</entry>
+                      <entry>按键目标。<p>
+                          <ul id="ul_gwc_bnm_qjb">
+                            <li>Hang up：挂机。</li>
+                            <li>Extension：分机。</li>
+                            <li>Voicemail：语音信箱。</li>
+                            <li>IVR：自动话务员。</li>
+                            <li>Ring Group：响铃组。</li>
+                            <li>Queue：队列。</li>
+                            <li>Conference：会议室。</li>
+                            <li>Fax to Email：传真到邮件。</li>
+                            <li>Dial by Name：通过名字呼叫。</li>
+                          </ul>
+                        </p></entry>
+                    </row>
+                    <row>
+                      <entry>breakoutdest</entry>
+                      <entry>String</entry>
+                      <entry>按键目标的最终目的地。</entry>
+                    </row>
+                    <row>
+                      <entry>satisfactionsurvey</entry>
+                      <entry>String</entry>
+                      <entry>满意度调查提示音。没有设置则默认不播报。此参数默认值为 None。</entry>
+                    </row>
+                    <row>
+                      <entry>idannouncement</entry>
+                      <entry>String</entry>
+                      <entry>播放坐席工号的提示音。没有设置则默认不播报。此参数默认值为 None。</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </dd>
+          </dlentry>
+        </dl>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p><p>查询队列6700的详细信息。</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/queue/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6700"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"queues": [
+		{
+			"number": "6700",
+			"password": "",
+			"queuename": "6700",
+			"ringstrategy": "Ring All",
+			"failoveraction": "Dial by Name",
+			"agents": "1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,",
+			"agenttimeout": "30",
+			"agentannounce": "[None]",
+			"wrapuptime": "30",
+			"ringinuse": "off",
+			"retry": "30",
+			"musiconhold": "[None]",
+			"maxwaittime": "1800",
+			"joinempty": "off",
+			"leavewhenempty": "on",
+			"joinannounce": "[None]",
+			"announcepos": "on",
+			"announcefreq": "30",
+			"announceholdtime": "on",
+			"userannounce": "[None]",
+			"userannouncefreq": "60",
+			"breakoutkey": "0",
+			"breakoutaction": "Extension",
+			"breakoutdest": "1000",
+			"satisfactionsurvey": "None",
+			"idannouncement": "None"
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

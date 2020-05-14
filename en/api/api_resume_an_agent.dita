@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_gs5_nqf_h2b">
+    <title>Resume an Agent</title>
+    <shortdesc>Resume an agent‘s service from a queue. After an agent is resumed, the agent can
+        receive calls from the queue.</shortdesc>
+    <refbody>
+        <section id="section_off_dnd_gdb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/queue/unpause_agent?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_vjw_5qd_gdb">
+            <title>Request Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_kdz_32f_h2b">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.2*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.45*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.68*"/>
+                        <tbody>
+                            <row>
+                                <entry><b>Parameter Name</b></entry>
+                                <entry><b>Importance</b></entry>
+                                <entry><b>Type</b></entry>
+                                <entry><b>Description</b></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>queueid</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>Int</entry>
+                                <entry>Queue number.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extid</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>Int</entry>
+                                <entry>Extension number of the agent.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+            <codeblock outputclass="language-json">POST /api/v1.1.0/queue/unpause_agent?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6700",
+    "extid": "1000"
+}</codeblock>
+            </p><b>Response Example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

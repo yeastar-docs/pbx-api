@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_hdx_kw3_gdb">
+  <title>‘播放语音结束’报告</title>
+  <shortdesc>PBX 给分机号码或外线号码播放提示音结束后，会发送报告。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.77*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="7.63*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>播放提示音结束事件。</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通通话的 id。</entry>
+              </row>
+              <row>
+                <entry><codeph>prompt</codeph></entry>
+                <entry>String</entry>
+                <entry>播放的语音文件名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>Int</entry>
+                <entry>分机对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>分机号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>outbound</codeph><p><codeph>inbound</codeph></p></entry>
+                <entry>String</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunkname</codeph></entry>
+                <entry>String</entry>
+                <entry>使用的中继。（给外线播放语音的报告中使用<codeph>trunkname</codeph>，其他类型的报告使用<codeph>trunk</codeph>。）</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>使用的中继。</entry>
+              </row>
+              <row>
+                <entry><codeph>ivr</codeph></entry>
+                <entry>String</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry><codeph>ivrid</codeph></entry>
+                <entry>String</entry>
+                <entry>IVR 号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>playtonum</codeph></entry>
+                <entry>String</entry>
+                <entry>播放语音给哪个号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX 的 SN 码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p><xref href="api_play_prompt_to_extension.dita#reference_qgn_c1f_gdb"
+        >给分机播放语音文件</xref>“record” 结束后的报告。</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395290.362",
+    "ext": {
+        "extid": "1001"
+    },
+    "prompt": "record",
+    "sn": "369362089179"
+}</codeblock>
+      <p><xref href="api_play_prompt_to_external_number.dita#reference_ync_21f_gdb"
+        >给外线播放语音文件</xref>“record”
+        结束后的报告。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395463.366",
+    "outbound": {
+        "trunkname": "SPS-6-36"
+    },
+    "prompt": "record",
+    "sn": "369362089179"
+}</codeblock></p>
+      <p><xref href="api_dial_extension_through_ivr.dita#reference_rwt_kw2_gdb"
+        >通过IVR拨打分机号码</xref>或分机拨打 IVR 号码，PBX 播放语音给分机。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395676.370",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "1005",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p><xref href="api_dial_external_number_through_ivr.dita#reference_qvw_mw2_gdb"
+          >通过IVR拨打外线号码</xref>或呼出转接到 IVR，PBX 播放语音给给外线号码。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395803.374",
+    "call": [
+        {
+            "outbound": {
+                "trunk": "SPS-6-36"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "9282837733",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p>来电转接到 IVR 或来电呼入到 IVR，播放语音给来电号码。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395941.380",
+    "call": [
+        {
+            "inbound": {
+                "trunk": "SPS-6-36"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "81288833"
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

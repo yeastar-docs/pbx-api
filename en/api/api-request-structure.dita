@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_dqt_mvb_wgb">
+    <title>Request Structure</title>
+    <shortdesc>This topic introduces the structure of API requests, including request method,
+        request URL, and communication protocol.</shortdesc>
+    <body>
+        <p> All the API requests use POST method.</p>
+        <p>See the following API request of <xref
+                href="api_log_in_a_queue.dita#reference_ngn_dt2_gdb"/> as a request example.</p>
+        <p>
+            <codeblock outputclass="language-json">POST /api/v1.1.0/queue/add_dynamicagent?token=<varname>｛token｝</varname> HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6700",
+    "extid": "1000",
+    "password": "6700123"
+}</codeblock>
+        </p>
+        <p>
+            <ul id="ul_qhp_rfc_wgb">
+                <li><codeph>POST</codeph> specifies the request method.</li>
+                <li><codeph>/api/v1.1.0/queue/add_dynamicagent?token=<varname>｛token｝</varname></codeph>
+                    is the endpoint URI of <xref
+                        href="api_log_in_a_queue.dita#reference_ngn_dt2_gdb"/>.</li>
+                <li><codeph>Content-Type:application/json; charset=utf-8</codeph> is the API
+                    contents format.</li>
+                <li><codeph>Host</codeph> is the <ph product="k2 s-series">IP address of <ph
+                            keyref="product_name"/>.</ph><ph product="cloudpbx">the domain of <ph
+                            keyref="product_name"/>.</ph></li>
+                <li><codeph>queueid</codeph>、<codeph>extid</codeph>、<codeph>password</codeph> are
+                    the request parameters of <xref
+                        href="api_log_in_a_queue.dita#reference_ngn_dt2_gdb"/>.</li>
+            </ul>
+        </p>
+        <section id="section_kcq_15f_xgb">
+            <title>Request URL</title>
+            <p>The format of API request URL:</p>
+            <p>
+                <codeblock><varname>{base_url}</varname><varname>{endpoint}</varname></codeblock>
+            </p>
+            <p>
+                <ul id="ul_qwk_f5f_xgb">
+                    <li><uicontrol>Base URL</uicontrol><p product="cloudpbx">All URLs referenced in
+                            the documentation have the following base:</p><p product="cloudpbx">
+                            <codeblock>https://{pbx_domain}</codeblock>
+                        </p><p>Set the API base URL according to the web access settings on your
+                            PBX.</p><p>If the web access protocol is HTTPS, use the following base
+                            URL:</p><p>
+                            <codeblock>https://{pbx_ip}:{https_port}</codeblock>
+                        </p><p>If the web access protocol is HTTP, use the following base URL:</p><p>
+                            <codeblock>http://{pbx_ip}:{http_port}</codeblock>
+                        </p></li>
+                </ul>
+            </p>
+        </section>
+        <ul id="ul_kmc_r5f_xgb">
+            <li><b>Endpoint</b><p>An endpoint is a path for a specific API interface.</p><p>See the
+                        <xref href="api_introduction.dita#topic_l4v_hrc_gdb">overview of API
+                        endpoints</xref>.</p></li>
+        </ul>
+    </body>
+</topic>

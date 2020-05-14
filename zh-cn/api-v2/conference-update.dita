@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-update">
+    <title><?oxy_comment_start author="Becky" timestamp="20191028T142422+0800" comment="update后会导致其他参数消失？
+比如{&quot;number&quot;:&quot;6400&quot;,&quot;moderatorpassword&quot;:&quot;1234&quot;}后，name和moderators就消失了" id="ejl_jlt_pjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191108T181934+0800" comment="已修复" parentID="ejl_jlt_pjb" flag="done"?>修改固定会议室<?oxy_comment_end?><?oxy_comment_end mid="1"?></title>
+    <shortdesc>修改 PBX 网页已创建的会议室的配置。</shortdesc>
+    <refbody>
+        <section id="section_zjz_5ky_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/update?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_osn_vky_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_odx_djy_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="3.73*" colsep="1" rowsep="1"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.62*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="4" colwidth="7.28*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>固定会议室号码。</entry>
+                            </row>
+                            <row>
+                                <entry>name</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>固定会议室名称。<note>不允许输入以下字符：<codeph>&amp;</codeph><codeph>'</codeph><codeph>&lt;</codeph><codeph>></codeph><codeph>`</codeph><codeph>|</codeph><codeph>$</codeph><codeph>]</codeph><codeph>\</codeph><codeph>"</codeph>。</note></entry>
+                            </row>
+                            <row>
+                                <entry>participantepassword</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>与会者密码。<note>只允许输入数字和 <codeph>*</codeph>。</note></entry>
+                            </row>
+                            <row>
+                                <entry>moderatorpassword</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>主持人密码。<note>只允许输入数字和 <codeph>*</codeph>。</note></entry>
+                            </row>
+                            <row>
+                                <entry>waitformoderator</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>是否等候主持人进入后才开始会议。<p><b>取值范围</b>：</p><ul id="ul_ct5_mjy_mjb">
+                                        <li>yes：是。</li>
+                                        <li>no：否。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>allowinvite</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>是否允许与会者邀请其他成员。<p><b>取值范围</b>：</p><ul id="ul_g55_4jy_mjb">
+                                        <li>yes：是。</li>
+                                        <li>no：否。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>moderators </entry>
+                                <entry>否</entry>
+                                <entry>Integer</entry>
+                                <entry>会议室主持人。<note>主持人只能是内部分机号码。</note></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_wr5_vky_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_onj_wky_mjb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>修改会议室6400的与会者密码为“5678”。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/conference/update?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6400",
+	"participantepassword": "5678"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

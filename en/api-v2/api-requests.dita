@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_rrc_5yw_mjb">
+    <title>API Request Overview</title>
+    <shortdesc>In this topic, we introduce communication protocols, communication ports, and API
+        request flow.</shortdesc>
+    <conbody>
+        <section id="section_j1r_sfg_4jb">
+            <title>Communication protocols</title>
+            <p><ph keyref="product_name"/> supports POST requests over  HTTP/HTTPS protocol. A new
+                TCP connection is established every time the application server sends an API request
+                to the PBX.</p>
+        </section>
+        <section id="section_msh_vfg_4jb">
+            <title>Communication ports</title>
+            <p>The API communication port is the same as the web access port of PBX. By default, the
+                communication ports are HTTPS 8088 and HTTP 80.</p>
+            <p>
+                <note>
+                    <ul id="ul_q3s_zfg_4jb">
+                        <li>By default, <uicontrol>Redirect from port 80</uicontrol> is enabled for
+                            <?oxy_comment_start author="Becky" timestamp="20191114T085530+0800" comment="中文写的HTTP，但是看网页是HTTPS才有从80端口重定向这个选项" id="vnc_kp4_tjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191118T113527+0800" comment="没错" parentID="vnc_kp4_tjb" flag="done"?>HTTPS<?oxy_comment_end?><?oxy_comment_end mid="1"?>
+                            protocol on PBX. So the default ports are HTTPS 8088 and HTTP 80.</li>
+                        <li>For communication security, we recommend that you use HTTPS protocol,
+                            and upload an HTTPS certificate made by Certificate Authority to the
+                            PBX.</li>
+                    </ul>
+                </note>
+            </p>
+        </section>
+        <section id="section_k5b_cgg_4jb">
+            <title>API request flow</title>
+            <p>When the application server sends an API request to PBX, the application server acts
+                as the client, and PBX acts as the server. The following figure shows the API
+                request flow.</p>
+            <p><image id="image_kr1_vvk_sjb" href="../Images/pbx-api/API-requests-flow-chart-en.png"
+                    width="650"/></p>
+        </section>
+    </conbody>
+</concept>

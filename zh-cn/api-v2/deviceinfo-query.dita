@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qbg_5l2_gdb">
+  <title>查询 PBX 信息</title>
+  <shortdesc>查询 PBX 的基本信息，如产品型号、固件版本、启动时间等。</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/deviceinfo/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb">
+      <title>请求参数</title>
+      <p>无参数，直接发送查询设备信息的请求即可。</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>响应参数</title>
+    </section>
+    <table frame="all" id="table_swn_4cz_pjb">
+      <tgroup cols="3">
+        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+        <colspec colname="c2" colnum="2" colwidth="1.84*" colsep="1" rowsep="1"/>
+        <colspec colname="c3" colnum="3" colwidth="3.99*" colsep="1" rowsep="1"/>
+        <thead>
+          <row>
+            <entry>参数</entry>
+            <entry>类型</entry>
+            <entry>描述</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>status</entry>
+            <entry>String</entry>
+            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                <li>Success：成功。</li>
+                <li>Failed：失败。</li>
+              </ul></entry>
+          </row>
+          <row>
+            <entry>deviceinfo</entry>
+            <entry>Object<xref href="#reference_qbg_5l2_gdb/deviceinfo" format="dita"
+                >&lt;DeviceInfo></xref></entry>
+            <entry>设备信息。</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <section id="section_ptn_4cz_pjb">
+      <dl>
+        <dlentry>
+          <dt id="deviceinfo">DeviceInfo</dt>
+          <dd>
+            <table frame="all" id="table_emw_5cz_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.47*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="3.13*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>devicename</entry>
+                    <entry>String</entry>
+                    <entry>产品设备名称。</entry>
+                  </row>
+                  <row>
+                    <entry>sn</entry>
+                    <entry>String</entry>
+                    <entry>产品序列号。</entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>hardwarever</entry>
+                    <entry>String</entry>
+                    <entry>硬件版本号。</entry>
+                  </row>
+                  <row>
+                    <entry>firmwarever</entry>
+                    <entry>Integer</entry>
+                    <entry>固件版本号。</entry>
+                  </row>
+                  <row>
+                    <entry>systemtime</entry>
+                    <entry>String</entry>
+                    <entry>系统时间。</entry>
+                  </row>
+                  <row>
+                    <entry>uptime</entry>
+                    <entry>Integer</entry>
+                    <entry>启动时间。</entry>
+                  </row>
+                  <row>
+                    <entry>extensionstatus</entry>
+                    <entry>String</entry>
+                    <entry>已创建分机数/最大分机数。</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_spy_qqd_gdb">
+      <title>示例</title>
+      <p><b>请求示例</b></p>
+      <p>
+        <codeblock>POST /api/v2.0.0/deviceinfo/query?token=6fc544c66fd06a1a6eb4b4c4547f6d06
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host:192.168.5.150</ph><ph product="cloudpbx">Host:api.yeastarcloud.com</ph></codeblock>
+      </p>
+      <p><b>响应示例</b></p>
+      <p>
+        <codeblock product="cloudpbx" outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar Cloud PBX",
+		"sn": "36828053U0H2BTHG",
+		"firmwarever": "81.9.0.23",
+		"systemtime": "2019-10-15 20:07:32 UTC-8",
+		"uptime": "00:57:59",
+		"extensionstatus": "3/10"
+	}
+}</codeblock>
+      </p>
+      <codeblock product="s-series" outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar S300",
+		"sn": "369451090405",
+		"hardwarever": "V1.10 0000-0000",
+		<?oxy_comment_start author="Becky" timestamp="20191022T093213+0800" comment="待改" id="trv_2jv_qjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191108T162835+0800" comment="不用改了，这样放着可以。" parentID="trv_2jv_qjb" flag="done"?>"firmwarever": "30.11.0.11",<?oxy_comment_end?><?oxy_comment_end mid="1"?>
+		"systemtime": "2019-10-17 23:07:43 UTC-8",
+		"uptime": "00:32:59",
+		"extensionstatus": "22/500"
+	}
+}</codeblock>
+      <codeblock product="k2">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar S1000",
+	<?oxy_comment_start author="Becky" timestamp="20191022T093246+0800" comment="待改" id="ohc_gjv_qjb" flag="done" mid="3"?><?oxy_comment_start author="carol" timestamp="20191108T162857+0800" comment="这个改成K2 最近发布的版本号就可以。" parentID="ohc_gjv_qjb" flag="done"?>	"sn": "368193754239",
+		"firmwarever": "80.5.0.29",<?oxy_comment_end?><?oxy_comment_end mid="3"?>
+		"systemtime": "2019-10-22 17:09:43 UTC-8",
+		"uptime": "00:20:59",
+		"extensionstatus": "150/2000"
+	}
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

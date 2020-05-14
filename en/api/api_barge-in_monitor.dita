@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_g2n_t52_gdb">
+  <title>Barge-in Monitor</title>
+  <shortdesc>Through this interface, an extension can barge in another extension's call. As a
+    result, all the three parties can talk to each other.</shortdesc>
+  <refbody>
+    <section id="section_c5q_w5t_gdb">
+      <title>Operations</title>
+      <p>
+        <ol id="ol_jgd_y5t_gdb">
+          <li>Extension A is idle, extension B is in a call (query extension list to get the
+            extension status);</li>
+          <li>Make extension A barge in extension B's call;</li>
+          <li>If the operation is successful, extension A will auto answer and barge in the
+            extension B's conversation.<p>
+              <note>Some IP phone models or softphones may not support auto answer. In this case, IP
+                phones or softphones will ring first, and users need to pick up the call manually to
+                start monitoring.</note>
+            </p></li>
+        </ol>
+      </p>
+    </section>
+    <section id="section_n25_2vt_gdb">
+      <title>Conditions</title>
+      <p>
+        <ul id="ul_xcf_tvt_gdb">
+          <li>The monitor extension's monitor mode should be Extensive or Barge-in;</li>
+          <li>The monitored extension should allow being monitored;</li>
+          <li>The call monitor only happens to extensions registered on the same PBX.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/extension/barge?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.48*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.41*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.31*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>bargein</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The monitor extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>bargedext</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The monitored extension.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/extension/barge?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "bargein": "1005",
+    "bargedext": "1002"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="instant-conference-query">
+    <title>查询临时会议室</title>
+    <shortdesc>查询通过 API 接口 <codeph>instant_conference/create</codeph>
+        调用的临时会议室。支持查询单个、多个或所有会议室。</shortdesc>
+    <refbody>
+        <section id="section_uzw_nzv_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/instant_conference/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_anr_pzv_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_ktv_qzv_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1.35*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.54*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>临时会议室号码。<p><b>取值范围</b>：</p><ul id="ul_rdl_lrx_mjb">
+                                        <li>单个会议室号码：查询指定临时会议室。<p>例如：<codeph>"number":"6450"</codeph></p></li>
+                                        <li>多个会议室号码：查询多个临时会议室。多个会议室号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"6450,6451"</codeph></p></li>
+                                        <li>all：查询所有临时会议室。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_rcw_vzv_mjb">
+            <title>响应参数</title>
+            <table frame="all" id="table_nr5_tlg_qjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.97*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="2.62*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry><?oxy_comment_start author="carol" timestamp="20191114T164508+0800" comment="新版本修复问题，确认要加s" flag="done"?>conferences<?oxy_comment_end?></entry>
+                            <entry>Array <xref href="#instant-conference-query/conferenceInfo"
+                                    format="dita">&lt;ConferenceInfo></xref></entry>
+                            <entry>会议室信息列表。</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <dl>
+                <dlentry>
+                    <dt id="conferenceInfo">ConferenceInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_jqw_xlg_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.13*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="4.54*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>会议室号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>String</entry>
+                                        <entry>会议室名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>moderators</entry>
+                                        <entry>Integer</entry>
+                                        <entry>会议室主持人。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>member</entry>
+                                        <entry>String</entry>
+                                        <entry>与会成员信息。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_fp3_b1w_mjb"><title>示例</title><p><b>请求示例</b></p><p>查询临时会议室6466的信息。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/instant_conference/query?token=3ddc40cf73c8ed477e4e466b044e9c89
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6466"
+}</codeblock>
+            </p><b>响应示例</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	<?oxy_comment_start author="Becky" timestamp="20191107T114435+0800" comment="这行之前显示在最后，测试已提bug" id="h13_h5v_qjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191108T175305+0800" comment="已修复。" parentID="h13_h5v_qjb" flag="done"?>"status": "Success",<?oxy_comment_end?><?oxy_comment_end mid="1"?>
+	"<?oxy_comment_start author="carol" timestamp="20191108T174857+0800" comment="应该要加s，待研发确认是否修改" flag="done"?>conference<?oxy_comment_end?>s": [
+		{
+			"number": "6466",
+			"name": " 6466",
+			"moderators": "4000",
+			"members": "4001"
+		}
+	]
+}</codeblock></section>
+    </refbody>
+</reference>

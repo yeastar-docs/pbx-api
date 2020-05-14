@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_umf_t2g_vgb">
+    <title>Add an Inbound Route</title>
+    <shortdesc>Add and configure an inbound route.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/inroute/add?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_ydm_dd4_vgb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.51*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1.08*"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.19*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>name</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>The name of an inbound route.</entry>
+                            </row>
+                            <row>
+                                <entry>did</entry>
+                                <entry>No</entry>
+                                <entry>String</entry>
+                                <entry>DID pattern.</entry>
+                            </row>
+                            <row>
+                                <entry>caller_id</entry>
+                                <entry>No</entry>
+                                <entry>String</entry>
+                                <entry>Caller ID pattern.</entry>
+                            </row>
+                            <row>
+                                <entry>trunks</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Trunk name. Separate multiple trunk names with
+                                        <codeph>,</codeph>. <p>Example:
+                                            <codeph>"trunks":"trunk1,trunk2"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>desttype</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Destination type.<p><b>Valid values</b>:</p><p>
+                                        <ul id="ul_l4f_mc4_vgb">
+                                            <li>hangup</li>
+                                            <li>extension</li>
+                                            <li>extrange</li>
+                                            <li>voicemail</li>
+                                            <li>ivr</li>
+                                            <li>ringgroup</li>
+                                            <li>queue</li>
+                                            <li>conference</li>
+                                            <li>disa</li>
+                                            <li>callback</li>
+                                            <li>outroute</li>
+                                            <li>faxtoemail</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>dest</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>The specific destination.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_hym_skb_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_zhk_tkb_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.14*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.98*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>id</entry>
+                                <entry>Integer</entry>
+                                <entry>The unique ID of the inbound route.</entry>
+                            </row>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/inroute/add?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"name": "trunk1",
+	"did": "5503301",
+	"caller_id": "3000",
+	"trunks": "sipTrunk",
+	"desttype": "hangup"
+}</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <p>After the inbound route is added successfully, the system will automatically assign
+                an id to the inbound route.</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"id": "8",
+	"status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

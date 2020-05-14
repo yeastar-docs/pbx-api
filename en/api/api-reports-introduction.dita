@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_ocs_zmc_wgb">
+    <title>API Reports</title>
+    <shortdesc>After the 3rd-party application server is connected to the <ph keyref="product_name"
+        /> via API interface, PBX will automatically sends API reports to the 3rd-party application
+        server. </shortdesc>
+    <body>
+        <p>When the 3rd-party application server <xref href="api_login.dita#reference_blb_5ld_gdb"
+                >requests to log in the PBX</xref>, a request parameter <codeph>port</codeph> should
+            be sent to the PBX. The <codeph>port</codeph> parameter tells the PBX which port to send
+            API reports to.</p>
+        <p>
+            <note>
+                <ul id="ul_qrg_hnc_wgb">
+                    <li>After receiving API reports from the PBX, the 3rd-party application server
+                        should response 200OK, or the PBX will send API reports repeatedly.</li>
+                    <li>If the 3rd-party application server and the PBX are not in the same network,
+                        you should forward the reports monitoring port (default TCP 8260) on the
+                        router which is connected to the 3rd-party application server.</li>
+                    <li>To receive the extension relevant reports and trunk relevant reports on the
+                        3rd-party application server, you should enable <xref
+                            href="enable_api_access_on_pbx.dita#task_zm3_wdd_gdb/api-extension-monitor"
+                            >Extension <uicontrol>Status Monitor</uicontrol></xref> and <xref
+                            href="enable_api_access_on_pbx.dita#task_zm3_wdd_gdb/api-trunk-monitor"
+                            >Trunk <uicontrol>Status Monitor</uicontrol></xref>.</li>
+                </ul>
+            </note>
+        </p>
+        <section id="section_f5b_j4c_wgb">
+            <title>Reports Format</title>
+            <p><ph keyref="product_name"/> sends API reports to the 3rd-party application server by
+                POST method. The API reports are in JSON format.</p>
+            <p>See the following <xref
+                    href="api_report_of_system_startup.dita#reference_lgt_lcf_gdb"/> as a report
+                example.</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "BootUp",
+    "sn": "369351034049"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

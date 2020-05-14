@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="instant-conference-create">
+    <title>发起临时会议</title>
+    <shortdesc>通过此接口发起临时会议，即时邀请联系人加入会议。</shortdesc>
+    <refbody>
+        <section id="section_wjf_nfv_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/instant_conference/start?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_z3w_d5v_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_k5q_f5v_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.97*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.02*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.19*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>临时会议室号码。<note>
+                                        <p>该号码必须处于空闲状态，即其他固定会议室、临时会议室或其他功能未占用此号码。</p>
+                                    </note></entry>
+                            </row>
+                            <row>
+                                <entry>name</entry>
+                                <entry><?oxy_comment_start author="Becky" timestamp="20191028T111111+0800" comment="子需求和父需求描述不一致，应是必填" id="vsq_gkt_pjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191104T201205+0800" comment="必填" parentID="vsq_gkt_pjb" flag="done"?>是<?oxy_comment_end?><?oxy_comment_end mid="1"?></entry>
+                                <entry>String</entry>
+                                <entry>临时会议室名称。</entry>
+                            </row>
+                            <row>
+                                <entry>moderators</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>临时会议室主持人。<p><b>取值范围</b>：</p><ul id="ul_jyl_w5v_mjb">
+                                        <li>单个分机号码：仅设置一个主持人。</li>
+                                        <li>多个分机号码：设置多个主持人。多个分机号码用半角逗号（,）隔开。<note>要成功建立临时会议室，至少有一个主持人要进入会议室。</note></li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>临时会议室成员。<p><b>取值</b>：</p><p>支持填写内部分机号码和外部号码，多个号码用半角逗号（,）隔开。</p></entry>
+                            </row>
+                            <?oxy_comment_start author="Becky" timestamp="20191025T164159+0800" comment="测试结果和需求不一样
+此项必填，无论内部分机还是外部号码，都提示10004：部分参数为空" id="wrc_nkt_pjb" flag="done"?>
+                            <?oxy_comment_start author="carol" timestamp="20191104T201359+0800" comment="测试确实是需要填写，问下测试，是否bug？" parentID="wrc_nkt_pjb" flag="done" mid="3"?>
+                            <row>
+                                <entry>dialpermission</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>使用哪个分机的呼叫权限，邀请会议室成员。<note>如果邀请的成员为外部号码，必须填写具备外呼权限的分机号码。</note></entry>
+                            </row><?oxy_comment_end?><?oxy_comment_end mid="3"?>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_lry_yvv_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_wsd_1wv_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.01*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.36*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_hcq_2wv_mjb"><title>示例</title><p><b>请求示例</b></p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/instant_conference/start?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6466",
+	"name": "6466",
+	"members": "4000,4001",
+	"moderators": "4000",
+	"dialpermission": "4000"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

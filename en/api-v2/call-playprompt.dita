@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_fkh_jhg_jjb">
+    <title>Play a Prompt</title>
+    <shortdesc>Play audio prompt to an extension user, an external user or a Paging
+        group.</shortdesc>
+    <refbody>
+        <section id="section_nr1_tzz_ljb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph conref="call-query.dita#reference_a5v_rt2_gdb/request-address"/>/call/playprompt?token=<ph conref="call-query.dita#reference_a5v_rt2_gdb/token"/></codeblock>
+            </p>
+        </section>
+        <section id="section_lw5_5zz_ljb">
+            <title>Request parameters</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.3*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.2*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*"/>
+                    <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Required</entry>
+                            <entry> Type</entry>
+                            <entry> Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Yes</entry>
+                            <entry>Integer</entry>
+                            <entry>The target number that will receive the prompt.<p><b>Valid
+                                        values</b>:<ul id="ul_fyl_c11_mjb">
+                                        <li>Extension number</li>
+                                        <li>External number</li>
+                                        <li>Paging Group number</li>
+                                    </ul></p></entry>
+                        </row>
+                        <row>
+                            <entry>prompt</entry>
+                            <entry>Yes</entry>
+                            <entry>String</entry>
+                            <entry>The name of audio file that will be played.<p><b>Valid
+                                    values</b>:</p><p>
+                                    <ul id="ul_e2y_h11_mjb">
+                                        <li>For an audio file: Enter the filename.<p>Example:
+                                                music1.</p></li>
+                                        <li>For multiple audio files: Separate the filenames with
+                                                <codeph>+ </codeph>. <p>Example:
+                                            music1+music2.</p></li>
+                                    </ul>
+                                    <note>
+                                        <ul id="ul_o41_s11_mjb">
+                                            <li>The audio file must be uploaded to the PBX's
+                                                  <b>Custom Prompt</b> page beforehand.</li>
+                                            <li>The file name must contain at least a letter, and
+                                                cannot contain character <codeph>+</codeph>.</li>
+                                        </ul>
+                                    </note>
+                                </p></entry>
+                        </row>
+                        <row>
+                            <entry>count</entry>
+                            <entry>No</entry>
+                            <entry>Integer</entry>
+                            <entry>The frequency of playing audio files.</entry>
+                        </row>
+                        <row conref="call-transfer.dita#reference_kz1_lhg_vgb/dialpermission">
+                            <entry/>
+                        </row>
+                        <row conref="call-dial.dita#reference_b2r_p3g_jjb/autoanswer">
+                            <entry/>
+                        </row>
+                        <row>
+                            <entry>volume</entry>
+                            <entry>No</entry>
+                            <entry>Integer</entry>
+                            <entry>The volume will be played.<p><b>Valid value</b>: 0~20</p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_z1m_vb1_mjb">
+            <title>Response parameters</title>
+        
+            <p>
+                <table conref="call-dial.dita#reference_b2r_p3g_jjb/status-callid"
+                    id="table_rwc_1mr_pjb">
+                    <tgroup cols="1">
+                        <tbody>
+                            <row>
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_hj5_4c1_mjb">
+            <title>Example</title>
+            <p><b>Request example</b></p>
+            <codeblock outputclass="language-json">POST /api/v2.0.0/call/playprompt?token=16cfa49e417009cf1017aa284217f3ff HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1023",
+	"prompt": "music1+music2",
+	"count": "2",
+	"autoanswer": "yes",
+	"volume": "10"
+}</codeblock>
+            <p><b>Response
+                example</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"callid": "1571714617.6"
+}</codeblock></p>
+        </section>
+    </refbody>
+</reference>

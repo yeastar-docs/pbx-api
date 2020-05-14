@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_sc5_tpq_pjb">
+    <title>Reusable Contents for API 2.0</title>
+    <body>
+        <section id="section_lns_xpq_pjb">
+            <title>参数</title>
+            <p>
+                <ul id="ul_ujm_ypq_pjb">
+                    <li>Channelid<p id="channelid">通话中，每个成员的通话通道 ID。</p></li>
+                    <li>callid<p id="callid">每个通话的唯一 ID。</p></li>
+                    <li>status<p id="status">请求结果。</p><p>
+                            <ul id="ul_p1j_kcz_kjb">
+                                <li>Success：成功。</li>
+                                <li>Failed：失败。</li>
+                            </ul>
+                        </p></li>
+                </ul>
+            </p>
+        </section>
+    </body>
+</topic>

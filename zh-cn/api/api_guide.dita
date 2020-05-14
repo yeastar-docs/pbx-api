@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="api">
+    <title>API指南</title>
+    <shortdesc>本指南介绍<ph keyref="product_name"/>的二次开发(API)接口，适用于第三方应用开发人员。</shortdesc>
+    <prolog>
+        <author type="creator">Carol</author>
+        <critdates>
+            <created date="2018/07/02"/>
+            <!--Carol-->
+            <revised modified="2018/07/02"/>
+            <!--Carol-->
+            <revised modified="2018/12/19"/>
+        </critdates>
+    </prolog>
+    <conbody/>
+</concept>

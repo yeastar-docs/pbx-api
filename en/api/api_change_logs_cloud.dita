@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_dxf_gr2_h2b">
+    <title>API Change Logs</title>
+    <shortdesc/>
+    <conbody>
+        <section id="section_fd4_g1w_43b">
+            <title>API v1.1.0 (PBX 81.9.0.14)</title>
+            <p><b>This API update is compatible with Yeastar Cloud PBX 81.9.0.14 or later.</b></p>
+            <p>
+                <ul conref="../topic/v81.9.0.14.dita#v81.9.0.14/api-cloud-81.9.0.14"
+                    id="ul_sw4_v1w_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_jzj_11w_43b">
+            <title>API v1.1.0 (PBX 81.8.0.85)</title>
+            <p><b>This API update is compatible with Yeastar Cloud PBX 81.8.0.85 or later.</b></p>
+            <p>
+                <ul conref="../topic/v81.8.0.85.dita#topic_bqq_jb5_4hb/api-cloud-81.8.0.85"
+                    id="ul_vnb_21w_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_hw4_qlm_xgb">
+            <title> API v1.1.0 (PBX 81.8.0.42)</title>
+            <p>
+                <note>We recommend you upgrade to 81.8.0.42 or later to use API v1.1.0.</note>
+            </p>
+            <p conref="../topic/v81.8.0.42.dita#topic_xqt_qwd_5gb/api-cloud-81.8.0.42"/>
+        </section>
+        <section>
+            <title>API v1.1.0 (PBX 81.8.0.4 )</title>
+            <p><b>This API version is compatible with Yeastar Cloud PBX 81.8.0.4 or later.</b></p>
+        </section>
+        <section>
+            <p conref="../topic/v81.8.0.4.dita#concept_p2f_ljv_1gb/api_1.1.0_cloud"/>
+        </section>
+        <section id="section_wqp_23z_nfb">
+            <title>API Version v1.0.5</title>
+            <p><b>This API version is compatible with Yeastar Cloud PBX 81.7.0.15 or later.</b></p>
+            <p conref="../topic/v81.7.0.15.dita#concept_dnx_mbm_l2b/api_1.0.5_cloud"/>
+        </section>
+        <section id="section_s3c_yr2_h2b">
+            <title>API Version v1.0.3</title>
+            <p>The first API version for Yeastar Cloud PBX.</p>
+            <p><b>This API version is compatible with Yeastar Cloud PBX 81.4.0.8 or later.</b></p>
+        </section>
+    </conbody>
+</concept>

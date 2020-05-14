@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ozd_dy2_gdb">
+  <title>双向外呼</title>
+  <shortdesc>通过本接口可让 PBX 依次向外发起两路呼叫，并以 PBX 作为中间点建立连接，从而实现两个外部电话之间建立通话。</shortdesc>
+  <refbody>
+    <section id="section_rj2_qj2_hdb">
+      <title>操作步骤</title>
+      <p>
+        <ol id="ol_jtc_lqt_vgb">
+          <li>拨打主叫号码，主叫摘机后听到回铃音。</li>
+        </ol>
+      </p>
+      <p>
+        <ul id="ul_fcl_gzm_t2b">
+          <li>拨打被叫号码，被叫响铃。被叫摘机后双方建立通话。</li>
+        </ul>
+      </p>
+    </section>
+    <section id="section_vps_rj2_hdb">
+      <title>条件</title>
+      <p>
+        <ul id="ul_ap5_sj2_hdb">
+          <li>
+            <p>拨打外线电话，需使用分机的呼出权限呼出。</p>
+          </li>
+          <li>
+            <p>PBX 至少有两条空闲可用的中继。</p>
+          </li>
+          <li>
+            <p>呼叫的外线号码要符合呼出路由的规则。</p>
+          </li>
+        </ul>
+      </p>
+    </section>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/outbound/dial_outbound?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.28*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.17*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.03*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>caller</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>呼出的外线号码（匹配呼出规则）。</entry>
+              </row>
+              <row>
+                <entry><codeph>outto</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>呼出的外线号码（匹配呼出规则）。</entry>
+              </row>
+              <row>
+                <entry><codeph>fromext</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>采用哪个分机的呼出路由权限。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.16*"/>
+            <colspec colname="c4" colnum="3" colwidth="4.18*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通通话的 id。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><b>请求示例</b><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/outbound/dial_outbound?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "caller": "118396210850",
+    "outto": "98237374",
+    "fromext": "1000"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "callid": "1495698843.215"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

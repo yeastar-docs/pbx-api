@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-paging">
+    <title>指挥调度系统应用方案</title>
+    <shortdesc>通过 API 对接 <ph keyref="product_name"/> 和调度系统，借助终端话机实现单向、双向和组播的指挥调度。</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>应用场景</dt>
+                <dd>
+                    <p>指挥调度系统常用于工业生产、矿井作业、铁路、机场、酒店等，是企业安全生产、运营管理中的重要通信手段之一。<ph keyref="product_name"
+                        /> 提供的 API 接口，可以将调度系统与 PBX
+                        结合。通过灵活的终端分组，实现跨部门、跨地区之间的广播和对讲，在满足日常语音通信的同时，统一指挥调度，提高协作办公效率与应急处理能力。</p>
+                    <p>以工业生产为例，生产线各环节工艺流程复杂，上下工序之间衔接紧密，可按职能划分广播组，确保各职能人员之间能够及时有效地传递生产信息或处理紧急事务。</p>
+                    <p><image href="../Images/pbx-api/api-paging.png" id="image_rhj_yfg_zkb"
+                            width="650"/></p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_dgw_kxm_2kb">
+            <title>添加广播组</title>
+        </section>
+        <p>调度员可以将隶属于同一部门的分机划分到独立的广播组，根据各部门职能的划分，设置广播组类型。</p>
+        <p>
+            <ol id="ol_bsv_rgf_zkb">
+                <li>调度员将产线-1 与产线-2 设置为对讲组，调度系统向 PBX API 接口发送新建广播组请求。</li>
+                <li>PBX 接收请求后，新建广播组，将产线-1 与产线-2 对应的分机加入到广播组中，并向调度系统发送广播组创建结果。</li>
+            </ol>
+        </p>
+        <p>对接接口请参阅 <xref href="add-paging-group.dita#reference_ggs_txf_vgb"/>。</p>
+        <p><image href="../Images/pbx-api/api-paging-add-group.png" width="650"
+                id="image_gbs_mdf_zkb"/></p>
+        <section id="section_dhb_rxy_ykb">
+            <title>查询广播组</title>
+            <p>调度员在发布广播时，可以在调度系统上查看 PBX 广播组。<ol id="ol_scg_5ff_zkb">
+                    <li>调度员在调度系统上查看 PBX 广播组，调度系统向 PBX API 接口发送分机列表查询请求。</li>
+                    <li>PBX 收到请求，将分组列表信息发送给调度系统。</li>
+                </ol></p>
+            <p>对接接口请参阅 <xref href="query-paging-group-list.dita#reference_shx_bxf_vgb"
+                    >查询广播组列表</xref>。</p>
+            <p><image href="../Images/pbx-api/api-paging-query-group.png" width="650"
+                    id="image_psc_rff_zkb"/></p>
+        </section>
+        <section id="section_d2d_1yy_ykb">
+            <title>修改广播组设置</title>
+            <p>当部门组织变更，调度员可以在对应的广播组中添加或删除广播对象，修改广播组类型等。</p>
+            <p>
+                <ol id="ol_utv_x3f_zkb">
+                    <li>调度员在调度系统上为个别广播组新增成员，调度系统向 PBX API 接口发送广播组变更请求。</li>
+                    <li>PBX 收到请求，变更广播组信息，并向调度系统发送广播组变更结果。</li>
+                </ol>
+            </p>
+            <p>对接接口请参阅 <xref href="edit-paging-group.dita#reference_w3r_wxf_vgb"/>。</p>
+            <p><image href="../Images/pbx-api/api-paging-edit-group.png" width="650"
+                    id="image_qqs_h4f_zkb"/></p>
+        </section>
+        <section id="section_twq_kyy_ykb">
+            <title>发起广播</title>
+            <p>调度员可以通过调度系统向广播组成员广播喊话；出现紧急情况时，调度员可以实时发起对讲，协调资源、讨论解决方案，远程指挥和调度；业余时间，调度员可以向广播组成员播放录制好的音频通告，宣传安全生产知识等。<ol
+                    id="ol_ecj_hwf_zkb">
+                    <li>调度员在调度系统上向广播组播放音频通告，调度系统向 PBX API 接口发送播放请求。</li>
+                    <li>PBX 收到请求后，呼叫广播组对应的分机，播放预先设置的音频内容，并向调度系统发送播放结果。</li>
+                </ol></p>
+            <p>对接接口请参阅<xref href="call-to-paging-group.dita#reference_mdr_hdp_vgb"/>。</p>
+            <p><image href="../Images/pbx-api/api-paging-play-music.png" width="650"
+                    id="image_g1m_stf_zkb"/></p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>自定义广播音频</dt>
+                        <dd>
+                            <ol id="ol_ksv_hwm_2kb">
+                                <li>登录 PBX 网页，进入 <menucascade>
+                                        <uicontrol>PBX</uicontrol>
+                                        <uicontrol> 提示音</uicontrol>
+                                        <uicontrol> 自定义提示音</uicontrol>
+                                    </menucascade>，上传自定义的录音文件。<p><image
+                                            href="../Images/pbx-api/api-custom-prompt.png"
+                                            width="650" id="image_awm_jxm_2kb"/></p></li>
+                            </ol>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_jzz_p1z_ykb">
+            <title>挂断广播音乐</title>
+            <p>如果系统当前正在向广播组成员播放音频，调度员可以结束音频广播。<ol id="ol_hr2_ndg_zkb">
+                    <li>调度员在调度系统上结束广播，调度系统向 PBX API 发送结束请求。</li>
+                    <li>PBX 收到请求后，挂断广播组分机，并向调度系统发送广播结束结果。</li>
+                </ol></p>
+            <p>对接接口请参阅<xref href="hangup-paging-music.dita#reference_m1p_1kt_vgb"/>。</p>
+            <p><image href="../Images/pbx-api/api-paging-end.png" width="650" id="image_eky_mdg_zkb"
+                /></p>
+        </section>
+    </body>
+</topic>

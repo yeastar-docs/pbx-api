@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_imy_gw3_gdb">
+  <title>NewCdr</title>
+  <shortdesc>When a call is ended, the PBX will send a NewCdr report to the application server in
+    real time.</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.57*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.06*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.04*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row>
+                <entry>timestart</entry>
+                <entry>String</entry>
+                <entry>The start time of the call.</entry>
+              </row>
+              <row>
+                <entry>callfrom</entry>
+                <entry>String</entry>
+                <entry>The caller number.</entry>
+              </row>
+              <row>
+                <entry>callto</entry>
+                <entry>Integer</entry>
+                <entry>The callee number.</entry>
+              </row>
+              <row>
+                <entry>callduraction</entry>
+                <entry>String</entry>
+                <entry>The call duration.</entry>
+              </row>
+              <row>
+                <entry>talkduraction</entry>
+                <entry>String</entry>
+                <entry>The talk duration.</entry>
+              </row>
+              <row>
+                <entry>srctrunkname</entry>
+                <entry>String</entry>
+                <entry>The name of the source trunk.</entry>
+              </row>
+              <row>
+                <entry>desttrunkname</entry>
+                <entry>String</entry>
+                <entry>The name of the destination trunk.</entry>
+              </row>
+              <row>
+                <entry>pincode</entry>
+                <entry>Integer</entry>
+                <entry>The password.</entry>
+              </row>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>The call status.<ul id="ul_z4z_hw4_4jb">
+                    <li>ANSWERED: The callee answers the call.</li>
+                    <li>NO ANSWERED: The callee does not answer the call.</li>
+                    <li>BUSY: The callee is in busy state.</li>
+                    <li>VOICEMAIL: The callee does not answer the call, and receives a new
+                      voicemail.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>type</entry>
+                <entry>String</entry>
+                <entry>The call type.<ul id="ul_g2j_423_4jb">
+                    <li>Internal</li>
+                    <li>Outbound</li>
+                    <li>Inbound</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>recording</entry>
+                <entry>String</entry>
+                <entry>The name of the call recording file.</entry>
+              </row>
+              <row>
+                <entry>didnumber</entry>
+                <entry>Integer</entry>
+                <entry>The number that the caller dialed.</entry>
+              </row>
+              <row>
+                <entry>agentringtime</entry>
+                <entry>String</entry>
+                <entry>The ringing duration before the agent answers the incoming call.</entry>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example</title>
+      <p><?oxy_comment_start author="Becky" timestamp="20191120T172134+0800" comment="用主动；且旧的应修正为a call placed..." flag="done"?>Extension
+        1023 calls extension 2023.<?oxy_comment_end?></p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+        "event": "NewCdr",
+	"callid": "1571897930.5",
+	"timestart": "2019-10-23 22:18:50",
+	"callfrom": "1023",
+	"callto": "2023",
+	"callduraction": "19",
+	"talkduraction": "14",
+	"srctrunkname": "",
+	"dsttrcunkname": "",
+	"pincode": "",
+	"status": "ANSWERED",
+	"type": "Internal",
+        "recording": "20191024201242-1571897930.5-203-201-Internal.wav",
+	"didnumber": "",
+	"agentringtime": "0",
+	"sn": "369451090405"    
+}</codeblock>
+    </section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

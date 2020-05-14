@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="task_nfb_3dd_nfb">
+    <title>删除被拉黑的 API IP</title>
+    <shortdesc>如果某个 IP 在短时间内，多次尝试登陆 API 接口失败，PBX 会将该 IP 拉入黑名单，并将该 IP 类型标记为“API-IP”。如果该 IP 为受信任的
+        IP，你可以将这个 IP 从黑名单列表中删除。</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>进入 <menucascade>
+                        <uicontrol>PBX</uicontrol>
+                        <uicontrol>系统</uicontrol>
+                        <uicontrol>安全中心</uicontrol>
+                        <uicontrol>IP自动防御</uicontrol>
+                        <uicontrol>IP黑名单</uicontrol>
+                    </menucascade>，查看被拉黑的 IP。</cmd>
+                <info><image href="../Images/admin/api_blocked_ip.png" width="650"
+                        id="image_bns_q2d_nfb"/></info>
+            </step>
+            <step>
+                <cmd>选择 IP 地址，点击 <image href="../Images/ui_icons/delete.png" width="20"
+                        id="image_mlx_s2d_nfb"/>。</cmd>
+            </step>
+        </steps>
+    </taskbody>
+</task>

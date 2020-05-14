@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nbm_252_gdb">
+  <title>Disconnect an Outbound Call</title>
+  <shortdesc>Disconnect an active outbound call.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/outbound/hangup?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.98*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.61*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="7.38*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>outboundid</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Hang up the specified outbound call.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request
+        Example</b><codeblock outputclass="language-json">POST /api/v1.1.0/outbound/hangup?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "outboundid": "1495705264.322"
+}</codeblock><b>Response
+        Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

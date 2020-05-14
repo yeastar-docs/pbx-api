@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_wrf_jy2_gdb">
+  <title>来电接听控制</title>
+  <shortdesc>如果在 PBX 的 API  配置界面，启用了中继的 <xref
+      href="enable_api_access_on_pbx.dita#task_zm3_wdd_gdb/inbound-control"
+        ><uicontrol>来电接听控制</uicontrol></xref>，系统将会预留10秒，让第三方服务器控制该中继的来电。</shortdesc>
+  <refbody>
+    <section id="section_rj2_qj2_hdb">
+      <p><b>应用服务器可以对外线来电进行如下类型的控制：</b><ul id="ul_emv_dm2_hdb">
+          <li><b>接听</b>：使用 <xref href="api_accept_inbound_calls.dita#reference_gtw_4m2_hdb"/> API
+            接口接听该来电，进入对应的呼入路由目的地。</li>
+          <li><b>拒接</b>：使用 <xref href="api_refuse_inbound_calls.dita#reference_nk3_qm2_hdb"/> API
+            接口拒接该来电。该来电将被挂断，且 PBX 上不会有该来电的通话记录。</li>
+        </ul></p>
+    </section>
+    <section id="section_vps_rj2_hdb">
+      <title>超时处理机制</title>
+      <p>如果未在规定时间内（10秒）处理来电，默认接听来电。</p>
+    </section>
+  </refbody>
+</reference>

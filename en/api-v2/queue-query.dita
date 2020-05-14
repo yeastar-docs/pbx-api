@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mr1_js2_gdb">
+  <title>Query Queue Settings</title>
+  <shortdesc>Query detailed settings of a queue, multiple queues, or all queues.</shortdesc>
+  <refbody>
+    <section>
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request parameters</title>
+      <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="1.14*"/>
+          <colspec colname="c2" colnum="2" colwidth="1.23*"/>
+          <colspec colname="c3" colnum="3" colwidth="1*"/>
+          <colspec colname="c4" colnum="4" colwidth="5.55*"/>
+          <thead>
+            <row>
+              <entry>Parameter</entry>
+              <entry>Required</entry>
+              <entry> Type</entry>
+              <entry> Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry> number</entry>
+              <entry>Yes</entry>
+              <entry>Integer</entry>
+              <entry>Queue number.<p><b>Valid values</b>:</p><p>
+                  <ul>
+                    <li>A queue number: Query settings of the specified queue.<p>Example:
+                          <codeph>"number":"6700"</codeph></p></li>
+                    <li>Multiple queue numbers: Query settings of multiple queues. Separate multiple
+                      queue numbers with <codeph>,</codeph>.<p>Example:
+                          <codeph>"number":"6700,6701,6702"</codeph></p></li>
+                    <li>all: Query settings of all queues.<p>Example:
+                          <codeph>"number":"all"</codeph></p></li>
+                  </ul>
+                </p></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section id="section_l4b_gz1_t2b">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_w4q_cjk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.39*"/>
+            <colspec colname="c4" colnum="3" colwidth="3.17*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success</li>
+                    <li>Failed</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>queues</entry>
+                <entry>Array <xref href="#reference_mr1_js2_gdb/QueueInfo" format="dita"
+                    >&lt;QueueInfo></xref></entry>
+                <entry>Queue settings.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry>
+          <dt id="QueueInfo">QueueInfo</dt>
+          <dd>
+            <table frame="all" id="table_szy_fgt_sjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.2*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="4.4*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry> Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>Queue number.</entry>
+                  </row>
+                  <row>
+                    <entry>password</entry>
+                    <entry>String</entry>
+                    <entry>The password to join dynamic agents.</entry>
+                  </row>
+                  <row>
+                    <entry>queuename</entry>
+                    <entry>String</entry>
+                    <entry>Queue name.</entry>
+                  </row>
+                  <row>
+                    <entry>ringstrategy</entry>
+                    <entry>String</entry>
+                    <entry>Ring strategy.<ul id="ul_yst_3gt_sjb">
+                        <li>Ring All</li>
+                        <li>Least Recent</li>
+                        <li>Fewest Calls</li>
+                        <li>Random</li>
+                        <li>Rrmemory</li>
+                        <li>Linear</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>failoveraction</entry>
+                    <entry>String</entry>
+                    <entry>Failover destination.<p>
+                        <ul id="ul_mtt_3gt_sjb">
+                          <li>Hang up</li>
+                          <li>Extension</li>
+                          <li>Voicemail</li>
+                          <li>IVR</li>
+                          <li>Ring Group</li>
+                          <li>Queue</li>
+                          <li>Conference</li>
+                          <li>Fax to Email</li>
+                          <li>Dial by name</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>failoverdest</entry>
+                    <entry>String</entry>
+                    <entry>The specific failover destination.</entry>
+                  </row>
+                  <row>
+                    <entry>agents</entry>
+                    <entry>String</entry>
+                    <entry>Static agents.</entry>
+                  </row>
+                  <row>
+                    <entry>dynamicagents</entry>
+                    <entry>String</entry>
+                    <entry>Dynamic agents.</entry>
+                  </row>
+                  <row>
+                    <entry>agenttimeout</entry>
+                    <entry>String</entry>
+                    <entry>Agent timeout.</entry>
+                  </row>
+                  <row>
+                    <entry>agentannounce</entry>
+                    <entry>String</entry>
+                    <entry>Agent announcement.</entry>
+                  </row>
+                  <row>
+                    <entry>wrapuptime</entry>
+                    <entry>Integer</entry>
+                    <entry id="wrapuptime">The wrap-up time that an agent can have before the queue
+                      rings them with a new call.</entry>
+                  </row>
+                  <row>
+                    <entry>ringinuse</entry>
+                    <entry>String</entry>
+                    <entry>Ring the members whose device are known to be “in use”.<ul
+                        id="ul_c5t_3gt_sjb">
+                        <li>on: enable</li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>retry</entry>
+                    <entry>Integer</entry>
+                    <entry>
+                      <p>How many seconds to wait before trying to ring the next available
+                        phone.</p>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>musiconhold</entry>
+                    <entry>String</entry>
+                    <entry>The on-hold music.</entry>
+                  </row>
+                  <row>
+                    <entry>maxwaittime</entry>
+                    <entry>Integer</entry>
+                    <?oxy_comment_start author="Becky" timestamp="20191031T091853+0800" comment="The caller max wait time." id="jmn_2cd_5jb" flag="done"?>
+                    <?oxy_comment_start author="carol" timestamp="20191120T112509+0800" comment="The maximum queue wait time." parentID="jmn_2cd_5jb" flag="done" mid="1"?>
+                    <entry id="maxwaittime">The maximum queue wait
+                    time.</entry><?oxy_comment_end?><?oxy_comment_end mid="1"?>
+                  </row>
+                  <row>
+                    <entry>joinempty</entry>
+                    <entry>String</entry>
+                    <entry>Allow callers to join a queue that has no agents.<ul id="ul_p5t_3gt_sjb">
+                        <li>on: enable</li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>leavewhenempty</entry>
+                    <entry>String</entry>
+                    <entry>On-hold callers will be forced out of a queue if no agents are
+                        available.<ul id="ul_bvt_3gt_sjb">
+                        <li>on: enable</li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>joinannounce</entry>
+                    <entry>String</entry>
+                    <entry>Announcement that will be played to callers before they join the
+                      queue.</entry>
+                  </row>
+                  <row>
+                    <entry>announcepos</entry>
+                    <entry>String</entry>
+                    <entry>Announce the position of caller in a queue.<ul id="ul_ovt_3gt_sjb">
+                        <li>on: enable</li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>announcefreq</entry>
+                    <entry>String</entry>
+                    <entry>Frequency of announcing queue position and estimated on-hold
+                      time.</entry>
+                  </row>
+                  <row>
+                    <entry>announceholdtime</entry>
+                    <entry>Integer</entry>
+                    <entry>Announce the on-hold time to the caller periodically.<ul
+                        id="ul_awt_3gt_sjb">
+                        <li>on: enable</li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>userannounce</entry>
+                    <entry>String</entry>
+                    <entry id="userannounce">Prompt of periodic announcements. </entry>
+                  </row>
+                  <row>
+                    <entry>userannouncefreq</entry>
+                    <entry>Integer</entry>
+                    <entry>Frequency of playing the prompt of periodic announcements.</entry>
+                  </row>
+                  <row>
+                    <entry>breakoutkey</entry>
+                    <entry>String</entry>
+                    <entry>The breakout key.</entry>
+                  </row>
+                  <row>
+                    <entry>breakoutaction</entry>
+                    <entry>String</entry>
+                    <entry>The breakout action.<p>
+                        <ul id="ul_owt_3gt_sjb">
+                          <li>Hang up</li>
+                          <li>Extension</li>
+                          <li>Voicemail</li>
+                          <li>IVR</li>
+                          <li>Ring Group</li>
+                          <li>Queue</li>
+                          <li>Conference</li>
+                          <li>Fax to Email</li>
+                          <li>Dial by Name</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>breakoutdest</entry>
+                    <entry>String</entry>
+                    <entry>The specific breakout destination.</entry>
+                  </row>
+                  <row>
+                    <entry>satisfactionsurvey</entry>
+                    <entry>String</entry>
+                    <entry id="satisfactionsurvey">The prompt name for customer satisfaction survey.
+                      If the parameter is not specified, the prompt will not be played.
+                          <p><b>Default value</b>: none.</p></entry>
+                  </row>
+                  <row>
+                    <entry>idannouncement</entry>
+                    <entry>String</entry>
+                    <entry id="idannouncement">The file name of the prompt that announces the agent
+                      ID. If the parameter is not specified, the prompt will not be played.
+                          <p><b>Default value</b>: none.</p></entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request example</b></p><p>Query
+        detailed settings of queue 6700.</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/queue/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6700"
+}</codeblock>
+      </p><b>Response example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"queues": [
+		{
+			"number": "6700",
+			"password": "",
+			"queuename": "6700",
+			"ringstrategy": "Ring All",
+			"failoveraction": "Dial by Name",
+			"agents": "1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,",
+			"agenttimeout": "30",
+			"agentannounce": "[None]",
+			"wrapuptime": "30",
+			"ringinuse": "off",
+			"retry": "30",
+			"musiconhold": "[None]",
+			"maxwaittime": "1800",
+			"joinempty": "off",
+			"leavewhenempty": "on",
+			"joinannounce": "[None]",
+			"announcepos": "on",
+			"announcefreq": "30",
+			"announceholdtime": "on",
+			"userannounce": "[None]",
+			"userannouncefreq": "60",
+			"breakoutkey": "0",
+			"breakoutaction": "Extension",
+			"breakoutdest": "1000",
+			"satisfactionsurvey": "None",
+			"idannouncement": "None"
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

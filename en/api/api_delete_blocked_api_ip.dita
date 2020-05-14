@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="task_wfl_k12_nfb">
+    <title>Delete Blocked API IP</title>
+    <shortdesc>If an IP exceeds the allowed failed API login attempts, PBX will block the IP and tag
+        the blocked IP as <uicontrol>API-IP</uicontrol>. You can delete the blocked API IP if the IP
+        is trusted.</shortdesc>
+    <prolog>
+        <author type="creator">Carol</author>
+        <critdates>
+            <created date="2018/10/19"/>
+            <!--Carol-->
+            <revised modified="2018/10/19"/>
+            <!--Carol-->
+            <revised modified="2018/10/22"/>
+            <!--Carol-->
+            <revised modified="2018/11/26"/>
+        </critdates>
+    </prolog>
+    <taskbody>
+        <context/>
+        <steps>
+            <step>
+                <cmd>Go to <menucascade>
+                        <uicontrol>Settings</uicontrol>
+                        <uicontrol>System</uicontrol>
+                        <uicontrol>Security</uicontrol>
+                        <uicontrol>IP Auto Defense</uicontrol>
+                        <uicontrol>Blocked IP Address</uicontrol>
+                    </menucascade>, all the blocked IP are displayed.</cmd>
+            </step>
+            <step>
+                <cmd>Select the blocked API IP, click <image href="../Images/ui_icons/delete.png"
+                        width="20" id="image_xfl_sc2_nfb"/>.</cmd>
+                <info><image href="../Images/admin/api_blocked_ip.png" width="650"
+                        id="image_eln_ymx_nfb"/></info>
+            </step>
+        </steps>
+    </taskbody>
+</task>

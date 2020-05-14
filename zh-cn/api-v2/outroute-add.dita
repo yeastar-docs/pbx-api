@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_s32_bfg_vgb">
+    <title>添加呼出路由</title>
+    <shortdesc>添加并设置呼出路由。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/outroute/add?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_ydm_dd4_vgb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.21*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.03*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="3.52*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>name</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>呼出路由的名称。</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>呼出模式。</entry>
+                            </row>
+                            <row>
+                                <entry>strip</entry>
+                                <entry>否</entry>
+                                <entry>Integer</entry>
+                                <entry>删除前缀位数。</entry>
+                            </row>
+                            <row>
+                                <entry>prepend</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>前置号码。</entry>
+                            </row>
+                            <row>
+                                <entry>trunks</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>中继名称。多个中继名称之间用半角逗号（,）隔开。<p>例如：<codeph>"trunks":"trunk1,trunk2"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>extensions</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>允许使用该呼出路由的分机。多个分机用半角逗号（,）隔开。<p>例如：<codeph>"extensions":"1001,1002"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>extensionsgroup</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>允许使用该呼出路由的分机组。多个分机组用半角逗号（,）隔开。<p>例如：<codeph>"extensionsgroup":"sales,support"</codeph></p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_vlq_rxb_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_jz4_vxb_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.02*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.34*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>id</entry>
+                                <entry>Integer</entry>
+                                <entry>呼出路由的唯一 ID。</entry>
+                            </row>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/outroute/add?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "name": "outroute1",
+    "prefix": "0",
+    "strip": "1",
+    "trunks": "siptrunk",
+    "extensions": "1001",
+    "extensionsgroup": "sales,support"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>呼出路由添加成功后，系统会为呼出路由自动分配一个 id。</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"id": "8",
+	"status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

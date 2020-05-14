@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_u13_lwz_xdb">
+    <title>API Guide</title>
+    
+    <shortdesc>Yeastar <ph product="s-series">S-Series VoIP PBX</ph><ph product="cloudpbx">Cloud
+            PBX</ph> provides API interfaces for you to integrate a third-party software or
+        device.</shortdesc>
+    <prolog>
+        <author type="creator">Carol</author>
+        <critdates>
+            <created date="2018/05/25"/>
+            <!--Carol-->
+            <revised modified="2018/05/25"/>
+            <!--Carol-->
+            <revised modified="2018/06/05"/>
+            <!--Carol-->
+            <revised modified="2018/06/12"/>
+            <!--Carol-->
+            <revised modified="2018/06/27"/>
+        </critdates>
+    </prolog>
+</concept>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-call-center">
+    <title>Call Center APIs</title>
+    <shortdesc>Connect Call Center System and <ph keyref="product_name"/> via API to achieve
+        multiple operations, such as automatic call distribution, agent management, daily
+        communication, and satisfaction survey.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>Scenario</dt>
+                <dd>
+                    <p>Call Center System is important for a company to increase customer retention
+                        and brand loyalty, improve service quality &amp; efficiency, and enhance
+                        competitiveness. Along with the development of Internet, many SMBs (Small
+                        and Medium-sized enterprises) and cross-regional enterprises have wondered
+                        how to simultaneously achieve the integration of Call Center System and
+                        Internet, and address the high cost of distributed establishment. With <ph
+                            keyref="product_name"/> API, you can integrate Call Center System with
+                        PBX. The PBX can replace the expensive ACD (Automatic Call Distributor), and
+                        provide better compatibility with CTI (Computer Telephony Integration).
+                        Operations like agent management, automatic call distribution, and
+                        satisfaction survey are accessible.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_bk2_2j5_xjb">
+            <title>Queue settings</title>
+            <ul id="ul_rcq_cjr_dlb">
+                <li><b>Add a queue</b><p>Add various queues for various service types. Incoming
+                        calls will be routed to the specified queue.</p><p>
+                        <ol>
+                            <li>Log in PBX web page, and go to <menucascade>
+                                    <uicontrol>Settings</uicontrol>
+                                    <uicontrol> PBX</uicontrol>
+                                    <uicontrol> Call Features</uicontrol>
+                                    <uicontrol> Queue</uicontrol>
+                                </menucascade>.</li>
+                            <li>Set static agents or dynamic agents.<p>Dynamic agents can log in and
+                                    log out of queue via API. We recommend that members work as
+                                    dynamic agents.</p></li>
+                            <li>Set ring strategy.<p>Automatic Call Distributor (ACD) is recommended
+                                    in Call Center System to help manage call traffic and distribute
+                                    calls. You can select <uicontrol>Least Recent</uicontrol> or
+                                        <uicontrol>Fewest Calls</uicontrol>.</p><p><image
+                                        href="../Images/pbx-api/api-call-center-add-queue.png"
+                                        width="650" id="image_i1n_jhx_dlb"/></p></li>
+                        </ol>
+                    </p></li>
+                <li><b>Query queue settings</b><p>After adding a queue on PBX, administrator can
+                        query queue information on Call Center System, such as queue number, queue
+                        name, and queue agents.</p><p>
+                        <ol id="ol_r2r_xkr_dlb">
+                            <li>When administrator checks queue information on Call Center System,
+                                the system sends a quest to API interface to query queue list.</li>
+                            <li>After receiving the request, PBX sends queue list to Call Center
+                                System.</li>
+                        </ol>
+                    </p><p> For API interface, refer to <xref href="queue-query.dita"/></p><p><image
+                            href="../Images/pbx-api/api-call-center-query-queue.png"
+                            id="image_fzb_gty_dlb" width="650"/></p></li>
+                <li><b>Update queue settings</b><p>Administrator can update queue settings on Call
+                        Center System, such as ring strategy, static agents, key destination and so
+                        on.</p><ol id="ol_zpt_fkr_dlb">
+                        <li>When administrator updates queue settings on Call Center System, the
+                            system sends a queue-update request to API interface.</li>
+                        <li>After receiving the request, PBX updates queue settings, and responds
+                            result to Call Center System.</li>
+                    </ol><p> For API interface, refer to <xref href="queue-update.dita"
+                            />.</p><p><image
+                            href="../Images/pbx-api/api-call-center-modify-queue.png" width="650"
+                            id="image_ypq_jvy_dlb"/></p></li>
+            </ul>
+            <ul id="ul_osl_kpr_dlb">
+                <li><b>Check queue status</b><p>Administrator can check call status and agent status
+                        of a specific queue.</p><p>
+                        <ol id="ol_oym_14r_dlb">
+                            <li>Administrator checks call status of queue 6700 on Call Center
+                                System, the system sends a queue-query request to API
+                                interface.</li>
+                            <li>After receiving the request, PBX sends the call status of queue 6700
+                                to Call Center System.</li>
+                        </ol>
+                    </p><p> For API interface, refer to <xref href="queuestatus-query.dita"
+                            />.</p><p><image
+                            href="../Images/pbx-api/api-call-center-check-queue-status.png"
+                            width="650" id="image_dkg_cyy_dlb"/></p><p>
+                        <note>With <uicontrol>Status Monitor</uicontrol> enabled on API, when the
+                            extension status changes, PBX sends a <xref
+                                href="event-ExtensionStatus.dita">'Extension Status'</xref> Report
+                            of the agent to Call Center System. Administrator can check agent status
+                            in real time.</note>
+                    </p></li>
+            </ul>
+        </section>
+        <section id="section_p3n_dlr_dlb">
+            <title>Agent operations</title>
+            <p>
+                <ul id="ul_apr_flr_dlb">
+                    <li><b>Log in a queue</b><p>An agent starts to work when he/she logs in a queue.
+                            The system routes calls to the agent when receiving incoming calls.</p><p>
+                            <ol id="ol_h5d_ttr_dlb">
+                                <li>When an agent logs in a queue on Call Center System, the system
+                                    sends a login request to API interface.</li>
+                                <li>After receiving the request, PBX processes agent login, and
+                                    responds result to Call Center System.</li>
+                            </ol>
+                        </p><p>For API interface, refer to <xref href="queue-add-dynamicagent.dita"
+                                >Log in a Queue</xref>.</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-login.png" width="650"
+                                id="image_abl_ycz_dlb"/></p></li>
+                    <li><b>Log out of a queue</b><p>An agent can log out of a queue when he/she
+                            finishes work. The system stops routing calls to the agent.<ol
+                                id="ol_lls_fvr_dlb">
+                                <li>When an agent logs out of a queue on Call Center System, the
+                                    system sends a logout request to API interface.</li>
+                                <li>After receiving the request, PBX processes agent logout, and
+                                    responds result to Call Center System.</li>
+                            </ol></p><p>For API interface, refer to <xref
+                                href="queue-del-dynamicagent.dita">Log out a
+                                Queue</xref>.</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-logout.png"
+                                id="image_snf_pdz_dlb" width="650"/></p></li>
+                    <li><b>Pause an agent's service</b><p>When an agent is not available or takes a
+                            short break, the agent can temporarily pause service. The system will
+                            not route calls to the agent.</p><p>
+                            <ol id="ol_r5b_brr_dlb">
+                                <li>When an agent pauses service on Call Center System, the system
+                                    sends a pause request to API interface.</li>
+                                <li>After receiving the request, PBX pauses the agent's service, and
+                                    responds result to Call Center System.</li>
+                            </ol>
+                        </p><p>For API interface, refer to <xref href="queue-pause-agent.dita"
+                            />.</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-pause.png" width="650"
+                                id="image_isj_32z_dlb"/></p></li>
+                    <li><b>Resume an agent's service</b><p>An agent can resume service when he/she
+                            becomes available again. The system will automatically route incoming
+                            calls to the agent.<ol id="ol_owx_k5r_dlb">
+                                <li>When an agent resumes service on Call Center System, the system
+                                    sends a request to API interface to resume the agent's
+                                    service.</li>
+                                <li>After receiving the request, PBX resumes the agent's service,
+                                    and responds result to Call Center System.</li>
+                            </ol></p><p>For API interface, refer to <xref
+                                href="queue-unpause-agent.dita"/>.</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-resume.png"
+                                width="650" id="image_q2b_kgz_dlb"/></p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_dsx_cl5_xjb">
+            <title>Call features</title>
+            <ul id="ul_tbr_w5r_dlb">
+                <li><b>Make an outbound call</b><p>To follow up with customers, an agent can
+                        directly call customers back.</p><p>
+                        <ol id="ol_dpn_tbs_dlb">
+                            <li>An agent makes an outbound call from Call Center System, the system
+                                sends a call request to API interface.</li>
+                            <li>After receiving the request, PBX rings the agent's extension first.
+                                When the agent answers the call, PBX will ring customer's
+                                phone.</li>
+                        </ol>
+                    </p><p>For API interface, refer to <xref href="call-dial.dita"/>.</p><p><image
+                            href="../Images/pbx-api/api-call-center-make-outbound-call.png"
+                            width="650" id="image_hlg_snz_dlb"/></p></li>
+                <li><b>Make an internal call</b><p>
+                        <ol id="ol_hrr_kcs_dlb">
+                            <li>An agent makes an internal call to another agent from Call Center
+                                System, the system sends a call request to API interface.</li>
+                            <li>After receiving the request, PBX rings the caller's extension first.
+                                When the caller answers the call, PBX will ring the callee's
+                                extension.</li>
+                        </ol>
+                    </p><p>For API interface, refer to <xref href="call-dial.dita"/>.</p><p><image
+                            href="../Images/pbx-api/api-call-center-call-extension.png" width="650"
+                            id="image_wy5_m4z_dlb"/></p></li>
+                <li><b>Automated outbound dialing</b><p>For telephone sales, Call Center System can
+                        automatically make outbound calls to customers. When customers answer calls,
+                        PBX will automatically route calls to agents. Automated outbound dialing
+                        frees agents from demanding dialing operations, and improves agents' work
+                        efficiency.</p><ol id="ol_wvj_pcs_dlb">
+                        <li>Call Center System sends a request to API interface to make an outbound
+                            call.</li>
+                        <li>After receiving the request, PBX rings a customer first. After customer
+                            answers the call, PBX will route the call to an agent in a queue.</li>
+                    </ol><p>For API interface, refer to <xref href="call-dial.dita"/>.</p><p><image
+                            href="../Images/pbx-api/api-call-center-queue-auto-dial.png" width="650"
+                            id="image_ldk_5pz_dlb"/></p></li>
+            </ul>
+        </section>
+        <section id="section_llg_khr_dlb">
+            <title>Satisfaction survey</title>
+            <p>After an agent ends a call, Call Center System prompts customers to join satisfaction
+                survey. Customer Satisfaction Survey provides invaluable information about the
+                quality and effectiveness of the service that customers receive, and helps agents
+                improve service quality.<ol id="ol_gvh_b3s_dlb">
+                    <li>When an agent ends a call, the system plays a satisfaction survey prompt to
+                        customer. Customer presses keys to rate the service according to
+                        prompt.</li>
+                    <li>Based on gathered key information, PBX generates a <xref
+                            href="event-satisfaction.dita">Satisfaction</xref> Report, and sends the
+                        report to Call Center System.</li>
+                </ol></p>
+            <p><image href="../Images/pbx-api/api-call-center-customer-satisfaction.png" width="650"
+                    id="image_svk_dsz_dlb"/></p>
+        </section>
+    </body>
+</topic>

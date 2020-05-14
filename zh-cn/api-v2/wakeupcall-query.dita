@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_wqf_nz2_gdb">
+  <title>查询闹铃</title>
+  <shortdesc>查询单个分机、多个分机或所有分机的闹铃信息。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/wakeupcall/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.11*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.15*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.31*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>number</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>分机号码。<p><b>取值范围</b>：</p><ul id="ul_ajk_sbq_mjb">
+                    <li>单个分机号码：查询指定分机的闹铃。<p>例如：<codeph>"number":"1000"</codeph></p></li>
+                  </ul><ul id="ul_j2l_xbq_mjb">
+                    <li>多个分机号码：查询多个分机的闹铃。多个分机号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"1000,1001"</codeph></p></li>
+                    <li>all：查询所有分机的闹铃。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section>
+      <title>响应参数</title>
+      <p>
+        <note>如果查询的分机没有闹铃信息，PBX 只响应请求成功或请求失败的参数。</note>
+      </p>
+      <table frame="all" id="table_jgl_sdn_qjb">
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+          <colspec colname="c2" colnum="2" colwidth="2.01*" colsep="1" rowsep="1"/>
+          <colspec colname="c3" colnum="3" colwidth="4.06*" colsep="1" rowsep="1"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>类型</entry>
+              <entry>描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>status</entry>
+              <entry>String</entry>
+              <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                  <li>Success：成功。</li>
+                  <li>Failed：失败。</li>
+                </ul></entry>
+            </row>
+            <row>
+              <entry>wakeups</entry>
+              <entry>Array <xref href="#reference_wqf_nz2_gdb/wakeupsinfo" format="dita"
+                  >&lt;WakeupInfo></xref></entry>
+              <entry>闹铃列表。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <dl>
+        <dlentry>
+          <dt id="wakeupsinfo">WakeupInfo</dt>
+          <dd>
+            <table frame="all" id="table_mjf_12n_qjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="2.17*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="3.42*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>分机号码。</entry>
+                  </row>
+                  <row>
+                    <entry>wakeup</entry>
+                    <entry>Array <xref href="#reference_wqf_nz2_gdb/wakeupInfo" format="dita"
+                        >&lt;ExtensionWakeup></xref></entry>
+                    <entry>分机闹铃信息列表。</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry>
+          <dt id="wakeupInfo">ExtensionWakeup</dt>
+          <dd>
+            <table frame="all" id="table_rvz_h2n_qjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.09*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="3.64*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>wakeupid</entry>
+                    <entry>Integer</entry>
+                    <entry>闹铃的唯一 ID。</entry>
+                  </row>
+                  <row>
+                    <entry>time</entry>
+                    <entry>String</entry>
+                    <entry>闹铃时间。</entry>
+                  </row>
+                  <row>
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>闹铃类型。<ul id="ul_ew1_l2n_qjb">
+                        <li>onetime：一次。</li>
+                        <li>everyday：每天。</li>
+                        <li>custom：自定义。</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>weekdays</entry>
+                    <entry>Integer</entry>
+                    <entry><codeph>type</codeph> 为 <codeph>custom</codeph> 时，闹铃适用的星期。<p>
+                        <ul id="ul_hw1_l2n_qjb">
+                          <li>0</li>
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li>5</li>
+                          <li>6</li>
+                        </ul>
+                      </p><p>其中，0表示周日，1-6表示周一到周六。</p></entry>
+                  </row>
+                  <row>
+                    <entry>repeats</entry>
+                    <entry>Integer</entry>
+                    <entry>闹铃的重复次数。<ul id="ul_lw1_l2n_qjb">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>repeatinterval</entry>
+                    <entry>Integer</entry>
+                    <entry>重复响铃间隔时间，以分钟为单位。</entry>
+                  </row>
+                  <row>
+                    <entry>prompt</entry>
+                    <entry>String</entry>
+                    <entry>闹铃提示音。</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ksn_f4d_gdb"
+        ><title>示例</title><p><b>请求示例</b></p><p>查询分机5000的闹铃信息。</p>
+      <codeblock outputclass="language-json">POST /api/v2.0.0/wakeupcall/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "5000"
+}</codeblock><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"wakeups": [
+		{
+			"number": "5000",
+			"wakeup": [
+				{
+					"wakeupid": "9",
+					"time": "15:00",
+					"type": "onetime",
+					"prompt": "macroform-cold_day",
+					"repeats": "3",
+					"repeatinterval": "5"
+				}
+			]
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

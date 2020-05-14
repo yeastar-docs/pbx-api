@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_bb1_3q2_gdb">
+  <title>下载录音文件</title>
+  <shortdesc>通过本接口可获取 PBX 中的全局录音文件。</shortdesc>
+  <body>
+    <section id="section_lsp_d5t_gdb">
+      <p><b><b>下载步骤</b></b></p>
+      <p>
+        <ol id="ol_a11_ym5_h2b">
+          <li>通过<xref href="api_cdr.dita#reference_imy_gw3_gdb"/>中的<codeph>recording</codeph>
+            参数获取到全局录音文件的名称。</li>
+          <li>通过获取到的名称从 PBX 获取有关该文件的一个随机串。</li>
+          <li>通过该随机串组合成录音文件的<xref href="#topic_bb1_3q2_gdb/section_ckz_xn2_hdb" format="dita"
+              >下载链接</xref>。</li>
+        </ol>
+      </p>
+      <p>
+        <note> 随机串的有效时长为30秒，并且每个随机串使用过一次则失效。</note>
+      </p>
+    </section>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/recording/get_random?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.06*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="4.44*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>recording</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>全局录音文件名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>allowedip</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>
+                  <p>设置允许下载录音文件的设备 IP 地址。</p>
+                  <p>
+                    <ul id="ul_h3h_dtv_vgb">
+                      <li>不填写<codeph>allowedip</codeph>：只能通过第三方服务器可以下载文件。</li>
+                      <li><codeph>allowedip</codeph> 值为空：只能通过第三方服务器可以下载文件。</li>
+                      <li><codeph>allowedip</codeph> 填写 IP 地址：只能通过该 IP 地址或第三方服务器可以下载文件。</li>
+                    </ul>
+                  </p>
+                  <p>
+                    <note>
+                      <ul id="ul_lgy_nqv_vgb">
+                        <li><codeph>allowedip</codeph> 只能填写一个 IP 地址。</li>
+                      </ul>
+                    </note>
+                  </p>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.33*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="6.49*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>recording</codeph></entry>
+                <entry>String</entry>
+                <entry>全局录音文件名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>random</codeph></entry>
+                <entry>String</entry>
+                <entry>有关全局录音文件的一个随机串。使用这个随机串组合成下载播放该录音文件请求。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><b>请求示例</b><p>请求录音文件的随机串。</p><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/recording/get_random?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "recording": "20170901181806-1504261084.7-1001-1003-Internal.wav"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "recording": "20170901181806-1504261084.7-1001-1003-Internal.wav",
+    "random": "120732c546381fb020f17fba676b0ea0"
+}</codeblock>
+      </p></section>
+    <section id="section_ckz_xn2_hdb"
+          ><title>全局录音下载链接</title>使用随机串（random）组合成录音文件的下载链接。<p><b>录音下载链接格式</b>：</p><p
+        product="k2 s-series">https://<varname>{pbx ip}</varname>:<varname>{https
+          port}</varname>/api/v1.1.0/recording/download?recording=<varname>{recording}</varname>&amp;random=<varname>{random}</varname>&amp;token=<varname>{token}</varname></p><p
+        product="cloudpbx">https://<varname>{pbx
+          domain}</varname>/api/v1.1.0/recording/download?recording=<varname>{recording}</varname>&amp;random=<varname>{random}</varname>&amp;token=<varname>{token}</varname></p><b>录音下载链接示例</b>：<p
+        product="k2 s-series"
+        >https://192.168.5.150:8088/api/v1.1.0/recording/download?recording=20170901181806-1504261084.7-1001-1003-Internal.wav&amp;random=120732c546381fb020f17fba676b0ea0&amp;token=75c5891b32203d0615f9e3753a7cb779</p><p
+        product="cloudpbx">
+        https://yeastarcloudpbx.com/api/v1.1.0/recording/download?recording=20170901181806-1504261084.7-1001-1003-Internal.wav&amp;random=120732c546381fb020f17fba676b0ea0&amp;token=75c5891b32203d0615f9e3753a7cb779</p></section>
+  </body>
+</topic>

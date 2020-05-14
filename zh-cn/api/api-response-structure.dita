@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_uxg_pvb_wgb">
+    <title>响应消息</title>
+    <shortdesc><ph keyref="product_name"/> 返回的响应消息为 JSON 格式。</shortdesc>
+    <body>
+        <p>不管是正常响应消息或异常响应消息，HTTP 状态码为 200 OK。</p>
+        <section id="section_ips_fjc_wgb">
+            <title>正常响应示例</title>
+            <p>接口调用成功后会返回“Success” 状态，有时候还会返回相应的参数。我们称这样的响应为正常响应。HTTP 状态码为 200 OK。</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+        <section>
+            <title>异常响应示例</title>
+            <p>接口调用出错后，会返回“Failed” 状态和错误码。我们称这样的响应为异常响应。HTTP 状态码为 200 OK。</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+{
+    "status": "Failed",
+    "errno": "10003"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

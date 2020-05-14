@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_a3w_ft2_gdb">
+  <title>签出队列</title>
+  <shortdesc>通过此接口，可以将指定动态坐席签出指定队列。</shortdesc>
+  <refbody>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/queue/del_dynamicagent?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.46*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.44*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.31*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph> queueid </codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>请求时的队列号码。</entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>extid</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>动态坐席的号码。</entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>password</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>队列的密码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><p><b>请求示例</b></p>请求将坐席1000 签出队列6700；队列的密码为6700123。<p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/queue/del_dynamicagent?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6700",
+    "extid": "1000",
+    "password": "6700123"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

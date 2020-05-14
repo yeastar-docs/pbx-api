@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nt2_b2g_vgb">
+    <title>Edit a SIP Trunk</title>
+    <shortdesc>Edit the basic settings and DOD settings of a SIP trunk.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/siptrunk/update?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_dxf_stn_vgb">
+            <title>Request Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.96*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.31*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.36*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry>Importance</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>id</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>Int</entry>
+                                <entry>Trunk ID.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunkname</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>SIP trunk name.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunktype</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>SIP trunk type.<p>
+                                        <ul id="ul_tgn_wmn_vgb">
+                                            <li><codeph>register</codeph>: SIP Register Trunk</li>
+                                            <li><codeph>peer</codeph>: SIP Peer Trunk</li>
+                                            <li><codeph>account</codeph>: SIP Account Trunk</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">Register Trunk</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>host</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The domain or IP address of the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>port</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The SIP trunk port.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>domain</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The domain or IP address of the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>username</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The SIP account that is provided by the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>authname</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The SIP account that is provided by the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>fromuser</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry>If <codeph>fromuser</codeph> is set, all outgoing calls from
+                                    this SIP trunk will use the <codeph>fromuser</codeph> value as
+                                    From Header of the SIP INVITE packets.<p>
+                                        <note>If the ITSP doesn't require this setting, leave
+                                                <codeph>fromuser</codeph> blank.</note>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>password</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The password of the SIP account.</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">Peer Trunk</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>host</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The domain or IP address of the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>port</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>SIP trunk port.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>domain</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The domain or IP address of the ITSP.</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">Account Trunk</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>username</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The user name of the Account Trunk.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>authname</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The authentication name of the Account Trunk.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>password</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The password of the Account Trunk.</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">DOD Number</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensionsdod</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry><p>The DOD number that is bound with an
+                                            extension.</p><p><b>Format</b>:
+                                            <varname>｛dod_number｝</varname>-<varname>｛dod_name｝</varname>-<varname>{extension_number}</varname></p><b>Example</b>:
+                                        <codeph>"extensionsdod":"5503301-yeastar-1000"</codeph></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensionsgroupdod</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry>The DOD number that is bound with an extension
+                                            group.<p><b>Format</b>:
+                                            <varname>｛dod_number｝</varname>-<varname>｛dod_name｝</varname>-<varname>{extension_group_name}</varname></p><b>Example</b>:
+                                        <codeph>"extensionsdod":"5503301-yeastar-sales"</codeph></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>Examples</title>
+            <p><b>Request Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/siptrunk/update?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "id":"8",
+    "trunkname": "siptrunk1",
+    "trunktype": "register",
+    "host": "192.168.12.161",
+    "port": "5060",
+    "domain": "192.168.12.161",
+    "username": "1001",
+    "authname": "1001",
+    "fromuser": "",
+    "password": "Pajsjx9183",
+    "extensionsdod": "",
+    "extensionsgroupdod": ""
+}</codeblock>
+            </p>
+            <p><b>Response Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

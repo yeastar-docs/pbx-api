@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_dxf_gr2_h2b">
+    <title>API 版本更新记录</title>
+    <shortdesc/>
+    <conbody>
+        <section id="section_n2k_jfv_43b">
+            <title>API v1.1.0 (PBX 30.11.0.7)</title>
+            <p>本次API更新，适用于<ph keyref="product_name"/> 30.11.0.7 或更高版本。</p>
+            <p>
+                <ul conref="../topic/v30.11.0.7.dita#v30.11.0.7/api-s-30.11.0.7" id="ul_i1r_nfv_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_f5x_cfv_43b">
+            <title>API v1.1.0 (PBX 30.10.0.67)</title>
+            <p>本次API更新，适用于<ph keyref="product_name"/> 30.10.0.67 或更高版本。</p>
+            <p>
+                <ul conref="../topic/v30.10.0.67.dita#topic_jhp_rw5_4hb/api-s-30.10.0.67"
+                    id="ul_ivk_3fv_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_th1_d3f_vgb">
+            <title>API v1.1.0 (PBX 30.10.0.59) </title>
+            <p>API 版本 v1.1.0 适用于<ph keyref="product_name"/> 30.10.0.59 或更高版本。</p>
+            <p>
+                <note>建议升级 PBX 到 30.10.0.59 或更高版本，使用 API v1.1.0。</note>
+            </p>
+            <p conref="../topic/v30.10.0.59.dita#topic_rnx_53p_tgb/api-s-30.10.0.51"/>
+        </section>
+        <section id="section_p1b_53v_kfb">
+            <title>API 版本1.0.6</title>
+            <p>API 版本1.0.6适用于<ph keyref="product_name"/> 30.10.0.16或更高版本。</p>
+            <p conref="../topic/v30.10.0.16.dita#topic_p42_dwb_kfb/api_1.0.6_s"/>
+        </section>
+        <section id="section_mrb_t1f_j2b">
+            <title>API 版本 1.0.5</title>
+            <p>API 版本1.0.5 适用于<ph keyref="product_name"/> 30.8.0.8或更高版本。</p>
+            <p>
+                <ul conref="../topic/v30.8.0.8.xml#concept_yjr_hxg_d2b/api_1.0.5_s" id="ul_zss_x2f_j2b">
+                    <li/>
+                </ul>
+            </p>
+            <p><ph keyref="product_name"/> 30.8.0.14 修复以下API问题：</p>
+            <p>
+                <ul conref="../topic/v30.8.0.14.xml#concept_yjr_hxg_d2b/api_1.0.5-a" id="ul_fvn_wnl_42b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_ajt_lbg_h2b">
+            <title>API 版本 1.0.4</title>
+            <p>API 版本1.0.4 适用于<ph keyref="product_name"/> 30.7.0.35或更高版本。</p>
+            <p>
+                <ul conref="../topic/v30.7.0.35.dita#topic_w2l_y41_pdb/ul_m52_tbq_pdb" id="ul_fbd_rbg_h2b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_m2n_1t2_h2b">
+            <title>API 版本 1.0.2</title>
+            <p>API版本1.0.2 适用于<ph keyref="product_name"/> 30.7.0.11 或更高版本。</p>
+            <p>
+                <ul conref="../topic/v30.7.0.11.dita#topic_ev3_g4k_jdb/ul_dm2_ncq_pdb" id="ul_t2l_5cn_h2b">
+                    <li/>
+                </ul>
+                <ul>
+                    <li conref="../topic/v30.7.0.27.dita#topic_gqb_v4k_ldb/api_1.0.2_s"/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_s3c_yr2_h2b">
+            <title>API 版本 1.0.1</title>
+            <p><ph keyref="product_name"/>支持的第一个API版本。</p>
+            <p>API版本1.0.1 适用于<ph keyref="product_name"/> 30.5.0.30 或更高版本。</p>
+        </section>
+       
+        
+     
+    </conbody>
+</concept>

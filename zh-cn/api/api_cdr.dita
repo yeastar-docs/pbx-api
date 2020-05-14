@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_imy_gw3_gdb">
+  <title>‘通话记录’报告</title>
+  <shortdesc>当通话结束后，PBX 向应用服务器实时发送通话详细记录（CDR）。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.57*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.06*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.04*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>通话事件。</entry>
+              </row>
+              <row>
+                <entry><codeph>timestart</codeph></entry>
+                <entry>String</entry>
+                <entry>开始时间。</entry>
+              </row>
+              <row>
+                <entry><codeph>callfrom</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>callto</codeph></entry>
+                <entry>String</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>callduraction</codeph></entry>
+                <entry>String</entry>
+                <entry>通话时长。</entry>
+              </row>
+              <row>
+                <entry><codeph>talkduraction</codeph></entry>
+                <entry>String</entry>
+                <entry>接听时长。</entry>
+              </row>
+              <row>
+                <entry><codeph>srctrunkname</codeph></entry>
+                <entry>String</entry>
+                <entry>源中继名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>desttrunkname</codeph></entry>
+                <entry>String</entry>
+                <entry>目的中继名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>String</entry>
+                <entry>通话状态。</entry>
+              </row>
+              <row>
+                <entry><codeph>type</codeph></entry>
+                <entry>String</entry>
+                <entry>通话类型。</entry>
+              </row>
+              <row>
+                <entry><codeph>pincode</codeph></entry>
+                <entry>Int</entry>
+                <entry>密码。</entry>
+              </row>
+              <row>
+                <entry><codeph>recording</codeph></entry>
+                <entry>String</entry>
+                <entry>全局录音文件名。</entry>
+              </row>
+              <row>
+                <entry><codeph>didnumber</codeph></entry>
+                <entry>String</entry>
+                <entry>来电用户拨打的号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>agentringtime</codeph></entry>
+                <entry>String</entry>
+                <entry>队列坐席从响铃到接听的时间。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX 的 SN 码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>分机 1001 呼叫分机 1005。</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "NewCdr",
+    "callid": "1547391782.318",
+    "timestart": "2019-01-13 23:03:02",
+    "callfrom": "1001",
+    "callto": "1005",
+    "callduraction": "21",
+    "talkduraction": "10",
+    "status": "ANSWERED",
+    "type": "Internal",
+   <ph product="k2 s-series">"recording": "20180315201242-1521173562.46-203-201-Internal.wav",</ph>
+   <ph product="cloudpbx">"recording": "20180315201242-1521173562.46-203-201-Internal.yswav",</ph>
+    "sn": "369362089179"
+}</codeblock>
+      <p>分机 1005 呼叫外部号码
+        9283737733。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "NewCdr",
+    "callid": "1547392142.330",
+    "timestart": "2019-01-13 23:09:02",
+    "callfrom": "1005",
+    "callto": "9283737733",
+    "desttrunkname": "SPS-6-36",
+    "callduraction": "6",
+    "talkduraction": "3",
+    "status": "ANSWERED",
+    "type": "Outbound",
+   <ph product="k2 s-series">"recording": "20180315201242-1521173562.46-203-201-Internal.wav",</ph>
+   <ph product="cloudpbx">"recording": "20180315201242-1521173562.46-203-201-Internal.yswav",</ph>
+    "sn": "369362089179"
+}</codeblock></p>
+      <p>外部用户 1277378812 呼入分机
+        1005。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "NewCdr",
+    "callid": "1547392256.333",
+    "timestart": "2019-01-13 23:10:56",
+    "callfrom": "1277378812",
+    "callto": "1005",
+    "srctrunkname": "SPS-6-36",
+    "callduraction": "11",
+    "talkduraction": "4",
+    "status": "ANSWERED",
+    "type": "Inbound",
+    "didnumber": "1005",
+   <ph product="k2 s-series">"recording": "20180315201242-1521173562.46-203-201-Internal.wav",</ph>
+   <ph product="cloudpbx">"recording": "20180315201242-1521173562.46-203-201-Internal.yswav",</ph>
+    "sn": "369362089179"
+}</codeblock></p>
+    </section>
+  </refbody>
+</reference>

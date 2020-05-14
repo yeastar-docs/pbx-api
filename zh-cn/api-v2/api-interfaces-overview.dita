@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="topic_l4v_hrc_gdb">
+  <title>API 接口&amp;事件概览</title>
+  <shortdesc>本文提供<ph keyref="product_name"/> API 接口列表和推送事件列表。</shortdesc>
+  <refbody>
+    <section id="section_tfl_lwg_mjb">
+      <title>API 认证</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_x5k_nwg_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.66*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="login.dita#reference_blb_5ld_gdb">login</xref></entry>
+                <entry>获取 API 调用凭证 token。</entry>
+              </row>
+              <row>
+                <entry><xref href="token-refresh.dita#reference_dns_psf_hdb"
+                  >token/refresh</xref></entry>
+                <entry>刷新 API 调用凭证 token。</entry>
+              </row>
+              <row>
+                <entry><xref href="heartbeat.dita#reference_ovf_3mg_h2b">heartbeat</xref></entry>
+                <entry>延长 API 调用凭证 token 时效。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_wxn_ywj_wgb">
+      <title>系统</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ytt_tck_wgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.57*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="deviceinfo-query.dita">deviceinfo/query</xref></entry>
+                <entry>查询 PBX 信息。</entry>
+              </row>
+              <row>
+                <entry><xref href="logout.dita#reference_chw_zk2_gdb">logout</xref></entry>
+                <entry>断开 API 连接。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_p1c_bx2_xgb">
+      <title>分机接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.55*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="extension-list.dita#reference_ibj_vr2_gdb"
+                  >extension/list</xref></entry>
+                <entry>查询分机列表。</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-query.dita#reference_oc5_xr2_gdb"
+                    >extension/query</xref></entry>
+                <entry>查询单个分机、多个分机或所有分机的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-add.dita#extension-add">extension/add</xref></entry>
+                <entry>添加分机。</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-update.dita#reference_g3t_zr2_gdb"
+                    >extension/update</xref></entry>
+                <entry>修改分机设置。</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-delete.dita#extension-delete"
+                  >extension/delete</xref></entry>
+                <entry>删除分机。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xc5_dx2_xgb">
+      <title>中继接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.34*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="trunklist-query.dita#reference_w23_cs2_gdb"
+                  >trunk/list</xref></entry>
+                <entry>查询中继列表。</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-query.dita#reference_j5k_vdg_vgb"
+                    >trunk/query_siptrunk</xref></entry>
+                <entry>查询单个 SIP 中继、多个 SIP 中继或所有 SIP 中继的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-add.dita#reference_oxq_zdg_vgb"
+                    >trunk/add_siptrunk</xref></entry>
+                <entry>添加 SIP 中继。</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-update.dita#reference_nt2_b2g_vgb"
+                    >trunk/update_siptrunk</xref></entry>
+                <entry>修改 SIP 中继配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-delete.dita#reference_s3v_g2g_vgb"
+                    >trunk/delete_siptrunk</xref></entry>
+                <entry>删除 SIP 中继。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_s2r_fx2_xgb">
+      <title>呼入路由接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.33*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="inroute-query.dita#reference_fpw_p2g_vgb"
+                  >inroute/query</xref></entry>
+                <entry>查询单个呼入路由、多个呼入路由或所有呼入路由的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-add.dita#reference_umf_t2g_vgb"
+                  >inroute/add</xref></entry>
+                <entry>添加呼入路由。</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-update.dita#reference_pvv_52g_vgb"
+                  >inroute/update</xref></entry>
+                <entry>修改呼入路由配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-delete.dita#reference_m5h_w2g_vgb"
+                  >inroute/delete</xref></entry>
+                <entry>删除呼入路由。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_ap1_3x2_xgb">
+      <title>呼出路由接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="outroute-query.dita#reference_rdd_z2g_vgb"
+                  >outroute/query</xref></entry>
+                <entry>查询单个呼出路由、多个呼出路由或所有呼出路由的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-add.dita#reference_s32_bfg_vgb"
+                  >outroute/add</xref></entry>
+                <entry>添加呼出路由。</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-update.dita#reference_rzb_dfg_vgb"
+                    >outroute/update</xref></entry>
+                <entry>修改呼出路由配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-delete.dita#reference_lsr_2fg_vgb"
+                    >outroute/delete</xref></entry>
+                <entry>删除呼出路由。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_wlk_3x2_xgb">
+      <title>IVR 接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="ivr-query.dita#reference_t3n_2s2_gdb">ivr/query</xref></entry>
+                <entry>查询单个 IVR、多个 IVR或所有 IVR 的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="ivr-update.dita#reference_yyz_gs2_gdb">ivr/update</xref></entry>
+                <entry>修改 IVR 配置。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xbx_lx2_xgb">
+      <title>队列接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.79*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="queue-query.dita#reference_mr1_js2_gdb"
+                  >queue/query</xref></entry>
+                <entry>查询单个队列、多个队列或所有队列的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-update.dita#reference_jzx_bt2_gdb"
+                  >queue/update</xref></entry>
+                <entry>修改队列配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="queuestatus-query.dita#reference_t3d_sdf_h2b"
+                    >queue/query_status</xref></entry>
+                <entry>查询队列坐席状态。</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"
+                    >queue/add_dynamicagent</xref></entry>
+                <entry>动态坐席签入队列。</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-del-dynamicagent.dita#reference_a3w_ft2_gdb"
+                    >queue/delete_dynamicagent</xref></entry>
+                <entry>动态坐席签出队列。</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-pause-agent.dita#reference_o5r_whf_h2b"
+                    >queue/pause_agent</xref></entry>
+                <entry>暂停坐席服务。</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-unpause-agent.dita#reference_gs5_nqf_h2b"
+                    >queue/unpause_agent</xref></entry>
+                <entry>恢复坐席服务。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_um1_rn1_4jb">
+      <title>会议室接口</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_td1_sn1_4jb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.72*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="conference-query.dita#conference-query"
+                  >conference/query</xref></entry>
+                <entry>查询固定会议室详情。</entry>
+              </row>
+              <row>
+                <entry><xref href="instant-conference-query.dita#instant-conference-query"
+                    >instant_conference/query</xref></entry>
+                <entry>查询临时会议室详情。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-query-in-session.dita#conference-query-in-session"
+                    >conference/query_in_session</xref></entry>
+                <entry>查询会话中的会议室详情。</entry>
+              </row>
+              <row>
+                <entry><xref href="instant-conference-create.dita#instant-conference-create"
+                    >instant_conference/start</xref></entry>
+                <entry>添加临时会议室。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-update.dita#conference-update"
+                    >conference/update</xref></entry>
+                <entry>修改固定会议室配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-add-member.dita#conference-add-member"
+                    >conference/add_member</xref></entry>
+                <entry>邀请会议室成员。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-kick-member.dita#conference-kick-member"
+                    >conference/kick_member</xref></entry>
+                <entry>踢除与会人员。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-mute.dita#conference-mute-and-conference-unmute"
+                    >conference/mute_member</xref></entry>
+                <entry>对与会成员进行静音。</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-unmute.dita#conference-unmute"
+                    >conference/unmute_member</xref></entry>
+                <entry>对与会成员进行静音解除。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_inp_nx2_xgb" product="k2 s-series">
+      <title>广播组接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.31*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="paginggrouplist-query.dita#reference_shx_bxf_vgb"
+                    >paginggrouplist/query</xref></entry>
+                <entry>查询广播组列表。</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-query.dita#reference_wkv_4xf_vgb"
+                    >paginggroup/query</xref></entry>
+                <entry>查询单个广播组、多个广播组或所有广播组的详细配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-add.dita#reference_ggs_txf_vgb"
+                    >paginggroup/add</xref></entry>
+                <entry>添加广播组。</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-update.dita#reference_w3r_wxf_vgb"
+                    >paginggroup/update</xref></entry>
+                <entry>修改广播组配置。</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-delete.dita#reference_z1j_yxf_vgb"
+                    >paginggroup/delete</xref></entry>
+                <entry>删除广播组。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_v3h_rx2_xgb">
+      <title>语音留言接口</title>
+      <p>
+        <table id="table_jmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.3*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="voicemail-query.dita#concept_klh_ysd_j2b"
+                  >voicemail/query</xref></entry>
+                <entry>查询单个分机、多个分机或所有分机的语音留言。</entry>
+              </row>
+              <row>
+                <entry><xref href="voicemail-delete.dita#concept_aw3_sc2_j2b"
+                    >voicemail/delete</xref></entry>
+                <entry>删除分机的语音留言。</entry>
+              </row>
+              <row>
+                <entry><xref href="voicemail-get-random.dita#concept_gsn_cm2_j2b"
+                    >voicemail/get_random</xref></entry>
+                <entry>获取语音留言下载随机串。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_od3_sx2_xgb">
+      <title>通话记录和录音接口</title>
+      <p>
+        <table id="table_kmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="recording-get-random.dita#topic_bb1_3q2_gdb"
+                    >recording/get_random</xref></entry>
+                <entry>获取录音下载随机串。</entry>
+              </row>
+              <row>
+                <entry><xref href="cdr-get-random.dita#reference_vpd_43g_vgb"
+                  >cdr/get_random</xref></entry>
+                <entry>获取通话记录下载随机串。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_r4z_tx2_xgb">
+      <title>酒店应用接口</title>
+      <p>
+        <table id="table_lmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.06*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="wakeupcall-create.dita#reference_v5n_lz2_gdb"
+                    >wakeupcall/<?oxy_comment_start author="carol" timestamp="20191022T171935+0800" comment="create or add
+与其他接口的命名规范有冲突"?>create<?oxy_comment_end?></xref></entry>
+                <entry>添加酒店叫醒闹铃。</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-query.dita#reference_wqf_nz2_gdb"
+                    >wakeupcall/query</xref></entry>
+                <entry>查询酒店叫醒闹铃。</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-update.dita#reference_ymm_pz2_gdb"
+                    >wakeupcall/update</xref></entry>
+                <entry>修改酒店叫醒闹铃。</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-delete.dita#reference_lnm_rz2_gdb"
+                    >wakeupcall/delete</xref></entry>
+                <entry>删除酒店叫醒闹铃。</entry>
+              </row>
+              <row product="s-series">
+                <entry><xref href="hotel-checkout.dita#reference_xpz_pyp_mfb"
+                  >hotel/checkout</xref></entry>
+                <entry>酒店退房。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_g1c_4x2_xgb">
+      <title>呼叫操控接口</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.87*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="call-query.dita#reference_a5v_rt2_gdb">call/query</xref></entry>
+                <entry>查询指定通话或指定类型的通话。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-dial.dita#reference_b2r_p3g_jjb">call/dial</xref></entry>
+                <entry>发起呼叫。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-accept-inbound.dita#reference_gtw_4m2_hdb"
+                    >call/accept_inbound</xref></entry>
+                <entry>在呼入来电控制阶段，接听来电。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-refuse-inbound.dita#reference_nk3_qm2_hdb"
+                    >call/refuse_inbound</xref></entry>
+                <entry>在呼入来电控制阶段，拒接来电。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-listen.dita#reference_lyv_y3g_jjb"
+                  >call/listen</xref></entry>
+                <entry>监听通话。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-hold.dita#reference_cxb_bjg_jjb">call/hold</xref></entry>
+                <entry>保持通话。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-unhold.dita#reference_dz3_cjg_jjb"
+                  >call/unhold</xref></entry>
+                <entry>恢复通话。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-mute.dita#reference_lw1_2jg_jjb">call/mute</xref></entry>
+                <entry>通话静音。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-unmute.dita#reference_kzd_fjg_jjb"
+                  >call/unmute</xref></entry>
+                <entry>取消通话静音。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-transfer.dita#reference_kz1_lhg_vgb"
+                  >call/transfer</xref></entry>
+                <entry>呼叫转移（盲转）。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-attended-transfer.dita#reference_r1x_4jg_jjb"
+                    >call/attended_transfer</xref></entry>
+                <entry>呼叫转移（咨询转）。</entry>
+              </row>
+              <row>
+                <entry><xref href="call-add-member.dita#reference_qyz_zjg_jjb"
+                    >call/add_member</xref></entry>
+                <entry>通话过程中，邀请新成员加入<?oxy_comment_start author="carol" timestamp="20191023T112947+0800" comment="可以加多个成员吗。如果可以，就不能取名为三方通话。"?>通话。<?oxy_comment_end?></entry>
+              </row>
+              <row>
+                <entry><xref href="call-playprompt.dita#reference_fkh_jhg_jjb"
+                    ><?oxy_comment_start author="carol" timestamp="20191022T175735+0800" comment="挂断音乐接口。
+目前只有 paginggroup/hangup_music "?>call/playprompt<?oxy_comment_end?></xref></entry>
+                <entry>播放语音文件。</entry>
+              </row>
+              <row>
+                <entry><?oxy_comment_start author="Becky" timestamp="20191119T134117+0800" comment="新增"?><xref
+                    href="hangup-paging-music.dita#reference_m1p_1kt_vgb"
+                    >paginggroup/hangup/music</xref><?oxy_comment_end?></entry>
+                <entry>挂断广播语音。</entry>
+              </row>
+              <row product="s-series">
+                <entry><xref href="sms-send.dita#reference_tkh_zk2_hdb">sms/send</xref></entry>
+                <entry>发送短信。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_wqx_mv1_4jb">
+      <title>事件报告类型</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_gcz_nv1_4jb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.17*"/>
+            <thead>
+              <row>
+                <entry>事件</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="event-BootUp.dita#reference_lgt_lcf_gdb">BootUp</xref></entry>
+                <entry>系统启动事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-ConfigChange.dita#reference_oyn_ncf_gdb"
+                    >ConfigChange</xref></entry>
+                <entry>配置变更事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-Invite.dita#reference_report-invite">Invite</xref></entry>
+                <entry>启用<xref
+                    href="pbx-api-settings.dita#topic_itj_qhf_jjb/control-inbound-call-answering"
+                    >来电接听控制</xref>后，当有外部来电时，PBX 向应用服务器推送 Invite 事件，并预留 10
+                  秒时间，让应用服务器选择接听或拒接来电。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-Incoming.dita#reference_gkj_3w3_gdb"
+                  >Incoming</xref></entry>
+                <entry>启用<xref
+                    href="pbx-api-settings.dita#topic_itj_qhf_jjb/control-inbound-call-answering"
+                    >来电接听控制</xref>后，当 PBX 接受外部来电时，PBX 向应用服务器推送 Incoming 事件，并预留 10 秒时间，让应用服务器选择来电目的地。<p>
+                    <note>应用服务器使用 <xref href="call-transfer.dita#reference_kz1_lhg_vgb"
+                        >call/transfer</xref> 接口来控制来电目的地。</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><xref href="event-ExtensionStatus.dita#reference_c12_pcf_gdb"
+                    >ExtensionStatus</xref></entry>
+                <entry>分机状态变更事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallStatus.dita#reference_lv2_jfh_jjb"
+                  >CallStatus</xref></entry>
+                <entry>通话状态变更事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-NewCdr.dita#reference_imy_gw3_gdb">NewCdr</xref></entry>
+                <entry>新的通话记录事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-Transfer.dita#reference_cpy_zv3_gdb"
+                  >CallTransfer</xref></entry>
+                <entry>呼叫转移事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-Forward.dita#reference_qyn_qw5_jjb"
+                  >CallForward</xref></entry>
+                <entry>呼叫前转事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallFailed.dita#reference_bpk_bw3_gdb"
+                  >CallFailed</xref></entry>
+                <entry>呼叫失败事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-DTMF.dita#reference_zcj_fw3_gdb">DTMF</xref></entry>
+                <entry>按键信息事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-PlayPromptEnd.dita#reference_hdx_kw3_gdb"
+                    >PlayPromptEnd</xref></entry>
+                <entry>语音播放结束事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-satisfaction.dita#reference_qng_qw3_gdb"
+                    >satisfaction</xref></entry>
+                <entry>满意度评价事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-sms-send.dita#event-send-sms">sms-send</xref></entry>
+                <entry>语音发送状态事件。</entry>
+              </row>
+              <row>
+                <entry><xref href="event-conference-status.dita#event-conference-status"
+                    >ConferenceStatus</xref></entry>
+                <entry>与会成员变更事件。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section></refbody>
+</reference>

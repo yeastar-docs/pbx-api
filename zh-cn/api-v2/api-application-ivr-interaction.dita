@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-ivr-interaction">
+    <title>IVR 语音互动服务应用方案</title>
+    <shortdesc>通过 API 对接 <ph keyref="product_name"/> 和业务系统，提供语音互动服务。</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>应用场景</dt>
+                <dd>
+                    <p>语音互动服务，是一种功能强大的电话自动服务系统。它用预先录制或 TTS
+                            文本转语音技术合成的语音进行自动应答，为客户提供语音菜单导航，常用于信息查询与确认、问卷调查、满意度调查、业务推广等。<ph
+                            keyref="product_name"/> 提供的 API 接口，可以将业务系统与 PBX 结合，通过 IVR
+                        语音交互引导客户操作，自动完成客户的信息收集，信息确认等工作，减少人力投入，提高业务办理效率。</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_vf1_hxz_zkb">
+            <title>IVR 应用流程示例</title>
+            <p>以业务办理为例，系统呼叫用户，通过 IVR 播放业务内容和操作提示，自动引导用户输入验证码，完成业务办理。</p>
+            <p><image href="../Images/pbx-api/api-ivr-interaction.png" width="750"
+                    id="image_u4z_dzt_zkb"/></p>
+            <p>
+                <ol id="ol_fjm_cn5_zkb">
+                    <li>业务系统请求 PBX 通过 IVR 呼叫用户，用户接听后，向客户播报 IVR 6500 语音。</li>
+                    <li>客户根据语音提示操作按 1 键，PBX 响应按键事件，将通话转接给 IVR 6501，提示用户输入验证码。</li>
+                    <li>客户根据语音提示输入验证码。PBX 收到按键信息，向客户播放等待音乐，并生成 DTMF 按键报告，将用户信息发送给业务系统。</li>
+                    <li>业务系统收到按键信息报告，校验客户数据。根据校验结果向 PBX 发送通话转接请求。<ul id="ul_rfk_lwz_zkb">
+                            <li>校验成功，PBX 将当前通话转接 IVR 6502，语音提示用户业务受理成功。</li>
+                            <li>校验失败，PBX 将当前通话转接 IVR 6503，提示客户验证码有误，重新输入。</li>
+                        </ul></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_hmc_5x1_1lb">
+            <title>IVR 拨打外线</title>
+            <p>
+                <ol id="ol_zdl_vx1_1lb">
+                    <li>业务系统向 PBX API 接口发送 IVR 外呼请求。</li>
+                    <li>PBX 收到请求，使用 IVR 呼叫客户。<p>IVR 外呼对接接口请参阅 <xref href="call-dial.dita">IVR
+                                拨打外线</xref>。</p></li>
+                    <li>PBX 向业务系统实时发送当前呼叫的状态。<p>通话状态接口请参阅 <xref href="event-CallStatus.dita"
+                                />。</p><p><image href="../Images/pbx-api/api-ivr-outbound.png"
+                                width="500" id="image_myh_dbb_1lb"/></p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_cdw_ybb_1lb">
+            <title>DTMF 按键报告</title>
+            <p>
+                <ol id="ol_zzy_ncb_1lb">
+                    <li>客户根据语音提示输入相关信息。</li>
+                    <li>PBX 收集相关的按键信息，生成 <xref href="event-DTMF.dita"
+                                >“按键信息”报告</xref>，并发送给业务系统。<p><image
+                                href="../Images/pbx-api/api-ivr-dtmf.png" width="500"
+                                id="image_y1j_xgb_1lb"/></p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_lct_fhb_1lb">
+            <title>呼出转接 IVR</title>
+            <p>
+                <ol id="ol_h5j_jhb_1lb">
+                    <li>业务系统收到 DTMF 报告，验证用户信息后，向 PBX 发送通话转接请求。</li>
+                    <li>PBX 收到请求，将通话转接给相应的 IVR，向客户播放相应的 IVR 语音。<p><image
+                                href="../Images/pbx-api/api-ivr-outbound-transfer.png" width="650"
+                                id="image_rvg_rkb_1lb"/></p><p>对接接口请参阅 <xref
+                                href="call-transfer.dita"/>。</p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_p2q_fqm_zkb">
+            <title>IVR 语音菜单设置</title>
+            <p>
+                <ol id="ol_ihj_3qm_zkb">
+                    <li>在 PBX 上创建 IVR。<p><image
+                                href="../Images/pbx-api/api-ivr-interaction-create-IVR.png"
+                                id="image_omc_3s5_xjb" width="650"/></p></li>
+                    <li>设置 IVR 语音文件。<p>语音由 TTS 产生 wav 文件，放到网络磁盘位置供 PBX 调用。</p><ol
+                            id="ol_obs_gtm_zkb">
+                            <li>将 IVR 语音上传到网络存储盘，并将存储 IVR 语音的文件夹设置为共享。<p><image
+                                        href="../Images/pbx-api/api-ivr-interaction-share-disk.png"
+                                        id="image_i3g_ls5_xjb" width="600"/></p></li>
+                            <li>将网络存储盘挂载到 PBX。<p>第一个网络磁盘挂载后，路径为
+                                        <filepath>/tmp/media/networkdisk1</filepath>。</p><p><image
+                                        href="../Images/pbx-api/api-ivr-interaction-netdisk.png"
+                                        width="450" id="image_u43_ydn_zkb"/></p></li>
+                        </ol></li>
+                    <li>设置 IVR 语音菜单。<p>联系朗视技术支持获取 IVR 语音菜单脚本。</p><p>登录 PBX 网页，使用 SSH
+                                方式，进入<filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>，编辑
+                            extensions_support.conf  文件。</p><p>
+                            <ul>
+                                <li>IVR 6500：语音播报语音当前业务类型，并告知按 1
+                                    键进预约。<codeblock>[ivr_6500]
+exten = 6500,1,NoOp(6500)
+exten = 6500,n,Set(TIMEOUT(digit)=3)
+exten = 6500,n,Background(/tmp/media/networkdisk1/notice) //notice.wav   这里是 xxx 业务受理平台
+exten = 6500,n,Background(/tmp/media/networkdisk1/${EXTEN}) //以被叫手机号为命名的文件，每个被叫的语音都不一样。文件暂命名phone.wav。语音内容：为您预约3月12日科目二考试
+exten = 6500,n,Background(/tmp/media/networkdisk1/confirm}) //confirm.wav  同意请按 1
+exten = 6500,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6500,n,WaitExten(1)
+exten = 6500,n,Set(TIMEOUT(digit)=3)
+exten = 6500,n,Background(/tmp/media/networkdisk1/notice) //notice.wav 这里是 XXX 业务受理平台
+exten = 6500,n,Background(/tmp/media/networkdisk1/${EXTEN}) //以被叫手机号为命名的文件，每个被叫的语音都不一样。文件暂命名test.wav。语音内容：为您预约3月12日科目二考试
+exten = 6500,n,Background(/tmp/media/networkdisk1/confirm}) //confirm.wav   同意请按1
+exten = 6500,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6500,n,WaitExten(1)
+exten = 6500,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6500,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 6500,n,Goto(t,1)
+exten = 1,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 1,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 1,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = 1,4,Goto(ivrs,6501,1)
+exten = unknown,1,NoOp(No Action)</codeblock></li>
+                                <li>
+                                    <p>IVR6501：当客户听到语音提示后，按1，进入
+                                        IVR6501，可以输入短信验证码，输入完毕会继续听到相关语音，以及等待音乐。<codeblock>[ivr_6501]
+exten = 6501,1,NoOp(6501)
+exten = 6501,n,Set(TIMEOUT(digit)=3)
+exten = 6501,n,Background(/tmp/media/networkdisk1/password) //password.wav  请输入您收到约考短信验证码，按#号键结束
+exten = 6501,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6501,n,WaitExten(4)
+exten = 6501,n,Set(TIMEOUT(digit)=3)
+exten = 6501,n,Background(/tmp/media/networkdisk1/password) //password.wav  请输入您收到约考短信验证码，按#号键结束
+exten = 6501,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6501,n,WaitExten(4)
+exten = 6501,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6501,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = _X.#,1,UserEvent(DtmfEndString,Info: ${EXTEN})
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //holdon.wav   请稍后
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //播放等待音乐
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //请稍后
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //播放等待音乐
+exten = _X.#,n,NoOp(exten:${EXTEN})
+exten = _X.#,n,Goto(ivrs,6501,1)
+exten = 6501,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                                <li>
+                                    <p>IVR6502：当系统验证通过后，转
+                                        IVR6502，告知客户业务办理成功，并挂断电话。<codeblock>[ivr_6502]
+exten = 6502,1,NoOp(6502)
+exten = 6502,n,Set(TIMEOUT(digit)=3)
+exten = 6502,n,Background(/tmp/media/networkdisk1/ok) //已经预约成功，再见！
+exten = 6502,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6502,n,WaitExten(1)
+exten = 6502,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6502,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 6502,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                                <li>
+                                    <p>IVR6503：当短信验证失败，转 IVR6503，告知客户重新输入短信验证码，并且根据验证成功与否转 IVR6502 或
+                                        6503。<codeblock>[ivr_6503]
+exten = 6503,1,NoOp(6503)
+exten = 6503,n,Set(TIMEOUT(digit)=3)
+exten = 6503,n,Background(/tmp/media/networkdisk1/password1) //password1.wav验证码错误，请输入您收到约考短信验证码，按#号键结束
+exten = 6503,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6503,n,WaitExten(4)
+exten = 6503,n,Set(TIMEOUT(digit)=3)
+exten = 6503,n,Background(/tmp/media/networkdisk1/password1) //password1.wav验证码错误，请输入您收到约考短信验证码，按#号键结束
+exten = 6503,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6503,n,WaitExten(4)
+exten = 6503,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6503,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = _X.#,1,UserEvent(DtmfEndString,Info: ${EXTEN})
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //holdon.wav请稍后
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //播放保留音乐
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //请稍后
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //播放保留音乐
+exten = _X.#,n,NoOp(exten:${EXTEN})
+exten = _X.#,n,Goto(ivrs,6503,1)
+exten = 6503,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                            </ul>
+                        </p></li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

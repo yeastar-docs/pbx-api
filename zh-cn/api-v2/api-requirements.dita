@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topic_gxx_fz2_jjb">
+    <title>API 使用前提</title>
+    <shortdesc>本文介绍使用<ph keyref="product_name"/> 二次开发接口之前，你要做的前提配置。</shortdesc>
+    <conbody>
+        <section id="section_nz1_3mh_4jb">
+            <title>前提配置</title>
+            <p>使用 API 之前，你需要先做好以下配置：</p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>PBX 版本</dt>
+                        <dd>本文档的描述基于 API 2.0.0，你需要升级 PBX 固件到适配 API 2.0.0 接口的版本。</dd>
+                        <dd product="cloudpbx"
+                            ><?oxy_comment_start author="carol" timestamp="20191030T151200+0800" comment="待确定"?>PBX
+                            版本要求：固件版本 81.13.0.30 或更高版本</dd>
+                        <dd product="s-series">PBX 版本要求：固件版本 30.13.0.30</dd>
+                        <dd product="k2">PBX 版本要求：固件版本<?oxy_comment_end?> 80.13.0.30 或更高版本</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>启用 API 功能</dt>
+                        <dd>默认情况下，PBX 的 API 功能是禁用的。使用 API 之前，你需要先在  <xref
+                                href="pbx-api-settings.dita"/> 页面启用 API ，并做好相关的配置。</dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>

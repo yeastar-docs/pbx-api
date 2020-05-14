@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_w23_cs2_gdb">
+  <title>Query Trunk List</title>
+  <shortdesc>Query basic information like trunk name, trunk status, trunk type, etc. of all
+    trunks.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/trunklist/query?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>No parameter. Only need to send the request.</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.47*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="5.52*"/>
+            <thead>
+              <row>
+                <entry>Name </entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row valign="middle">
+                <entry><codeph>trunklist</codeph></entry>
+                <entry>Object</entry>
+                <entry>Object.</entry>
+              </row>
+              <row valign="middle">
+                <entry><codeph>trunkname</codeph></entry>
+                <entry>Int</entry>
+                <entry>The trunk name.</entry>
+              </row>
+              <row product="cloudpbx" valign="middle">
+                <entry><codeph>type</codeph></entry>
+                <entry>String</entry>
+                <entry>The trunk type.<ul id="ul_scr_r5j_gdb">
+                    <li>SIP</li>
+                  </ul></entry>
+              </row>
+              <row product="cloudpbx" valign="middle">
+                <entry><codeph>status</codeph></entry>
+                <entry>String</entry>
+                <entry>Current status of the trunk.<ul id="ul_ckd_5y3_gdb">
+                    <li> Registering</li>
+                    <li>Failure</li>
+                    <li>Registered (Unmonitored)</li>
+                    <li>Disable</li>
+                    <li>Unknown</li>
+                  </ul></entry>
+              </row>
+              <row valign="middle" product="s-series">
+                <entry><codeph>type</codeph></entry>
+                <entry>String</entry>
+                <entry>The trunk type:<ul id="ul_qlj_w4v_4hb">
+                    <li>IAX: VoIP trunk based on IAX protocol.</li>
+                    <li>SIP: VoIP trunk based on SIP protocol.</li>
+                    <li>FXO: FXO analog trunk.</li>
+                    <li>GSM: GSM/3G/4G wireless trunk.</li>
+                    <li>BRI: BRI digital trunk.</li>
+                    <li>E1: E1/T1/J1 digital trunk.</li>
+                  </ul></entry>
+              </row>
+              <row valign="middle" product="s-series">
+                <entry morerows="3"><codeph>status</codeph></entry>
+                <entry morerows="3">String</entry>
+                <entry>SIP/IAX trunk status: <p>
+                    <ul>
+                      <li>Registering</li>
+                      <li>Failure</li>
+                      <li>Registered (Unmonitored)</li>
+                      <li>Disable</li>
+                      <li>Unknown</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row valign="middle" product="s-series">
+                <entry>FXO trunk status:<p>
+                    <ul>
+                      <li>Fault</li>
+                      <li>Idle</li>
+                      <li>Busy</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row valign="middle" product="s-series">
+                <entry>BRI/E1/T1/J1 trunk status:<p>
+                    <ul>
+                      <li>Fault</li>
+                      <li>Alarm</li>
+                      <li>Down</li>
+                      <li>Up</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row valign="middle" product="s-series">
+                <entry>GSM/3G/4G trunk status:<p>
+                    <ul>
+                      <li> Power Off </li>
+                      <li>Alarm</li>
+                      <li>No SIM</li>
+                      <li>No Signal</li>
+                      <li>Pin Error</li>
+                      <li>Unregister</li>
+                      <li>Busy</li>
+                      <li>Idle</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry><codeph>port</codeph></entry>
+                <entry>String</entry>
+                <entry>The trunk port.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_dzh_psp_52b"><title>Examples</title><p><b>Request Example</b></p><p>
+        <codeblock>POST /api/v1.1.0/trunklist/query?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "trunklist": [
+        {
+            "trunkname": "voip123",
+            "status": "failure",
+            "type": "SIP"
+        },
+        {
+            "trunkname": "siptrunk8",
+            "status": "failure",
+            "type": "SIP"
+        }
+    ]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

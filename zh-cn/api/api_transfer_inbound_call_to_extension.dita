@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_kdg_2v2_gdb">
+  <title>来电转接到分机</title>
+  <shortdesc>通过该接口可以将外线的来电转接给分机，从而使来电和分机能够建立通话。</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Carol-->
+      <revised modified="2018/06/28"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/10"/>
+      <!--Carol-->
+      <revised modified="2018/09/03"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>不管来电是在响铃还是正在通话的状态皆可转移至分机。</note>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>请求地址</title>
+      <p product="cloudpbx">https://<codeph>{pbx
+          domain}</codeph>/api/v1.1.0/inbound/transfer_extension?token=<codeph>{token}</codeph></p>
+      <p product="s-series">https://<codeph>{pbx ip}</codeph>:<codeph>{https
+          port}</codeph>/api/v1.1.0/inbound/transfer_extension?token=<codeph>{token}</codeph></p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.3*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.2*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>inboundid</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>外线来电编号。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>转接目的地的分机号。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>请求状态：<p>
+                    <ul id="ul_gp1_dkf_t2b">
+                      <li>Success：请求成功。</li>
+                      <li>Failed：请求失败。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">请求成功</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>该通通话的id。</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">请求失败</entry>
+              </row>
+              <row>
+                <entry>errno</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>错误代码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"
+        ><title>实际示例</title><p><b>请求示例</b></p>请求将编号为<codeph>1495698591.209</codeph>的来电转接给内部分机1003。<codeblock outputclass="language-json">{
+    "inboundid": "1495698591.209",
+    "extid": "1003"
+}</codeblock><b>响应示例</b><p>请求成功，分机1003响铃。</p><p>
+        <codeblock outputclass="language-json">{
+    "status": "Success",
+    "callid": "1495698591.209"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

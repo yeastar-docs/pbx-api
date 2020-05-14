@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_rdd_z2g_vgb">
+    <title>查询呼出路由</title>
+    <shortdesc>查询单个呼出路由、多个呼出路由或所有呼出路由的设置。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/outroute/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.23*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.13*"/>
+                    <colspec colname="c4" colnum="4" colwidth="5.3*"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>是否必选</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>id</entry>
+                            <entry>是</entry>
+                            <entry>Integer</entry>
+                            <entry>呼出路由的唯一 ID。<p><b>取值范围</b>：</p><p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li>单个呼出路由
+                                                id：查询指定呼出路由的设置。<p>例如：<codeph>"id":"1"</codeph></p></li>
+                                        <li>多个呼出路由 id：查询多个呼出路由的设置。多个呼出路由 id
+                                                  用半角逗号（,）隔开。<p>例如：<codeph>"id":"1,2"</codeph></p></li>
+                                        <li>all：查询所有呼出路由的设置。</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>响应参数</title>
+            <table frame="all" id="table_kzc_mcg_qjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="2.05*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="3.32*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>outroutes</entry>
+                            <entry>Array<xref href="#reference_rdd_z2g_vgb/OutroutesInfo"
+                                    format="dita">&lt;OutrouteInfo></xref></entry>
+                            <entry>呼出路由信息。</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <dl>
+                <dlentry>
+                    <dt id="OutroutesInfo">OutrouteInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_e5j_qcg_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="2.25*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="5.92*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>id</entry>
+                                        <entry>Integer</entry>
+                                        <entry>呼出路由的唯一 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>String</entry>
+                                        <entry>呼出路由的名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>prefix</entry>
+                                        <entry>String</entry>
+                                        <entry>呼出模式。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>strip</entry>
+                                        <entry>Integer</entry>
+                                        <entry>删除前缀位数。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>prepend</entry>
+                                        <entry>String</entry>
+                                        <entry>前置号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunks</entry>
+                                        <entry>String</entry>
+                                        <entry>中继名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensions</entry>
+                                        <entry>Integer</entry>
+                                        <entry>分机号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsgroup</entry>
+                                        <entry>String</entry>
+                                        <entry>分机组。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>查询 id 为1的呼出路由的详细信息。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/outroute/query?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "id": "1"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"outroutes": [
+		{
+			"id": "1",
+			"name": "Route_out",
+			"prefix": "159XXXXXXXX",
+			"strip": "",
+			"prepend": "",
+			"trunks": "siptrunk",
+			"extensions": "1020,1001,1000",
+			"extensionsgroup": ""
+		}
+	]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topicID">
+   <title>S-Series
+VoIP PBX API and AMI {#s-series-voip-pbx-api-and-ami}</title>
+   <body>
+      <p>
+         <image href="/assets/import3.png"/>
+      </p>
+      <p>API of S-Series VoIP PBX includes database operating interface
+and some AMI interfaces. API and AMI do not affect each other. But
+API might invocate some AMI interfaces when needed.</p>
+   </body>
+</topic>

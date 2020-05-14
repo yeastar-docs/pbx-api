@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_dxf_gr2_h2b">
+    <title>API 版本更新记录</title>
+    <shortdesc/>
+    <conbody>
+        <section id="section_ep4_52v_43b">
+            <title>API v1.1.0 (PBX 81.9.0.14)</title>
+            <p>本次API更新，适用于<ph keyref="product_name"/> 81.9.0.14或更高版本。</p>
+            <p>
+                <ul conref="../topic/v81.9.0.14.dita#v81.9.0.14/api-cloud-81.9.0.14"
+                    id="ul_vss_y2v_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_y1w_g2v_43b">
+            <title>API v1.1.0 (PBX 81.8.0.85)</title>
+            <p>本次 API 更新，适用于<ph keyref="product_name"/> 81.8.0.85 或更高版本。</p>
+            <p>
+                <ul conref="../topic/v81.8.0.85.dita#topic_ng1_n35_4hb/api-cloud-81.8.0.85"
+                    id="ul_dfz_t2v_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_b5r_bff_vgb">
+            <title> API v1.1.0 (PBX 81.8.0.42)</title>
+            <p>本次 API 更新，适用于<ph keyref="product_name"/> 81.8.0.42 或更高版本。</p>
+            <p conref="../topic/v81.8.0.42.dita#topic_xqt_qwd_5gb/api-cloud81.8.0.39"/>
+        </section>
+        <section id="section_esp_j45_1gb">
+            <title>API v1.1.0 (PBX 81.8.0.4 )</title>
+            <p>API 版本 1.1.0 适用于<ph keyref="product_name"/> 81.8.0.4 或更高版本。</p>
+            <p>
+                <note>建议升级 PBX 到 81.8.0.4 或更高版本，使用 API v1.1.0。</note>
+            </p>
+            <p conref="../topic/v81.8.0.4.dita#concept_r4p_b1g_1gb/api_1.1.0_cloud"/>
+        </section>
+        <section id="section_lwm_pqg_4fb">
+            <title>API 版本 1.0.5</title>
+            <p>API 版本1.0.5适用于<ph keyref="product_name"/> 81.7.0.15 或更高版本。</p>
+            <p conref="../topic/v81.7.0.15.dita#concept_dnx_mbm_l2b/api_1.0.5_cloud"/>
+        </section>
+        <section id="section_s3c_yr2_h2b">
+            <title>API 版本 1.0.3</title>
+            <p>朗视云PBX支持的第一个API版本。</p>
+            <p>API版本1.0.3适用于朗视云PBX 81.4.0.8 或更高版本。</p>
+        </section>
+    </conbody>
+</concept>

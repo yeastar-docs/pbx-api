@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_b5k_hdf_gdb">
+  <title>响铃报告</title>
+  <shortdesc>当分机响铃时，PBX向应用服务器发送响铃报告。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <ul id="ul_my1_vkr_32b">
+            <li>发送响铃报告事件只有在使用API接口进行拨号的时候才会上报，用户使用话机拨打号码时，PBX不会发送响铃报告。</li>
+            <li>响铃和回铃为对应事件，通话双方一方响铃，则另一方回铃，不管是和外线通话还是分机内部通话两方的响铃或回铃的状态都会报告。报告时，被叫在主叫的前面。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.76*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="6.66*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>响铃事件。</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通通话的id。</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>String</entry>
+                <entry>分机对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>分机号。</entry>
+              </row>
+              <row>
+                <entry><codeph>inbound</codeph><p><codeph>outbound</codeph></p></entry>
+                <entry>String</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry><codeph>inboundid</codeph><p><codeph>outboundid</codeph></p></entry>
+                <entry>String</entry>
+                <entry>外线来电编号或外线去电编号。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>来电的原始主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>来电的原始被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>通过哪条中继呼入。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX的SN码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>分机 1006 拨打分机 1005。</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "RING",
+    "callid": "1547374235.50",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1006"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock>
+    
+   
+      <p>分机 1005 拨打外线号码 9127373733。</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "RING",
+    "callid": "1547374880.62",
+    "call": [
+        {
+            "outbound": {
+                "from": "1005",
+                "to": "9127373733",
+                "trunk": "SPS-6-36",
+                "outboundid": "1547374880.63"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

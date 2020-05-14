@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ngn_dt2_gdb">
+  <title>签入队列</title>
+  <shortdesc>将指定动态坐席签入指定队列。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/add_dynamicagent?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="2.61*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.55*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="8.55*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>queuenumber</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>队列号码。</entry>
+              </row>
+              <row>
+                <entry>extnumber</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>动态坐席的号码。</entry>
+              </row>
+              <row>
+                <entry> password</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>加入队列动态坐席的密码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_eyf_rzh_mjb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.06*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="4.4*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p>将坐席1000签入队列6700，队列密码为6700123。<p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/queue/add_dynamicagent?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"queuenumber": "6700",
+	"extnumber": "1000",
+	"password": "6700123"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

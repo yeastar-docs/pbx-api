@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_dsn_qq2_gdb">
+  <title>System Report</title>
+  <shortdesc>The PBX will send report to the application server automatically when there is a change
+    of system configuration or extension status, etc.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+    </critdates>
+  </prolog>
+  <body>
+    <section id="section_zxd_tly_52b">
+      <title>Types of System Event</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_qwk_5ly_52b">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.87*"/>
+            <thead>
+              <row>
+                <entry><b>System Event</b></entry>
+                <entry><b>Describe</b></entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>BootUp</entry>
+                <entry>The PBX startup.</entry>
+              </row>
+              <row>
+                <entry>ConfigChange</entry>
+                <entry>Configuration Change event.</entry>
+              </row>
+              <row>
+                <entry>ExtensionStatus</entry>
+                <entry>Status change of extension.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+  </body>
+</topic>

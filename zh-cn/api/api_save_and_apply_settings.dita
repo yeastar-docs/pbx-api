@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_xxd_nq2_gdb">
+  <title>保存和应用配置</title>
+  <shortdesc>每次通过API接口更改 PBX 的配置后，都要调用此接口，保存和应用配置。</shortdesc>
+  <body>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/apply?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb">
+      <title>请求参数</title>
+      <p>无参数，直接发送请求即可。</p>
+    </section>
+    <section id="section_spy_qqd_gdb">
+      <title>实际示例</title>
+      <p><b>请求示例</b></p>
+      <p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/apply?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p>
+      <p><b>响应示例</b></p>
+      <p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p>
+    </section>
+  </body>
+</topic>

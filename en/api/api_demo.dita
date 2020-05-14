@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_htc_pt2_h2b">
+    <title>API Demo</title>
+    <shortdesc>Yeastar provides an API demo and sample configurations for you to test the API
+        functions with <ph keyref="product_name"/>.</shortdesc>
+    <conbody>
+        <section id="section_xmy_tt2_h2b">
+            <title>Download API Demo</title>
+            <p><xref href="https://www.yeastar.com/download/API-Demo.zip" format="zip"
+                    scope="external">Click here to download the API demo.</xref></p>
+        </section>
+        <section id="section_ixk_yt2_h2b">
+            <title>How to Use API Demo</title>
+            <p>
+                <ol id="ol_ulq_d52_h2b">
+                    <li>Unzip the downloaded API demo.</li>
+                    <li>Double click the <codeph>exe</codeph> file.</li>
+                    <li>Access the PBX via API interface.<p>
+                            <ol id="ol_hvm_1kf_cgb">
+                                <li>Enter the login settings according to your PBX
+                                            information.<p><image
+                                            href="../Images/admin/api_demo.png" width="650"
+                                            id="image_rgm_vw2_h2b" product="cloudpbx"/></p><p><image
+                                            href="../Images/admin/api_demo_s.png" width="650"
+                                            product="s-series" id="image_ywz_b2g_h2b"/></p><p>
+                                        <ul id="ul_lvz_zw2_h2b">
+                                            <li><uicontrol>Version</uicontrol>: Check the <xref
+                                                  href="api_change_logs_cloud.dita#concept_dxf_gr2_h2b"
+                                                  product="cloudpbx">API Change Logs</xref><xref
+                                                  href="api_change_logs_s.dita#concept_dxf_gr2_h2b"
+                                                  product="s-series">API Change Logs</xref>, and
+                                                decide which API version you want to use.</li>
+                                            <li><uicontrol>API Request</uicontrol>: Choose
+                                                  <codeph>login</codeph>.</li>
+                                            <li product="cloudpbx"><uicontrol>Destination
+                                                  Address</uicontrol>: Enter the domain of your
+                                                cloud PBX.</li>
+                                            <li product="cloudpbx"><uicontrol>Port</uicontrol>:
+                                                Enter <codeph>443</codeph>.</li>
+                                            <li product="cloudpbx">Choose the web protocol type to
+                                                  <codeph>HTTPS</codeph>.</li>
+                                            <li product="s-series">Choose the web protocol of the
+                                                PBX. The default web protocol of the PBX is
+                                                  <codeph>HTTPS</codeph></li>
+                                            <li product="s-series"><uicontrol>Destination
+                                                  Address</uicontrol>: Enter the IP address of the
+                                                PBX.</li>
+                                        </ul>
+                                        <ul id="ul_fdr_zcg_h2b">
+                                            <li product="s-series"><uicontrol>Port</uicontrol>:
+                                                Enter the web access port of the PBX. The default
+                                                port is <codeph>8088</codeph>.</li>
+                                        </ul>
+                                    </p></li>
+                                <li>In the left-side Text Box, change the API username and password
+                                    according to the API settings on your PBX.</li>
+                                <li>Click <uicontrol>Send Request</uicontrol> to log in the
+                                        PBX.<p>If logging in successfully, the status will show
+                                        "Success".</p></li>
+                            </ol>
+                        </p></li>
+                    <li>Test API request.<p>
+                            <ol id="ol_tcn_vkf_cgb">
+                                <li>Change the <uicontrol>API Request</uicontrol> type.</li>
+                                <li>In the left-side Text Box, change the API request information
+                                    according to your PBX settings.</li>
+                                <li>Click <uicontrol>Send Request</uicontrol>.</li>
+                            </ol>
+                        </p></li>
+                    <li>Receive API reports from the PBX.<p>At the top of the windows, click
+                                <uicontrol>Start the Server</uicontrol> to receive API
+                        reports.</p></li>
+                </ol>
+            </p>
+        </section>
+    </conbody>
+</concept>

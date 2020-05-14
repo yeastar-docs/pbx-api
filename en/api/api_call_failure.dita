@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_bpk_bw3_gdb">
+  <title>'Call Failure' Report</title>
+  <shortdesc>Generally, call failure event will appear in the response message of the API request.
+    In certain circumstances, the PBX will send the report. Call failure is defined as calls that
+    are failed to connect. Failure of calls initiated manually and by the API will both be
+    reported.</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="2.53*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="7.88*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>Call failed.</entry>
+              </row>
+              <row>
+                <entry><codeph>reason</codeph></entry>
+                <entry>String</entry>
+                <entry>Call failure reason.<ul id="ul_v4z_ws4_t2b">
+                    <li><b>404 NOT found</b>: Invalid callee number.</li>
+                    <li><b>480 Temporarily unavailable</b>: Call is not answered</li>
+                    <li><b>484 Address Incomplete</b>: Incorrect format of callee number.</li>
+                    <li><b>486 Busy Here</b>: Declined by the callee</li>
+                    <li><b>487 Request Terminated</b>: The caller disconnects the call after the
+                      call is established.</li>
+                    <li><b>603 Declined</b>: The call is timed out.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique identifier of the call.</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>String</entry>
+                <entry>extension object.</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>The extension number.</entry>
+              </row>
+              <row>
+                <entry><codeph>outbound</codeph><p><codeph>inbound</codeph></p></entry>
+                <entry>String</entry>
+                <entry>Object parameter.</entry>
+              </row>
+              <row>
+                <entry><codeph>inboundid</codeph><p><codeph>outboundid</codeph></p></entry>
+                <entry>String</entry>
+                <entry>The inbound ID / outbound ID.</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>The caller number.</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>The callee number.</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>The name of the trunk that has been used.</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>The PBX's serial number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report Examples</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "CallFailed",
+    "reason": "486 Busy Here",
+    "callid": "1536976927.37",
+    "outbound": {
+        "from": "1002",
+        "to": "70871520926",
+        "trunk": "Wanatel-1",
+        "outboundid": "1536976927.38"
+    },
+    "ext": {
+        "extid": "1002"
+    },
+    "sn": "369351034049"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

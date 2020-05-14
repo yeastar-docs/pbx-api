@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_t3n_2s2_gdb">
+  <title>查询 IVR </title>
+  <shortdesc>查询单个 IVR、多个 IVR 或所有 IVR 的详细信息。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/ivr/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.23*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.41*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry> number</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>IVR 号码。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_gnr_hd3_vgb">
+                      <li>单个 IVR 号码：查询指定 IVR 的信息。<p>例如：<codeph>"number":"6500"</codeph></p></li>
+                      <li>多个 IVR 号码：查询多个 IVR 的信息。多个 IVR
+                            号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"6500,6501,6502"</codeph></p></li>
+                      <li>all：查询所有 IVR 的信息。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_arx_2gg_qjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.73*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="4.72*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>ivr</entry>
+                <entry>Array <xref href="#reference_t3n_2s2_gdb/ivrinfo" format="dita"
+                    >&lt;IVRInfo></xref></entry>
+                <entry>IVR 信息列表。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry>
+          <dt id="ivrinfo">IVRInfo</dt>
+          <dd>
+            <table frame="all" id="table_tk5_lgg_qjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="3.14*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="7.03*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>IVR 号码。</entry>
+                  </row>
+                  <row>
+                    <entry>ivrname</entry>
+                    <entry>String</entry>
+                    <entry>IVR 名称。</entry>
+                  </row>
+                  <row>
+                    <entry>prompt</entry>
+                    <entry>String</entry>
+                    <entry>IVR 提示音。</entry>
+                  </row>
+                  <row>
+                    <entry>promptrepeat</entry>
+                    <entry>Integer</entry>
+                    <entry>提示音播放次数。</entry>
+                  </row>
+                  <row>
+                    <entry>responsetimeout</entry>
+                    <entry>Integer</entry>
+                    <entry>响应超时时间。</entry>
+                  </row>
+                  <row>
+                    <entry>digittimeout</entry>
+                    <entry>Integer</entry>
+                    <entry>按键超时时间。</entry>
+                  </row>
+                  <row>
+                    <entry>dialext</entry>
+                    <entry>String</entry>
+                    <entry>允许拨打分机号码。<ul id="ul_brh_4gg_qjb">
+                        <li>on：允许。</li>
+                        <li>off：不允许。</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>dialoutboundroutes</entry>
+                    <entry>String</entry>
+                    <entry>允许从呼出路由拨出。<ul id="ul_drh_4gg_qjb">
+                        <li>on：允许。</li>
+                        <li>off：不允许。</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>dialtocheckvoicemail</entry>
+                    <entry>String</entry>
+                    <entry>允许查阅语音留言。<ul id="ul_frh_4gg_qjb">
+                        <li>on：允许。</li>
+                        <li>off：不允许。</li>
+                      </ul></entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p><p>查询 IVR 6500 的信息。</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/ivr/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6500"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"ivr": [
+		{
+			"number": "6500",
+			"ivrname": "6500",
+			"prompt": "[Default]",
+			"promptrepeat": "3",
+			"responsetimeout": "3",
+			"digittimeout": "3",
+			"dialext": "on",
+			"dialoutboundroutes": "off",
+			"dialtocheckvoicemail": "off"
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

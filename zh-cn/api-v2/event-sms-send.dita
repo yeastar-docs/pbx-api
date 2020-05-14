@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="event-send-sms">
+    <title>sms-send（短信发送状态事件）</title>
+    <shortdesc>发送短信后，PBX 会向应用服务器推送短信发送情况。</shortdesc>
+    <body>
+        <section id="section_bmf_bgx_mjb">
+            <title>报告参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.56*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                        <colspec colname="c3" colnum="3" colwidth="5.41*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>短信发送状态。<p>
+                                        <ul id="ul_o4j_lgx_mjb">
+                                            <li>Success：短信发送成功。</li>
+                                            <li>Failed：短信发送失败。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>smsid</entry>
+                                <entry>Integer</entry>
+                                <entry>每条短信的唯一标识。</entry>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_km1_33x_mjb">
+            <title>示例</title>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+Host: 192.168.5.150: 8260
+Accept: application/json
+User-Agent: WebAPI 
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "sms-send",
+	"status": "Success",
+	"smsid": "15980751615-1571987010",
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

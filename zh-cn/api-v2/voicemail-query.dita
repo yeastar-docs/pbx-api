@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="concept_klh_ysd_j2b">
+    <title>查询语音留言</title>
+    <shortdesc>查询单个分机、多个分机或所有分机的语音留言。</shortdesc>
+    <refbody>
+        <section>
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/voicemail/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_xc5_q4d_gdb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry> number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>分机号码。表示要查询哪个分机的语音留言。<p><b>取值范围</b>：</p><p>
+                                        <ul id="ul_vd1_dby_pjb">
+                                            <li>单个分机号码：查询指定分机的语音留言。<p>例如：<codeph>"number":"1000"</codeph></p></li>
+                                            <li>多个分机号码：查询多个分机的语音留言。多个分机之间用半角逗号（,）隔开。<p>例如：<codeph>"number":"1000,1001"</codeph></p></li>
+                                            <li>all：查询所有分机的语音留言。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_rlt_gvd_j2b">
+            <title>响应参数</title>
+            <p>
+                <note>如果查询的分机没有语音留言文件，PBX 只响应请求成功或请求失败的参数。</note>
+            </p>
+            <table frame="all" id="table_ity_gjn_qjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="2.57*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="3.21*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>voicemails</entry>
+                            <entry>Array <xref href="#concept_klh_ysd_j2b/voicemailsInfo"
+                                    format="dita">&lt;VoicemailInfo></xref></entry>
+                            <entry>语音留言列表。</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <dl>
+                <dlentry>
+                    <dt id="voicemailsInfo">VoicemailInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_vzt_ntn_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.96*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="2.81*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry> 描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>分机号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>voicemail</entry>
+                                        <entry>Array <xref href="#concept_klh_ysd_j2b/voicemailInfo"
+                                                format="dita">&lt;ExtensionVoicemail></xref></entry>
+                                        <entry>指定分机的语音留言列表。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt id="voicemailInfo">ExtensionVoicemail</dt>
+                        <dd>
+                            <table frame="all" id="table_ist_rk4_qjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1.2*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c3" colnum="3" colwidth="3.34*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>voicemailfile</entry>
+                                            <entry>String</entry>
+                                            <entry>语音留言文件名。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>messagefrom</entry>
+                                            <entry>String</entry>
+                                            <entry>语音留言是哪个号码发送的。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>voicemailstatus</entry>
+                                            <entry>String</entry>
+                                            <entry>语音留言的状态。<p>
+                                                  <ul id="ul_cjg_vk4_qjb">
+                                                  <li>read：已读。</li>
+                                                  <li>unread：未读。</li>
+                                                  </ul>
+                                                </p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>voicemaildate</entry>
+                                            <entry>String</entry>
+                                            <entry>收到语音留言的日期和时间。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>voicemaillength</entry>
+                                            <entry>String</entry>
+                                            <entry>语音留言的时长。</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p><p>查询分机4000的语音留言。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/voicemail/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "4000"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"voicemails": [
+		{
+			"number": "4000",
+			"voicemail": [
+				{
+					"voicemailfile": "msg0000.wav",
+					"messagefrom": "3000",
+					"voicemailstatus": "unread",
+					"voicemaildate": "2019-10-20 21:41:42",
+					"voicemaillength": "77"
+				},
+				{
+					"voicemailfile": "msg0001.wav",
+					"messagefrom": "2000",
+					"voicemailstatus": "unread",
+					"voicemaildate": "2019-10-20 21:49:35",
+					"voicemaillength": "18"
+				}
+			]
+		}
+	]
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ngn_dt2_gdb">
+  <title>Log in a Queue</title>
+  <shortdesc>Through this interface, a dynamic agent can log in a
+    queue<?oxy_comment_start author="Becky" timestamp="20191031T102807+0800" comment="Through this interface, a dynamic agent can log in a queue. " id="cy3_4cd_5jb" flag="done" mid="2"?><?oxy_comment_start author="carol" timestamp="20191120T112801+0800" comment="你改完之后怪怪的。
+
+标题： Log in a Queue。
+简介： 一个指定的动态坐席签入一个指定的队列。（不像是一个标题下面的简介）
+主语是执行API 的人。" parentID="cy3_4cd_5jb" flag="done"?><?oxy_comment_start author="Becky" timestamp="20191120T135656+0800" comment="用1.0的描述" parentID="cy3_4cd_5jb" mid="1"?>.<?oxy_comment_end mid="1"?><?oxy_comment_end?><?oxy_comment_end mid="2"?></shortdesc>
+  <refbody>
+    <section>
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/add_dynamicagent?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.83*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.7*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="7.52*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Required</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>queuenumber</entry>
+                <entry>Yes</entry>
+                <entry>Integer</entry>
+                <entry>Queue number. </entry>
+              </row>
+              <row>
+                <entry>extnumber</entry>
+                <entry>Yes</entry>
+                <entry>Integer</entry>
+                <entry>Dynamic agent's number.</entry>
+              </row>
+              <row>
+                <entry> password</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>The password to join dynamic agents.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_eyf_rzh_mjb">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.06*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="4.4*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success</li>
+                    <li>Failed</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request example</b></p>Extension
+      1000 logs in queue 6700, and the password is 6700123.<p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/queue/add_dynamicagent?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"queuenumber": "6700",
+	"extnumber": "1000",
+	"password": "6700123"
+}</codeblock>
+      </p><b>Response example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

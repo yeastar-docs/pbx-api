@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_avj_l4m_lgb">
+    <title>通信方式</title>
+    <shortdesc><ph keyref="product_name"/> 和第三方应用服务器的通信是相互的， 双方互为服务端和客户端。 </shortdesc>
+    <conbody>
+        <section id="section_c51_skf_xgb" product="k2 s-series">
+            <title>通信协议和端口</title>
+            <dl>
+                <dlentry>
+                    <dt>请求和响应</dt>
+                    <dd>
+                        <p><ph keyref="product_name"/> 支持使用 HTTPS 协议和 HTTP 协议进行 API 通信。</p>
+                        <p><note>为加强通信安全，我们建议你使用 HTTPS 协议，并上传专业证书机构制作的 HTTPS 证书到 PBX。</note>PBX 默认使用
+                            HTTPS 网页访问协议，端口 8088，且启用 <b>80端口重定向</b>，你可以选择 HTTPS （端口 8088）或
+                            HTTP（端口80）协议进行 API 通信。</p>
+                        <p><image href="../Images/admin/default-web-settings.png"
+                                id="image_g4c_vcc_wgb"/></p>
+                        <p><b>外网 HTTP 通信</b></p>
+                        <p>在中国，如果你要通过外网连接第三方服务器 和 PBX API，80 端口无法使用，需要备案信息。你可以更改 PBX 设置，使用其他端口。</p>
+                        <p>登录 PBX 网页，进入 <b>配置</b> > <b>系统</b> > <b>安全中心</b> > <b>服务</b>， 选择
+                                <b>网络访问协议</b> 为 <b>HTTP</b>，将默认的 80 端口改为其他端口。</p>
+                        <p><image href="../Images/admin/change-http-port.png" id="image_qvy_yrn_xgb"
+                            /></p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>API 报告推送</dt>
+                        <dd>PBX 主动向第三方服务器 推送 API 报告使用 HTTP 协议。</dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_pjj_1m4_c3b">
+            <title>通信方式</title>
+            <p><ph keyref="product_name"/> 支持两种 API 通信方式。</p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>1. 应用服务器向PBX发送请求</dt>
+                        <dd>
+                            <p>应用服务器为客户端，PBX为服务端。应用场景：应用服务器向 PBX 发起呼叫、查询。</p>
+                            <p><image href="../Images/admin/interaction_model1.png"
+                                    id="image_jrf_vn4_c3b" product="cloudpbx"/></p>
+                            <p><image href="../Images/admin/api_interaction_method1_s.png"
+                                    id="image_amf_xn4_c3b" product="s-series"/></p>
+                        </dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>2. PBX主动向服务器推送消息</dt>
+                        <dd><b>前提条件</b>：应用服务器需通过 PBX API 的验证，和 PBX API 建立连接。<p>应用服务器作为服务端，PBX
+                                为客户端。</p><p>
+                                <note>第三方服务器接收到报告后，必须回复 200 OK 给PBX， 否则 PBX 重复发送报告。</note>
+                            </p></dd>
+                        <dd><image href="../Images/admin/interaction_model2-api-reports.png"
+                                id="image_mcf_2g3_h2b" product="cloudpbx"/></dd>
+                        <dd><image href="../Images/admin/api_interaction_method2_s-api-reports.png"
+                                id="image_sp5_pgg_h2b" product="s-series"/></dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>

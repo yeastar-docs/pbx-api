@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_s32_bfg_vgb">
+    <title>添加呼出路由</title>
+    <shortdesc>添加并设置呼出路由。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/outroute/add?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_ydm_dd4_vgb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.34*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.01*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="3.57*"/>
+                        <thead>
+                            <row>
+                                <entry>名称</entry>
+                                <entry>是否必需</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>name</codeph></entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>呼出路由的名称。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>prefix</codeph></entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>呼出模式。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>strip</codeph></entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>删除前缀位数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>prepend</codeph></entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>前置号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunks</codeph></entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>中继名称。<p>多个中继之间用 <codeph>,</codeph> 隔开，例如
+                                            <codeph>"trunks":"trunk1,trunk2"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensions</codeph></entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>允许使用该呼出路由的分机。<p>多个分机之间用<codeph>,</codeph> 隔开，例如
+                                            <codeph>"extensions":"1001,1002"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensionsgroup</codeph></entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>允许使用该呼出路由的分机组。<p>多个分机组之间用<codeph>,</codeph> 隔开，例如
+                                            <codeph>"extensionsgroup":"sales,support"</codeph></p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>实际示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/outroute/add?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "name": "outroute1",
+    "prefix": "0",
+    "strip": "1",
+    "prepend": "",
+    "trunks": "siptrunk",
+    "extensions": "1001",
+    "extensionsgroup": "sales,support"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

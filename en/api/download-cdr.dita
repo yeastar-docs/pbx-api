@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_vpd_43g_vgb">
+    <title>Download CDR Files</title>
+    <shortdesc>Get a random string of the CDR file, then combine the random string with other
+        parameters to form a download link.</shortdesc>
+    <refbody>
+        <section id="section_lsp_d5t_gdb">
+            <p><b><b>Step to download a CDR file</b></b></p>
+            <p>
+                <ol id="ol_j43_kn2_hdb">
+                    <li>Get a random string through the API endpoint
+                                <codeph>/api/v1.1.0/cdr/get_random?token=<varname>{token}</varname></codeph>.</li>
+                    <li>Combine the random string with other parameters to form a download
+                        link.</li>
+                </ol>
+            </p>
+            <p>
+                <note> The random string is only valid for 30 seconds, and each random string can be
+                    used only once.</note>
+            </p>
+        </section>
+        <section>
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/cdr/get_random?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_xc5_q4d_gdb">
+            <title>Request Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.32*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.18*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry>Importance</entry>
+                                <entry>Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>extid</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Specify which extensions' CDR to download.<p>
+                                        <ul id="ul_udw_x1h_vgb">
+                                            <li><b>All extensions</b>: Set <codeph>extid</codeph> to
+                                                  <codeph>all</codeph>.</li>
+                                            <li><b>An extension</b>: Set <codeph>extid</codeph> to
+                                                the extension number.</li>
+                                            <li><b>Multiple extensions</b>: Set
+                                                  <codeph>extid</codeph> to the extension number.
+                                                Separate multiple extensions with
+                                                  <codeph>,</codeph>.<p>Example: <codeph>"extid":
+                                                  "1000,1001,1002"</codeph></p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>starttime</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Specify the start time to filter the CDR reports.<p>Time
+                                        format: <codeph>yyyy-mm-dd hh:mm:ss</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>endtime</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Specify the end time to filter the CDR reports.<p>Time
+                                        format: <codeph>yyyy-mm-dd hh:mm:ss</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowedip</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry>
+                                    <p>Specify the allowed IP address to download the file.</p>
+                                    <p>
+                                        <ul id="ul_h3h_dtv_vgb">
+                                            <li>No <codeph>allowedip</codeph> parameter: Only the
+                                                3rd party application can download the file.</li>
+                                            <li>If <codeph>allowedip</codeph> is set, the allowed IP
+                                                address and the 3rd party application can download
+                                                the file.</li>
+                                        </ul>
+                                    </p>
+                                    <p>
+                                        <note>
+                                            <ul id="ul_lgy_nqv_vgb">
+                                                <li>The <codeph>allowedip</codeph> only supports one
+                                                  IP address.</li>
+                                            </ul>
+                                        </note>
+                                    </p>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_lv1_syk_gdb">
+            <title>Response Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.33*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1*"/>
+                        <colspec colname="c4" colnum="3" colwidth="6.49*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>extid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Extension number.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>starttime</codeph></entry>
+                                <entry>String</entry>
+                                <entry>The start time to filter the CDR reports.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>endtime</codeph></entry>
+                                <entry>String</entry>
+                                <entry>The end time to filter the CDR reports.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>random</codeph></entry>
+                                <entry>String</entry>
+                                <entry>A random string created for downloading CDR file. The random
+                                    string is a component of the CDR download link.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/cdr/get_random?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "extid": "all",
+    "starttime": "2018-11-07 00:00:00",
+    "endtime": "2019-02-18 23:59:59"
+}</codeblock>
+            </p><b>Response Example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "extid": "all",
+    "starttime": "2018-11-07 00:00:00",
+    "endtime": "2019-02-18 23:59:59",
+    "random": "0cbcf8917c41c61c6e9fd3e57ecdd467"
+}</codeblock>
+            </p></section>
+        <section id="section_ckz_xn2_hdb"><title>CDR Download Link</title>Use the API responded
+            random string as a component of a specific request address for downloading the CDR file.
+            The CDR file is in CSV format. <xref href="api_cdr.dita#reference_imy_gw3_gdb">Check the
+                descriptions of CDR parameters</xref>.<p><b>CDR download link format</b>:</p><p
+                product="s-series">https://<varname>{pbx ip}</varname>:<varname>{https
+                    port}</varname>/api/v1.1.0/cdr/download?extid=<varname>{extid}</varname>&amp;starttime=<varname>{starttime}</varname>&amp;endtime=<varname>{endtime}</varname>&amp;token=<varname>{token}</varname>&amp;random=<varname>{random}</varname></p><p
+                product="cloudpbx">https://<varname>{pbx
+                    domain}</varname>/api/v1.1.0/cdr/download?extid=<varname>{extid}</varname>&amp;starttime=<varname>{starttime}</varname>&amp;endtime=<varname>{endtime}</varname>&amp;token=<varname>{token}</varname>&amp;random=<varname>{random}</varname></p><b>Download
+                link example</b>:<p product="s-series"
+                >https://192.168.5.150:8088/api/v1.1.0/cdr/download?extid=all&amp;starttime=2018-11-27
+                00:00:00&amp;endtime=2019-02-18
+                23:59:59&amp;token=48400f35207bb9c330a0bdaf4a5633e2&amp;random=0cbcf8917c41c61c6e9fd3e57ecdd467</p><p
+                product="cloudpbx">
+                https://yeastarcloudpbx.com/api/v1.1.0/api/v1.1.0/cdr/download?extid=all&amp;starttime=2018-11-27
+                00:00:00&amp;endtime=2019-02-18
+                23:59:59&amp;token=48400f35207bb9c330a0bdaf4a5633e2&amp;random=0cbcf8917c41c61c6e9fd3e57ecdd467</p></section>
+    </refbody>
+</reference>

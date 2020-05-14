@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_bpk_bw3_gdb">
+  <title>CallFailed</title>
+  <shortdesc>If failed to initiate a call, the PBX will send a CallFailed report to the application
+    server.</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note> Calls initiated by the API or placed on the IP phone will both be reported.
+          CallFailed report excludes calls that are routed to voicemail.</note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.33*"/>
+            <colspec colname="c3" colnum="3" colwidth="2.92*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row>
+                <entry>reason</entry>
+                <entry>String</entry>
+                <entry>Call failure reason.<ul id="ul_v4z_ws4_t2b">
+                    <li>NO Outbound Restriction: The extension is not permitted to make an outbound
+                      call.</li>
+                    <li>Circuit/channel congestion: Engaged. The channel is in use.</li>
+                    <li>DND: The callee enabled DND.</li>
+                    <li>Line Unreachable: The external line is unreachable.</li>
+                    <li>User Busy: The callee declined the call.</li>
+                    <li>410 Gone: Away.</li>
+                    <li>404 NOT found: The callee number is not found.</li>
+                    <li>408 Request Time: The call is not answered or the callee powers off.</li>
+                    <li>480 Temporatily Unavailable: The call is not answered.</li>
+                    <li>484 Address incomplete: Incorrect format of callee number.</li>
+                    <li>486 Busy here: The callee is busy in a call.</li>
+                    <li>603 Declined: The call is timed out.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>members</entry>
+                <entry>Array <xref href="#reference_bpk_bw3_gdb/membertype" format="dita"
+                    >&lt;MemberType></xref></entry>
+                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <table frame="all" rowsep="1" colsep="1" id="table_hmk_1px_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>ext</entry>
+                    <entry>Object <xref href="#reference_bpk_bw3_gdb/extensioninfo" format="dita"
+                        >&lt;ExtensionInfo></xref></entry>
+                    <entry>Extension information.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+        <dlentry id="extensioninfo">
+          <dt>ExtensionInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_lhq_ynx_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/ext-number">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"callid": "1573097568.15",
+	"event": "CallFailed",
+	"reason": "NO Outbound Restriction",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-0000000a"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

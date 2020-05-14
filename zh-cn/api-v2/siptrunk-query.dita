@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_j5k_vdg_vgb">
+    <title>查询 SIP 中继详情</title>
+    <shortdesc>查询单个 SIP 中继、多个 SIP 中继或所有 SIP 中继的详细配置。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/query_siptrunk?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.21*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.37*"/>
+                    <colspec colname="c4" colnum="4" colwidth="5.53*"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>是否必选</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>id</entry>
+                            <entry>是</entry>
+                            <entry>Integer</entry>
+                            <entry>SIP 中继的唯一 ID。<p><b>取值范围</b>：<ul id="ul_zyn_yqz_pjb">
+                                        <li>单个 SIP 中继
+                                                id：查询指定中继的配置。<p>例如：<codeph>"id":"15"</codeph></p></li>
+                                        <li>多个 SIP 中继 id：查询多个 SIP 中继的配置。多个 SIP 中继 id
+                                                  用半角逗号（,）隔开。<p>例如：<codeph>"id":"15,16"</codeph></p></li>
+                                        <li>
+                                            <p>all：查询所有 SIP 中继的配置。</p>
+                                        </li>
+                                    </ul></p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1.51*"/>
+                        <colspec colname="c4" colnum="3" colwidth="3.15*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_okb_xvy_kjb">
+                                        <li>Success：请求成功。</li>
+                                        <li>Failed：请求失败。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>trunks</entry>
+                                <entry>Array<xref href="#reference_j5k_vdg_vgb/trunkinfo"
+                                        format="dita">&lt;TrunkInfo></xref></entry>
+                                <entry>中继信息列表。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt id="trunkinfo">TrunkInfo</dt>
+                        <dd>支持三种中继：<xref href="#reference_j5k_vdg_vgb/register-sip-trunk-info"
+                                format="dita">注册中继信息</xref>、<xref
+                                href="#reference_j5k_vdg_vgb/peer-trunk-info" format="dita"
+                                >点对点中继信息</xref>和<xref
+                                href="#reference_j5k_vdg_vgb/account-trunk-info" format="dita"
+                                >账号中继信息</xref>。<p>
+                                <table frame="all" rowsep="1" colsep="1"
+                                    id="register-sip-trunk-info">
+                                    <title>注册中继信息</title>
+                                    <tgroup cols="3">
+                                        <colspec colname="c1" colnum="1" colwidth="2.06*"/>
+                                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                        <colspec colname="c3" colnum="3" colwidth="3.52*"/>
+                                        <thead>
+                                            <row>
+                                                <entry>参数</entry>
+                                                <entry>类型</entry>
+                                                <entry>描述</entry>
+                                            </row>
+                                        </thead>
+                                        <tbody>
+                                            <row>
+                                                <entry>id</entry>
+                                                <entry>Integer</entry>
+                                                <entry>中继的唯一 ID。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>trunkname</entry>
+                                                <entry>String</entry>
+                                                <entry>中继名称。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>trunktype</entry>
+                                                <entry>String</entry>
+                                                <entry>中继类型。<p>register：注册中继。</p></entry>
+                                            </row>
+                                            <row>
+                                                <entry>host</entry>
+                                                <entry>String</entry>
+                                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>port</entry>
+                                                <entry>String</entry>
+                                                <entry>中继的 SIP 端口。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>domain</entry>
+                                                <entry>String</entry>
+                                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>username</entry>
+                                                <entry>String</entry>
+                                                <entry>SIP 运营商提供的 SIP 账号。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>authname</entry>
+                                                <entry>String</entry>
+                                                <entry>SIP 运营商提供的 SIP 账号。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>fromuser</entry>
+                                                <entry>String</entry>
+                                                <entry>From 头域。<p>
+                                                  <note>如果 SIP 运营商不支持，则放空。</note>
+                                                  </p></entry>
+                                            </row>
+                                            <row>
+                                                <entry>password</entry>
+                                                <entry>String</entry>
+                                                <entry>SIP 账号的密码。</entry>
+                                            </row>
+                                            <row>
+                                                <entry>extensionsdod</entry>
+                                                <entry>String</entry>
+                                                <entry>
+                                                  <p>分机绑定的 DOD 号码。</p>
+                                                  <p>
+                                                  <ul id="extensionsdod">
+                                                  <li><b>绑定单个 DOD 号码</b>：<p><b>格式</b>：</p><p>
+                                                  <codeblock>"extensionsdod": "<varname>{dod_number}</varname>-<varname>{dod_name}</varname>-<varname>{extension_number}</varname>"</codeblock>
+                                                  </p><p><b>示例</b>：</p><p>
+                                                  <codeblock>"extensionsdod":"5503301-yeastar-1000"</codeblock>
+                                                  </p></li>
+                                                  </ul>
+                                                  </p>
+                                                  <p>
+                                                  <ul id="ul_vlz_ldt_pjb">
+                                                  <li><b>绑定多个 DOD 号码</b>：<p><b>格式</b>：</p><p>
+                                                  <codeblock>"extensionsdod":"<varname>{dod_number}</varname>-<varname>{dod_name}</varname>-<varname>{extension_number}</varname>"</codeblock>
+                                                  </p><p>多个 DOD 号码用半角逗号（,）隔开。</p><p><b>示例</b>：</p><p>
+                                                  <codeblock>"extensionsdod":"5503301-yeastar-1000,5503302-yeastar-1001"</codeblock>
+                                                  </p></li>
+                                                  </ul>
+                                                  </p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>extensionsgroupdod</entry>
+                                                <entry>String</entry>
+                                                <entry>分机组绑定的 DOD 号码。<ul id="extensionsgroupdod">
+                                                  <li><b>绑定单个 DOD 号码</b>：<p><b>格式</b>：</p><p>
+                                                  <codeblock>"extensionsgroupdod": "<varname>{dod_number}</varname>-<varname>{dod_name}</varname>-<varname>{extension_group_name}</varname>"</codeblock>
+                                                  </p><p><b>示例</b>：</p><p>
+                                                  <codeblock>"extensionsgroupdod":"5503301-yeastar-sales"</codeblock>
+                                                  </p></li>
+                                                  </ul><p>
+                                                  <ul id="ul_gnz_ldt_pjb">
+                                                  <li><b>绑定多个 DOD
+                                                  号码</b>：<p><b>格式</b>：</p><p><codeblock>"extensionsgroupdod":"<varname>{dod_number}</varname>-<varname>{dod_name}</varname>-<varname>{extension_group_name}</varname></codeblock>多个
+                                                  DOD 号码用半角逗号（,）隔开。</p><p><b>示例</b>：</p><p>
+                                                  <codeblock>"extensionsgroupdod":"5503301-yeastar-sales,5503302-yeastar-support"</codeblock>
+                                                  </p></li>
+                                                  </ul>
+                                                  </p></entry>
+                                            </row>
+                                        </tbody>
+                                    </tgroup>
+                                </table>
+                            </p></dd>
+                        <dd>
+                            <table frame="all" rowsep="1" colsep="1" id="peer-trunk-info">
+                                <title>点对点中继信息</title>
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1.71*"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="3" colwidth="3.4*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>Integer</entry>
+                                            <entry>中继的唯一 ID。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>String</entry>
+                                            <entry>中继名称。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>String</entry>
+                                            <entry>中继类型。<p>peer：点对点中继。</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>host</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>port</entry>
+                                            <entry>String</entry>
+                                            <entry>中继的 SIP 端口。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>domain</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>String</entry>
+                                            <entry>
+                                                <p>分机绑定的 DOD 号码。</p>
+                                                <p>
+                                                  <ul conref="#reference_j5k_vdg_vgb/extensionsdod"
+                                                  id="ul_mrj_p2t_pjb">
+                                                  <li/>
+                                                  </ul>
+                                                </p>
+                                            </entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>String</entry>
+                                            <entry>分机组绑定的 DOD 号码。<p>
+                                                  <ul
+                                                  conref="#reference_j5k_vdg_vgb/extensionsgroupdod"
+                                                  id="ul_qns_p2t_pjb">
+                                                  <li/>
+                                                  </ul>
+                                                </p></entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                        <dd>
+                            <table frame="all" rowsep="1" colsep="1" id="account-trunk-info">
+                                <title>账号中继信息</title>
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="2.47*"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="3" colwidth="4.25*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>Integer</entry>
+                                            <entry>中继的唯一 ID。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>String</entry>
+                                            <entry>中继名称。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>String</entry>
+                                            <entry>中继类型。<p>account：账号中继。</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>username</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的用户名。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>authname</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的认证名。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>password</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的密码。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>String</entry>
+                                            <entry>
+                                                <p>分机绑定的 DOD 号码。</p>
+                                                <ul conref="#reference_j5k_vdg_vgb/extensionsdod"
+                                                  id="ul_pzv_q2t_pjb">
+                                                  <li/>
+                                                </ul>
+                                            </entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>String</entry>
+                                            <entry>分机组绑定的 DOD 号码。<p>
+                                                  <ul
+                                                  conref="#reference_j5k_vdg_vgb/extensionsgroupdod"
+                                                  id="ul_tzp_r2t_pjb">
+                                                  <li/>
+                                                  </ul>
+                                                </p></entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>查询 id 为15的中继的详细信息。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/query_siptrunk?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "id": "15"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"trunks": [
+		{
+			"id": "15",
+			"trunkname": "test",
+			"trunktype": "peer",
+			"host": "192.168.6.36",
+			"port": "5060",
+			"domain": "192.168.6.36",
+			"extensionsdod": "",
+			"extensionsgroupdod": "5503301-yeastar-sales,5503302-yealink-support,"
+		}
+	]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_b2r_p3g_jjb">
+    <title>发起呼叫</title>
+    <shortdesc>通过本接口可以发起不同类型的呼叫。</shortdesc>
+    <refbody>
+        <section>
+            <p>通过该接口可以实现以下类型的呼叫：</p>
+            <p>
+                <ul id="ul_epz_crw_4jb">
+                    <li><b>分机呼叫</b><p>呼叫对象包括：分机、IVR、响铃组、队列、<ph product="k s-series">广播组（实时广播）、</ph>会议室、外部号码。</p></li>
+                </ul>
+                <ul id="ul_nvm_krw_4jb">
+                    <li><b>IVR 外呼</b>：IVR 作为主叫，呼叫外部号码。</li>
+                    <li><b>响铃组外呼</b>：响铃组作为主叫，呼叫外部号码。</li>
+                    <li><b>队列外呼</b>：队列作为主叫，呼叫外部号码。</li>
+                    <li><b>外线外呼</b>：外部号码作为主叫，呼叫另外一个外部号码。</li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_n3p_p5x_kjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref>/call/dial?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_uy2_y5x_kjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_q14_csy_kjb">
+                    <tgroup cols="4" align="left">
+                        <colspec colname="c1" colnum="1" colwidth="1.25*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*"/>
+                        <colspec colname="newCol3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c3" colnum="4" colwidth="4.62*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>caller</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>主叫号码。</entry>
+                            </row>
+                            <row>
+                                <entry>callee</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>被叫号码。<note>被叫号码为外部号码时，需匹配呼出路由规则。</note></entry>
+                            </row>
+                            <row>
+                                <entry>dialpermission</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>设置使用哪个分机号的权限呼出外线号码。<note>
+                                        <ul>
+                                            <li>当 <codeph>caller</codeph> 为分机号码时，无需设置
+                                                  <codeph>dialpermission</codeph> 。可直接使用分机权限呼出。</li>
+                                            <li>当 <codeph>caller</codeph> 不是分机号码时（例如响铃组或队列），必须设置
+                                                  <codeph>dialpermission</codeph>
+                                                为具备外呼权限的分机号码，借助分机的权限呼出外部号码。</li>
+                                        </ul>
+                                    </note></entry>
+                            </row>
+                            <row id="autoanswer">
+                                <entry>autoanswer</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>当 <codeph>caller</codeph>
+                                        为分机号码时，可以通过本项控制话机自动应答。即话机无需响铃，自动接听电话。<note>该功能仅在 SIP
+                                        话机支持的情况下可用。</note><p><uicontrol>取值范围</uicontrol>：<ul
+                                            id="ul_sl1_myy_kjb">
+                                            <li>yes：启用自动应答。</li>
+                                            <li>no：禁用自动应答。</li>
+                                        </ul></p><p><b>默认值</b>：no。</p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_itr_sbz_kjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_iwy_tbz_kjb">
+                    <tgroup cols="3" align="left">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1.69*"/>
+                        <colspec colname="c4" colnum="3" colwidth="5.39*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_p1j_kcz_kjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>callid</entry>
+                                <entry>String</entry>
+                                <entry>每个通话的唯一 ID。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_qjf_4cz_kjb">
+            <title>示例 </title>
+            <p><b>请求示例 </b></p>
+            <p>分机 1023 呼叫分机 2000。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/call/dial?token=55e169f41421df602d41a08c441bc948 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"caller": "1023",
+	"callee": "2000",
+	"autoanswer": "no"
+}</codeblock>
+            </p>
+            <p><b>响应示例 </b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"callid": "1571620483.18"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

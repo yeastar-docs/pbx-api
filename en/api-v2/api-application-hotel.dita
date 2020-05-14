@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-hotel">
+    <title>Hotel APIs </title>
+    <shortdesc>Connect Hotel Property Management System and <ph keyref="product_name"/> via API to
+        achieve automate hotel operations, such as extension management, wake-up service, statistics
+        for call and mini-bar consumption, change of room's clean status, <ph product="s-series">check-out</ph> and so
+        on.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <?oxy_comment_start author="Sunmy" timestamp="20200402T171837+0800" comment="Generally, most hotels use traditional PBX to offer guests the telecommunication service,with independent Hotel Property Management System,the staff has to manually maintain the guest data and operational data.It is prone to errors and inefficiency.
+......
+It is not only improve the service for guests to enjoy more call operations,also saves man-hours with a higher degree of operational automation, increases your staff productivity and efficiency." flag="done"?>
+                <dt>Scenario<?oxy_comment_end?></dt>
+                <dd>
+                    <p>Generally, most hotels use traditional PBX to offer guests telecommunication
+                        service. With independent Hotel Property Management System, staffs have to
+                        manually maintain guest data and operation data. It is prone to errors and
+                        inefficiency. </p>
+                    <p>With <ph keyref="product_name"/> API, you can integrate Hotel Property
+                        Management System with PBX. It not only improves the service for guests to
+                        enjoy more call operations, but also saves man-hours with a higher degree of
+                        operation automation, greatly increasing staffs' productivity and
+                        efficiency.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_aj1_4m5_xkb">
+            <title>Management for room extensions</title>
+            <p>When guests check in, the receptionist can associate guests with specific extensions,
+                and assign different extension functions and outbound call permissions to guests of
+                different levels. For receptionist, he/she can identify the caller and provide
+                professional service when receiving a guest call. For guests, they can enjoy
+                telecommunication service from PBX, such as free calls between hotel rooms,
+                <?oxy_comment_start author="Sunmy" timestamp="20200403T141015+0800" comment="为什么所有列举功能里面的 &quot;等&quot; 都被忽略掉了?
+没有等等的话，支持的功能就过于绝对了" flag="done"?>voicemail
+                feature and so on.<?oxy_comment_end?></p>
+            <p>
+                <ul>
+                    <li><b>Query extension list</b><p>
+                            <ol id="ol_m1g_bp5_xkb">
+                                <li>When the receptionist checks room extensions on Hotel Property
+                                    Management System, the system sends a query request of extension
+                                    list to API interface.</li>
+                                <li>After receiving the request, PBX sends extension list to Hotel
+                                    Property Management System. Then the receptionist can check room
+                                    extensions.</li>
+                            </ol>
+                        </p><p> For API interface, refer to <xref href="extension-list.dita">Query
+                                Extension List</xref>.</p><p><image
+                                href="../Images/pbx-api/api-hotel-query-extension.png" width="500"
+                                id="image_vvp_2rt_xkb"/></p></li>
+                    <li><b>Update extension settings</b><ol id="ol_cfl_dp5_xkb">
+                            <li>The receptionist enters guest’s information on Hotel Property
+                                Management System. The system sends an update request of extension
+                                settings to API interface, to change extension name to guest name,
+                                and assign extension functions according to guest level, such as
+                                voicemail and outbound permission of international calls.</li>
+                            <li>After receiving the request, PBX updates extension settings and
+                                responds result to Hotel Property Management System.</li>
+                        </ol><p> For API interface, refer to <xref href="extension-update.dita"
+                            />.</p><p><image href="../Images/pbx-api/api-hotel-edit-extension.png"
+                                width="500" id="image_idt_fyt_xkb"/></p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_xbx_355_xkb">
+            <title>Wake-up service</title>
+            <p>According to guest’s room number, date of stay, and wake-up demand, the receptionist
+                can set a personal wake-up call on Hotel Property Management System. The system will
+                place a timely call to guest's extension and play a voice prompt. The operation is
+                simple, and can be applied to room groups once set. With bulk and automate wake-up
+                service, hotels can improve service quality and increase employees' efficiency when
+                tourist groups check in. <ul id="ul_gcp_l55_xkb">
+                    <li><b>Add an alarm</b><p>
+                            <ol id="ol_lvj_r55_xkb">
+                                <li>On Hotel Property Management System, the receptionist can set
+                                    the ring method and the room which requires the wake-up service.
+                                    After setting, the system sends an alarm-setting request to API
+                                    interface, to set the ring method for specified extension.</li>
+                                <li>After receiving the request, PBX enables an alarm for the
+                                    specified extension, and responds result to Hotel Property
+                                    Management System.</li>
+                            </ol>
+                        </p><p> For API interface, refer to <xref href="wakeupcall-create.dita"
+                            />.</p><p><image href="../Images/pbx-api/api-hotel-add-clock.png"
+                                width="500" id="image_w5b_ncv_xkb"/></p></li>
+                    <li><b>Query an alarm</b><ol id="ol_gh3_cy5_xkb">
+                            <li>When the receptionist checks alarm settings for specific extension
+                                on Hotel Property Management System, the system sends an alarm-query
+                                request to API interface.</li>
+                            <li>After receiving the request, PBX sends the corresponding alarm
+                                information to Hotel Property Management System, and the
+                                receptionist can view the alarm information.</li>
+                        </ol><p> For API interface, refer to <xref href="wakeupcall-query.dita"
+                                >Query an alarm</xref>.</p><p><image
+                                href="../Images/pbx-api/api-hotel-query-clock.png" width="500"
+                                id="image_owc_2dv_xkb"/></p></li>
+                    <li><b>Update an alarm</b><ol id="ol_ult_1z5_xkb">
+                            <li>When the receptionist updates alarm settings for specific extension
+                                on Hotel Property Management System, the system sends an
+                                alarm-update request for specific extension to API interface.</li>
+                            <li>After receiving the request, PBX updates the extension’s alarm
+                                settings, and responds result to Hotel Property Management
+                                System.</li>
+                        </ol><p> For API interface, refer to <xref href="wakeupcall-update.dita"
+                                >Edit an alarm</xref>.</p><p><image
+                                href="../Images/pbx-api/api-hotel-edit-clock.png" width="500"
+                                id="image_u3r_pdv_xkb"/></p></li>
+                    <li><b>Delete an alarm</b><ol id="ol_yyl_3z5_xkb">
+                            <li>If a guest doesn't need wake-up service any more, the receptionist
+                                can delete the alarms. Hotel Property Management System sends an
+                                alarm-deletion request for specific extension to API interface.</li>
+                            <li>After receiving the request, PBX deletes the extension’s alarms, and
+                                responds result to Hotel Property Management System.</li>
+                        </ol><p> For API interface, refer to <xref href="wakeupcall-delete.dita"
+                                >Delete an alarm</xref>.</p><p><image
+                                href="../Images/pbx-api/api-hotel-delete-clock.png" width="500"
+                                id="image_nm5_bhv_xkb"/></p></li>
+                </ul></p>
+        </section>
+        <section id="section_uq1_gmv_xkb">
+            <title>Call statistics</title>
+            <p>When a guest ends a call, the PBX immediately sends a <xref href="event-NewCdr.dita"
+                /> report to Hotel Property Management System, so that the system can record the
+                guest's call activities in real time.</p>
+            <p><image href="../Images/pbx-api/api-hotel-send-cdr.png" width="650"
+                    id="image_fwt_rlv_xkb"/></p>
+        </section>
+        <section id="section_arq_hmv_xkb">
+            <title>Statistics for mini-bar consumption</title>
+            <p>When a guest checks out, the hotel staff can dial mini-bar code on the phone to
+                record the mini-bar consumption, which not only improves work efficiency but also
+                saves waiting time for the guest.<ol id="ol_jkn_vmv_xkb">
+                    <li>After checking total consumption of mini-bar items, the hotel staff can dial
+                        mini-bar code on the phone, and enter item codes and quantities according to
+                        voice prompt.</li>
+                    <li>Based on the gathered key information, PBX generates a <xref
+                            href="event-DTMF.dita">Keypress Report</xref> and sends the report to
+                        Hotel Property Management System. Therefore, the guest's total consumption
+                        can be recorded automatically and quickly on the system.</li>
+                </ol></p>
+            <p><image href="../Images/pbx-api/api-hotel-mini-bar.png" width="650"
+                    id="image_tqg_hrv_xkb"/></p>
+            <p><b>DTMF report example</b></p>
+            <p>Extension 2003 dials mini-bar code 778, enters item code 123456789, and enters
+                quantity 2.</p>
+            <codeblock>{
+	"action": "DTMF",
+	"callid": "1575425107.149",
+	"call": [
+		{
+			"ext": {
+				"extid": "2003"
+			}
+		}
+	],
+	"infos": "778*123456789*2",
+	"sn": "369462038851"
+}</codeblock>
+        
+        <dl>
+            <dlentry>
+                <dt>Set mini-bar operations and voice prompts</dt>
+                <dd>Contact Yeastar Support to obtain mini-bar configuration file. In this example,
+                        we use <xref
+                            href="http://help.yeastar.com/download/docs/api/extensions_support.conf"
+                            format="html" scope="external">extensions_support.conf</xref>.</dd>
+                <dd>
+                    <ol id="ol_wfz_ytv_xkb">
+                        <li>Set operations for mini-bar.<ol id="ol_xfz_ytv_xkb">
+                                    <li>Log in PBX web page, use FTP or SSH to configure operations
+                                        for room status change.<ul id="ul_yfz_ytv_xkb">
+                                            <li>FTP: Upload extensions_support.conf to FTP directory
+                                                  <filepath>/support/customcfg/</filepath>.</li>
+                                            <li>SSH: Go to
+                                                  <filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>,
+                                                and configure extensions_support.conf.<p>
+                                                  <codeblock outputclass="language-xml">[hotelba]
+exten = 778,1,NoOp(778)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)                       // 9-digit item code
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Goto(h,1)                   // hang up if no item ID entries for 3 times
+exten = check,1,Macro(productlist,${digito},1)
+same = n,Goto(778,2)
+exten = h,1,Hangup() 
+
+[macro-productlist]
+exten = s,1,Set(product_id=${ARG1})
+same = n,Background(product_idc)   // The item ID you entered is 
+same = n,SayDigits(${product_id})
+same = n,Background(product_num)
+same = n,Read(digito,,2,,,4)                      // double-digit quantity,timeout 4s
+same = n,Gotoif($[${LEN(${digito})}>0]?num,1)
+same = n,Background(product_num)
+same = n,Read(digito,,2,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?num,1)
+same = n,Background(product_num)           // If no quantity entries for 2 times, cancel the operation and return
+exten = num,1,Set(product_num=${digito})
+same = n,Background(product_numc)         //The quantity you entered is     
+same = n,SayDigits(${product_num})         //  
+same = n,Goto(confirm,1)
+exten = confirm,1,Background(confirm)
+same = n,Read(digito,,1,,,4)
+same = n,Gotoif($[${digito}=1]?yes,1)      //Press 1 to confirm
+same = n,Gotoif($[${digito}=*]?778,1)      //Press * to return
+same = n,Gotoif($[${digito}=9]?h,1)        //Press 9 to end the call
+same = n,Background(vm-goodbye)
+exten = yes,1,UserEvent(DtmfEndString,Info: 778*${product_id}*${product_num})   // send DTMF string 
+exten = yes,2,Background(success)    //enter success 
+exten = h,1,hangup()</codeblock>
+                                                </p></li>
+                                        </ul></li>
+                                </ol></li>
+                        <li>Set voice prompt to be played when recording mini-bar items.<p>You can
+                                    use <xref
+                                        href="http://help.yeastar.com/download/docs/api/hotel-prompts.zip"
+                                        format="zip" scope="external">hotel prompts</xref> or
+                                    customize your voice prompt, and upload the file to
+                                        <filepath>/ysapps/pbxcenter/var/lib/asterisk/sounds/zh/</filepath>
+                                    via FTP.<note>The voice prompt must be in "8K 16Bit mono wav"
+                                        format. Synthetic speech is allowed.</note></p><p>
+                                    <table frame="all" rowsep="1" colsep="1" id="table_zfz_ytv_xkb">
+                                        <tgroup cols="2" align="center">
+                                            <colspec colname="c1" colnum="1" colwidth="96pt"/>
+                                            <colspec colname="c2" colnum="2" colwidth="264pt"/>
+                                            <thead>
+                                                <row>
+                                                  <entry>Filename</entry>
+                                                  <entry>Voice message</entry>
+                                                </row>
+                                            </thead>
+                                            <tbody>
+                                                <row>
+                                                  <entry>
+                                                  <p>confirm.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Press 1 to confirm, press * to cancel and
+                                                  return</p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>playnum.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>The item ID you entered is </p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>pro_name.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Please enter item ID and quantity</p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>product_id.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Please enter item ID</p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>product_idc.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>The item ID you entered is </p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>product_num.wav</p>
+                                                  </entry>
+                                                  <entry>Please enter quantity</entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>product_numc.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>The quantity you entered is </p>
+                                                  </entry>
+                                                </row>
+                                                <row>
+                                                  <entry>
+                                                  <p>success.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Enter success</p>
+                                                  </entry>
+                                                </row>
+                                            </tbody>
+                                        </tgroup>
+                                    </table>
+                                </p></li>
+                    </ol>
+                </dd>
+            </dlentry>
+        </dl>
+        </section>
+        <section id="section_zn4_b5v_xkb">
+            <title>Update room's clean status</title>
+            <p>After cleaning the room, the hotel staff can update the room's clean status by
+                dialing clean code on the phone; the receptionist can check room's clean status in
+                real time.</p>
+            <p>
+                <ol>
+                    <li>The hotel staff dials clean code on the phone, and enters status code
+                        according to voice prompt.</li>
+                    <li>Based on the gathered key information, PBX generates a <xref
+                            href="event-DTMF.dita">Keypress Report</xref> and sends the report to
+                        Hotel Property Management System. Therefore, the room's clean status can be
+                        updated on the system in real time.</li>
+                </ol>
+            </p>
+            <p><image href="../Images/pbx-api/api-hotel-clean.png" width="650"
+                    id="image_krd_lwv_xkb"/></p>
+            <p><b>Example of room status change</b></p>
+            <p>Hotel staff dials 777 on room phone, and presses *01 to set the room's cleaning
+                status to
+                "Clean".<codeblock>{
+	"event": "DTMF",
+	"callid": "1576311280.555",
+	"members": [
+		{
+			"ext": {
+				"number": "1001",
+				"channelid": "PJSIP/1001-0000013c",
+				"memberstatus": "ANSWERED"
+			}
+		}
+	],
+	"infos": "777*01",
+	"sn": "369462038851"
+}</codeblock></p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Set operations and voice prompts for room status change</dt>
+                        <dd>Contact Yeastar Support to obtain configuration file for room status
+                            change. In this example, we use <xref
+                                href="http://help.yeastar.com/download/docs/api/extensions_support.conf"
+                                format="html" scope="external">extensions_support.conf</xref>.</dd>
+                        <dd>
+                            <ol id="ol_jjy_hj4_xkb">
+                                <li>Set operations for room status change.<p>Log in PBX web page,
+                                        use FTP or SSH to configure operations for room status
+                                        change.</p><ul id="ul_fff_rj4_xkb">
+                                        <li>FTP: Upload extensions_support.conf  to FTP directory
+                                                <filepath>/support/customcfg/</filepath>.</li>
+                                        <li>SSH: Go to
+                                                <filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>,
+                                            configure
+                                            extensions_support.conf.<codeblock>[Local_Default_CallingRules]
+include = clean
+include = hotelba
+[clean]                                     
+exten = 777,1,NoOp(777)                     
+same = n,Goto(clean-action,play,1)        
+                                            
+[clean-action]                              
+exten = play,1,Background(roomstatus)       
+same = n,WaitExten(4)                      
+same = n,Goto(h,1)                         
+exten = *00,1,Playback(room)                
+exten = *00,n,SayDigits(${CALLERID(num)}) 
+exten = *00,n,UserEvent(DtmfEndString,Info:777${EXTEN})
+exten = *00,n,Playback(uncleaned)  //, set to unclean,bye
+exten = *00,n,Hangup()                                   
+exten = *01,1,Playback(room)                             
+exten = *01,n,SayDigits(${CALLERID(num)})                
+exten = *01,n,UserEvent(DtmfEndString,Info:777${EXTEN})  
+exten = *01,n,Playback(cleaned)   //,set to clean,bye
+exten = *01,n,Hangup()                                   
+exten = h,1,Hangup()                                     
+exten = i,1,Goto(always-Hangup,h,1)</codeblock></li>
+                                    </ul></li>
+                                <li>Set voice prompt to be played when changing room's cleaning
+                                        status.<p>You can use <xref
+                                            href="http://help.yeastar.com/download/docs/api/hotel-prompts.zip"
+                                            format="zip" scope="external">hotel prompts</xref> or
+                                        customize your voice prompt, and upload the file to
+                                            <filepath>/ysapps/pbxcenter/var/lib/asterisk/sounds/zh/</filepath>
+                                        via FTP.<note>The voice prompt must be in "8K 16Bit mono
+                                            wav" format. Synthetic speech is allowed.</note></p><p>
+                                        <table frame="all" rowsep="1" colsep="1"
+                                            id="table_f1q_fm4_xkb">
+                                            <tgroup cols="2" align="center">
+                                                <colspec colname="c1" colnum="1" colwidth="80.25pt"/>
+                                                <colspec colname="c2" colnum="2" colwidth="186pt"/>
+                                                <thead>
+                                                  <row>
+                                                  <entry>Filename</entry>
+                                                  <entry>Voice message</entry>
+                                                  </row>
+                                                </thead>
+                                                <tbody>
+                                                  <row>
+                                                  <entry>
+                                                  <p>cleaned.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Set to clean, bye</p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>uncleaned.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Set to unclean, bye</p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>roomstatus.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Please enter room status code </p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>room.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>Room</p>
+                                                  </entry>
+                                                  </row>
+                                                </tbody>
+                                            </tgroup>
+                                        </table>
+                                    </p></li>
+                            </ol>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_l1j_j5v_xkb" product="s-series">
+            <title>Check out</title>
+            <p>When the receptionist performs check-out for a guest, PBX can automatically reset the
+                room's extension settings, such as extension functions, outbound call permissions,
+                voicemail messages, alarms, and call logs. For tourist groups' check-out, this
+                operation can greatly increase the receptionist's work efficiency.</p>
+            <p>
+                <ol id="ol_q3r_lxv_xkb">
+                    <li>When the receptionist performs check-out for a guest on Hotel Property
+                        Management System, the system sends a check-out request to PBX.</li>
+                    <li>After receiving the request, PBX resets extension settings, alarms settings,
+                        and call logs, and responds result to Hotel Property Management
+                                System.<p><image href="../Images/pbx-api/api-hotel-check-out.png"
+                                width="650" id="image_rh5_3m1_ykb"/></p></li>
+                </ol>
+            </p>
+            <p> For API interface, refer to <xref href="hotel-checkout.dita"/>.</p>
+        </section>
+    </body>
+</topic>

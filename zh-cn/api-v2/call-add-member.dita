@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qyz_zjg_jjb">
+    <title>建立多方通话</title>
+    <shortdesc>通话过程中，调用此接口邀请新成员加入通话，建立三方通话或多方通话。</shortdesc>
+    <refbody>
+        <section id="section_anl_w35_ljb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref>/call/add_member?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section>
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.06*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.11*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="6.74*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="call-accept-inbound.dita#reference_gtw_4m2_hdb/channelid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>邀请加入通话的目标号码。<p>
+                                        <?oxy_comment_start author="carol" timestamp="20191114T171621+0800" comment="新增说明"?>
+                                        <note>每次调用接口，只能邀请一个成员。<?oxy_comment_end?></note>
+                                    </p></entry>
+                            </row>
+                            <row conref="call-transfer.dita#reference_kz1_lhg_vgb/dialpermission">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_bq3_zj5_ljb">
+            <title>响应参数</title>
+            <table conref="call-accept-inbound.dita#reference_gtw_4m2_hdb/table_response"
+                id="table_elc_wjz_pjb">
+                <tgroup cols="1">
+                    <tbody>
+                        <row>
+                            <entry/>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tq3_bl5_ljb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/call/add_member?token=1a4d2fb22b1942ca34a3691b0c7234ab HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"channelid": "PJSIP/1023-000000c0",
+	"number": "2023"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"callid": "1571646222.312"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

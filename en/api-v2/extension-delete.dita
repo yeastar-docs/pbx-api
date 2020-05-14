@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="extension-delete">
+    <title>Delete an Extension</title>
+    <shortdesc>Delete an extension, multiple extensions, or all extensions.</shortdesc>
+    <refbody>
+        <section id="section_byj_yv3_mjb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/extension/delete?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_jzm_nw3_mjb">
+            <title>Request parameters</title>
+            <table frame="all" id="table_bzh_4w3_mjb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.35*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.12*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c4" colnum="4" colwidth="3.91*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Required</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Yes</entry>
+                            <entry>Integer</entry>
+                            <entry>Extension number.<p><b>Valid values</b>:</p><ul
+                                    id="ul_yzn_zdw_4jb">
+                                    <li>An extension number: Delete the specified
+                                            extension.<p>Example:
+                                            <codeph>"number":"4000"</codeph></p></li>
+                                    <li>Multiple extension numbers: Delete multiple extensions.
+                                        Separate multiple extension numbers with
+                                            <codeph>,</codeph>.<p>Example:
+                                                <codeph>"number":"4000,4001"</codeph></p></li>
+                                    <li>all: Delete all extensions.<p>Example:
+                                                <codeph>"number":"all"</codeph></p></li>
+                                </ul></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_str_rw3_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_u23_sw3_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.23*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_sbg_ww3_mjb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>Delete extension 1000.</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/extension/delete?token=7afa377107feb9566654d5dd3a9a2a93
+Content-Type:application/json; charset=utf-8
+Content-Length:37
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1000"
+}</codeblock>
+            </p>
+        </section>
+        <section id="section_skc_cx3_mjb">
+            <title>Response example</title>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

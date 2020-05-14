@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nhs_vwx_nfb">
+    <title>Hotel Check Out</title>
+    <shortdesc>Through this interface, you can perform checkout for the hotel customers.</shortdesc>
+    <prolog>
+        <author type="creator">Carol</author>
+        <critdates>
+            <created date="2018/10/22"/>
+            <!--Carol-->
+            <revised modified="2018/10/22"/>
+            <!--Carol-->
+            <revised modified="2018/11/05"/>
+        </critdates>
+    </prolog>
+
+<refbody>
+        <section id="section_arq_lby_nfb">
+            <p>After checking out through this interface, PBX will do the following operations for
+                the hotel extension:</p>
+            <p>
+                <ul id="ul_evl_4p3_kfb">
+                    <li>Empty the extension's voicemail box.</li>
+                    <li>Delete the extension's outbound route permissions. </li>
+                    <li>Delete the extension's alarms.</li>
+                    <li>Reset the extension's <uicontrol>Caller ID name</uicontrol> setting.</li>
+                </ul>
+            </p>
+        </section>
+    
+    
+            <section id="section_off_dnd_gdb">
+                <title>Request Address </title>
+                <p product="cloudpbx">https://<codeph>{pbx domain}</codeph>/api/<codeph>{api
+                        version}</codeph>/hotel/checkout?token=<codeph>{token}</codeph></p>
+                <p product="s-series">https://<codeph>{pbx ip}</codeph>:<codeph>{https
+                        port}</codeph>/api/<codeph>{api
+                        version}</codeph>/hotel/checkout?token=<codeph>{token}</codeph></p>
+                <p>
+                    <note conref="api_login.dita#reference_blb_5ld_gdb/api_version_note"/>
+                </p>
+            </section>
+            <section id="section_xc5_q4d_gdb">
+                <title>Request Parameters</title>
+        <p>
+            <ul id="ul_fq5_mny_nfb">
+                <li>To check out multiple hotel rooms, separate the hotel extension number with
+                        comma <codeph>,</codeph>, For
+                                example:<p><codeph>{"extid":"1000,1001"}</codeph>.</p></li>
+            </ul>
+        </p>
+                <p>
+                    <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                        <tgroup cols="4">
+                            <colspec colname="c1" colnum="1" colwidth="2.24*"/>
+                            <colspec colname="c2" colnum="2" colwidth="1.5*"/>
+                            <colspec colname="c3" colnum="3" colwidth="1*"/>
+                            <colspec colname="c4" colnum="4" colwidth="7.28*"/>
+                            <thead>
+                                <row>
+                                    <entry>Name</entry>
+                                    <entry>Importance</entry>
+                                    <entry> Type</entry>
+                                    <entry> Description</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry><codeph>extid</codeph></entry>
+                                    <entry>Required</entry>
+                                    <entry>Int</entry>
+                                    <entry>The hotel extension number.</entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </p>
+            </section>
+            <section id="section_lv1_syk_gdb">
+                <title>Response Parameters</title>
+                <p>
+                    <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+                        <tgroup cols="4">
+                            <colspec colname="c1" colnum="1" colwidth="1*"/>
+                            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+                            <colspec colname="c3" colnum="3" colwidth="1.2*"/>
+                            <colspec colname="c4" colnum="4" colwidth="6.27*"/>
+                            <thead>
+                                <row>
+                                    <entry>Name</entry>
+                                    <entry>Importance</entry>
+                                    <entry>Type</entry>
+                                    <entry>Description</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry><codeph>status</codeph></entry>
+                                    <entry>Required</entry>
+                                    <entry>String</entry>
+                                    <entry>Request result:<ul id="ul_hfl_12r_52b2">
+                                            <li>Success.</li>
+                                            <li>Failed.</li>
+                                        </ul></entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </p>
+            </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>Check out the hotel room 4003.<codeblock outputclass="language-json">{
+    "extid": "4003"
+}</codeblock></p><b>Response
+                    Example</b><p>Check out successfully.</p><p>
+                        <codeblock outputclass="language-json">{
+    "status": "Success"
+}</codeblock>
+                </p></section>
+</refbody>
+</reference>

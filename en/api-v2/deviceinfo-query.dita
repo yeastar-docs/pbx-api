@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qbg_5l2_gdb">
+  <title>Query PBX Information</title>
+  <shortdesc>Query PBX information, such as model, firmware version, uptime, etc.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/deviceinfo/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb">
+      <title>Request parameters</title>
+      <p>No request parameters. Send the request URL directly to query PBX information.</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.66*"/>
+            <colspec colname="c4" colnum="3" colwidth="3.85*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success.</li>
+                    <li>Failed.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>deviceinfo</entry>
+                <entry>Object <xref href="#reference_qbg_5l2_gdb/DeviceInfo" format="dita"
+                    >&lt;DeviceInfo></xref></entry>
+                <entry>The device name.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry>
+          <dt id="DeviceInfo">DeviceInfo</dt>
+          <dd>
+            <table frame="all" id="table_jdh_mtx_rjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.45*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="4.72*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry>Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>devicename</entry>
+                    <entry>String</entry>
+                    <entry>The device name.</entry>
+                  </row>
+                  <row>
+                    <entry>sn</entry>
+                    <entry>String</entry>
+                    <entry>Serial number.</entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>hardwarever</entry>
+                    <entry>String</entry>
+                    <entry>Hardware version.</entry>
+                  </row>
+                  <row>
+                    <entry>firmwarever</entry>
+                    <entry>Integer</entry>
+                    <entry>Firmware version.</entry>
+                  </row>
+                  <row>
+                    <entry>systemtime</entry>
+                    <entry>String</entry>
+                    <entry>System time.</entry>
+                  </row>
+                  <row>
+                    <entry>uptime</entry>
+                    <entry>Integer</entry>
+                    <entry>Up time.</entry>
+                  </row>
+                  <row>
+                    <entry>extensionstatus</entry>
+                    <entry>String</entry>
+                    <entry>Number of added extensions/Total number of extensions.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_spy_qqd_gdb">
+      <title>Examples</title>
+      <p><b>Request example</b></p>
+      <p>
+        <codeblock>POST /api/v2.0.0/deviceinfo/query?token=6fc544c66fd06a1a6eb4b4c4547f6d06
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host:192.168.5.150</ph><ph product="cloudpbx">Host:api.yeastarcloud.com</ph></codeblock>
+      </p>
+      <p><b>Response example</b></p>
+      <p>
+        <codeblock product="cloudpbx" outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar Cloud PBX",
+		"sn": "36828053U0H2BTHG",
+		"firmwarever": "81.9.0.23",
+		"systemtime": "2019-10-15 20:07:32 UTC-8",
+		"uptime": "00:57:59",
+		"extensionstatus": "3/10"
+	}
+}</codeblock>
+      </p>
+      <codeblock product="s-series" outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar S300",
+		"sn": "369451090405",
+		"hardwarever": "V1.10 0000-0000",
+		"firmwarever": "30.11.0.11",
+		"systemtime": "2019-10-17 23:07:43 UTC-8",
+		"uptime": "00:32:59",
+		"extensionstatus": "22/500"
+	}
+}</codeblock>
+      <codeblock product="k2">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"deviceinfo": {
+		"devicename": "Yeastar S1000",
+		"sn": "368193754239",
+		"firmwarever": "80.5.0.29",
+		"systemtime": "2019-10-22 17:09:43 UTC-8",
+		"uptime": "00:20:59",
+		"extensionstatus": "150/2000"
+	}
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_imy_gw3_gdb">
+  <title>NewCdr（通话记录事件）</title>
+  <shortdesc>当通话结束后，PBX 向应用服务器实时发送通话详细记录（CDR）。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.57*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.06*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.04*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row>
+                <entry>timestart</entry>
+                <entry>String</entry>
+                <entry>开始时间。</entry>
+              </row>
+              <row>
+                <entry>callfrom</entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry>callto</entry>
+                <entry>Integer</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry>callduraction</entry>
+                <entry>String</entry>
+                <entry>通话时长。</entry>
+              </row>
+              <row>
+                <entry>talkduraction</entry>
+                <entry>String</entry>
+                <entry>接听时长。</entry>
+              </row>
+              <row>
+                <entry>srctrunkname</entry>
+                <entry>String</entry>
+                <entry>源中继名称。</entry>
+              </row>
+              <row>
+                <entry>desttrunkname</entry>
+                <entry>String</entry>
+                <entry>目的中继名称。</entry>
+              </row>
+              <row>
+                <entry>pincode</entry>
+                <entry>Integer</entry>
+                <entry>密码。</entry>
+              </row>
+              <?oxy_comment_start author="carol" timestamp="20191031T155457+0800" comment="API 1.0 需要同步更改" flag="done"?>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>通话状态。<p>
+                    <ul id="ul_lhw_zv4_4jb">
+                      <li>ANSWERD：被叫接听电话。</li>
+                      <li>NO ANSWER：被叫未接听电话。</li>
+                      <li>BUSY：被叫正在忙。</li>
+                      <li>VOICEMAIL：被叫号码未接听，且有新的语音留言。</li>
+                    </ul>
+                  </p></entry>
+              </row><?oxy_comment_end?>
+              <row>
+                <entry>type</entry>
+                <entry>String</entry>
+                <entry>通话类型。<ul id="ul_qfw_ztg_qjb">
+                    <li>内部通话</li>
+                    <li>外部呼入</li>
+                    <li>呼出外部</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>recording</entry>
+                <entry>String</entry>
+                <entry>全局录音文件名。</entry>
+              </row>
+              <row>
+                <entry>didnumber</entry>
+                <entry>Integer</entry>
+                <entry>来电用户拨打的号码。</entry>
+              </row>
+              <row>
+                <entry>agentringtime</entry>
+                <entry>String</entry>
+                <entry>队列坐席从响铃到接听的时间。</entry>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>分机 1023 呼叫分机 2023。</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+        "event": "NewCdr",
+	"callid": "1571897930.5",
+	"timestart": "2019-10-23 22:18:50",
+	"callfrom": "1023",
+	"callto": "2023",
+	"callduraction": "19",
+	"talkduraction": "14",
+	"srctrunkname": "",
+	"dsttrcunkname": "",
+	"pincode": "",
+	"status": "ANSWERED",
+	"type": "Internal",
+        "recording": "20191024201242-1571897930.5-203-201-Internal.wav",
+	"didnumber": "",
+	"agentringtime": "0",
+	"sn": "369451090405"    
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

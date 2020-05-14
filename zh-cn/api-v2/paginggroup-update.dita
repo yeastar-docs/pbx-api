@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_w3r_wxf_vgb">
+    <title>编辑广播组</title>
+    <shortdesc>更改广播组的设置。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/paginggroup/update?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_jb4_qpm_vgb">
+            <title>请求参数</title>
+            <p>根据不同类型的广播组，需要发送不同的请求参数。<ul id="ul_c2s_bpp_rjb">
+                    <li><xref href="#reference_w3r_wxf_vgb/paging" format="dita">单向传呼</xref></li>
+                    <li><xref href="#reference_w3r_wxf_vgb/intercom" format="dita">双向对讲</xref></li>
+                    <li><xref href="#reference_w3r_wxf_vgb/multicast" format="dita">单向组播</xref></li>
+                </ul><dl>
+                    <dlentry>
+                        <dt id="paging">单向传呼</dt>
+                        <dd>
+                            <table frame="all" id="table_gt2_php_rjb">
+                                <tgroup cols="4">
+                                    <colspec colname="c1" colnum="1" colwidth="2.79*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1.43*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="newCol3" colnum="3" colwidth="1*" rowsep="1"
+                                        colsep="1"/>
+                                    <colspec colname="c3" colnum="4" colwidth="6.04*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>是否必选</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>number</entry>
+                                            <entry>是</entry>
+                                            <entry>Integer</entry>
+                                            <entry>广播组号码。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>name</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>广播组名称。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>type</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>广播组类型。<p><b>取值</b>：</p><p>paging：单向传呼。广播组内的分机只能听到发起者的声音。</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>member</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>广播组成员。<p><b><?oxy_comment_start author="Becky" timestamp="20191118T150051+0800" comment="取值范围改取值，以下都是"?>取值<?oxy_comment_end?></b>：</p>选择分机为广播组成员。多个分机用半角逗号（,）隔开。<p>例如：<codeph>"member":"1000,1001,1002"</codeph>。</p><note><codeph>member</codeph>
+                                                  和 <codeph>membergroup</codeph>
+                                                至少选填一个。</note></entry>
+                                        </row>
+                                        <row>
+                                            <entry>membergroup</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>广播组成员。<p><b>取值</b>：</p>选择分机组为广播组成员。多个分机组用半角逗号（,）隔开。<p>例如：<codeph>"membergroup":"sales,support"</codeph>。</p><p>
+                                                  <note><codeph>member</codeph> 和
+                                                  <codeph>membergroup</codeph> 至少选填一个。</note>
+                                                </p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>enabledialtoanswer</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>是否开启 <uicontrol>按*应答</uicontrol>
+                                                  功能。启用该功能，广播组成员可以按*应答广播。应答后，该分机与发起者进行通话，其他分机的广播终止。<p><b>取值范围</b>：</p><p>
+                                                  <ul id="ul_pqp_vhp_rjb">
+                                                  <li>yes：开启。</li>
+                                                  <li>no：关闭。</li>
+                                                  </ul>
+                                                </p></entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl></p>
+            <dl>
+                <dlentry>
+                    <dt id="intercom">双向对讲</dt>
+                    <dd>
+                        <table frame="all" id="table_xtw_13p_rjb">
+                            <tgroup cols="4">
+                                <colspec colname="c1" colnum="1" colwidth="2.69*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.35*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c4" colnum="4" colwidth="6.01*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>是否必选</entry>
+                                        <entry> 类型</entry>
+                                        <entry> 描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>是</entry>
+                                        <entry>Integer</entry>
+                                        <entry>广播组号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>type</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组类型。<p><b>取值</b>：</p><p>intercom：双向对讲。广播组内的所有分机都可以进行通话并且都能听见彼此的声音。</p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>member</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组成员。<p><b>取值</b>：</p>选择分机为广播组成员。多个分机用半角逗号（,）隔开。<p>例如：<codeph>"member":"1000,1001,1002"</codeph>。</p><note><codeph>member</codeph>
+                                                和 <codeph>membergroup</codeph>
+                                            至少选填一个。</note></entry>
+                                    </row>
+                                    <row>
+                                        <entry>membergroup</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组成员。<p><b>取值</b>：</p>选择分机组为广播组成员。多个分机组用半角逗号（,）隔开。<p>例如：<codeph>"membergroup":"sales,support"</codeph>。</p><p>
+                                                <note><codeph>member</codeph> 和
+                                                  <codeph>membergroup</codeph> 至少选填一个。</note>
+                                            </p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>enabledialtoanswer</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>是否开启 <uicontrol>按*应答</uicontrol>
+                                                  功能。启用该功能，广播组成员可以按*应答广播。应答后，该分机与发起者进行通话，其他分机的广播终止。<p><b>取值范围</b>：</p><p>
+                                                <ul id="ul_icv_qlp_rjb">
+                                                  <li>yes：开启。</li>
+                                                  <li>no：关闭。</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="multicast">单向组播</dt>
+                    <dd>
+                        <table frame="all" id="table_bhg_g3p_rjb">
+                            <tgroup cols="4">
+                                <colspec colname="c1" colnum="1" colwidth="1.81*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.36*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c4" colnum="4" colwidth="4.14*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>是否必选</entry>
+                                        <entry> 类型</entry>
+                                        <entry> 描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>是</entry>
+                                        <entry>Integer</entry>
+                                        <entry>广播组号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>type</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>广播组类型。<p><b>取值</b>：</p><p>multicast：单向组播。向指定的组播地址发送语音，监听指定组播地址的话机均可以听到该广播。<note>使用本功能之前，你需要确认
+                                                  IP 话机是否支持本功能，并配置话机监听组播的地址。</note></p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>multicastip</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>发送广播的组播地址。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_q53_rg4_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_wzt_wkm_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/paginggroup/update?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph>Host: 192.168.5.150</ph>
+
+{
+	"number": "6303",
+	"name": "6303",
+	"type": "paging",
+	"member": "4001,4003,",
+	"membergroup": "sales,",
+	"enabledialtoanswer": "yes"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topic_gxx_fz2_jjb">
+    <title>API Requirements</title>
+    <shortdesc>This topic describes the requirements for using <ph keyref="product_name"/>
+        API.</shortdesc>
+    <conbody>
+        <section id="section_nz1_3mh_4jb">
+            <title>Requirements</title>
+            <p>Before using the API feature, make sure the following configurations are ready:</p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>PBX version</dt>
+                        <dd>This documentation is based on API 2.0.0, you need to upgrade PBX
+                            firmware to the version that is applicable to API 2.0.0.</dd>
+                        <dd product="cloudpbx">PBX version requirement: Firmware version 81.13.0.30
+                            or later.</dd>
+                        <dd product="s-series">PBX version requirement: Firmware version 30.13.0.30
+                            or later.</dd>
+                        <dd product="k2">PBX version requirement: Firmware version 80.13.0.30 or
+                            later.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>API enabled on PBX</dt>
+                        <dd>By default, API feature on PBX is disabled. Before using API feature,
+                            you need to enable API on <xref href="pbx-api-settings.dita"/> and
+                            configure the relevant settings.</dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>

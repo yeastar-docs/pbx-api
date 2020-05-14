@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_c12_pcf_gdb">
+  <title>ExtensionStatus</title>
+  <shortdesc>If
+      <?oxy_comment_start author="Becky" timestamp="20191121T111157+0800" comment="中文没有链接" flag="done"?><xref
+      href="pbx-api-settings.dita#topic_itj_qhf_jjb/StatusMonitor">Status
+    Monitor</xref><?oxy_comment_end?> is enabled for the extension on PBX web interface, the PBX
+    will send an ExtensionStatus report to the application server when extension status changes. </shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.13*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.03*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row>
+                <entry>extension</entry>
+                <entry>Integer</entry>
+                <entry>Number of extension whose status is changed.</entry>
+              </row>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>The current status of extension.<ul id="ul_d1l_4q4_mjb">
+                    <li>Ringing: When the extension receives an incoming call and is in the ringing
+                      state, the PBX will push the report to the application server.</li>
+                    <li>Busy: When the extension is placing a call or talking in a call, the PBX
+                      will push the report to the application server.</li>
+                    <li product="s-series">Idle: The FXS extension is in the idle state.<note>The
+                        state is only applicable to FXS extensions.</note></li>
+                    <li>Registered: The extension is registered.<p>The PBX will push the report to
+                        the application server in the following cases:<ul id="ul_hwc_2y2_qjb">
+                          <li>The SIP extension is changed from unregistered to registered.</li>
+                          <li>The registered address of the SIP extension is changed.</li>
+                          <li>The SIP extension state is changed from busy to idle.</li>
+                        </ul></p></li>
+                    <li>Unregistered: The extension is unregistered. When the SIP extension is
+                      changed from registered to unregistered,PBX will push the report to the
+                      application server.</li>
+                  </ul></entry>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example</title>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "ExtensionStatus",
+	"extension": "1023",
+	"status": "Ringing",
+	"sn": "369451090405"
+}</codeblock>
+    </section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

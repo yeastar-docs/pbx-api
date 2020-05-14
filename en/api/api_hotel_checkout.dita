@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nhs_vwx_nfb">
+    <title>Hotel Check Out</title>
+    <shortdesc>Through this interface, you can perform checkout for the hotel customers.</shortdesc>
+
+<refbody>
+        <section id="section_arq_lby_nfb">
+            <p>After checking out through this interface, PBX will do the following operations for
+                the hotel extension:</p>
+            <p>
+                <ul id="ul_evl_4p3_kfb">
+                    <li>Empty the extension's voicemail box.</li>
+                    <li>Delete the extension's outbound route permissions. </li>
+                    <li>Delete the extension's alarms.</li>
+                    <li>Reset the extension's <uicontrol>Caller ID name</uicontrol> setting.</li>
+                </ul>
+            </p>
+        </section>
+    
+    
+            <section id="section_off_dnd_gdb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/hotel/checkout?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+            <section id="section_xc5_q4d_gdb">
+                <title>Request Parameters</title>
+        <p>
+            <ul id="ul_fq5_mny_nfb">
+                <li>To check out multiple hotel rooms, separate the hotel extension number with
+                        comma <codeph>,</codeph>, For
+                                example:<p><codeph>{"extid":"1000,1001"}</codeph>.</p></li>
+            </ul>
+        </p>
+                <p>
+                    <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                        <tgroup cols="4">
+                            <colspec colname="c1" colnum="1" colwidth="2.24*"/>
+                            <colspec colname="c2" colnum="2" colwidth="1.5*"/>
+                            <colspec colname="c3" colnum="3" colwidth="1*"/>
+                            <colspec colname="c4" colnum="4" colwidth="7.28*"/>
+                            <thead>
+                                <row>
+                                    <entry>Name</entry>
+                                    <entry>Importance</entry>
+                                    <entry> Type</entry>
+                                    <entry> Description</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry><codeph>extid</codeph></entry>
+                                    <entry>Required</entry>
+                                    <entry>Int</entry>
+                                    <entry>The hotel extension number.</entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </p>
+            </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/hotel/checkout?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "extid": "4003"
+}</codeblock>
+            </p><b>Response Example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p></section>
+</refbody>
+</reference>

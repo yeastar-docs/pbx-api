@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_fkh_jhg_jjb">
+    <title>播放语音</title>
+    <shortdesc>通过本接口播放音乐文件给分机、外线号码或广播组。</shortdesc>
+    <refbody>
+        <section id="section_nr1_tzz_ljb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref>/call/playprompt?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_lw5_5zz_ljb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="2.55*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.82*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*"/>
+                    <colspec colname="c4" colnum="4" colwidth="8.67*"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>是否必选</entry>
+                            <entry> 类型</entry>
+                            <entry> 描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>是</entry>
+                            <entry>Integer</entry>
+                            <entry>播放音乐的目标号码。<p><b>取值范围</b>：<ul id="ul_fyl_c11_mjb">
+                                        <li>分机号。</li>
+                                        <li>外部号码。</li>
+                                        <li>广播组号码。</li>
+                                    </ul></p></entry>
+                        </row>
+                        <row>
+                            <entry>prompt</entry>
+                            <entry>是</entry>
+                            <entry>String</entry>
+                            <entry>播放的语音文件。<p><b>取值范围</b>：</p><p>
+                                    <ul id="ul_e2y_h11_mjb">
+                                        <li>播放 1 个语音文件：音频文件名称，如 music1。</li>
+                                        <li>播放多个语音文件：使用符号 “+” 链接多个文件，如 music1+music2。</li>
+                                    </ul>
+                                    <note>
+                                        <ul id="ul_o41_s11_mjb">
+                                            <li>音乐文件需要提前上传到 PBX。</li>
+                                            <li>文件名称必须包含字母，且不得包含符号 “+”。</li>
+                                        </ul>
+                                    </note>
+                                </p></entry>
+                        </row>
+                        <row>
+                            <entry>count</entry>
+                            <entry>否</entry>
+                            <entry>Integer</entry>
+                            <entry>播放语音文件的次数。</entry>
+                        </row>
+                        <row conref="call-transfer.dita#reference_kz1_lhg_vgb/dialpermission">
+                            <entry/>
+                        </row>
+                        <row conref="call-dial.dita#reference_b2r_p3g_jjb/autoanswer">
+                            <entry/>
+                        </row>
+                        <row>
+                            <entry>volume</entry>
+                            <entry>否</entry>
+                            <entry>Integer</entry>
+                            <entry>播放音乐的音量。<p><b>取值范围</b>：0~20。</p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_z1m_vb1_mjb">
+            <title>响应参数</title>
+            <table conref="call-accept-inbound.dita#reference_gtw_4m2_hdb/table_response"
+                id="table_uw2_qkz_pjb">
+                <tgroup cols="1">
+                    <tbody>
+                        <row>
+                            <entry/>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_hj5_4c1_mjb">
+            <title>示例</title>
+            <p><b>请求参数</b></p>
+            <codeblock outputclass="language-json">POST /api/v2.0.0/call/playprompt?token=16cfa49e417009cf1017aa284217f3ff HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1023",
+	"prompt": "music1+music2",
+	"count": "2"
+	"autoanswer": "yes",
+	"volume": "10"
+}</codeblock>
+            <p><b>响应参数</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"callid": "1571714617.6"
+}</codeblock></p>
+        </section>
+    </refbody>
+</reference>

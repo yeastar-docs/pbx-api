@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topic_ocs_zmc_wgb">
+    <title>API Events</title>
+    <shortdesc>This topic introduces the API events which are sent from <ph keyref="product_name"/>
+        to the application server. We introduce two types of API events and the relevant
+        communication protocols, communication ports, and interaction flow between the PBX and the
+        application server.</shortdesc>
+    <conbody>
+        <section id="section_tfk_ykg_4jb">
+            <title>API reports (events) settings</title>
+            <p>
+                <ph keyref="product_name"/> supports to send HTTP events and TCP events.. You can go
+                to <xref href="pbx-api-settings.dita"/>, and select the report method.</p>
+        </section>
+        <section id="http-report">
+            <title>HTTP events</title>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Communication protocol</dt>
+                        <dd>PBX sends HTTP events by short-lived TCP flows.</dd>
+                        <dd>A new TCP connection will be established every time PBX sends an event.
+                            The application server should disconnect the TCP connection after
+                            receiving an event.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Communication port</dt>
+                        <dd>When the application server sends the request of <xref href="login.dita"
+                            />, the <codeph>port</codeph> parameter should be specified in the API
+                            request. <codeph>port</codeph> defines the monitoring port to receive
+                            events.. PBX will send events to the application server through this
+                            port.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Event format</dt>
+                        <dd>JSON.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt> Requirements</dt>
+                        <dd>The application server must send the request of <xref href="login.dita"
+                            /> to log in PBX. Token validity must be ensured, or the application
+                            server can not receive the events.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Interaction flow</dt>
+                        <dd>The following figure shows the HTTP events flow between the application
+                            server and the PBX.</dd>
+                        <dd><image id="image_rlb_rhl_sjb"
+                                href="../Images/pbx-api/HTTP-events-flow-chart-en.png" width="650"
+                            /></dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_lth_hmg_4jb">
+            <title>TCP events</title>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Communication protocol</dt>
+                        <dd>PBX sends TCP events by keep-alive TCP flows.<p>PBX will send events
+                                continuously till the TCP connection disconnects. When the network
+                                error occurs or the application server disconnects the TCP
+                                connection, the application server needs to establish a new TCP
+                                connection with the PBX.</p></dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Communication port</dt>
+                        <dd>On the PBX <uicontrol>API</uicontrol> web interface, set the TCP port.
+                            PBX will send TCP events to the application server through this
+                            port.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Event format</dt>
+                        <dd>JSON.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Requirements</dt>
+                        <dd>The application server should establish a TCP connection with PBX, and
+                            send a login data to log in PBX. Only the login request is authorized
+                            will PBX send events.</dd>
+                        <dd id="tcp-login">Format of TCP login data is as follows:</dd>
+                        <dd>
+                            <codeblock>Action: login
+Username: <varname>{username}</varname>
+Secret: <varname>{password}</varname>
+Version: <varname>{version}</varname></codeblock>
+                        </dd>
+                        <dd>
+                            <ul id="ul_npk_syg_4jb">
+                                <li><varname>{username}</varname>: Username on PBX
+                                        <uicontrol>API</uicontrol> web interface (<menucascade>
+                                        <uicontrol>Settings</uicontrol>
+                                        <uicontrol>General</uicontrol>
+                                        <uicontrol>API</uicontrol>
+                                        <uicontrol>Username</uicontrol>
+                                    </menucascade>). </li>
+                                <li><varname>{password}</varname>: Clear-text password on PBX
+                                        <uicontrol>API</uicontrol> web interface (<menucascade>
+                                        <uicontrol>Settings</uicontrol>
+                                        <uicontrol>General</uicontrol>
+                                        <uicontrol>API</uicontrol>
+                                        <uicontrol>Password</uicontrol>
+                                    </menucascade>). </li>
+                                <li><varname>{version}</varname>: API version. In this
+                                    documentation, the API version is 2.0.0.</li>
+                            </ul>
+                        </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Interaction flow</dt>
+                        <dd>The application server acts as a TCP client, and the PBX acts as a TCP
+                            server. </dd>
+                        <dd>The following figure shows the TCP events flow between the PBX and the
+                            application server.</dd>
+                        <dd>
+                            <note>Login data in the following figure is for reference. You should
+                                send a TCP login packet using the username and password set on the
+                                PBX API web interface.</note>
+                        </dd>
+                        <dd><image id="image_xwt_mjl_sjb"
+                                href="../Images/pbx-api/TCP-events-flow-chart-en.png" width="650"
+                            /></dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>
+<?oxy_options track_changes="on"?>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_cpy_zv3_gdb">
+  <title>CallTransfer</title>
+  <shortdesc>When an active call is transferred by an extension user, the PBX will send a Transfer
+    report to the application server.</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <p>
+            <ul id="ul_inh_bwp_52b">
+              <li>The report only includes operations performed by the extensions, such as dialing
+                "*03" and "*3" feature codes or Call Forwarding settings.</li>
+              <li>Transfer controlled by <xref
+                href="../api-v2/call-transfer.dita"
+                  >call/transfer</xref> or <xref
+                    href="../api-v2/call-attended-transfer.dita"
+                  >call/attended_transfer</xref> will not be reported.</li>
+            </ul>
+          </p>
+        </note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.6*"/>
+            <colspec colname="c3" colnum="3" colwidth="2.95*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row>
+                <entry>members</entry>
+                <entry>Array <xref href="#reference_cpy_zv3_gdb/membertype" format="dita"
+                    >&lt;MemberType></xref></entry>
+                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <table frame="all" rowsep="1" colsep="1" id="table_hmk_1px_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>ext</entry>
+                    <entry>Object <xref href="#reference_cpy_zv3_gdb/extensioninfo" format="dita"
+                        >&lt;ExtensionInfo></xref></entry>
+                    <entry>Extension information.</entry>
+                  </row>
+                  <row>
+                    <entry>inbound</entry>
+                    <entry>Object <xref href="#reference_cpy_zv3_gdb/inboundinfo" format="dita"
+                        >&lt;InboundInfo></xref></entry>
+                    <entry>The information of inbound calls.</entry>
+                  </row>
+                  <row>
+                    <entry>outbound</entry>
+                    <entry>Object <xref href="#reference_cpy_zv3_gdb/outboundinfo" format="dita"
+                        >&lt;OutboundInfo></xref></entry>
+                    <entry>The information of outbound calls.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="extensioninfo">
+          <dt>ExtensionInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_lhq_ynx_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/ext-number">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="inboundinfo">
+          <dt>InboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_k1j_j4x_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-inbound">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+        <dlentry id="outboundinfo">
+          <dt>OutboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_phm_j4x_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-outbound">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report examples</title>
+      <p>Extension 2000 and extension 1020 are in a call, and extension 1020 transfersthe call to
+        another number.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+{
+	"event": "Tranfer",
+	"callid": "1571981311.105",
+	"members": [
+		{
+			"ext": {
+				"number": "2000",
+				"channelid": "PJSIP/2000-00000025"
+			}
+		},
+		{
+			"ext": {
+				"number": "1020",
+				"channelid": "PJSIP/1020-00000026"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+      <p>External number 12345678 calls extension 1020, and extension 1020 transfers the active call
+        to another number.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "Tranfer",
+	"callid": "1571981647.117",
+	"members": [
+		{
+			"inbound": {
+				"from": "12345678",
+				"to": "1020",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-0000002b"
+			}
+		},
+		{
+			"ext": {
+				"number": "1020",
+				"channelid": "PJSIP/1020-0000002c"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

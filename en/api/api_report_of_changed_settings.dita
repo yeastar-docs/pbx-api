@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_oyn_ncf_gdb">
+  <title>'Changed Settings' Report</title>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>The PBX will send a report to the application server when the PBX's configuration changes. </p>
+      <p>
+        <note>
+          <ul id="ul_tjw_2v2_hdb">
+            <li>The PBX supports sending the changes of  trunks and extensions.</li>
+            <li>The PBX will not send the detailed changes.</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Report Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="2.18*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="7.86*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>Configuration change.</entry>
+              </row>
+              <row>
+                <entry><codeph>type</codeph></entry>
+                <entry>String</entry>
+                <entry>Type.<ul id="ul_mqc_qv2_hdb">
+                    <li>extension</li>
+                    <li>trunk</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>trunkname</codeph></entry>
+                <entry>String</entry>
+                <entry>The changed trunk</entry>
+              </row>
+              <row>
+                <entry><codeph>operation</codeph></entry>
+                <entry>String</entry>
+                <entry>Operation.<ul id="ul_ykp_pv2_hdb">
+                    <li>add</li>
+                    <li>del</li>
+                    <li>update</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>The PBX's serial number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report Example</title>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "ConfigChange",
+    "type": "extension",
+    "extid": "1001",
+    "operation": "update",
+    "sn": "369362089179"
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

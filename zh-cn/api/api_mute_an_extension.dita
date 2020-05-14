@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_cby_l52_gdb">
+  <title>通话静音</title>
+  <shortdesc>PBX
+    分机通话时，可利用该接口将分机静音。即分机的通话方不能听到分机的声音，而分机可以听到对方的声音。如需取消静音，请使用取消静音接口。通话结束后，分机也会自动取消静音。</shortdesc>
+  <refbody>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/extension/mute?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>要静音分机的分机号。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"
+        ><title>实际示例</title><p><b>请求示例</b></p>请求将分机1000的通话静音。<codeblock outputclass="language-json">POST /api/v1.1.0/extension/mute?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "extid": "1000"
+}</codeblock><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

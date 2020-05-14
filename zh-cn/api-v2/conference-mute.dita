@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-mute-and-conference-unmute">
+    <title>静音会议室成员</title>
+    <shortdesc>静音会议室的单个、多个或所有成员。</shortdesc>
+    <refbody>
+        <section id="section_tnv_cfy_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/mute_member?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_nsl_dfy_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_qkx_jfy_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.38*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.09*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.45*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>会议室号码。</entry>
+                            </row>
+                            <row>
+                                <entry>operator</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>操作者号码。表示谁来执行静音成员的动作。<note>只有主持人有权限静音成员。</note></entry>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>成员号码。<p><b>取值范围</b>：</p><ul id="ul_x1x_3hy_mjb">
+                                        <li>单个号码：静音指定成员。<p>例如：<codeph>"members":"4000"</codeph></p></li>
+                                        <li>多个号码：静音多个成员。多个号码用半角逗号（,）隔开。<p>例如：<codeph>"members":"4000,4001"</codeph></p></li>
+                                        <li>all：静音所有成员。<p>例如：<codeph>"members":"all"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_uqv_dfy_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_gp2_sfy_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.35*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_sjv_2fy_mjb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>静音会议室6400的成员-分机3000。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/conference/mute_member?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6400",
+	"operator": "4000",
+	"members": "3000"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+        </section>
+    </refbody>
+</reference>

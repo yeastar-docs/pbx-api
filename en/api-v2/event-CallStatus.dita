@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_lv2_jfh_jjb">
+    <title>CallStatus</title>
+    <shortdesc>The PBX will send the status information of all calls to the application server in
+        real time.</shortdesc>
+    <refbody>
+        <section id="section_gh1_hr4_mjb">
+            <note>If you want to monitor the call status on a specified trunk, enable
+                    <uicontrol>Status Monitor</uicontrol> for Trunk on PBX API web interface</note>
+        </section>
+        <section>
+            <title>Report parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_iwy_tbz_kjb">
+                    <tgroup cols="3" align="left">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="2.08*"/>
+                        <colspec colname="c4" colnum="3" colwidth="4.99*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#reference_lv2_jfh_jjb/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry id="membertype">
+                    <dt>MemberType</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="2" colwidth="1.73*"/>
+                                    <colspec colname="c4" colnum="3" colwidth="2.96*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry> Type</entry>
+                                            <entry> Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>ext</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/extensioninfo"
+                                                  format="dita">&lt;ExtensionInfo></xref></entry>
+                                            <entry>Extension information.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>inbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/inboundinfo"
+                                                  format="dita">&lt;InboundInfo></xref></entry>
+                                            <entry>The information of inbound calls.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>outbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/outboundinfo"
+                                                  format="dita">&lt;OutboundInfo></xref></entry>
+                                            <entry>The information of outbound calls.</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry id="extensioninfo">
+                    <dt>ExtensionInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_extension"
+                            id="table_ezk_hnx_pjb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry id="inboundinfo">
+                    <dt>InboundInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_inbound"
+                            id="table_a1g_3nx_pjb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section>
+            <dl>
+                <dlentry id="outboundinfo">
+                    <dt>OutboundInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_outbound"
+                            id="table_ddx_3nx_pjb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_pfn_3r4_mjb">
+            <title>Report example</title>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "CallStatus",
+	"callid": "1571887584.74",
+	"members": [
+		{
+			"inbound": {
+				"from": "2000",
+				"to": "1023",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-00000030",
+				"memberstatus": "ALERT"
+			}
+		},
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000031",
+				"memberstatus": "RING"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

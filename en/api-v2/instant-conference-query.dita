@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="instant-conference-query">
+    <title>Query Instant Conference</title>
+    <shortdesc>Query settings of instant conferences which are called by API interface
+            <codeph>instant_conference/create</codeph>. You can query basic settings of an instant
+        conference, multiple instant conferences, or all instant conferences.</shortdesc>
+    <refbody>
+        <section id="section_uzw_nzv_mjb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/instant_conference/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_anr_pzv_mjb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" id="table_ktv_qzv_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1.35*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.54*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Instant conference number.<p><b>Valid values</b>:</p><ul
+                                        id="ul_rdl_lrx_mjb">
+                                        <li>A conference number: Query settings of the specified
+                                            instant conference.<p>Example:
+                                                  <codeph>"number":"6400"</codeph></p></li>
+                                        <li>Multiple conference numbers: Query settings of multiple
+                                            instant conferences. Separate multiple conference
+                                            numbers with <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"number":"6400,6401"</codeph></p></li>
+                                        <li>all: Query settings of all instant
+                                                conferences.<p>Example:
+                                                  <codeph>"number":"all"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_rcw_vzv_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_ibq_wzv_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.85*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.35*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>conferences</entry>
+                                <entry>Array <xref href="#instant-conference-query/ConferenceInfo"
+                                        format="dita">&lt;ConferenceInfo></xref></entry>
+                                <entry>Instant conference information.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="ConferenceInfo">ConferenceInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_okc_mb5_sjb">
+                            <tgroup cols="3" align="left">
+                                <colspec colname="c1" colnum="1" colwidth="1.67*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.99*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Instant conference number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>String</entry>
+                                        <entry>Instant conference name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>moderators</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Instant conference moderators.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>member</entry>
+                                        <entry>String</entry>
+                                        <entry>Instant conference members.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_fp3_b1w_mjb"><title>Examples</title><p><b>Request
+                example</b></p><p>Query settings of instant conference 6466.</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/instant_conference/query?token=3ddc40cf73c8ed477e4e466b044e9c89
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6466"
+}</codeblock>
+            </p><b>Response
+            example</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"conferences": [
+		{
+			"number": "6466",
+			"name": " 6466",
+			"moderators": "4000",
+			"members": "4001"
+		}
+	]
+}</codeblock></section>
+    </refbody>
+</reference>

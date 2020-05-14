@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ozw_wv3_gdb">
+  <title>‘通话被应答’报告</title>
+  <shortdesc>当分机呼出的通话被应答时，PBX 会向应用服务器发送“通话被应答”报告。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>应答和被应答事件同时一一对应，通话两方，主叫方为被应答，被叫方为应答，两个事件同时报告，报告时，主叫在被叫的前面。</note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="2.03*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="7.35*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>通话被应答事件。</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通通话的 id。</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>String</entry>
+                <entry>分机对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>分机号。</entry>
+              </row>
+              <row>
+                <entry><codeph>inboundid</codeph><p><codeph>outboundid</codeph></p></entry>
+                <entry>String</entry>
+                <entry>来电编码或去电编码。</entry>
+              </row>
+              <row>
+                <entry><codeph>outbound</codeph><p><codeph>inbound</codeph></p></entry>
+                <entry>String</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>来电的原始主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>来电的原始被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>通过哪条中继呼入。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX 的 SN 码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb"
+        ><title>报告示例</title>分机1005呼叫分机1006，分机1006接听电话。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "ANSWERED",
+    "callid": "1547375031.65",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1006"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock><p>分机
+        1005 呼叫外部号码 172838344，外部用户 172838344
+        接听电话。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "ANSWERED",
+    "callid": "1547375707.75",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        },
+        {
+            "outbound": {
+                "from": "1005",
+                "to": "172838344",
+                "trunk": "SPS-6-36",
+                "outboundid": "1547375707.76"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock></p></section>
+  </refbody>
+</reference>

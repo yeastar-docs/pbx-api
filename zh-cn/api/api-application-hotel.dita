@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-hotel">
+    <title>酒店客房管理应用方案</title>
+    <shortdesc>通过 API 对接 <ph keyref="product_name"/>
+        和酒店管理系统，实现酒店客房分机管理、叫醒服务、通话统计、迷你吧消费统计、房间清洁状态变更和退房的自动化管理。</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>应用场景</dt>
+                <dd>
+                    <p>传统酒店采用程控电话交换机为房客提供话音业务，依靠酒店管理系统，人工记录和传递客房信息，服务单一且联动性相对较差。<ph
+                            keyref="product_name"/> 提供的 API 接口，可以将酒店管理系统与 PBX
+                        结合，为房客提供多样化的话务处理，提升客户服务品质；同时，为服务员提供自动化的客房管理，提高工作效率，有效地减少人工成本，改进服务水平。</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_aj1_4m5_xkb">
+            <title>客房分机管理</title>
+            <p>房客入住时，前台可以根据房客等级，分配分机功能、设置呼叫权限、绑定房客信息等。当房客呼叫前台时，前台可以准确识别房客身份，提供专业服务；同时，房客可以享受 PBX
+                提供的通信服务，如内部客房分机互拨免费、语音信箱等。</p>
+            <p>
+                <ul>
+                    <li><b>获取分机列表</b><p>
+                            <ol id="ol_m1g_bp5_xkb">
+                                <li>前台在酒店管理系统上查看客房分机时，酒店管理系统向 PBX API 接口发送分机列表请求。</li>
+                                <li>PBX 收到请求，将分机列表信息发送给酒店管理系统，前台即可获取客房分机信息。</li>
+                            </ol>
+                        </p><p>对接接口请参阅 <xref
+                                href="api_query_extension_list.dita#reference_ibj_vr2_gdb"
+                                >查询分机列表</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-query-extension.png" width="500"
+                                id="image_vvp_2rt_xkb"/></p></li>
+                    <li><b>更改分机设置</b><ol id="ol_cfl_dp5_xkb">
+                            <li>前台在酒店管理系统上录入房客信息。酒店管理系统向 PBX API
+                                接口发送分机设置请求，将客房分机名称设置为房客名称，并根据房客等级设置分机功能，如语音信箱、国际长途呼叫权限等。</li>
+                            <li>PBX 收到请求，变更分机设置，并向酒店管理系统发送分机变更结果。</li>
+                        </ol><p>对接接口请参阅 <xref
+                                href="api_modify_an_extension.dita#reference_g3t_zr2_gdb"
+                                >编辑分机信息</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-edit-extension.png" width="500"
+                                id="image_idt_fyt_xkb"/></p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_xbx_355_xkb">
+            <title>叫醒服务</title>
+            <p>前台根据房客入住的房号、入住时长及叫醒需求，在酒店管理系统上设置闹铃方式，通过客房分机响铃和语音提示的方式，提供叫醒服务。操作简单，且一次设置，团房生效。尤其是旅游团房客入住时，批量自动化的叫醒服务可以提升酒店服务质量和服务员的工作效率。<ul
+                    id="ul_gcp_l55_xkb">
+                    <li><b>设置闹铃叫醒</b><p>
+                            <ol id="ol_lvj_r55_xkb">
+                                <li>前台在酒店管理系统上设置响铃方式以及需要响铃的客房，酒店管理系统向 PBX API
+                                    接口发送闹铃设置请求，设置响铃方式及应用的分机。</li>
+                                <li>PBX 收到请求，为分机启用闹铃，并向酒店管理系统发送闹铃设置结果。</li>
+                            </ol>
+                        </p><p>对接接口请参阅 <xref href="api_add_an_alarm.dita#reference_v5n_lz2_gdb"
+                                >添加闹铃</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-add-clock.png" width="500"
+                                id="image_w5b_ncv_xkb"/></p></li>
+                    <li><b>查询闹铃</b><ol id="ol_gh3_cy5_xkb">
+                            <li>前台在酒店管理系统上查看个别客房闹铃设置情况时，酒店管理系统向 PBX API 接口发送闹铃查询请求。</li>
+                            <li>PBX 收到请求，将分机对应的闹铃信息发送给酒店管理系统，前台即可获取客房闹铃设置情况。</li>
+                        </ol><p>对接接口请参阅 <xref href="api_query_an_alarm.dita#reference_wqf_nz2_gdb"
+                                >查询闹铃</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-query-clock.png" width="500"
+                                id="image_owc_2dv_xkb"/></p></li>
+                    <li><b>更改闹铃</b><ol id="ol_ult_1z5_xkb">
+                            <li>前台在酒店管理系统上修改个别客房闹铃设置时，酒店管理系统向 PBX API 接口发送特定分机的闹铃修改请求。</li>
+                            <li>PBX 收到请求，修改分机闹铃设置，并向酒店管理系统发送闹铃更改结果。</li>
+                        </ol><p>对接接口请参阅 <xref href="api_modifty_an_alarm.dita#reference_ymm_pz2_gdb"
+                                >更改闹铃设置</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-edit-clock.png" width="500"
+                                id="image_u3r_pdv_xkb"/></p></li>
+                    <li><b>删除闹铃</b><ol id="ol_yyl_3z5_xkb">
+                            <li>个别房客不再需要叫早服务时，前台在酒店管理系统上删除个别客房闹铃，酒店管理系统向 PBX API
+                                接口发送特定分机的闹铃删除请求。</li>
+                            <li>PBX 收到请求，删除分机闹铃，并向酒店管理系统发送闹铃删除结果。</li>
+                        </ol><p>对接接口请参阅 <xref href="api_delete_an_alarm.dita#reference_lnm_rz2_gdb"
+                                >删除闹铃</xref>。</p><p><image
+                                href="../Images/pbx-api/api-hotel-delete-clock.png" width="500"
+                                id="image_nm5_bhv_xkb"/></p></li>
+                </ul></p>
+        </section>
+        <section id="section_uq1_gmv_xkb">
+            <title>通话统计</title>
+            <p>房客通话结束，PBX 实时向系统发送 <xref href="api_cdr.dita#reference_imy_gw3_gdb">通话记录</xref>
+                报告（CDR），系统可以实时统计房客的通话情况。</p>
+            <p><image href="../Images/pbx-api/api-hotel-send-cdr.png" width="650"
+                    id="image_fwt_rlv_xkb"/></p>
+        </section>
+        <section id="section_arq_hmv_xkb">
+            <title>迷你吧消费统计</title>
+            <p>房客退房后，服务员可以通过客房分机录入房客消费信息，提高工作效率，节省房客的等待时间。<ol id="ol_jkn_vmv_xkb">
+                    <li>服务员清点迷你吧商品，统计客户消费清单后，通过客房分机拨打迷你吧号码，根据语音提示输入位商品编号和数量。</li>
+                    <li>PBX 根据收集到的按键信息，生成<xref href="api_keypress.dita"
+                        >按键信息报告</xref>，发送给酒店管理系统，实现客户消费清单快速录入。</li>
+                </ol></p>
+            <p><image href="../Images/pbx-api/api-hotel-mini-bar.png" width="650"
+                    id="image_tqg_hrv_xkb"/></p>
+            <p><b>DTMF 按键报告示例</b></p>
+            <p>分机（2003）拨打迷你吧号码 778，输入商品编码（123456789）个数 2。</p>
+            <codeblock>{
+	"action": "DTMF",
+	"callid": "1575425107.149",
+	"call": [
+		{
+			"ext": {
+				"extid": "203"
+			}
+		}
+	],
+	"infos": "778*123456789*2",
+	"sn": "369462038851"
+}</codeblock>
+        
+        <dl>
+            <dlentry>
+                <dt>设置迷你吧操作和语音提示</dt>
+                <dd>联系朗视技术支持获取迷你吧操作的配置文件。本文示例使用 <xref
+                        href="http://help.yeastar.com/download/docs/api/extensions_support.conf"
+                        format="html" scope="external">extensions_support.conf</xref>。</dd>
+                <dd>
+                    <ol id="ol_wfz_ytv_xkb">
+                        <li>设置迷你吧商品录入操作。<ol id="ol_xfz_ytv_xkb">
+                                <li>登录 PBX 网页，使用 FTP 或 SSH 方式配置房态变更操作。<ul id="ul_yfz_ytv_xkb">
+                                        <li>FTP：上传 extensions_support.conf  到 FTP 目录
+                                                <filepath>/support/customcfg/</filepath>。</li>
+                                        <li>SSH：进入<filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>，编辑
+                                            extensions_support.conf  文件。<p>
+                                                <codeblock outputclass="language-xml">[hotelba]
+exten = 778,1,NoOp(778)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)                       // 9位商品编号 
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Background(product_id)
+same = n,Read(digito,,9,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?check,1)
+same = n,Goto(h,1)                   //三次没有输入商品编号，则挂断 
+exten = check,1,Macro(productlist,${digito},1)
+same = n,Goto(778,2)
+exten = h,1,Hangup() 
+
+[macro-productlist]
+exten = s,1,Set(product_id=${ARG1})
+same = n,Background(product_idc)   //您输入的商品编码是
+same = n,SayDigits(${product_id})
+same = n,Background(product_num)
+same = n,Read(digito,,2,,,4)                      // 2位商品个数，超时4秒 
+same = n,Gotoif($[${LEN(${digito})}>0]?num,1)
+same = n,Background(product_num)
+same = n,Read(digito,,2,,,4)
+same = n,Gotoif($[${LEN(${digito})}>0]?num,1)
+same = n,Background(product_num)           //两次没有输入数量则返回上级菜单 
+exten = num,1,Set(product_num=${digito})
+same = n,Background(product_numc)         //   您输入的商品个数是...     
+same = n,SayDigits(${product_num})         //  
+same = n,Goto(confirm,1)
+exten = confirm,1,Background(confirm)
+same = n,Read(digito,,1,,,4)
+same = n,Gotoif($[${digito}=1]?yes,1)      //按1确认 
+same = n,Gotoif($[${digito}=*]?778,1)      //按*返回
+same = n,Gotoif($[${digito}=9]?h,1)        //按9挂掉 
+same = n,Background(vm-goodbye)
+exten = yes,1,UserEvent(DtmfEndString,Info: 778*${product_id}*${product_num})   //发出DTMF串 
+exten = yes,2,Background(success)    //输入成功
+exten = h,1,hangup()</codeblock>
+                                            </p></li>
+                                    </ul></li>
+                            </ol></li>
+                        <li>设置迷你吧商品录入语音提示。<p>你可以直接使用<xref
+                                    href="http://help.yeastar.com/download/docs/api/hotel-prompts.zip"
+                                    format="zip" scope="external">语音吧文件</xref>，或自行制作语音，通过 FTP 方式上传到
+                                    <filepath>/ysapps/pbxcenter/var/lib/asterisk/sounds/zh/</filepath>。<note>语音格式要求
+                                    8K 16Bit 单声道 wav 格式。可以使用合成语音。</note></p><p>
+                                <table frame="all" rowsep="1" colsep="1" id="table_zfz_ytv_xkb">
+                                    <tgroup cols="2" align="center">
+                                        <colspec colname="c1" colnum="1" colwidth="80.25pt"/>
+                                        <colspec colname="c2" colnum="2" colwidth="186pt"/>
+                                        <thead>
+                                            <row>
+                                                <entry>文件名称</entry>
+                                                <entry>语音内容</entry>
+                                            </row>
+                                        </thead>
+                                        <tbody>
+                                            <row>
+                                                <entry>
+                                                  <p>confirm.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>确认请按1，取消并返回请按*</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>playnum.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>您输入的编号是</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>pro_name.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>请输入商品编号和个数</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>product_id.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>请输入商品编码</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>product_idc.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>您输入的商品编码是</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>product_num.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>请输入商品个数</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>product_numc.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>您输入的商品个数是</p>
+                                                </entry>
+                                            </row>
+                                            <row>
+                                                <entry>
+                                                  <p>success.wav</p>
+                                                </entry>
+                                                <entry>
+                                                  <p>成功输入</p>
+                                                </entry>
+                                            </row>
+                                        </tbody>
+                                    </tgroup>
+                                </table>
+                            </p></li>
+                    </ol>
+                </dd>
+            </dlentry>
+        </dl>
+        </section>
+        <section id="section_zn4_b5v_xkb">
+            <title>房间清洁状态变更</title>
+            <p>保洁员清理客房后，可以通过客房分机修改房间清洁状态；前台可实时查看房间的清洁状态。</p>
+            <p>
+                <ol>
+                    <li>保洁员通过客房分机拨房态变更号码，根据语音提示输入房态号码。</li>
+                    <li>PBX 根据收集到的按键信息，生成<xref href="api_keypress.dita"
+                        >按键信息报告</xref>，发送给酒店管理系统，实现房态变更。</li>
+                </ol>
+            </p>
+            <p><image href="../Images/pbx-api/api-hotel-clean.png" width="650"
+                    id="image_krd_lwv_xkb"/></p>
+            <p><b>房态变更报告示例</b></p>
+            <p>话机拨打 777，根据语音提示，输入 *01
+                设置为已清洁。<codeblock>{
+	"action": "DTMF",
+	"callid": "1530768971.265",
+	"ext": {
+		"extid": "1002"
+	},
+	"infos": "777*01"
+}</codeblock></p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>设置房态变更操作和语音提示</dt>
+                        <dd>联系朗视技术支持获取房态变更操作的配置文件。本文示例使用 <xref
+                                href="http://help.yeastar.com/download/docs/api/extensions_support.conf"
+                                format="html" scope="external">extensions_support.conf</xref>。</dd>
+                        <dd>
+                            <ol id="ol_jjy_hj4_xkb">
+                                <li>设置房态变更操作。<p>登录 PBX 网页，使用 FTP 或 SSH 方式配置房态变更操作。</p><ul
+                                        id="ul_fff_rj4_xkb">
+                                        <li>FTP：上传 extensions_support.conf 到 FTP 目录
+                                                <filepath>/support/customcfg/</filepath>。</li>
+                                        <li>SSH：进入<filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>，编辑
+                                            extensions_support.conf
+                                            文件。<codeblock>[Local_Default_CallingRules]
+include = clean
+include = hotelba
+[clean]                                     
+exten = 777,1,NoOp(777)                     
+same = n,Goto(clean-action,play,1)        
+                                            
+[clean-action]                              
+exten = play,1,Background(roomstatus)       
+same = n,WaitExten(4)                      
+same = n,Goto(h,1)                         
+exten = *00,1,Playback(room)                
+exten = *00,n,SayDigits(${CALLERID(num)}) 
+exten = *00,n,UserEvent(DtmfEndString,Info:777${EXTEN})
+exten = *00,n,Playback(uncleaned)  //,设置为未清洁,再见
+exten = *00,n,Hangup()                                   
+exten = *01,1,Playback(room)                             
+exten = *01,n,SayDigits(${CALLERID(num)})                
+exten = *01,n,UserEvent(DtmfEndString,Info:777${EXTEN})  
+exten = *01,n,Playback(cleaned)   //,设置为已清洁,再见
+exten = *01,n,Hangup()                                   
+exten = h,1,Hangup()                                     
+exten = i,1,Goto(always-Hangup,h,1)</codeblock></li>
+                                    </ul></li>
+                                <li>设置房态变更语音提示。<p>你可以直接使用<xref
+                                            href="http://help.yeastar.com/download/docs/api/hotel-prompts.zip"
+                                            format="zip" scope="external">语音吧文件</xref>，或自行制作语音，通过
+                                        FTP 方式上传到
+                                            <filepath>/ysapps/pbxcenter/var/lib/asterisk/sounds/zh/</filepath>。<note>语音格式要求
+                                            8K 16Bit 单声道 wav 格式。可以使用合成语音。</note></p><p>
+                                        <table frame="all" rowsep="1" colsep="1"
+                                            id="table_f1q_fm4_xkb">
+                                            <tgroup cols="2" align="center">
+                                                <colspec colname="c1" colnum="1" colwidth="80.25pt"/>
+                                                <colspec colname="c2" colnum="2" colwidth="186pt"/>
+                                                <thead>
+                                                  <row>
+                                                  <entry>文件名称</entry>
+                                                  <entry>语音内容</entry>
+                                                  </row>
+                                                </thead>
+                                                <tbody>
+                                                  <row>
+                                                  <entry>
+                                                  <p>cleaned.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>设置为已清洁，再见</p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>uncleaned.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>设置为未清洁，再见</p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>roomstatus.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>请输入房间清洁状态</p>
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>
+                                                  <p>room.wav</p>
+                                                  </entry>
+                                                  <entry>
+                                                  <p>房间</p>
+                                                  </entry>
+                                                  </row>
+                                                </tbody>
+                                            </tgroup>
+                                        </table>
+                                    </p></li>
+                            </ol>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_l1j_j5v_xkb">
+            <title>退房</title>
+            <p>前台办理退房时，PBX
+                可以自动重置客房分机信息（分机功能、呼叫权限、语音信箱、闹铃、通话记录等）。特别是针对旅游团的退房办理，批量处理可以大大提高前台的工作效率。</p>
+            <p>
+                <ol id="ol_q3r_lxv_xkb">
+                    <li>前台在酒店管理系统上为房客办理退房，酒店管理系统向 PBX 发送退房请求。</li>
+                    <li>PBX 收到退房请求，清空分机设置、闹钟设置和通话记录后，向酒店管理系统发送退房结果。<p><image
+                                href="../Images/pbx-api/api-hotel-check-out.png" width="650"
+                                id="image_rh5_3m1_ykb"/></p></li>
+                </ol>
+            </p>
+            <p>对接接口请参阅 <xref href="api_checkout.dita#reference_xpz_pyp_mfb">酒店退房</xref>。</p>
+        </section>
+    </body>
+</topic>
+

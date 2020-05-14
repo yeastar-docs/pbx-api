@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_umf_t2g_vgb">
+    <title>添加呼入路由</title>
+    <shortdesc>添加并设置呼入路由。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/inroute/add?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_ydm_dd4_vgb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.62*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.27*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.64*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>name</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>呼入路由的名称。</entry>
+                            </row>
+                            <row>
+                                <entry>did</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>DID 匹配模式。</entry>
+                            </row>
+                            <row>
+                                <entry>caller_id</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>来电匹配模式。</entry>
+                            </row>
+                            <row>
+                                <entry>trunks</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>中继名称。多个中继名称用半角逗号（,）隔开。<p>例如：<codeph>"trunks":"trunk1,trunk2"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>desttype</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>目的地类型。<p><b>取值范围</b>：</p><p>
+                                        <ul id="ul_l4f_mc4_vgb">
+                                            <li>hangup：挂机。</li>
+                                            <li>extension：分机。</li>
+                                            <li>extrange：分机范围。</li>
+                                            <li>voicemail：语音邮箱。</li>
+                                            <li>ivr：IVR。</li>
+                                            <li>ringgroup：响铃组。</li>
+                                            <li>queue：队列。</li>
+                                            <li>conference：会议室。</li>
+                                            <li>disa：DISA。</li>
+                                            <li>callback：回拨。</li>
+                                            <li>outroute：呼出路由。</li>
+                                            <li>faxtoemail：传真到邮件。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>dest</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>具体目的地。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_hym_skb_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_zhk_tkb_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.09*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.69*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>id</entry>
+                                <entry>Integer</entry>
+                                <entry>呼入路由的唯一 ID。</entry>
+                            </row>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/inroute/add?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"name": "trunk1",
+	"did": "5503301",
+	"caller_id": "3000",
+	"trunks": "sipTrunk",
+	"desttype": "hangup"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>呼入路由添加成功后，系统会为呼入路由自动分配一个 id。</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"id": "8",
+	"status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

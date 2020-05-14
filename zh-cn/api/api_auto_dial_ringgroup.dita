@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mz2_zh2_hdb">
+  <title>自动拨号（响铃组）</title>
+  <shortdesc>PBX 会自动拨打外线号码，当外线被接听后，PBX 会将这通电话转接到指定的响铃组。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <ul id="ul_zlr_3g2_hdb">
+            <li>拨打外线电话，需使用分机的呼出权限呼出。</li>
+            <li>呼叫的外线号码要符合呼出路由的规则。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/ringgroup/dial_outbound?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.75*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.27*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.19*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>ringgroupid</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>响铃组号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>outto</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>要拨打的外线号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>fromext</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>采用哪个分机的呼出权限。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="4.92*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通通话的 id。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><b>请求示例</b><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/ringgroup/dial_outbound?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "ringgroupid": "6200",
+    "outto": "118396210850",
+    "fromext": "1000"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "callid": "1495698843.215"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

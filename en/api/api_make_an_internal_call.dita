@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_vkj_v52_gdb">
+  <title>Make an Internal Call</title>
+  <shortdesc>Make an internal call between two extensions.</shortdesc>
+  <refbody>
+    <section id="section_frq_wj2_gdb">
+      <p>Send the request to make extension A dial extension B. Extension A will ring first,
+        extension B will ring after extension A picks up the call. </p>
+      <p>If <codeph>autoanswer</codeph> is set to <codeph>yes</codeph>, extension A (the calling
+        party) will hear the ring back tone, extension B (the called party) will hear the
+        ringing.</p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/extension/dial_extension?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.38*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.12*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph> caller </codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The caller extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>callee</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The called extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>autoanswer</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Whether to auto answer the call or not. This parameter requires the SIP phone
+                  to support. <ul id="ul_uzm_5lm_gdb">
+                    <li>yes</li>
+                    <li>no</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="3" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique Identifier for the call.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/extension/dial_extension?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "caller": "1005",
+    "callee": "1006",
+    "autoanswer": "no"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "callid": "1547397927.431"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

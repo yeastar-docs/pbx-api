@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ggs_txf_vgb">
+    <title>Add a Paging Group</title>
+    <shortdesc>Add and configure a paging group.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/paginggroup/add?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section>
+            <title>Request Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.67*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.65*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry>Importance</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>number</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Paging group number.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>name</codeph></entry>
+                                <entry>Required </entry>
+                                <entry>String</entry>
+                                <entry>Paging group name.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>duplex</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Paging group type.<p><b>Valid values</b>:</p><p>
+                                        <ul id="ul_bs1_m1m_vgb">
+                                            <li><codeph>paging</codeph>: 1-Way Paging. Typical one
+                                                way for announcement only.</li>
+                                            <li><codeph>intercom</codeph>: 2-Way Intercom. Make the
+                                                paging duplex, allowing all users in group to talk
+                                                and be heard by all.</li>
+                                            <li><codeph>multicast</codeph>: 1-Way Multicast Paging.
+                                                Broadcast an one-way announcement to users whose
+                                                phones are programmed to listen to a broadcast
+                                                address. <p>
+                                                  <note>Make sure your IP phone supports multicast
+                                                  paging and the broadcast address has been
+                                                  configured on the phone.</note>
+                                                </p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4"><b>1-Way Paging </b>("duplex":
+                                    "paging")</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowexten</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Set extensions as paging group members. Separate multiple
+                                    extensions with <codeph>,</codeph>. <p>Example:
+                                            <codeph>"allowexten":
+                                    "1000,1001,1002"</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowextengroup</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Set extension groups as paging group members. Separate
+                                    multiple extension groups with <codeph>,</codeph>. <p>Example:
+                                            <codeph>"allowextengroup":
+                                    "sales,support"</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>enablekeyhanup</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Weather to enable <uicontrol>Dial * to Answer</uicontrol>
+                                        feature.<p>If enabled, paging group members can dial * to
+                                        answer an announcement, and the group announcement will
+                                        terminate, and the extension who dials * can have a private
+                                        call with the initiator.</p><p>
+                                        <ul id="ul_nx3_fgm_vgb">
+                                            <li><codeph>yes</codeph>: Enable.</li>
+                                            <li><codeph>no</codeph>: Disable.</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4"><b>2-Way Intercom </b>("duplex":
+                                    "intercom")</entry>
+                            </row>
+                            <row>
+                                <entry/>
+                                <entry/>
+                                <entry/>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry><codeph>allowexten</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Set extensions as paging group members. Separate multiple
+                                    extensions with <codeph>,</codeph>. <p>Example:
+                                            <codeph>"allowexten":
+                                    "1000,1001,1002"</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowextengroup</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Set extension groups as paging group members. Separate
+                                    multiple extension groups with <codeph>,</codeph>. <p>Example:
+                                            <codeph>"allowextengroup":
+                                    "sales,support"</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>enablekeyhanup</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Weather to enable <uicontrol>Dial * to Answer</uicontrol>
+                                        feature.<p>If enabled, paging group members can dial * to
+                                        answer an announcement, and the group announcement will
+                                        terminate, and the extension who dials * can have a private
+                                        call with the initiator.</p><p>
+                                        <ul id="ul_dch_bgs_nhb">
+                                            <li><codeph>yes</codeph>: Enable.</li>
+                                            <li><codeph>no</codeph>: Disable.</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4"><b>1-Way Multicast Paging</b>
+                                    ("duplex": "multicast")</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>multicastip</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>If the paging group type is <codeph>multicast</codeph>, set
+                                    the multicast IP address.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>enablekeyhanup</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Weather to enable <uicontrol>Dial * to Answer</uicontrol>
+                                        feature.<p>If enabled, paging group members can dial * to
+                                        answer an announcement, and the group announcement will
+                                        terminate, and the extension who dials * can have a private
+                                        call with the initiator.</p><p>
+                                        <ul id="ul_slm_fgs_nhb">
+                                            <li><codeph>yes</codeph>: Enable.</li>
+                                            <li><codeph>no</codeph>: Disable.</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_wzt_wkm_vgb">
+            <title>Examples</title>
+            <p><b>Request Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/paginggroup/add?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "number": "6300",
+    "name": "6300",
+    "duplex": "paging",
+    "allowexten": "1000,1001",
+    "allowextengroup": "",
+    "enablekeyhanup": "no",
+    "multicastip": ""
+}</codeblock>
+            </p>
+            <p><b>Response Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

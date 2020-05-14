@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_rbf_yq2_gdb">
+  <title>Error Code</title>
+  <refbody>
+    <table frame="all" rowsep="1" colsep="1" id="table_r2w_nsm_gdb">
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="5.45*"/>
+        <thead>
+          <row>
+            <entry>Error Code</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>10002</entry>
+            <entry>Unsupported XML data packet format.</entry>
+          </row>
+          <row>
+            <entry>10003</entry>
+            <entry>Unsupported API request.</entry>
+          </row>
+          <row>
+            <entry>10004</entry>
+            <entry>The required parameter is blank.</entry>
+          </row>
+          <row>
+            <entry>10006</entry>
+            <entry>The extension does not exist.</entry>
+          </row>
+          <row>
+            <entry>10007</entry>
+            <entry>The call does not exist.</entry>
+          </row>
+          <row>
+            <entry>10008</entry>
+            <entry>The extension isn't idle.</entry>
+          </row>
+          <row>
+            <entry>10009</entry>
+            <entry>The extension does not allow being monitored.</entry>
+          </row>
+          <row>
+            <entry>10010</entry>
+            <entry>The monitor mode does not match.</entry>
+          </row>
+          <row>
+            <entry>10011</entry>
+            <entry>The called number does not exist.</entry>
+          </row>
+          <row>
+            <entry>10012</entry>
+            <entry>The IVR does not exist.</entry>
+          </row>
+          <row>
+            <entry>10013</entry>
+            <entry>The queue does not exist.</entry>
+          </row>
+          <row>
+            <entry>10014</entry>
+            <entry>The ring group does not exist.</entry>
+          </row>
+          <row>
+            <entry>10015</entry>
+            <entry>The call is not connected.</entry>
+          </row>
+          <row>
+            <entry>10016</entry>
+            <entry>The call is accepted/call refuse times out.</entry>
+          </row>
+          <row>
+            <entry>10017</entry>
+            <entry>The extension configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10018</entry>
+            <entry>The IVR configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10019</entry>
+            <entry>The queue configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10020</entry>
+            <entry>Failed to add or modify an alarm.</entry>
+          </row>
+          <row>
+            <entry>10021</entry>
+            <entry>The alarm does not exist.</entry>
+          </row>
+          <row>
+            <entry>10022</entry>
+            <entry>The alarm already exists.</entry>
+          </row>
+          <row>
+            <entry>10023</entry>
+            <entry>The audio file does not exist.</entry>
+          </row>
+          <row>
+            <entry>10024</entry>
+            <entry>The extension does not have outbound call permission.</entry>
+          </row>
+          <row>
+            <entry>10025</entry>
+            <entry>High frequency of using system automatic apply of new configuration.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10026</entry>
+            <entry>The GSM module name doesn't exist.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10027</entry>
+            <entry>The GSM module is in use or there is no idle GSM Module</entry>
+          </row>
+          <row>
+            <entry>10028</entry>
+            <entry>The number cannot be blank.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10029</entry>
+            <entry>Fail to open SMS file.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10030</entry>
+            <entry>The SMS contents cannot be blank.</entry>
+          </row>
+          <row>
+            <entry>10031</entry>
+            <entry>The callee number doesn't meet the requirement.</entry>
+          </row>
+          <row>
+            <entry>10032</entry>
+            <entry>Wrong password.</entry>
+          </row>
+          <row>
+            <entry>10033</entry>
+            <entry>Fail to save the outbound route settings for extension.</entry>
+          </row>
+          <row>
+            <entry>20000</entry>
+            <entry>Only support <userinput>json</userinput> format.</entry>
+          </row>
+          <row>
+            <entry>20001</entry>
+            <entry>Only support <userinput>POST</userinput> request.</entry>
+          </row>
+          <row>
+            <entry>20002</entry>
+            <entry>User login failure (user locked out).</entry>
+          </row>
+          <row>
+            <entry>20003</entry>
+            <entry>User login failure (invalid username or password).</entry>
+          </row>
+          <row>
+            <entry>20004</entry>
+            <entry>No such Token.</entry>
+          </row>
+          <row>
+            <entry>20005</entry>
+            <entry>Token is blank.</entry>
+          </row>
+          <row>
+            <entry>20006</entry>
+            <entry>Token times out.</entry>
+          </row>
+          <row>
+            <entry>20007</entry>
+            <entry>Blank data.</entry>
+          </row>
+          <row>
+            <entry>20008</entry>
+            <entry>Wrong port.</entry>
+          </row>
+          <row>
+            <entry>20009</entry>
+            <entry>Blank request.</entry>
+          </row>
+          <row>
+            <entry>20010</entry>
+            <entry>Failed to send request to apisrv for processing.</entry>
+          </row>
+          <row>
+            <entry>20011</entry>
+            <entry>HeartBeat Configuration request failure.</entry>
+          </row>
+          <row>
+            <entry>20012</entry>
+            <entry>The random string of recording file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20013</entry>
+            <entry>Wrong captcha.</entry>
+          </row>
+          <row>
+            <entry>20014</entry>
+            <entry>The recording file does not exist.</entry>
+          </row>
+          <row>
+            <entry>20015</entry>
+            <entry>The setting of allowedip is wrong.</entry>
+          </row>
+          <row>
+            <entry>20016</entry>
+            <entry>The voicemail status is wrong.</entry>
+          </row>
+          <row>
+            <entry>20017</entry>
+            <entry>The random string of voicemail file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20018</entry>
+            <entry>The voicemail file does not exist.</entry>
+          </row>
+          <row>
+            <entry>20019</entry>
+            <entry>The CDR time format is wrong.</entry>
+          </row>
+          <row>
+            <entry>20020</entry>
+            <entry>The random string of CDR file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20021</entry>
+            <entry>The CDR file does not exist.</entry>
+          </row>
+          <row>
+            <entry>30001</entry>
+            <entry>API codes error.</entry>
+          </row>
+          <row>
+            <entry>30003</entry>
+            <entry>The apisrv dees not start up.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

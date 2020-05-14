@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_lv2_jfh_jjb">
+    <title>CallStatus（通话状态变更事件）</title>
+    <shortdesc>PBX 实时向应用服务器推送当前所有通话的状态信息。</shortdesc>
+    <refbody>
+        <section id="section_dmt_dt5_qjb">
+            <p>
+                <note>如需监控中继的通话状态，你需要在 PBX API 网页开启中继的 <uicontrol>状态监控</uicontrol>。</note>
+            </p>
+        </section>
+        <section id="section_gh1_hr4_mjb">
+            <title>报告参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.99*"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.34*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#reference_lv2_jfh_jjb/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/member-info"/>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry id="membertype">
+                    <dt>MemberType</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="2" colwidth="2.17*"/>
+                                    <colspec colname="c4" colnum="3" colwidth="3.44*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry> 类型</entry>
+                                            <entry> 描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>ext</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/extensioninfo"
+                                                  format="dita">&lt;ExtensionInfo></xref></entry>
+                                            <entry>分机的信息。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>inbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/inboundinfo"
+                                                  format="dita">&lt;InboundInfo></xref></entry>
+                                            <entry>外线来电的信息。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>outbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_lv2_jfh_jjb/outboundinfo"
+                                                  format="dita">&lt;OutboundInfo></xref></entry>
+                                            <entry>外线呼出的信息。</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+                <dlentry id="extensioninfo">
+                    <dt>ExtensionInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_extension"
+                            id="table_ozv_nnr_3lb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry id="inboundinfo">
+                    <dt>InboundInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_inboundinfo"
+                            id="table_dtk_4nr_3lb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry id="outboundinfo">
+                    <dt>OutboundInfo</dt>
+                    <dd>
+                        <table conref="call-query.dita#reference_a5v_rt2_gdb/table_outbound"
+                            id="table_hdb_pnr_3lb">
+                            <tgroup cols="1">
+                                <tbody>
+                                    <row>
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_pfn_3r4_mjb">
+            <title>报告示例</title>
+            <p>外部号码 12345678 拨打分机号码 1023，分机 1023 响铃。</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "CallStatus",
+	"callid": "1571887584.74",
+	"members": [
+		{
+			"inbound": {
+				"from": "12345678",
+				"to": "1023",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-00000030",
+				"memberstatus": "ALERT"
+			}
+		},
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000031",
+				"memberstatus": "RING"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

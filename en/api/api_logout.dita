@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_chw_zk2_gdb">
+  <title>Logout</title>
+  <refbody>
+    <section id="section_llv_fl2_gdb">
+      <p product="k2 s-series">The token used in the Request sample below is the token returned when
+        API login authentication is passed.</p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/logout?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_evg_14p_52b">
+      <title>Request Parameters</title>
+      <p>No request parameters. Only need to send the request address.</p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request Example</b></p><p>
+        <codeblock>POST /api/v1.1.0/logout?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p><b>Response
+      Example</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock></section>
+  </refbody>
+</reference>

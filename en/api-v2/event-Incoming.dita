@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_gkj_3w3_gdb">
+  <title>Incoming</title>
+  <shortdesc><?oxy_comment_start author="Becky" timestamp="20191120T162530+0800" comment="保持和前面描述一致"?>If
+      <uicontrol>Control Inbound Call Answering</uicontrol> is enabled for the trunk on PBX web
+    interface, PBX will send an Incoming report to the application server when an inbound call
+    through the trunk is accepted. </shortdesc><?oxy_comment_end?>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_iwy_tbz_kjb">
+          <tgroup cols="3" align="left">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="2.08*"/>
+            <colspec colname="c4" colnum="3" colwidth="4.99*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row>
+                <entry>members</entry>
+                <entry>Array <xref href="#reference_gkj_3w3_gdb/membertype" format="dita"
+                    >&lt;MemberType></xref></entry>
+                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1.73*"/>
+                  <colspec colname="c4" colnum="3" colwidth="2.96*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry>inbound</entry>
+                      <entry>Object <xref href="#reference_gkj_3w3_gdb/inboundinfo" format="dita"
+                          >&lt;InboundInfo></xref></entry>
+                      <entry>The information of inbound calls.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+        <dlentry id="inboundinfo">
+          <dt>InboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_unp_y3q_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1*"/>
+                  <colspec colname="c4" colnum="3" colwidth="5*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-inbound">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "Incoming",
+	"callid": "1571897079.3",
+	"members": [
+		{
+			"inbound": {
+				"from": "2000",
+				"to": "1023",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-00000002"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

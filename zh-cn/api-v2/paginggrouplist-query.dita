@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_shx_bxf_vgb">
+    <title>查询广播组列表</title>
+    <shortdesc>查询已创建的广播组。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/paginggrouplist/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <p>无参数，直接发送查询广播组列表的请求即可。</p>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_c4n_t44_qjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.93*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="2.96*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_awm_544_qjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>paginggrouplist</entry>
+                                <entry>Array <xref href="#reference_shx_bxf_vgb/PaginggrouplistInfo"
+                                        format="dita">&lt;PaginggroupInfo></xref></entry>
+                                <entry>广播组信息列表。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+                <dl>
+                    <dlentry>
+                        <dt id="PaginggrouplistInfo">PaginggroupInfo</dt>
+                        <dd>
+                            <table frame="all" id="table_drm_z44_qjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1.43*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c3" colnum="3" colwidth="3.13*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>number</entry>
+                                            <entry>Integer</entry>
+                                            <entry>广播组号码。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>name</entry>
+                                            <entry>String</entry>
+                                            <entry>广播组名称。</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section>
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/paginggrouplist/query?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+Host: 192.168.5.150</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"paginggrouplist": [
+		{
+			"number": "6300",
+			"name": "6300"
+		}
+	]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_oyn_ncf_gdb">
+  <title>ConfigChange（配置变更）</title>
+  <shortdesc>当 PBX 的配置发生变化时，PBX 会向应用服务器发送配置变更报告，以便于应用服务器及时更新和同步 PBX 的相关配置。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <ul id="ul_tjw_2v2_hdb">
+            <li>目前只支持发送分机和中继配置变更的报告。</li>
+            <li>PBX 只报告哪个分机或哪个中继配置有变更，具体变更信息，你需要登录 PBX 网页查看。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.74*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="6.07*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row>
+                <entry>type</entry>
+                <entry>String</entry>
+                <entry>变更类型。<ul id="ul_mqc_qv2_hdb">
+                    <li>extension：分机。</li>
+                    <li>trunk：中继。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>extid</entry>
+                <entry>Integer</entry>
+                <entry>配置有变更的分机号码。</entry>
+              </row>
+              <row>
+                <entry>trunkname</entry>
+                <entry>String</entry>
+                <entry>配置有变更的中继名称。</entry>
+              </row>
+              <row>
+                <entry>operation</entry>
+                <entry>String</entry>
+                <entry>操作类型。<ul id="ul_ykp_pv2_hdb">
+                    <li>add：添加。</li>
+                    <li>del：删除。</li>
+                    <li>update：更新。</li>
+                  </ul></entry>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+{
+	"event": "ConfigChange",
+	"type": "extension",
+	"extid": "1000",
+	"operation": "update",
+	"sn": "369451090405"
+}</codeblock>
+    </section>
+  </refbody>
+</reference>

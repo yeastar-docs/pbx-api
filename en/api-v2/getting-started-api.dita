@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_jwd_ssb_wgb">
+    <title>API Quick Start</title>
+    <shortdesc>This topic describes how to call APIs and check the events by Yeastar demo tool. </shortdesc>
+    <body>
+        <section id="section_efq_xln_4jb">
+            <title>Requirements</title>
+            <p>Before using API feature, make sure PBX firmware version meets the requirement and
+                the API feature is enabled.</p>
+            <p>For PBX firmware requirements, refer to <xref href="api-requirements.dita"/>.</p>
+            <p>For descriptions of PBX API settings, refer to <xref href="pbx-api-settings.dita"
+                />.</p>
+        </section>
+        <section id="section_if5_hl4_4jb">
+            <title>API demo </title>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Download API demo </dt>
+                        <dd><xref href="https://www.yeastar.com/download/API-Demo2.0.zip"
+                                format="zip" scope="external">Download Yeastar demo tool for API
+                                2.0</xref>.</dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>API demo overview</dt>
+                        <dd>See the following figure to get familiar with the user interface of the
+                            demo tool.</dd>
+                        <dd><image href="../Images/pbx-api/api-demo.png" id="image_ibz_kpr_rjb"
+                                width="700"/></dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_vmc_krn_4jb">
+            <title>Use API demo to call an API </title>
+            <p>The following takes <xref href="call-dial.dita#reference_b2r_p3g_jjb"
+                    >call/dial</xref> as an example API to call and check the relevant events.</p>
+            <p>
+                <note>Before calling the API, read the API references to understand its usage and
+                    check the required request parameters. If errors are reported when you call the
+                    API, you can check the <xref href="api_error_code.dita"/> for
+                    troubleshooting.</note>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt>API demo settings</dt>
+                    <dd>
+                        <ol>
+                            <li>In API demo, enter API version, the IP address of PBX, and the
+                                communication port.<p><image
+                                        href="../Images/pbx-api/api-demo-setup1.png" width="500"
+                                        id="image_k15_ctr_rjb"/></p><ul id="ul_flf_3n4_4jb">
+                                    <li><uicontrol>Version</uicontrol>: Enter API version
+                                            <i>2.0.0</i>.<p>
+                                            <note>In this documentation, all API interfaces and
+                                                events use API version 2.0.0.</note>
+                                        </p></li>
+                                </ul><p>
+                                    <ul id="ul_gqh_rm4_4jb">
+                                        <li><uicontrol>HTTP/HTTPS</uicontrol>: Select communication protocol.<p>
+                                                <note>In this example, we use HTTPS 8088 as
+                                                  communication port. If you change the web access
+                                                  protocol and port on PBX, you should enter
+                                                  corresponding protocol and port.</note>
+                                            </p></li>
+                                        <li><uicontrol>Destination</uicontrol>: Enter the IP address
+                                            of PBX.</li>
+                                        <li><uicontrol>Port</uicontrol>: Enter the web access port
+                                            of PBX. In this example, enter 8088.</li>
+                                    </ul>
+                                </p></li>
+                            <li>In API demo, configure the port that you want to monitor. Click
+                                    <uicontrol>Start the Server</uicontrol> to monitor the
+                                    port.<p>PBX will send events through this port.</p><p><image
+                                        href="../Images/pbx-api/api-demo-setup2.png" width="500"
+                                        id="image_wv3_qlm_sjb"/></p></li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <?oxy_comment_start author="carol" timestamp="20191118T160735+0800" comment="这边得拆分一下，中文同步修改。
+
+set up API authentication
+调用login
+
+Send API request
+调用call/dial" flag="done"?>
+                    <dt>S<?oxy_comment_end?>et up API authentication</dt>
+                    <dd>
+                        <p>
+                            <ol id="ol_xtm_ksv_tjb">
+                                <li>Call <xref href="login.dita#reference_blb_5ld_gdb">login</xref>
+                                    to get an API token.<p><image
+                                            href="../Images/pbx-api/api-demo-login.png" width="500"
+                                            id="image_lxh_w5r_rjb"/></p></li>
+                            </ol>
+                        </p>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Send API request</dt>
+                    <dd>
+                        <ol id="ol_psr_gsv_tjb">
+                            <li>Call <xref href="call-dial.dita#reference_b2r_p3g_jjb"
+                                    >call/dial</xref> to place a call to an extension.<p>In this example, extension 4001 calls extension 4003 out. The
+                                    request parameters are as
+                                    follows:<codeblock>{"caller":"4001","callee":"4003"}</codeblock></p><image
+                                    href="../Images/pbx-api/api-demo-calldial.png" width="500"
+                                    id="image_rqx_cwr_rjb"/></li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>Observe the API result</dt>
+                    <dd>
+                        <p>If the API interface is called successfully, the subsequent process
+                            should be as follows:</p>
+                        <ol id="ol_yd2_fr4_4jb">
+                            <li>Caller 4001 rings first.</li>
+                            <li>After extension 4001 answers the call, the callee 4003 rings.</li>
+                            <li>After extension 4003 answers the call, the call is established.</li>
+                            <li>The call ends if either party hangs up.</li>
+                        </ol>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt>Check events</dt>
+                    <dd>
+                        <p>After the API request is sent, PBX sends the CallStatus event and
+                            ExtensionStatus event.</p>
+                        <ul id="ul_cph_v1p_4jb">
+                            <li>For parameters description of CallStatus event, refer to <xref
+                                    href="event-CallStatus.dita"/>.</li>
+                            <li>For parameters description of ExtensionStatus event, refer to <xref
+                                    href="event-ExtensionStatus.dita"/>.</li>
+                        </ul>
+                        <p>After the call ends, PBX sends NewCdr event.</p>
+                        <p>
+                            <ul id="ul_pnd_w1p_4jb">
+                                <li>For parameters description of NewCdr event, refer to <xref
+                                        href="event-NewCdr.dita"/>.</li>
+                            </ul>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+    </body>
+</topic>

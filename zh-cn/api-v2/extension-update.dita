@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_g3t_zr2_gdb">
+  <title>修改分机</title>
+  <shortdesc> 修改分机的配置，如：分机名称、同时注册数、邮箱地址等。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/extension/update?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_rxp_kx3_mjb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" id="table_n4y_px3_mjb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="2.42*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.51*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c4" colnum="4" colwidth="5.56*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry>类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>number</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>分机号码。<note>
+                    <ul id="ul_ozl_z2j_mjb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度为7位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>username</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>显示名称。<note>不允许输入以下字符：<codeph>!</codeph>
+                    <codeph>%</codeph>
+                    <codeph>.</codeph>
+                    <codeph>@</codeph>
+                    <codeph>:</codeph>
+                    <codeph>;</codeph>
+                    <codeph>&amp;</codeph>
+                    <codeph>"</codeph>
+                    <codeph>'</codeph>
+                    <codeph>\</codeph>
+                    <codeph>&lt;</codeph>
+                    <codeph>></codeph><codeph>`</codeph>
+                    <codeph>$</codeph></note></entry>
+              </row>
+              <row>
+                <entry>registername</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>注册名称。<note>
+                    <ul id="ul_cwm_bfj_mjb">
+                      <li>只允许输入字母、数字。</li>
+                      <li>最大长度为31位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>registerpassword</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>注册密码。<note>只允许输入字母、数字和以下字符：<codeph>~</codeph>
+                    <codeph>^</codeph>
+                    <codeph>*</codeph>
+                    <codeph>-</codeph>
+                    <codeph>_</codeph>
+                    <codeph>?</codeph><p>默认使用强密码。<ul id="ul_brt_kz3_mjb">
+                        <li>必须包含数字（非连续）、大小写字母等。</li>
+                        <li>密码长度大于16位。</li>
+                        <li>不得包含该分机的“分机号码”、“显示名称”。</li>
+                      </ul></p></note></entry>
+              </row>
+              <row>
+                <entry>callerid</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>显示号码。<note>
+                    <ul id="ul_crv_l1j_mjb">
+                      <li>只允许输入字母、数字。</li>
+                      <li>最大长度31位。 </li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>maxregistrations</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>同时注册数。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_r15_s2p_4jb">
+                      <li>1</li>
+                      <li>2</li>
+                      <li>3</li>
+                      <li>4</li>
+                      <li product="k2 s-series">5</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>loginpassword</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>用户密码。<note>只允许输入字母、数字和以下字符：<codeph>~</codeph>
+                    <codeph>^</codeph>
+                    <codeph>*</codeph>
+                    <codeph>-</codeph>
+                    <codeph>_</codeph>
+                    <codeph>?</codeph><p>默认使用强密码。<ul id="ul_ovq_v1j_mjb">
+                        <li>必须包含数字（非连续）、大小写字母等。</li>
+                        <li>密码长度大于10位。</li>
+                        <li>不得包含该分机的“分机号码”、“显示名称”。</li>
+                      </ul></p></note></entry>
+              </row>
+              <row>
+                <entry>email</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>邮箱地址。<note>
+                    <ul id="ul_xgn_y1j_mjb">
+                      <li>须符合邮箱地址格式。</li>
+                      <li>不允许输入空格和以下字符：<codeph>#</codeph>
+                        <codeph>;</codeph>
+                        <codeph>,</codeph>
+                        <codeph>[</codeph>
+                        <codeph>]</codeph>
+                        <codeph>=</codeph>
+                        <codeph>&amp;</codeph>
+                        <codeph>"</codeph>
+                        <codeph>'</codeph>
+                        <codeph>\</codeph>
+                        <codeph>&lt;</codeph><codeph>></codeph>
+                        <codeph>`</codeph>
+                        <codeph>$</codeph></li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <?oxy_comment_start author="Becky" timestamp="20191031T164117+0800" comment="添加/修改时用mobile，查询返回是moblie
+用正确参数，待验证" flag="done"?>
+                <entry>mobile</entry><?oxy_comment_end?>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>手机号码。<note>
+                    <ul id="ul_izq_4bj_mjb">
+                      <li><ph product="s-series">启用 <uicontrol>启用移动分机</uicontrol> 功能或</ph>设置呼叫转移目的地为
+                          <uicontrol>用户手机</uicontrol> 时，此项不为空。</li>
+                      <li>只允许输入数字。</li>
+                      <li>最大长度31位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>hasvoicemail</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>启用语音邮箱</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_dq1_4gp_4jb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>vmsecret</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>语音信箱密码。<note>
+                    <ul id="ul_thd_1cj_mjb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度63位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>enablevmtoemail</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>发送语音留言到邮箱</uicontrol> 功能。<p><b>取值范围</b>：</p><ul
+                    id="ul_ils_m5s_ljb">
+                    <li>off：关闭。</li>
+                  </ul><p>
+                    <ul id="ul_rng_jcz_kjb">
+                      <li>on：开启。发送语音留言到分机用户邮箱。</li>
+                      <li>custom：发送语音留言到自定义邮箱。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>alwaysforward</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>总是呼叫转移</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_k2m_sgp_4jb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>atransferto</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry><codeph>alwaysforward</codeph> 的目的地。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_o2d_ksj_gdb">
+                      <li>Voicemail：语音信箱。</li>
+                      <li>Extension：分机。</li>
+                      <li>Mobile Number：用户手机。</li>
+                      <li>Custom Number：自定义号码。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>atransferext</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>atransferto</codeph> 为 <codeph>Extension</codeph> 时，设置分机的号码。</entry>
+              </row>
+              <row>
+                <entry>atransferprefix</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>atransferto</codeph> 为 <codeph>Mobile Number</codeph> 或
+                    <codeph>Custom Number</codeph> 时的呼出前缀。<note>
+                    <ul id="ul_zzk_vhp_4jb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度7位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>atransfernum</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>atransferto</codeph> 为 <codeph>Custom Number</codeph> 时，设置呼出号码。<note>
+                    <ul id="ul_m42_xfj_mjb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度15位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>noanswerforward</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>无应答呼叫转移</uicontrol> 功能。<p><b>取值范围</b>：</p><ul
+                    id="ul_rwf_b4j_gdb">
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>ntransferto</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry><codeph>noanswerforward</codeph> 的目的地。 <p><b>取值范围</b>：</p><p>
+                    <ul id="ul_apr_grz_ljb">
+                      <li>Voicemail：语音信箱。</li>
+                      <li>Extension：分机。</li>
+                      <li>Mobile Number：用户手机。</li>
+                      <li>Custom Number：自定义号码。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>ntransferext</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>ntransferto</codeph> 为 <codeph>Extension</codeph> 时，设置分机的号码。</entry>
+              </row>
+              <row>
+                <entry>ntransferprefix</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>ntransferto</codeph> 为 <codeph>Mobile Number</codeph> 或
+                    <codeph>Custom Number</codeph> 时的呼出前缀。<note>
+                    <ul id="ul_nh4_c3p_4jb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度7位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>ntransfernum</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>ntransferto</codeph> 为 <codeph>Custom Number</codeph> 时，设置呼出号码。<note>
+                    <ul id="ul_pwg_fgj_mjb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度15位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>busyforward</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>忙时呼叫转移</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_q43_vdj_mjb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>btransferto</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry><codeph>busyforward</codeph> 的目的地。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_spl_btj_gdb">
+                      <li>Voicemail：语音信箱。</li>
+                      <li>Extension：分机。</li>
+                      <li>Mobile Number：用户手机。</li>
+                      <li>Custom Number：自定义号码。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>btransferext</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>btransferto</codeph> 为 <codeph>Extension</codeph> 时，设置分机的号码。</entry>
+              </row>
+              <row>
+                <entry>btransferprefix</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>btransferto</codeph> 为 <codeph>Mobile Number</codeph> 或
+                    <codeph>Custom Number</codeph> 时的呼出前缀。<note>
+                    <ul id="ul_a4v_33p_4jb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度7位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>btransfernum</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry><codeph>btransferto</codeph> 为 <codeph>Custom Number</codeph> 时，设置呼出号码。<note>
+                    <ul id="ul_dhl_3gj_mjb">
+                      <li>只允许输入数字。</li>
+                      <li>最大长度15位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row product="s-series">
+                <entry>ringsimultaneous</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>同时响铃</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_x1b_zxs_ljb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry>enablemobile</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>启用移动分机</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_jkm_q3p_4jb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry>mobileprefix</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>移动分机呼出前缀。</entry>
+              </row>
+              <row>
+                <entry>allowbeingmonitored</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>允许被监听</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_dpt_chp_4jb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>monitormode</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>监听模式。<p><b>取值范围</b>：</p><ul id="ul_hx2_pys_ljb">
+                    <li>Disabled：禁用。</li>
+                    <li>Extensive：通用模式。</li>
+                    <li>Listen：普通监听。</li>
+                    <li>Whisper：密语监听。</li>
+                    <li>Barge-in：强插监听。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>ringtimeout</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>响铃超时时间。单位：秒。</entry>
+              </row>
+              <row>
+                <entry>maxduration</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>最大通话时长。单位：秒。</entry>
+              </row>
+              <row>
+                <entry>dnd</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>免打扰</uicontrol> 功能。<p><b>取值范围</b>：</p><ul id="ul_dsj_qnj_gdb">
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>callrestriction</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>是否启用 <uicontrol>外呼限制</uicontrol> 功能。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_nj5_2hp_4jb">
+                      <li>on：开启。</li>
+                      <li>off：关闭。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>agentid</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>用户呼入队列后，系统播报的坐席工号。此参数默认为空，表示播报分机号作为坐席的工号。<p>
+                    <note type="tip">调用 <xref href="#reference_g3t_zr2_gdb" format="dita"
+                        >extension/update</xref> 接口可以编辑分机的 <codeph>agentid</codeph>。</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>selectoutroute</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>选择分机可用的呼出路由。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_mxr_rtz_ljb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p><p>将分机1002的用户名修改为
+        Amy，其他信息不变。</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/extension/update?token=7afa377107feb9566654d5dd3a9a2a93
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1002",
+	"username": "Amy"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

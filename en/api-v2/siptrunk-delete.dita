@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_s3v_g2g_vgb">
+    <title>Delete a SIP Trunk</title>
+    <shortdesc>Delete a SIP trunk, multiple SIP trunks, or all SIP trunks.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/delete_siptrunk?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>Request parameters</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.17*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.02*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*"/>
+                    <colspec colname="c4" colnum="4" colwidth="4.12*"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Required</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>id</entry>
+                            <entry>Yes</entry>
+                            <entry>Integer</entry>
+                            <entry>The unique ID of a SIP trunk.<p><b>Valid values</b>:</p><p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li>A SIP trunk id: Delete the specified SIP
+                                                trunk.<p>Example:
+                                            <codeph>"id":"16"</codeph></p></li>
+                                        <li>Multiple SIP trunk ids: Delete multiple SIP trunks.
+                                            Separate multiple ids with
+                                                <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"id":"15,16"</codeph></p></li>
+                                        <li>all: Delete all SIP trunks.<p>Example:
+                                                  <codeph>"id":"all"</codeph></p></li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_ly2_sgb_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_grk_jqm_vgb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>Delete a SIP trunk with id 16.</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/delete_siptrunk?token=1e3b3ebb6a974cb42ed31de5413df52d 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"id": "16"
+}</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_jzx_bt2_gdb">
+  <title>编辑队列设置</title>
+  <shortdesc>修改队列的配置，如：修改队列号码、名称等。</shortdesc>
+  <refbody>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/queue/update?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_w4q_cjk_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="2.2*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.51*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.78*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>queueid</codeph></entry>
+                <entry>是</entry>
+                <entry>Int</entry>
+                <entry>要修改的队列号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>queuenumber</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>修改后的队列号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>queuename</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>队列名称。</entry>
+              </row>
+              <row>
+                <entry><codeph>password</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>加入动态坐席的密码。</entry>
+              </row>
+              <row>
+                <entry><codeph>ringstrategy</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>响铃策略。<ul id="ul_cpn_2lk_gdb">
+                    <li>Ring All：全部响铃</li>
+                    <li>Least Recent：最近最少被叫响铃</li>
+                    <li>Fewest Calls：最少接通响铃</li>
+                    <li>Random：随机响铃</li>
+                    <li>Rrmemory：顺序响铃</li>
+                    <li>Linear：线性响铃</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>failoveraction</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>呼入失败目的地。<p>
+                    <ul id="ul_r32_gqk_gdb">
+                      <li>Hangup：挂机</li>
+                      <li>Extension：分机</li>
+                      <li>Voicemail：语音信箱</li>
+                      <li>IVR：IVR（自动话务员）</li>
+                      <li>Ring Group：响铃组</li>
+                      <li>Queue：队列</li>
+                      <li>Conference：会议室</li>
+                      <li>Fax to Email：传真到邮件</li>
+                      <li>Dial by name：通过名字呼叫</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>failoverdest</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>呼入失败目的地。</entry>
+              </row>
+              <row>
+                <entry><codeph>agents</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>固定座席。</entry>
+              </row>
+              <row>
+                <entry><codeph>dynamicagents</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>动态坐席。</entry>
+              </row>
+              <row>
+                <entry><codeph>agenttimeout</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>坐席响铃时间<p>可选值： 10、20、30、40、50</p></entry>
+              </row>
+              <row>
+                <entry><codeph>wrapuptime</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>休息时间<p>可选值：10、20、30、40、50</p></entry>
+              </row>
+              <row>
+                <entry><codeph>ringinuse</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>使用中振铃<ul id="ul_kff_llk_gdb">
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>retry</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>重试间隔时间<p>可选值：10、20、30、40、50</p></entry>
+              </row>
+              <row>
+                <entry><codeph>maxwaittime</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>最大等待时间<p>可选值：300、600、900、1200、1800</p></entry>
+              </row>
+              <row>
+                <entry><codeph>joinempty</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>无座席时允许呼入<ul id="ul_y4y_nlk_gdb">
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>leavewhenempty</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>无座席时结束等待<ul>
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>announcepos</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>公告当前位置<ul>
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>announcefreq</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>用户公告频率<p>可选值：0、15、30、45、60、120、180、240、300、600、1200</p></entry>
+              </row>
+              <row>
+                <entry><codeph>announceholdtime</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>公告等待时间<ul>
+                    <li>on：开启。</li>
+                    <li>off：关闭。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>userannouncefreq</codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>系统公告频率<p>可选值：0、15、30、45、60、120、180、240、300、600、1200</p></entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutkey</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>按键 DTMF<p>可选值：None、0、1、2、3、4、5、6、7、8、9、*、 #</p></entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutaction</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>按键目标<ul id="ul_shl_qrk_gdb">
+                    <li>Hang up：挂机</li>
+                    <li>Extension：分机</li>
+                    <li>Voicemail：语音信箱</li>
+                    <li>IVR：IVR（自动话务员）</li>
+                    <li>Ring Group：响铃组</li>
+                    <li>Queue：队列</li>
+                    <li>Conference：会议室</li>
+                    <li>Fax to Email：传真到邮件</li>
+                    <li>Dial by Name：通过名字呼叫</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutdest</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>按键目标的最终目的地。</entry>
+              </row>
+              <row>
+                <entry><codeph>idannouncement</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>报工号提示音文件名。没有设置则默认不播报。此字段默认为 none。</entry>
+              </row>
+              <row>
+                <entry><codeph>satisfactionsurvey</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>满意度调查提示音。没有设置则默认不播报。此参数默认值为 None。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><p><b>请求示例</b></p>修改队列6701的号码为6702。<p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/queue/update?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6701",
+    "queuenumber": "6702"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

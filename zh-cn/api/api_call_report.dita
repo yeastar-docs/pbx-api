@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_wwt_sq2_gdb">
+  <title>通话报告</title>
+  <shortdesc>PBX主动向第三方应用上报通话转移等事件。</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/29"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/13"/>
+      <!--Carol-->
+      <revised modified="2018/08/14"/>
+    </critdates>
+  </prolog>
+  <body>
+    <section id="section_hyv_h24_t2b">
+      <title>通话事件类型</title>
+    </section>
+    <p>
+      <table frame="all" rowsep="1" colsep="1" id="table_jq4_mvp_52b">
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="2.77*"/>
+          <tbody>
+            <row>
+              <entry><b><codeph>action</codeph>参数值</b></entry>
+              <entry><b>描述</b></entry>
+            </row>
+            <row>
+              <entry>RING</entry>
+              <entry>响铃事件。</entry>
+            </row>
+            <row>
+              <entry>ALER</entry>
+              <entry>回铃事件。</entry>
+            </row>
+            <row>
+              <entry>ANSWER</entry>
+              <entry>通话应答事件。</entry>
+            </row>
+            <row>
+              <entry>ANSWERED</entry>
+              <entry>通话被应答事件。</entry>
+            </row>
+            <row>
+              <entry>BYE</entry>
+              <entry>通话结束事件。</entry>
+            </row>
+            <row>
+              <entry>Tranfer</entry>
+              <entry>呼叫转移事件。</entry>
+            </row>
+            <row>
+              <entry>CallFailed</entry>
+              <entry>呼叫失败事件。</entry>
+            </row>
+            <row>
+              <entry>Invite</entry>
+              <entry>来电呼叫请求事件。</entry>
+            </row>
+            <row>
+              <entry>DTMF</entry>
+              <entry>按键事件。</entry>
+            </row>
+            <row>
+              <entry>NewCdr</entry>
+              <entry>通话事件。</entry>
+            </row>
+            <row>
+              <entry>Incoming</entry>
+              <entry>来电呼入事件。</entry>
+            </row>
+            <row>
+              <entry>PlayPromptEnd</entry>
+              <entry>播放提示音结束事件。</entry>
+            </row>
+            <row>
+              <entry>satisfaction</entry>
+              <entry>满意度调查事件。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </p>
+  </body>
+</topic>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_pvv_52g_vgb">
+    <title>Edit an Inboud Route</title>
+    <shortdesc>Edit the basic settings of an inbound route.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/inroute/update?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_ydm_dd4_vgb">
+            <title>Request Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_qb3_jtn_vgb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.49*"/>
+                        <colspec colname="newCol2" colnum="2" colwidth="1.32*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="3.89*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry>Importance</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>name</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Inbound route name.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>did</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry>DID pattern.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>caller_id</codeph></entry>
+                                <entry>Optional</entry>
+                                <entry>String</entry>
+                                <entry>Caller ID pattern.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunks</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Trunk name. Separate multiple trunks with <codeph>,</codeph>.
+                                        <p>Example:
+                                    <codeph>"trunks":"trunk1,trunk2"</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>desttype</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>Destination type:<p>
+                                        <ul id="ul_l4f_mc4_vgb">
+                                            <li>hangup</li>
+                                            <li>extension</li>
+                                            <li>extrange</li>
+                                            <li>voicemail</li>
+                                            <li>ivr</li>
+                                            <li>ringgroup</li>
+                                            <li>queue</li>
+                                            <li>conference</li>
+                                            <li>disa</li>
+                                            <li>callback</li>
+                                            <li>outroute</li>
+                                            <li>faxtoemail</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>dest</codeph></entry>
+                                <entry>Required</entry>
+                                <entry>String</entry>
+                                <entry>The specific destination.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>Examples</title>
+            <p><b>Request Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/inroute/update?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "id": "1",
+    "name": "Routein",
+    "did": "10.",
+    "caller_id": "",
+    "trunks": "siptrunk",
+    "desttype": "ivr",
+    "dest": "6500"
+}</codeblock>
+            </p>
+            <p><b>Response Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

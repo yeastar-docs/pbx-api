@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_j5k_vdg_vgb">
+    <title>Query SIP Trunk Settings</title>
+    <shortdesc>Query detailed settings of a SIP trunk, multiple SIP trunks, or all SIP
+        trunks.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/query_siptrunk?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>Request parameters</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.21*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.37*"/>
+                    <colspec colname="c4" colnum="4" colwidth="5.53*"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Required</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>id</entry>
+                            <entry>Yes</entry>
+                            <entry>Integer</entry>
+                            <entry>The unique ID of a SIP trunk.<p><b>Valid values</b>:</p><p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li>A SIP trunk id: Query settings of the specified SIP
+                                                trunk.<p>Example:
+                                            <codeph>"id":"15"</codeph></p></li>
+                                        <li>Multiple SIP trunk ids: Query settings of multiple SIP
+                                            trunks. Separate multiple ids with
+                                                <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"id":"15,16"</codeph></p></li>
+                                        <li>all: Query all SIP trunks.<p>Example:
+                                                  <codeph>"id":"all"</codeph></p></li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1.6*"/>
+                        <colspec colname="c4" colnum="3" colwidth="2.92*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>trunks</entry>
+                                <entry>Array <xref href="#reference_j5k_vdg_vgb/TrunkInfo"
+                                        format="dita">&lt;TrunkInfo></xref></entry>
+                                <entry>Trunk information.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="TrunkInfo">TrunkInfo</dt>
+                    <dd><ph keyref="product_name"/> supports three types of SIP trunk: <xref
+                            href="#reference_j5k_vdg_vgb/RegisterTrunk" format="dita">Register
+                            Trunk</xref>, <xref href="#reference_j5k_vdg_vgb/PeerTrunk"
+                            format="dita">Peer Trunk</xref>, and <xref
+                            href="#reference_j5k_vdg_vgb/AccountTrunk" format="dita">Account
+                            Trunk</xref>.</dd>
+                    <dd>
+                        <table frame="all" id="table_tmg_pmt_sjb">
+                            <title id="RegisterTrunk">Register Trunk</title>
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.63*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="7.02*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry> Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>id</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The unique ID of a trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunktype</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk type.<ul id="ul_r3t_ryn_tjb">
+                                                <li> register</li>
+                                            </ul></entry>
+                                    </row>
+                                    <row>
+                                        <entry>host</entry>
+                                        <entry>String</entry>
+                                        <entry>The domain or IP address of the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>port</entry>
+                                        <entry>String</entry>
+                                        <entry>The port of the SIP trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>domain</entry>
+                                        <entry>String</entry>
+                                        <entry>The domain or IP address of the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>username</entry>
+                                        <entry>String</entry>
+                                        <entry>The SIP account that is provided by the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>authname</entry>
+                                        <entry>String</entry>
+                                        <entry>The SIP account that is provided by the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>fromuser</entry>
+                                        <entry>String</entry>
+                                        <entry>If <codeph>fromuser</codeph> is set, all outgoing
+                                            calls from this SIP trunk will use the
+                                                <codeph>fromuser</codeph> value as From Header of
+                                            the SIP INVITE packets.<p>
+                                                <note>Leave the parameter blank if ITSP does not
+                                                  support this feature.</note>
+                                            </p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>password</entry>
+                                        <entry>String</entry>
+                                        <entry>The password of the SIP account.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsdod</entry>
+                                        <entry>String</entry>
+                                        <entry id="extensionDOD">
+                                            <p>The DOD number that is bound with an extension.</p>
+                                            <p>
+                                                <ul id="ul_sxw_tmt_sjb">
+                                                  <li><b>Bind a DOD number</b><p><b>Format</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsdod":"<varname>dod_number</varname>-<varname>dod_name</varname>-<varname>extension_number</varname>"</codeph></codeblock>
+                                                  </p><p><b>Example</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsdod":"5503301-yeastar-1000"</codeph></codeblock>
+                                                  </p></li>
+                                                </ul>
+                                            </p>
+                                            <p>
+                                                <ul id="ul_txw_tmt_sjb">
+                                                  <li><b>Bind multiple DOD
+                                                  numbers</b><p><b>Format</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsdod":"<varname>dod_number</varname>-<varname>dod_name</varname>-<varname>extension_number</varname>"</codeph></codeblock>
+                                                  </p><p>Separate multiple DOD numbers with
+                                                  <codeph>,</codeph>.</p><p><b>Example</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsdod":"5503301-yeastar-1000,5503302-yeastar-1001"</codeph></codeblock>
+                                                  </p></li>
+                                                </ul>
+                                            </p>
+                                        </entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsgroupdod</entry>
+                                        <entry>String</entry>
+                                        <entry id="extensiongroupDOD">The DOD number that is bound
+                                            with an extension group.<ul id="ul_byw_tmt_sjb">
+                                                <li><b>Bind a DOD number</b><p><b>Format</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsgroupdod":"<varname>dod_number</varname>-<varname>dod_name</varname>-</codeph><varname>{extension_group_name}</varname></codeblock>
+                                                  </p>
+                                                  <b>Example</b>: <p>
+                                                  <codeblock><codeph>"extensionsgroupdod":"5503301-yeastar-sales"</codeph></codeblock>
+                                                  </p></li>
+                                            </ul><p>
+                                                <ul id="ul_cyw_tmt_sjb">
+                                                  <li><b>Bind multiple DOD
+                                                  numbers</b><p><b>Format</b>: </p><p>
+                                                  <codeblock><codeph>"extensionsgroupdod":"<varname>dod_number</varname>-<varname>dod_name</varname>-</codeph><varname>{extension_group_name}</varname></codeblock>
+                                                  </p><p>Separate multiple DOD numbers with
+                                                  <codeph>,</codeph>.</p><p><b>Example</b>:</p><p>
+                                                  <codeblock><codeph>"extensionsgroupdod":"5503301-yeastar-sales,5503302-yeastar-support"</codeph></codeblock>
+                                                  </p></li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                        <table frame="all" id="table_mwh_zmt_sjb">
+                            <title id="PeerTrunk">Peer Trunk</title>
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.18*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.41*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry> Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>id</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The unique ID of a trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunktype</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk type.<ul id="ul_qfd_mzn_tjb">
+                                                <li>peer</li>
+                                            </ul></entry>
+                                    </row>
+                                    <row>
+                                        <entry>host</entry>
+                                        <entry>String</entry>
+                                        <entry>The domain or IP address of the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>port</entry>
+                                        <entry>String</entry>
+                                        <entry>The port of the SIP trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>domain</entry>
+                                        <entry>String</entry>
+                                        <entry>The domain or IP address of the ITSP.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsdod</entry>
+                                        <entry>String</entry>
+                                        <entry conref="#reference_j5k_vdg_vgb/extensionDOD"/>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsgroupdod</entry>
+                                        <entry>String</entry>
+                                        <entry conref="#reference_j5k_vdg_vgb/extensiongroupDOD"/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                        <table frame="all" id="table_zqf_fnt_sjb">
+                            <title id="AccountTrunk">Account Trunk</title>
+                            <tgroup cols="3" align="left">
+                                <colspec colname="c1" colnum="1" colwidth="1.12*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.39*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry> Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>id</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The unique ID of a trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunktype</entry>
+                                        <entry>String</entry>
+                                        <entry>Trunk type.<ul id="ul_szf_rzn_tjb">
+                                                <li>account</li>
+                                            </ul></entry>
+                                    </row>
+                                    <row>
+                                        <entry>username</entry>
+                                        <entry>String</entry>
+                                        <entry>The user name of the Account Trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>authname</entry>
+                                        <entry>String</entry>
+                                        <entry>The authentication name of the Account Trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>password</entry>
+                                        <entry>String</entry>
+                                        <entry>The password of the Account Trunk.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsdod</entry>
+                                        <entry>String</entry>
+                                        <entry conref="#reference_j5k_vdg_vgb/extensionDOD"/>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsgroupdod</entry>
+                                        <entry>String</entry>
+                                        <entry conref="#reference_j5k_vdg_vgb/extensiongroupDOD"/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>Query detailed settings of the trunk with id 15.</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/query_siptrunk?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "id": "15"
+}</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"trunks": [
+		{
+			"id": "15",
+			"trunkname": "test",
+			"trunktype": "peer",
+			"host": "192.168.6.36",
+			"port": "5060",
+			"domain": "192.168.6.36",
+			"extensionsdod": "",
+			"extensionsgroupdod": "5503301-yeastar-sales,5503302-yealink-support,"
+		}
+	]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

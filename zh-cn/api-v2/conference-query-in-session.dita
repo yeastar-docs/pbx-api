@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-query-in-session">
+    <title>查询正在进行的会议</title>
+    <shortdesc>查询单个、多个或所有正在进行的会议室信息。支持查询固定会议室和临时会议室。</shortdesc>
+    <refbody>
+        <section id="section_ubq_htx_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/query_in_session?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_bvp_3tx_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_dtm_ltx_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.13*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.2*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="6.28*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>会话中的会议室号码。<p><b>取值范围</b>：</p><ul id="ul_fxg_wby_mjb">
+                                        <li>单个会议室号码：查询指定的会话中的会议室。<p>例如：<codeph>"number":"6400"</codeph></p></li>
+                                        <li>多个会议室号码：查询多个会话中的会议室。多个会议室号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"6400,6401"</codeph></p></li>
+                                        <li>all：查询所有会话中的会议室。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_if2_jtx_mjb">
+            <title>响应参数</title>
+            <table frame="all" id="table_nh2_smg_qjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.55*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="2.24*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>conference</entry>
+                            <entry>Array <xref href="#conference-query-in-session/conferenceInfo"
+                                    format="dita">&lt;ConferenceInfo></xref></entry>
+                            <entry>会议室信息列表。</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <dl>
+                <dlentry>
+                    <dt id="conferenceInfo">ConferenceInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_itq_hng_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.29*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="2.18*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>callid</entry>
+                                        <entry>String</entry>
+                                        <entry>每个通话的唯一 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>conferencenumber</entry>
+                                        <entry>Integer</entry>
+                                        <entry>会议室号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>conferencename</entry>
+                                        <entry>String</entry>
+                                        <entry>会议室名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>members</entry>
+                                        <entry>Array <xref
+                                                href="#conference-query-in-session/membersInfo"
+                                                format="dita">&lt;MemberType></xref></entry>
+                                        <entry>与会成员信息。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt id="membersInfo"
+                        ><?oxy_comment_start author="carol" timestamp="20191108T175757+0800" comment="还有一种没有列出来。 inbound：外线来电的信息。
+
+外线号码呼入会议室。" flag="done"?>MemberType<?oxy_comment_end?></dt>
+                    <dd>
+                        <table frame="all" id="table_cj2_dpg_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="2.55*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.48*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>outbound</entry>
+                                        <entry>Array <xref
+                                                href="#conference-query-in-session/outboundInfo"
+                                                format="dita">&lt;OutboundInfo></xref></entry>
+                                        <entry>外线呼出的信息。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>inbound</entry>
+                                        <entry>Array <xref
+                                                href="#conference-query-in-session/inboundInfo"
+                                                format="dita">&lt;InboundInfo></xref></entry>
+                                        <entry>外线号码呼入会议室。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>ext</entry>
+                                        <entry>Array <xref
+                                                href="#conference-query-in-session/extensionInfo"
+                                                format="dita">&lt;ExtensionInfo></xref></entry>
+                                        <entry>分机的信息。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt id="outboundInfo"
+                        ><?oxy_comment_start author="carol" timestamp="20191108T180112+0800" comment="缺少memberstatus" flag="done"?>OutboundInfo<?oxy_comment_end?></dt>
+                    <dd>
+                        <table frame="all" id="table_onn_lpg_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.04*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="4.48*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>from</entry>
+                                        <entry>Integer</entry>
+                                        <entry>主叫号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>to </entry>
+                                        <entry>String</entry>
+                                        <entry>被叫号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>String</entry>
+                                        <entry>通话使用的中继名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>channelid</entry>
+                                        <entry>String</entry>
+                                        <entry>通话中，每个成员的通话通道 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>memberstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>会议室成员的状态。<p>
+                                                <ul id="ul_nvn_wmr_rjb">
+                                                  <li>ANSWER：该成员接受邀请，进入会议室。</li>
+                                                  <li>ANSWERED：该成员拨打会议室号码，主动进入会议室。</li>
+                                                  <li>HOLD：该成员已进入会议室，等待主持人进入会议室。</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt id="inboundInfo">InboundInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_d34_3pr_rjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.23*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="5.07*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>from</entry>
+                                        <entry>Integer</entry>
+                                        <entry>主叫号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>to </entry>
+                                        <entry>String</entry>
+                                        <entry>被叫号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>String</entry>
+                                        <entry>通话使用的中继名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>channelid</entry>
+                                        <entry>String</entry>
+                                        <entry>通话中，每个成员的通话通道 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>memberstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>会议室成员的状态。<p>
+                                                <ul id="ul_lm2_kpr_rjb">
+                                                  <li>ANSWER：该成员接受邀请，进入会议室。</li>
+                                                  <li>ANSWERED：该成员拨打会议室号码，主动进入会议室。</li>
+                                                  <li>HOLD：该成员已进入会议室，等待主持人进入会议室。</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt id="extensionInfo">ExtensionInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_rdv_vpg_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.46*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="5.2*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>分机号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>channelid</entry>
+                                        <entry>String</entry>
+                                        <entry>通话中，每个成员的通话通道 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>memberstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>会议室成员的状态。<p>
+                                                <ul id="ul_uss_4vv_qjb">
+                                                  <li>ANSWER：该成员接受邀请，进入会议室。</li>
+                                                  <li>ANSWERED：该成员拨打会议室号码，主动进入会议室。</li>
+                                                  <li>HOLD：该成员已进入会议室，等待主持人进入会议室。</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_p12_kxx_mjb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>查询会话中的会议室6410的详细信息。</p>
+            <p><codeblock outputclass="language-json">POST /api/v2.0.0/conference/query_in_session?token=3ddc40cf73c8ed477e4e466b044e9c89
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6410"
+	}</codeblock><b>响应示例</b>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"conference": [
+		{
+			"callid": "1573465840.181",
+			"conferencenumber": "6400",
+			"conferencename": "6400",
+			"members": [
+				{
+					"ext": {
+						"number": "4003",
+						"channelid": "PJSIP/4003-00000036",
+						"memberstatus": "ANSWERED"
+					}
+				},
+				{
+					"ext": {
+						"number": "4001",
+						"channelid": "PJSIP/4001-00000035",
+						"memberstatus": "ANSWERED"
+					}
+				},
+				{
+					"inbound": {
+						"from": "3000",
+						"to": "6400",
+						"trunkname": "To6.36",
+						"channelid": "PJSIP/trunk-To6.36-endpoint-00000037",
+						"memberstatus": "ANSWERED"
+					}
+				}
+			]
+		}
+	]
+}</codeblock></p>
+        </section>
+    </refbody>
+</reference>

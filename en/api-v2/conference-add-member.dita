@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-add-member">
+    <title>Invite Conference Members</title>
+    <shortdesc>Invite internal or external users to join a conference.</shortdesc>
+    <refbody>
+        <section id="section_w4m_pdy_mjb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/add_member?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_f5v_pdy_mjb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" id="table_wm2_sdy_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.29*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.09*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.1*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Conference number, which means members will be invited to
+                                    which conference.</entry>
+                            </row>
+                            <row>
+                                <entry>operator</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Operator number, which means who will invite conference
+                                        members.<note>Only moderators have permissions to invite
+                                        conference members.</note></entry>
+                            </row>
+                            <row>
+                                <entry>invitenumber</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>The number of member who will be invited to the conference.
+                                    You can invite internal or external users.<p><b>Valid
+                                        values</b>:</p><ul id="ul_cty_why_mjb">
+                                        <li>A number: Invite a member to the conference.<p>Example:
+                                                  <codeph>"invitenumber":"2023"</codeph></p></li>
+                                        <li>Multiple numbers: Invite multiple members to the
+                                            conference. Separate multiple numbers with
+                                                <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"invitenumber":"2023,2024"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>dialpermission</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry
+                                    conref="instant-conference-create.dita#instant-conference-create/dialpermission"/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_e2g_qdy_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_lxv_5dy_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.06*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.14*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_tky_c3y_mjb"><title>Examples</title><p><b>Request
+                example</b></p><p>Invite internal extension 4001 to join conference 6400.</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/conference/add_member?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6400",
+	"operator": "4000",
+	"invitemember": "4001",
+	"dialpermission": "4000"
+}</codeblock>
+            </p><b>Response
+            example</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock></section>
+    </refbody>
+</reference>

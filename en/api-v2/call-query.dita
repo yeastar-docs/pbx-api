@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_a5v_rt2_gdb">
+  <title>Query Calls</title>
+  <shortdesc>Get the detailed information of a specified call or a specified type of
+    calls.</shortdesc>
+  <refbody>
+    <section>
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/call/query?token=<ph id="token"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></ph></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request parameters</title>
+      <p>
+        <dl>
+          <dlentry>
+            <dt>Query a specified call</dt>
+            <dd><table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+              <tgroup cols="4">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="1*"/>
+                  <colspec colname="c4" colnum="4" colwidth="4*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry>Required</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry align="center" valign="middle"> callid</entry>
+                      <entry align="center" valign="middle">Yes</entry>
+                      <entry align="center" valign="middle">String</entry>
+                      <entry>The unique ID of each call.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+            </table></dd>
+          </dlentry>
+          <dlentry>
+            <dt>Query calls by type</dt>
+            <dd><table frame="all" rowsep="1" colsep="1">
+              <tgroup cols="4">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="1*"/>
+                  <colspec colname="c4" colnum="4" colwidth="4*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry>Required</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry align="center" valign="middle">type</entry>
+                      <entry align="center" valign="middle">Yes</entry>
+                      <entry align="center" valign="middle">String</entry>
+                      <entry>Call type.<p><b>Valid values</b>:</p><ul id="ul_wrg_4my_kjb">
+                          <li>inbound: Query the information of inbound calls.</li>
+                          <li>outbound: Query the information of outbound calls.</li>
+                        </ul></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+            </table></dd>
+          </dlentry>
+        </dl>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response parameters</title>
+    </section>
+    <section id="section_itr_sbz_kjb">
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_iwy_tbz_kjb">
+          <tgroup cols="3" align="left">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="2.08*"/>
+            <colspec colname="c4" colnum="3" colwidth="4.99*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>calls</entry>
+                <entry>Array <xref href="#reference_a5v_rt2_gdb/callinfo" format="dita"
+                    >&lt;CallInfo></xref></entry>
+                <entry>The call information.</entry>
+              </row>
+              <row id="status">
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul>
+                    <li>Success</li>
+                    <li>Failed</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+          <dl>
+        <dlentry id= "callinfo">
+          <dt>CallInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_hpt_l2q_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1*"/>
+                  <colspec colname="c3" colnum="2" colwidth="2.21*"/>
+                  <colspec colname="c4" colnum="3" colwidth="3.76*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row id="members">
+                      <entry>members</entry>
+                      <entry>Array <xref href="#reference_a5v_rt2_gdb/membertype" format="dita"
+                          >&lt;MemberType></xref></entry>
+                      <entry id="members-info">A list of information for different types of members
+                        during a call.</entry>
+                    </row>
+                    <row id="callid">
+                      <entry>callid</entry>
+                      <entry>String</entry>
+                      <entry>The unique ID of each call.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1.89*"/>
+                  <colspec colname="c4" colnum="3" colwidth="2.79*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry>ext</entry>
+                      <entry>Object <xref href="#reference_a5v_rt2_gdb/extensioninfo" format="dita"
+                          >&lt;ExtensionInfo></xref></entry>
+                      <entry>Extension information.</entry>
+                    </row>
+                    <row>
+                      <entry>inbound</entry>
+                      <entry>Object <xref href="#reference_a5v_rt2_gdb/inboundinfo" format="dita"
+                          >&lt;InboundInfo></xref></entry>
+                      <entry>Information of inbound calls.</entry>
+                    </row>
+                    <row>
+                      <entry>outbound</entry>
+                      <entry>Object <xref href="#reference_a5v_rt2_gdb/outboundinfo" format="dita"
+                          >&lt;OutboundInfo></xref></entry>
+                      <entry>Information of outbound calls.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="extensioninfo">
+          <dt>ExtensionInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_extension">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1*"/>
+                  <colspec colname="c4" colnum="3" colwidth="5*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row id="ext-number">
+                      <entry>number</entry>
+                      <entry>Integer</entry>
+                      <entry>The extension number.</entry>
+                    </row>
+                    <row id="channelid-response">
+                      <entry>channelid</entry>
+                      <entry>String</entry>
+                      <entry>The call channel ID of each member during the call.</entry>
+                    </row>
+                    <row id="memberstatus">
+                      <entry>memberstatus</entry>
+                      <entry>String</entry>
+                      <entry>The member status.<p>
+                          <ul id="ul_m3m_2fq_pjb">
+                            <li>ALERT: The caller who initiates the call is in the ringback
+                              state.</li>
+                            <li>RING: The callee is in the ringing state.</li>
+                            <li>ANSWERED: The call initiated by the caller has been answered.</li>
+                            <li>ANSWER: The callee has answered a call, and is in the talking
+                              state.</li>
+                            <li>HOLD: The call is held.</li>
+                            <li>BYE: The call is hanged up.</li>
+                          </ul>
+                        </p></entry>
+                    </row>
+                    <?oxy_comment_start author="Sunmy" timestamp="20200414T114121+0800" comment="13.b" id="upn_5hw_jlb" flag="done"?>
+                    <?oxy_comment_start author="carol" timestamp="20200417T170248+0800" comment="The final call path that indicates how the extension user makes the call.
+
+Examples:
+- Extension user 1000 calls to Extension 2000 directly, the callpath value is 1000.
+- Extension user 1000 calls to IVR 6500, and dials extension number 2000, the callpath value is 6500." parentID="upn_5hw_jlb" flag="done" mid="2"?>
+                    <?oxy_comment_start author="Sunmy" timestamp="20200420T091106+0800" comment="有误
+分机呼叫分机，不会带上 callpath" parentID="upn_5hw_jlb" flag="done" mid="1"?>
+                    <row>
+                      <entry><?oxy_comment_start author="Sunmy" timestamp="20200417T190433+0800" comment="改
+When establishing a call with an extension via an IVR, Queue, Ring Group, Conference, or Paging/Intercom, callpath is the number of the last-level IVR, Queue, Ring Group, Conference, or paging/intercom.
+For example, when agent answers a queue call, callpath is the queue number; when extension user joins in a conference call, callpath is the conference number." flag="done"?>callpath<?oxy_comment_end?></entry>
+                      <entry>Integer</entry>
+                      <entry>The call path that indicates how the call is
+                            established.<note><codeph>callpath</codeph> parameter only appears when
+                          the call passes through IVR, Queue, Ring Group, Paging/Intercom or
+                          Conference.</note><p id="callpath"
+                          ><?oxy_comment_start author="carol" timestamp="20200417T165729+0800" comment="这一段描述错误了，
+主叫才携带这个参数" id="u3m_zsp_klb" flag="done" mid="5"?><?oxy_comment_start author="Sunmy" timestamp="20200420T091028+0800" comment="测试其它场景，被叫也会带上 callpath
+
+如会议室呼叫分机时
+
+讨论决定：按照需求只写主叫的场景。" parentID="u3m_zsp_klb" flag="done"?>For
+                          example, extension user 1000 calls to IVR (6500), and dials extension
+                          number 2000, the <codeph>callpath</codeph> value is
+                          6500.<?oxy_comment_end?><?oxy_comment_end mid="5"?></p></entry>
+                    </row><?oxy_comment_end?><?oxy_comment_end mid="2"?><?oxy_comment_end mid="1"?>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="inboundinfo">
+          <dt>InboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_inbound">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1*"/>
+                  <colspec colname="c4" colnum="3" colwidth="5*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row id="from">
+                      <entry>from</entry>
+                      <entry>Integer</entry>
+                      <entry>The caller number.</entry>
+                    </row>
+                    <row id="to">
+                      <entry>to</entry>
+                      <entry>Integer</entry>
+                      <entry>The callee number.</entry>
+                    </row>
+                    <row id="trunkname-inbound">
+                      <entry>trunkname</entry>
+                      <entry>String</entry>
+                      <entry>The name of the trunk that passes the inbound calls.</entry>
+                    </row>
+                    <row conref="#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    <row conref="#reference_a5v_rt2_gdb/memberstatus">
+                      <entry/>
+                    </row>
+                    <?oxy_comment_start author="Sunmy" timestamp="20200413T150417+0800" comment="13.B 加入
+【【S/K2/Cloud】30.13.0.22+使用api通话接口呼入分机，无callpath字段】https://www.tapd.cn/32809406/bugtrace/bugs/view?bug_id=1132809406001021985" id="b3s_4jw_jlb"?>
+                    <?oxy_comment_start author="carol" timestamp="20200417T171619+0800" comment="The final call path that indicates how the call is routed and handled.
+Examples:
+An external user calls in the IVR 6500, presses digit 1 to call Queue 6800, agent 1000 answers the call. In this case, the callpath value is 6800.
+An external users dials a trunk DID number 5503301 to reach extension 1000 directly. In this case, the callpath value is 5503301.
+
+" parentID="b3s_4jw_jlb" mid="7"?>
+                    <row>
+                      <entry>callpath</entry>
+                      <entry>Integer</entry>
+                      <entry>
+                        <p>The call path that indicates how the call is
+                              established.<note><codeph>callpath</codeph> parameter only appears
+                            when the call passes through trunk, IVR, Queue, Ring Group,
+                            Paging/Intercom or Conference.</note>For example, external user 5503302
+                          calls to IVR (6500), and dials extension number 2000, the
+                            <codeph>callpath</codeph> value is 6500.</p>
+                      </entry>
+                    </row><?oxy_comment_end?><?oxy_comment_end mid="7"?>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="outboundinfo">
+          <dt>OutboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_outbound">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="2*"/>
+                  <colspec colname="c3" colnum="2" colwidth="1*"/>
+                  <colspec colname="c4" colnum="3" colwidth="5*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry> Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row id="trunkname-outbound">
+                      <entry>trunkname</entry>
+                      <entry>String</entry>
+                      <entry>The name of the trunk that passes the outbound calls.</entry>
+                    </row>
+                    <row conref="#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    <row conref="#reference_a5v_rt2_gdb/memberstatus">
+                      <entry/>
+                    </row>
+                    <row>
+                      <entry>callpath</entry>
+                      <entry><?oxy_comment_start author="Sunmy" timestamp="20200417T190956+0800" comment="When establishing a call with an external number via an IVR, Queue, or Ring Group, callpath is the number of the last-level IVR, Queue, or Ring Group."?>Integer<?oxy_comment_end?></entry>
+                      <entry>
+                        <p>The call path that indicates how the call is
+                              established.<note><codeph>callpath</codeph> parameter only appears
+                            when the call passes through IVR, Queue, Ring Group or
+                            Conference.</note></p>
+                        <p>For example, make a call from IVR 6500 to external number 5503302, the
+                            <codeph>callpath</codeph> value is 6500.</p>
+                      </entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Example 1</title><p>Query information of a specified
+        call.</p><p><b>Request example</b></p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/call/query?token=4dfa215a2a835361425878c43e25dc8d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+      "callid": "1571386069.8"
+}</codeblock>
+      </p><b>Response example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "Calls": [
+		{
+		"members": [
+			{
+			"inbound": {
+				"from": "500",
+				"to": "1023",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-API-endpoint-00000005",
+				"memberstatus": "ANSWERED"
+				}
+			},
+			{
+				"ext": {
+					"number": "1023",
+					"channelid": "PJSIP/1023-00000006",
+					"memberstatus": "ANSWER"
+				}
+			}
+			],
+			"callid": "1571386069.8"
+		}
+	],
+	"status": "Success"
+    }</codeblock>
+      </p></section>
+    <section id="section_dcy_hzy_kjb">
+      <title>Example 2</title>
+      <p>Query call information of a specified type.</p>
+      <p><b>Request
+        example</b><codeblock outputclass="language-json">POST /api/v2.0.0/call/query?token=4dfa215a2a835361425878c43e25dc8d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"type": "inbound"
+}</codeblock></p>
+      <p><b>Response
+        example</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+"Calls": [
+		{
+			"members": [
+				{
+					"inbound": {
+						"from": "3000",
+						"to": "4000",
+						"trunkname": "siptrunk",
+						"channelid": "PJSIP/trunk-siptrunk-endpoint-000000a2",
+						"memberstatus": "ANSWERED"
+					}
+				},
+				{
+					"ext": {
+						"number": "4000",
+						"channelid": "PJSIP/4000-000000a3",
+						"memberstatus": "ANSWER"
+					}
+				}
+			],
+			"callid": "1571639442.264"
+		},
+		{
+			"members": [
+				{
+					"inbound": {
+						"from": "2000",
+						"to": "1023",
+						"trunkname": "siptrunk",
+						"channelid": "PJSIP/trunk-siptrunk-endpoint-00000098",
+						"memberstatus": "ANSWERED"
+					}
+				},
+				{
+					"ext": {
+						"number": "1023",
+						"channelid": "PJSIP/1023-00000099",
+						"memberstatus": "ANSWER"
+					}
+				}
+			],
+			"callid": "1571639198.248"
+		}
+	],
+	"status": "Success"
+}</codeblock></p>
+    </section>
+  </refbody>
+</reference>

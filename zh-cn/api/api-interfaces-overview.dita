@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="topic_l4v_hrc_gdb">
+  <title>API 接口概览</title>
+  <shortdesc><ph product="k2 s-series">朗视</ph>
+    <ph keyref="product_name"/> 提供 二次开发接口（API）。第三方服务器与 PBX 通过 API 对接，你可以在第三方服务器上查询和编辑 PBX
+    的设置、实现多种呼叫功能。PBX 还会主动发送系统报告和通话报告到第三方服务器。</shortdesc>
+  <refbody><section id="section_oxp_ds1_b2b">
+      <title>PBX 版本要求</title>
+      <p product="cloudpbx">朗视云PBX：固件版本81.4.0.8或更高版本</p>
+      <p product="s-series">朗视 S50, S100, S300：固件版本30.5.0.30或更高版本</p>
+    </section><section id="section_wxn_ywj_wgb">
+      <title>系统接口</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ytt_tck_wgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.57*"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_pbx_information.dita#reference_qbg_5l2_gdb"
+                    >查询PBX信息</xref></entry>
+                <entry> /api/v1.1.0/deviceinfo/query?token=<varname>{token}</varname>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_p1c_bx2_xgb">
+      <title>分机</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.41*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_extension_list.dita#reference_ibj_vr2_gdb"
+                    >查询分机列表</xref></entry>
+                <entry>/api/v1.1.0/extensionlist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_extension_settings.dita#reference_oc5_xr2_gdb"
+                    >查询分机设置</xref></entry>
+                <entry>/api/v1.1.0/extension/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_an_extension.dita#reference_g3t_zr2_gdb"
+                  >编辑分机设置</xref></entry>
+                <entry>/api/v1.1.0/extension/update?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xc5_dx2_xgb">
+      <title>中继</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.04*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_trunk_list.dita#reference_w23_cs2_gdb"
+                  >查询中继列表</xref></entry>
+                <entry>/api/v1.1.0/trunklist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="query-sip-trunk-settings.dita#reference_j5k_vdg_vgb">查询 SIP
+                    中继</xref></entry>
+                <entry>/api/v1.1.0/siptrunk/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-sip-trunk.dita#reference_oxq_zdg_vgb">添加 SIP
+                  中继</xref></entry>
+                <entry>/api/v1.1.0/siptrunk/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-sip-trunk.dita#reference_nt2_b2g_vgb">编辑 SIP
+                  中继</xref></entry>
+                <entry>/api/v1.1.0/siptrunk/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-sip-trunk.dita#reference_s3v_g2g_vgb">删除 SIP
+                  中继</xref></entry>
+                <entry>/api/v1.1.0/siptrunk/delete?token=<varname>｛token｝</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_s2r_fx2_xgb">
+      <title>呼入路由</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.94*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-inbound-route.dita#reference_fpw_p2g_vgb"
+                  >查询呼入路由</xref></entry>
+                <entry>/api/v1.1.0/inroute/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-inbound-route.dita#reference_umf_t2g_vgb"
+                  >添加呼入路由</xref></entry>
+                <entry>/api/v1.1.0/inroute/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-inbound-route.dita#reference_pvv_52g_vgb"
+                  >编辑呼入路由</xref></entry>
+                <entry>/api/v1.1.0/inroute/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-inbound-route.dita#reference_m5h_w2g_vgb"
+                  >删除呼入路由</xref></entry>
+                <entry>/api/v1.1.0/inroute/delete?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_ap1_3x2_xgb">
+      <title>呼出路由</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="3.76*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-outbound-route.dita#reference_rdd_z2g_vgb"
+                  >查询呼出路由</xref></entry>
+                <entry>/api/v1.1.0/outroute/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-outbound-route.dita#reference_s32_bfg_vgb"
+                  >添加呼出路由</xref></entry>
+                <entry>/api/v1.1.0/outroute/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-outbound-route.dita#reference_rzb_dfg_vgb"
+                  >编辑呼出路由</xref></entry>
+                <entry>/api/v1.1.0/outroute/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-outbound-route.dita#reference_lsr_2fg_vgb"
+                  >删除呼出路由</xref></entry>
+                <entry>/api/v1.1.0/outroute/delete?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_wlk_3x2_xgb">
+      <title>IVR</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_ivr_settings.dita#reference_t3n_2s2_gdb"
+                  >查询IVR设置</xref></entry>
+                <entry>/api/v1.1.0/ivr/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_an_ivr.dita#reference_yyz_gs2_gdb">编辑 IVR
+                  设置</xref></entry>
+                <entry>/api/v1.1.0/ivr/update?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xbx_lx2_xgb">
+      <title>队列</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.99*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_queue_settings.dita#reference_mr1_js2_gdb"
+                    >查询队列的设置</xref></entry>
+                <entry>/api/v1.1.0/queue/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_a_queue.dita#reference_jzx_bt2_gdb"
+                  >编辑队列设置</xref></entry>
+                <entry>/api/v1.1.0/queue/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_queue_status.dita#reference_t3d_sdf_h2b"
+                  >查询队列状态</xref></entry>
+                <entry>/api/v1.1.0/queuestatus/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_log_in_a_queue.dita#reference_ngn_dt2_gdb"
+                  >签入队列</xref></entry>
+                <entry>/api/v1.1.0/queue/add_dynamicagent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_log_out_a_queue.dita#reference_a3w_ft2_gdb"
+                  >签出队列</xref></entry>
+                <entry>/api/v1.1.0/queue/del_dynamicagent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_pause_an_agent.dita#reference_o5r_whf_h2b"
+                  >暂停坐席服务</xref></entry>
+                <entry>/api/v1.1.0/queue/pause_agent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_resume_an_agent.dita#reference_gs5_nqf_h2b"
+                  >恢复坐席服务</xref></entry>
+                <entry>/api/v1.1.0/queue/unpause_agent?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_inp_nx2_xgb" product="k2 s-series">
+      <title>广播组</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-paging-group-list.dita#reference_shx_bxf_vgb"
+                    >查询广播组列表</xref></entry>
+                <entry>/api/v1.1.0/paginggrouplist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="query-paging-group-settings.dita#reference_wkv_4xf_vgb"
+                    >查询广播组</xref></entry>
+                <entry>/api/v1.1.0/paginggroup/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-paging-group.dita#reference_ggs_txf_vgb">添加广播组</xref></entry>
+                <entry>/api/v1.1.0/paginggroup/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-paging-group.dita#reference_w3r_wxf_vgb"
+                  >编辑广播组</xref></entry>
+                <entry>/api/v1.1.0/paginggroup/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-paging-group.dita#reference_z1j_yxf_vgb"
+                  >删除广播组</xref></entry>
+                <entry>/api/v1.1.0/paginggroup/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="call-to-paging-group.dita#reference_mdr_hdp_vgb"
+                  >发起广播</xref></entry>
+                <entry>/api/v1.1.0/extension/dial_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="hangup-paging-music.dita#reference_m1p_1kt_vgb"
+                  >挂断广播音乐</xref></entry>
+                <entry>/api/v1.1.0/paginggroup/hangup_music?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_g1c_4x2_xgb">
+      <title>呼叫功能</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_inbound_calls.dita#reference_a5v_rt2_gdb"
+                  >查询来电</xref></entry>
+                <entry>/api/v1.1.0/inbound/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_outbound_calls.dita#reference_lpp_5t2_gdb"
+                  >查询去电</xref></entry>
+                <entry>/api/v1.1.0/outbound/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_make_an_internal_call.dita#reference_vkj_v52_gdb"
+                  >分机互拨</xref></entry>
+                <entry>/api/v1.1.0/extension/dial_extension?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_make_an_outbound_call.dita#reference_idv_w52_gdb"
+                    >拨打外线号码</xref></entry>
+                <entry>/api/v1.1.0/extension/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_extension_call.dita#reference_tqd_wt2_gdb"
+                    >挂断分机（强拆）</xref></entry>
+                <entry>/api/v1.1.0/extension/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_inbound_call.dita#reference_igq_b52_gdb"
+                    >挂断来电（强拆）</xref></entry>
+                <entry>/api/v1.1.0/inbound/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_outbound_call.dita#reference_nbm_252_gdb"
+                    >挂断去电（强拆）</xref></entry>
+                <entry>/api/v1.1.0/outbound/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_hold_a_call.dita#reference_pqp_352_gdb">通话保持</xref></entry>
+                <entry>/api/v1.1.0/extension/hold?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_resume_a_held_call.dita#reference_fyx_j52_gdb"
+                  >恢复通话</xref></entry>
+                <entry>/api/v1.1.0/extension/unhold?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_mute_an_extension.dita#reference_cby_l52_gdb"
+                  >通话静音</xref></entry>
+                <entry>/api/v1.1.0/extension/mute?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_unmute_an_extension.dita#reference_myg_n52_gdb"
+                  >取消静音</xref></entry>
+                <entry>/api/v1.1.0/extension/unmute?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_listen_monitor.dita#reference_t54_q52_gdb"
+                  >普通监听</xref></entry>
+                <entry>/api/v1.1.0/extension/listen?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_whisper_monitor.dita#reference_gzd_s52_gdb"
+                  >密语监听</xref></entry>
+                <entry>/api/v1.1.0/extension/whisper?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_barge-in_monitor.dita#reference_g2n_t52_gdb"
+                  >强插监听</xref></entry>
+                <entry>/api/v1.1.0/extension/barge?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="call-transfer.dita#reference_kz1_lhg_vgb">通话转接</xref></entry>
+                <entry>/api/v1.1.0/calltransfer?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_transfer_inbound_call.dita#reference_ayb_fyp_mfb"
+                    >外线来电转接</xref></entry>
+                <entry>/api/v1.1.0/inbound/transfer_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_transfer_outbound_call.dita#reference_n1g_lyp_mfb"
+                    >外线去电转接</xref></entry>
+                <entry>/api/v1.1.0/outbound/transfer_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_dial_extension_through_ivr.dita#reference_rwt_kw2_gdb"
+                    >通过IVR拨打分机</xref></entry>
+                <entry>/api/v1.1.0/ivr/dial_extension?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_dial_external_number_through_ivr.dita#reference_qvw_mw2_gdb"
+                    >通过IVR拨打外线</xref></entry>
+                <entry>/api/v1.1.0/ivr/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_auto_dial_queue.dita#reference_jgb_vx2_gdb"
+                  >自动拨号（队列）</xref></entry>
+                <entry>/api/v1.1.0/queue/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_auto_dial_ringgroup.dita#reference_mz2_zh2_hdb"
+                    >自动拨号（响铃组）</xref></entry>
+                <entry>/api/v1.1.0/ringgroup/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_call_back.dita#reference_ozd_dy2_gdb">双向外呼</xref></entry>
+                <entry>/api/v1.1.0/outbound/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_accept_inbound_calls.dita#reference_gtw_4m2_hdb"
+                  >接听来电</xref></entry>
+                <entry>/api/v1.1.0/inbound/accept?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_refuse_inbound_calls.dita#reference_nk3_qm2_hdb"
+                  >拒接来电</xref></entry>
+                <entry>/api/v1.1.0/inbound/refuse?token=<varname>{token}</varname></entry>
+              </row>
+              <row product="k2 s-series">
+                <entry><xref href="api_send_sms_messages.dita#reference_tkh_zk2_hdb"
+                  >发送短信</xref></entry>
+                <entry>/api/v1.1.0/sms/send?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_gxk_px2_xgb">
+      <title>播放语音</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.77*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_play_prompt_to_extension.dita#reference_qgn_c1f_gdb"
+                    >给分机播放语音</xref></entry>
+                <entry>/api/v1.1.0/extension/playprompt?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_play_prompt_to_external_number.dita#reference_ync_21f_gdb"
+                    >给外线播放语音</xref></entry>
+                <entry>/api/v1.1.0/outbound/playprompt?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_v3h_rx2_xgb">
+      <title>语音留言</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="3.06*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_voicemail.dita#concept_klh_ysd_j2b"
+                  >查询语音留言</xref></entry>
+                <entry>/api/v1.1.0/voicemail/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_delete_voicemail.dita#concept_aw3_sc2_j2b"
+                  >删除语音留言</xref></entry>
+                <entry>/api/v1.1.0/voicemail/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_download_voicemail.dita#concept_gsn_cm2_j2b"
+                  >下载语音留言</xref></entry>
+                <entry>/api/v1.1.0/voicemail/get_random?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_od3_sx2_xgb">
+      <title>通话记录和录音</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.44*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_get_recording_files.dita#topic_bb1_3q2_gdb"
+                  >下载录音文件</xref></entry>
+                <entry>/api/v1.1.0/recording/get_random?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="download-cdr.dita#reference_vpd_43g_vgb">下载通话记录</xref></entry>
+                <entry>/api/v1.1.0/cdr/get_random?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_r4z_tx2_xgb">
+      <title>酒店相关</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.06*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>功能</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_add_an_alarm.dita#reference_v5n_lz2_gdb">添加闹铃</xref></entry>
+                <entry>/api/v1.1.0/wakeupcall/create?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_an_alarm.dita#reference_wqf_nz2_gdb"
+                  >查询闹铃</xref></entry>
+                <entry>/api/v1.1.0/wakeupcall/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modifty_an_alarm.dita#reference_ymm_pz2_gdb"
+                  >更改闹铃设置</xref></entry>
+                <entry>/api/v1.1.0/wakeupcall/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_delete_an_alarm.dita#reference_lnm_rz2_gdb"
+                  >删除闹铃</xref></entry>
+                <entry>/api/v1.1.0/wakeupcall/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row product="s-series">
+                <entry><xref href="api_checkout.dita#reference_xpz_pyp_mfb">酒店退房</xref></entry>
+                <entry>POST /api/v1.1.0/hotel/checkout?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_rq3_vx2_xgb">
+      <title>API 报告</title>
+      <p>
+        <ul id="ul_gkq_vx2_xgb">
+          <li><xref href="api_report_of_system_startup.dita#reference_lgt_lcf_gdb"
+            >系统启动报告</xref></li>
+          <li><xref href="api_report_of_changed_settings.dita#reference_oyn_ncf_gdb"
+            >配置变更报告</xref></li>
+          <li><xref href="api_report_of_changed_extension_status.dita#reference_c12_pcf_gdb"
+              >分机状态变更报告</xref></li>
+          <li><xref href="api_ringing_and_ring_back.dita#reference_gtg_3df_gdb"
+            >‘响铃&amp;回铃’报告</xref></li>
+          <li><xref href="api_answer_a_call.dita#reference_e3y_5v3_gdb">‘通话应答’报告</xref></li>
+          <li><xref href="api_call_answered.dita#reference_ozw_wv3_gdb">‘通话被应答’报告</xref></li>
+          <li><xref href="api_call_released.dita#reference_ty3_yv3_gdb">‘通话结束’报告</xref></li>
+          <li><xref href="api_call_transfer.dita#reference_cpy_zv3_gdb">‘呼叫转移’报告</xref></li>
+          <li><xref href="api_call_failure.dita#reference_bpk_bw3_gdb">‘呼叫失败’报告</xref></li>
+          <li><xref href="api_keypress.dita#reference_zcj_fw3_gdb">‘按键信息’报告</xref></li>
+          <li><xref href="api_cdr.dita#reference_imy_gw3_gdb">‘通话记录’报告</xref></li>
+          <li><xref href="api_inbound_call_request.dita#reference_yl2_dw3_gdb"
+            >‘来电呼叫请求’报告</xref></li>
+          <li><xref href="api_inbound_call.dita#reference_gkj_3w3_gdb">‘来电呼入’报告</xref></li>
+          <li><xref href="api_prompt_play_end.dita#reference_hdx_kw3_gdb">‘播放语音结束’报告</xref></li>
+          <li><xref href="api_customer_satisfacation_suvery_result.dita#reference_qng_qw3_gdb"
+              >‘满意度调查结果’事件</xref></li>
+        </ul>
+      </p>
+    </section></refbody>
+</reference>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_jwd_ssb_wgb">
+    <title>Getting Started</title>
+    <shortdesc>This section is applicable for users who are new to the <ph keyref="product_name"/>
+        API. In this section, we introduces the pre-configurations before using the API, API
+        communication methods and protocols, API request structure, and response result.</shortdesc>
+</topic>

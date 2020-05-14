@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_a5v_rt2_gdb">
+  <title>查询来电</title>
+  <shortdesc>查询当前外部来电的详细信息，如：主叫、被叫、通话状态、通过的中继等。</shortdesc>
+  <refbody>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/inbound/query?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <ul id="ul_j1b_mzk_gdb">
+          <li>不带参数表示查询所有。</li>
+          <li>带参数表示查询单个或多个，多个时需用 <codeph>,</codeph> 隔开。</li>
+        </ul>
+      </p>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.45*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.29*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.31*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph> inboundid </codeph></entry>
+                <entry>否</entry>
+                <entry>Int</entry>
+                <entry>外线来电编号。<note>从 PBX 发送的<xref href="api_cdr.dita#reference_imy_gw3_gdb"
+                      >通话报告</xref>中获取 <codeph>inboundid</codeph> 的值。</note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.42*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.03*"/>
+            <colspec colname="c4" colnum="3" colwidth="5.92*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>inbound</codeph></entry>
+                <entry>Object</entry>
+                <entry>来电，由外线呼入的外部通话。</entry>
+              </row>
+              <row>
+                <entry><codeph>inboundid</codeph></entry>
+                <entry>Int</entry>
+                <entry>外线来电编号，通过该参数对来电进行转接、查询、挂断等操作。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>callee</codeph></entry>
+                <entry>Object</entry>
+                <entry>来电的通话方，可能为分机、IVR、去电。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>呼入时通过的中继名。</entry>
+              </row>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>String</entry>
+                <entry>通话状态<p>
+                    <ul id="ul_lwt_fbl_gdb">
+                      <li>Talking：通话进行中。</li>
+                      <li>Progress：呼叫处理中。</li>
+                      <li>Wait：呼叫等待。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><p><b>请求示例</b></p><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/inbound/query?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "inboundid": "1495698433.203"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "inbound": [
+        {
+            "inboundid": "1495698433.203",
+            "from": "1000",
+            "to": "1002",
+            "trunk": "SIP-142",
+            "status": "Talking",
+            "callee": [
+                {
+                    "extid": "1002"
+                }
+            ]
+        ]
+    }</codeblock>
+      </p></section>
+  </refbody>
+</reference>

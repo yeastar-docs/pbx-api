@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-query">
+    <title>Query Conference</title>
+    <shortdesc>Query basic settings of conferences which are added on PBX web interface. You can
+        query a conference, multiple conferences, or all conferences.</shortdesc>
+    <refbody>
+        <section id="section_hqx_w3y_mjb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_p5m_x3y_mjb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" id="table_xtc_z3y_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.2*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.52*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Conference number.<p><b>Valid values</b>:</p><ul
+                                        id="ul_pb5_tjy_mjb">
+                                        <li>A conference number: Query the specified
+                                                conference.<p>Example:
+                                                  <codeph>"number":"6400"</codeph></p></li>
+                                        <li>Multiple conference numbers: Query multiple conferences.
+                                            Separate multiple conference numbers with
+                                                <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"number":"6400,6401"</codeph></p></li>
+                                        <li>all: Query all conferences.<p>Example:
+                                                  <codeph>"number":"all"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_ak2_y3y_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_odx_djy_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.97*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.64*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>conferences</entry>
+                                <entry>Array <xref href="#conference-query/ConferenceInfo"
+                                        format="dita">&lt;ConferenceInfo></xref></entry>
+                                <entry>Conference information.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="ConferenceInfo">ConferenceInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_abw_zb5_sjb">
+                            <tgroup cols="3" align="left">
+                                <colspec colname="c1" colnum="1" colwidth="1.53*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="4*" colsep="1" rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Conference number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>String</entry>
+                                        <entry>Conference name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>participantepassword</entry>
+                                        <entry>String</entry>
+                                        <entry>The password to join a conference.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>moderatorpassword</entry>
+                                        <entry>String</entry>
+                                        <entry>Moderator password.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>waitformoderator</entry>
+                                        <entry>String</entry>
+                                        <entry>Whether to wait for the moderator to start a
+                                            conference or not. <ul id="ul_dt1_dc5_sjb">
+                                                <li>yes</li>
+                                                <li>no</li>
+                                            </ul></entry>
+                                    </row>
+                                    <row>
+                                        <entry>allowinvite</entry>
+                                        <entry>String</entry>
+                                        <entry>Whether to allow the participants to invite other
+                                            members to the conference or not.<ul id="ul_g55_4jy_mjb">
+                                                <li>yes</li>
+                                                <li>no</li>
+                                            </ul></entry>
+                                    </row>
+                                    <row>
+                                        <entry>moderators </entry>
+                                        <entry>Integer</entry>
+                                        <entry>Conference moderators.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_p5s_pjy_mjb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>Query settings of conference 6400.</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/conference/query?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6400"
+}</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"conferences": [
+		{
+			"number": "6400",
+			"name": "6400",
+			"participantepassword": "",
+			"moderatorpassword": "",
+			"waitformoderator": "no",
+			"allowinvite": "yes",
+			"moderators": "4000"
+		}
+	]
+}</codeblock>
+        </section>
+    </refbody>
+</reference>

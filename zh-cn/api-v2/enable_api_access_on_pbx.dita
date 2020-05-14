@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN" "generalTask.dtd">
+<task id="task_zm3_wdd_gdb">
+    <title>启用 API 功能</title>
+    <shortdesc>在连接第三方应用服务器与 PBX 之前，你要先启用 PBX 的 API 接口，并做好相应的配置。</shortdesc>
+    <taskbody>
+        <steps id="steps_n1b_f2d_gdb">
+            <step>
+                <cmd>登录 PBX 网页，进入 <menucascade>
+                        <uicontrol>配置</uicontrol>
+                        <uicontrol>PBX</uicontrol>
+                        <uicontrol>常规设置</uicontrol>
+                        <uicontrol>二次开发接口</uicontrol>
+                    </menucascade>。</cmd>
+            </step>
+            <step>
+                <cmd>启用 API 功能。</cmd>
+                <substeps>
+                    <substep>
+                        <cmd>勾选 <uicontrol>启用</uicontrol>。</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>设置<uicontrol>用户名</uicontrol>和<uicontrol>密码</uicontrol>，点击
+                                <uicontrol>保存</uicontrol> 和 <uicontrol>应用</uicontrol>。</cmd>
+                        <info>
+                            <note>此处的用户名和密码是第三方应用通过API连接到IPPBX时所要用到的用户名及密码。</note>
+                        </info>
+                        <info><image href="../Images/admin/enable_api.png" id="image_ctp_s2d_gdb"
+                            /></info>
+                    </substep>
+                </substeps>
+            </step>
+            <step>
+                <cmd importance="optional">选择是否监控分机的状态。</cmd>
+                <info>
+                    <p>当该分机状态有变更时（如：分机状态从忙变为空闲），API 会主动向第三方应用发送分机状态变更的事件报告。</p>
+                </info>
+                <info><image href="../Images/admin/enable_api_extension.png" id="image_lhz_chd_gdb"
+                    /></info>
+            </step>
+            <step>
+                <cmd importance="optional"> 选择是否监控中继状态和控制来电。</cmd>
+                <info><image href="../Images/admin/enable_api_trunk.png" id="image_pq2_whd_gdb"
+                    /></info>
+                <info>
+                    <ul id="ul_dly_whd_gdb">
+                        <li id="inbound-control"
+                                ><uicontrol>来电接听控制</uicontrol>：勾选来电接听控制之后，当该条中继有来电时先交由第三方应用处理，第三方应用可选择接受或者拒绝该来电。<ul
+                                id="ul_ltc_zjd_gdb">
+                                <li>
+                                    <p><uicontrol>接受</uicontrol>：如果第三方应用选择接受该来电，则该来电直接进入对应呼入路由目的地。</p>
+                                </li>
+                                <li>
+                                    <p><uicontrol>拒绝</uicontrol>：如果第三方应用选择拒绝该来电，则该来电将被直接挂断，而不会到达
+                                        PBX，PBX上也不会有该来电的通话记录。</p>
+                                    <p>PBX将留有10秒给第三方应用处理的时间，超时则默认第三方应用接受该来电，则该来电直接进入对应呼入路由的目的地。</p>
+                                </li>
+                            </ul></li>
+                        <li id="inbound-dest-control"
+                            ><uicontrol>呼入目的地控制</uicontrol>：勾选呼入目的地控制后，当该条中继有来电时将不会直接进入对应呼入路由的目的地，而是有10秒的时间等待第三方应用指定该通通话的目的地，如果10秒超时第三方应用未指定该通话目的地，则默认进入对应呼入路由所设置的目的地。</li>
+                        <li id="trunk-monitor"
+                            ><uicontrol>状态监控</uicontrol>：勾选中继的状态监控后，当该中继状态有变更时（如：中继状态从注册上变为注册失败），API会主动向第三方应用发送中继状态变更的事件报告。</li>
+                    </ul>
+                </info>
+            </step>
+        </steps>
+    </taskbody>
+</task>

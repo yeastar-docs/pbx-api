@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_oc5_xr2_gdb">
+  <title>Query Extension Settings</title>
+  <shortdesc>Query detailed settings of an extension, multiple extensions, or all
+    extensions.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/extension/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Required</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry> number</entry>
+                <entry>Yes</entry>
+                <entry>Integer</entry>
+                <entry>Extension number.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_gnr_hd3_vgb">
+                      <li>An extension number: Query the specified extension.<p>Example:
+                            <codeph>"number":"1000"</codeph></p></li>
+                      <li>Multiple extension numbers: Query multiple extensions. Separate multiple
+                        extension numbers with <codeph>,</codeph>. <p>Example:
+                            <codeph>"number":"1000,1001"</codeph></p></li>
+                      <li>all: Query all extensions.<p>Example: <codeph>"number":
+                        "all"</codeph></p></li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.6*"/>
+            <colspec colname="c4" colnum="3" colwidth="2.92*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success.</li>
+                    <li>Failed.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>extinfos</entry>
+                <entry>Array<xref href="#reference_oc5_xr2_gdb/ExtensionInfo" format="dita">
+                    &lt;ExtensionInfo></xref></entry>
+                <entry>Extension information.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry>
+          <dt id="ExtensionInfo">ExtensionInfo</dt>
+          <dd>
+            <table frame="all" id="table_gkp_pst_sjb">
+              <tgroup cols="3" align="left">
+                <colspec colname="c1" colnum="1" colwidth="1.38*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="3.88*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry> Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>Extension number.</entry>
+                  </row>
+                  <row>
+                    <entry>username</entry>
+                    <entry>String</entry>
+                    <entry>Caller ID name.</entry>
+                  </row>
+                  <row>
+                    <entry>status</entry>
+                    <entry>String</entry>
+                    <entry>Current status of the extension.<ul id="ul_ckd_5y3_gdb">
+                        <li>Unavailable</li>
+                        <li>Registered</li>
+                        <li>Ringing</li>
+                        <li>Busy</li>
+                        <li>Hold</li>
+                        <li>Malfunction</li>
+                        <li>Idle</li>
+                        <li product="s-series">Fxsnoport</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>Extension type.</entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>port</entry>
+                    <entry>String</entry>
+                    <entry>Port of FXS extension.</entry>
+                  </row>
+                  <row>
+                    <entry>callerid</entry>
+                    <entry>String</entry>
+                    <entry>Caller ID.</entry>
+                  </row>
+                  <row>
+                    <entry>registername</entry>
+                    <entry>String</entry>
+                    <entry>Registration name.</entry>
+                  </row>
+                  <row>
+                    <entry>registerpassword</entry>
+                    <entry>String</entry>
+                    <entry>Registration password.</entry>
+                  </row>
+                  <row>
+                    <entry>maxregistrations</entry>
+                    <entry>Integer</entry>
+                    <entry>Maximum concurrent registrations allowed.</entry>
+                  </row>
+                  <row>
+                    <entry>loginpassword</entry>
+                    <entry>String</entry>
+                    <entry>Login password.</entry>
+                  </row>
+                  <row>
+                    <entry>email</entry>
+                    <entry>String</entry>
+                    <entry>Email address.</entry>
+                  </row>
+                  <row>
+                    <entry>mobile</entry>
+                    <entry>Integer</entry>
+                    <entry>Mobile number.</entry>
+                  </row>
+                  <row>
+                    <entry>language</entry>
+                    <entry>String</entry>
+                    <entry>The language of the system prompt.</entry>
+                  </row>
+                  <row>
+                    <entry>hasvoicemail</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Enable Voicemail</uicontrol> feature or not.<p>
+                        <ul id="ul_tmw_sst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>enablevmtoemail</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Send Voicemail to Email</uicontrol> feature
+                      or not.<ul id="ul_ils_m5s_ljb">
+                        <li>off: disable</li>
+                      </ul><p>
+                        <ul id="ul_rng_jcz_kjb">
+                          <li>on: enable. Send voicemail to extension user's email.</li>
+                          <li>custom: Send voicemail to custom email.</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>vmsecret</entry>
+                    <entry>Integer</entry>
+                    <entry>Voicemail password.</entry>
+                  </row>
+                  <row>
+                    <entry>alwaysforward</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Always Call Forwarding</uicontrol> feature
+                      or not.<p>
+                        <ul id="ul_zyv_tst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>atransferto</entry>
+                    <entry>String</entry>
+                    <entry>The destination of <codeph>alwaysforward</codeph> .<p>
+                        <ul id="ul_o2d_ksj_gdb">
+                          <li>Voicemail</li>
+                          <li>Extension</li>
+                          <li>Mobile Number</li>
+                          <li>Custom Number</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>atransferext</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>atransferto</codeph> is <codeph>Extension</codeph>, the
+                      extension number should be configured.</entry>
+                  </row>
+                  <row>
+                    <entry>atransferprefix</entry>
+                    <entry>String</entry>
+                    <entry>When <codeph>atransferto</codeph> is <codeph>Mobile Number</codeph> or
+                        <codeph>Custom Number</codeph>, prefix may need to be configured according
+                      to outbound routes.</entry>
+                  </row>
+                  <row>
+                    <entry>atransfernum</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>atransferto</codeph> is <codeph>Custom Number</codeph>,
+                      phone number must be configured.</entry>
+                  </row>
+                  <row>
+                    <entry>noanswerforward</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>No Answer Call Forwarding</uicontrol>
+                      feature or not.<ul id="ul_rwf_b4j_gdb">
+                        <li>on: enable </li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>ntransferto</entry>
+                    <entry>String</entry>
+                    <entry>The destination of <codeph>noanswerforward</codeph>.<p>
+                        <ul id="ul_apr_grz_ljb">
+                          <li>Voicemail</li>
+                          <li>Extension</li>
+                          <li>Mobile Number</li>
+                          <li>Custom Number</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>ntransferext</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>ntransferto</codeph> is <codeph>Extension</codeph>, the
+                      extension number should be configured.</entry>
+                  </row>
+                  <row>
+                    <entry>ntransferprefix</entry>
+                    <entry>String</entry>
+                    <entry>When <codeph>ntransferto</codeph> is <codeph>Mobile Number</codeph> or
+                        <codeph>Custom Number</codeph>, prefix may need to be configured according
+                      to outbound routes.</entry>
+                  </row>
+                  <row>
+                    <entry>ntransfernum</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>ntransferto</codeph> is <codeph>Custom Number</codeph>,
+                      phone number must be configured.</entry>
+                  </row>
+                  <row>
+                    <entry>busyforward</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>When Busy Call Forwarding</uicontrol>
+                      feature or not.<p>
+                        <ul id="ul_cdj_wst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>btransferto</entry>
+                    <entry>String</entry>
+                    <entry>The destination of <codeph>busyforward</codeph> .<p>
+                        <ul id="ul_spl_btj_gdb">
+                          <li>Voicemail</li>
+                          <li>Extension</li>
+                          <li>Mobile Number</li>
+                          <li>Custom Number</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>btransferext</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>btransferto</codeph> is <codeph>Extension</codeph>, the
+                      extension number should be configured.</entry>
+                  </row>
+                  <row>
+                    <entry>btransferprefix</entry>
+                    <entry>String</entry>
+                    <entry>When <codeph>btransferto</codeph> is <codeph>Mobile Number</codeph> or
+                        <codeph>Custom Number</codeph>, prefix may need to be configured according
+                      to outbound routes.</entry>
+                  </row>
+                  <row>
+                    <entry>btransfernum</entry>
+                    <entry>Integer</entry>
+                    <entry>When <codeph>btransferto</codeph> is <codeph>Custom Number</codeph>,
+                      phone number must be configured.</entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>ringsimultaneous</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Ring Simultaneous</uicontrol> feature or not.<p>
+                        <ul id="ul_x1b_zxs_ljb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>enablemobile</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Enable Mobility Extension</uicontrol>
+                      feature or not.<p>
+                        <ul id="ul_zzm_xst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>mobileprefix</entry>
+                    <entry>String</entry>
+                    <entry>When <uicontrol>Enable Mobility Extension </uicontrol> feature is
+                      enabled, prefix may need to be configured according to outbound
+                      routes.</entry>
+                  </row>
+                  <row>
+                    <entry>allowbeingmonitored</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Allow Being Monitored</uicontrol> feature or not.<p>
+                        <ul id="ul_q5b_zst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>monitormode</entry>
+                    <entry>String</entry>
+                    <entry>Monitor mode.<ul id="ul_hx2_pys_ljb">
+                        <li>Disabled</li>
+                        <li>Extensive</li>
+                        <li>Listen</li>
+                        <li>Whisper</li>
+                        <li>Barge-in</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>ringtimeout</entry>
+                    <entry>String</entry>
+                    <entry>Ring timeout in seconds.</entry>
+                  </row>
+                  <row>
+                    <entry>maxduration</entry>
+                    <entry>String</entry>
+                    <entry>The maximum call duration allowed in seconds.</entry>
+                  </row>
+                  <row>
+                    <entry>dnd</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>DND</uicontrol> feature or not.<ul
+                        id="ul_dsj_qnj_gdb">
+                        <li>on: enable </li>
+                        <li>off: disable</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>callrestriction</entry>
+                    <entry>String</entry>
+                    <entry>Whether to enable <uicontrol>Outbound Restriction</uicontrol> feature or not.<p>
+                        <ul id="ul_sky_zst_sjb">
+                          <li>on: enable </li>
+                          <li>off: disable</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row>
+                    <entry>agentid</entry>
+                    <entry>String</entry>
+                    <entry conref="extension-list.dita#reference_ibj_vr2_gdb/agentid"/>
+                  </row>
+                  <row>
+                    <entry>unselectoutroute</entry>
+                    <entry>String</entry>
+                    <entry>The outbound routes that are unavailable to the extension.</entry>
+                  </row>
+                  <row>
+                    <entry>selectoutroute</entry>
+                    <entry>String</entry>
+                    <entry>The outbound routes that are available to the extension.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request example</b></p><p>Query
+        detailed settings of extension 1001.</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/extension/query?token=309bcf2d729fc93e20eafc803a23b76d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "number": "1001" 
+}</codeblock>
+      </p><b>Response example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"extinfos": [
+		{
+			"number": "1001",
+			"username": "1001",
+			"status": "Registered",
+			"type": "SIP",
+			"callerid": "1001",
+			"registername": "1001",
+			"registerpassword": "f2844e41123368345574515f8eaf6595a0a05e50c9d7d16690622ed2ea6965f0",
+			"maxregistrations": "1",
+			"loginpassword": "81d3f187d07d54e2e48b217b62e8436a36d1eb75c5845d4509ac2d14bdeebd97107ab5bbd60c3d8cbfbd0f205b4b655a",
+			"email": "ann@yeastar.com",
+			"moblie": "18508937881",
+			"language": "System Default",
+			"hasvoicemail": "on",
+			"enablevmtoemail": "off",
+			"vmsecret": "1001",
+			"alwaysforward": "off",
+			"noanswerforward": "on",
+			"ntransferto": "Voicemail",
+			"ntransferprefix": "9",
+			"busyforward": "on",
+			"btransferto": "Voicemail",
+			"btransferprefix": "9",
+			"ringsimultaneous": "off",
+			"mobileprefix": "9",
+			"enablemobile": "off",
+			"allowbeingmonitored": "off",
+			"monitormode": "Disabled",
+			"ringtimeout": "30",
+			"maxduration": "Follow System",
+			"dnd": "off",
+			"callrestriction": "off",
+			"agentid": "none",
+			"unselectoutroute": "local_calls",
+			"selectoutroute": "routeout"
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

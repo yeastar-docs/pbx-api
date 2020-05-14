@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_idv_w52_gdb">
+  <title>Make an Outbound Call</title>
+  <shortdesc>Make an outbound call from an extension through a trunk of the PBX.</shortdesc>
+  <refbody>
+    <section id="section_frq_wj2_gdb">
+      <p><b>Conditions</b></p>
+      <p>
+        <ul id="ul_udt_kmm_gdb">
+          <li>The call will go through an outbound route, so the extension needs to have permission
+            of dialing through that route.</li>
+        </ul>
+        <ul id="ul_vwc_mmm_gdb">
+          <li>Send the request to make an extension dial an external number. <p>The extension will
+              ring first, pick up the call on the extension and the external number will be dialed.
+              If  <codeph>autoanswer</codeph>  is set to <codeph>yes</codeph>, the calling party
+              will hear the ring back tone, the called party will hear the ringing.</p></li>
+        </ul>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/extension/dial_outbound?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.9*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.58*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="7.19*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The extension number.</entry>
+              </row>
+              <row>
+                <entry><codeph>outto</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The external number.</entry>
+              </row>
+              <row>
+                <entry><codeph>autoanswer</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Whether to auto answer the call or not. This parameter requires the SIP phone
+                  to support. <ul id="ul_uzm_5lm_gdb">
+                    <li>yes</li>
+                    <li>no</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.15*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="5.83*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique Identifier for the call.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request Example</b></p><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/extension/dial_outbound?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "extid": "1002",
+    "outto": "971837373",
+    "autoanswer": "no"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "callid": "1495710387.333"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

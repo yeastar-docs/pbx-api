@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nt2_b2g_vgb">
+    <title>修改 SIP 中继</title>
+    <shortdesc>修改 SIP 中继的基本设置和 DOD 号码设置。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/update_siptrunk?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_dxf_stn_vgb">
+            <title>请求参数</title>
+            <p>根据不同类型的中继，需要发送不同的请求参数。<ul id="ul_dd5_jdp_rjb">
+                    <li><xref href="#reference_nt2_b2g_vgb/update-register-trunk" format="dita"
+                            >修改注册中继</xref></li>
+                    <li><xref href="#reference_nt2_b2g_vgb/update-peer-trunk" format="dita"
+                            >修改点对点中继</xref></li>
+                    <li><xref href="#reference_nt2_b2g_vgb/update-account-trunk" format="dita"
+                            >修改账号中继</xref></li>
+                </ul></p>
+            <dl>
+                <dlentry>
+                    <dt id="update-register-trunk">修改注册中继</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_j5r_ndp_rjb">
+                                <tgroup cols="4">
+                                    <colspec colname="c1" colnum="1" colwidth="2.48*"/>
+                                    <colspec colname="newCol2" colnum="2" colwidth="1.35*"/>
+                                    <colspec colname="c2" colnum="3" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="4" colwidth="7.55*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>是否必选</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>是</entry>
+                                            <entry>Integer</entry>
+                                            <entry>中继的唯一 ID。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>中继名称。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>
+                                                <p><b>取值</b>：</p>
+                                                <p>register：注册中继。</p>
+                                            </entry>
+                                        </row>
+                                        <row>
+                                            <entry>host</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>port</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>中继的 SIP 端口。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>domain</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>username</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商提供的 SIP 账号。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>authname</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 运营商提供的 SIP 账号。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>fromuser</entry>
+                                            <entry>否</entry>
+                                            <entry>String</entry>
+                                            <entry>From 头域。<p>
+                                                  <note>如果 SIP 运营商不支持，则放空。</note>
+                                                </p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>password</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>SIP 账号的密码。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>否</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsdod"/>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>否</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsgroupdod"/>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="update-peer-trunk">修改点对点中继</dt>
+                    <dd>
+                        <table frame="all" rowsep="1" colsep="1" id="table_ac3_pdp_rjb">
+                            <tgroup cols="4">
+                                <colspec colname="c1" colnum="1" colwidth="3.48*"/>
+                                <colspec colname="newCol2" colnum="2" colwidth="1.58*"/>
+                                <colspec colname="c2" colnum="3" colwidth="1*"/>
+                                <colspec colname="c3" colnum="4" colwidth="6.83*"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>是否必选</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>id</entry>
+                                        <entry>是</entry>
+                                        <entry>Integer</entry>
+                                        <entry>中继的唯一 ID。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunkname</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>中继名称。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>trunktype</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>中继类型。<p><b>取值</b>：</p><p>peer：点对点中继。</p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>host</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>port</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>中继的 SIP 端口。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>domain</entry>
+                                        <entry>是</entry>
+                                        <entry>String</entry>
+                                        <entry>SIP 运营商的域名或 IP 地址。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>extensionsdod</entry>
+                                        <entry>否</entry>
+                                        <entry>String</entry>
+                                        <entry
+                                            conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsdod"
+                                        />
+                                    </row>
+                                    <row>
+                                        <entry>extensionsgroupdod</entry>
+                                        <entry>否</entry>
+                                        <entry>String</entry>
+                                        <entry
+                                            conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsgroupdod"
+                                        />
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="update-account-trunk">修改账号中继</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_p5x_qdp_rjb">
+                                <tgroup cols="4">
+                                    <colspec colname="c1" colnum="1" colwidth="3.45*"/>
+                                    <colspec colname="newCol2" colnum="2" colwidth="1.66*"/>
+                                    <colspec colname="c2" colnum="3" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="4" colwidth="6.76*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry>是否必选</entry>
+                                            <entry>类型</entry>
+                                            <entry>描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>是</entry>
+                                            <entry>Integer</entry>
+                                            <entry>中继的唯一 ID。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>中继名称。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>中继类型。<p><b>取值</b>：</p><p>account：账号中继。</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>username</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的用户名。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>authname</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的认证名。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>password</entry>
+                                            <entry>是</entry>
+                                            <entry>String</entry>
+                                            <entry>账号中继的密码。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>否</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsdod"
+                                            />
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>否</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionsgroupdod"
+                                            />
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_g3j_ww1_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/update_siptrunk?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "id":"8",
+    "trunkname": "siptrunk1",
+    "trunktype": "register",
+    "host": "192.168.12.161",
+    "port": "5060",
+    "domain": "192.168.12.161",
+    "username": "1001",
+    "authname": "1001",
+    "password": "Pajsjx9183",
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

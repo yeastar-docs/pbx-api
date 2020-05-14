@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_tkh_zk2_hdb">
+  <title>发送短信</title>
+  <shortdesc>通过 GSM/3G/4G 中继给外部号码发送短信。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p><b>应用场景</b>： 拨打人工服务的时候，人工可按某个键直接把要查询的具体内容发到你手机上。</p>
+      <p>
+        <note>
+          <ul id="ul_lmh_2rp_52b">
+            <li>信息内容字符限制为最多1000个汉字，即2000个字符，不能包含表情。</li>
+            <li>确保 PBX 系统能够正常收发短信。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section>
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/sms/send?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.33*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.04*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="3.91*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>phonenumber</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>手机号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>message</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>信息内容(需经过 URL 编码)。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>使用的 GSM/3G/4G 中继名。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="3" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>Object</entry>
+                <entry>表明该条响应是短信发送的结果。</entry>
+              </row>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>String</entry>
+                <entry>请求状态：<ul id="ul_wxg_41n_t2b">
+                    <li>Success：短信发送成功。</li>
+                    <li>Failed：短信发送失败。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>smsid</codeph></entry>
+                <entry>String</entry>
+                <entry>每条短信的唯一标识。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>实际示例</title><p><b>请求示例</b><note> 短信内容必须经过 URL 编码。<xref href="http://tool.oschina.net/encode?type=4"
+            format="html" scope="external"
+        >URL编码工具</xref></note><codeblock outputclass="language-json">POST /api/v1.1.0/sms/send?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+Host: 192.168.5.150
+{
+    "trunk": "GSM",
+    "phonenumber": "18396210850",
+    "message": "%E4%BD%A0%E5%A5%BD"
+}</codeblock></p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "smsid": "18396210850-1502874159"
+}</codeblock>
+      </p><p>请求成功后会有产生两条响应，一条表明发送的请求是否正确，一条则表明短信是否发送成功。<ul id="ul_tdh_3bn_t2b">
+          <li>
+            <p>短信发送成功：</p>
+            <p>
+              <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "action": "sms-send",
+    "status": "Succeed",
+    "smsid": "18396210850-1502874445"
+}</codeblock>
+            </p>
+          </li>
+          <li>
+            <p>短信发送失败：</p>
+            <p>
+              <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "action": "sms-send",
+    "status": "Failed",
+    "smsid": "18396210850-1502874159"
+}</codeblock>
+            </p>
+          </li>
+        </ul></p><p>请求失败：<codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Failed",
+    "errno": "20004"
+}</codeblock></p></section>
+  </refbody>
+</reference>

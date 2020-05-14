@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_o3v_gy2_gdb">
+  <title>Transfer Inbound Call to Ring Group</title>
+  <shortdesc>Through this interface, an inbound call can be transferred to a ring group.As a result,
+    the call will be handled according to the ring strategy when there are one or more available
+    extensions in the group.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/14"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/15"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+      <!--Carol-->
+      <revised modified="2018/09/03"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>When Busy/No Answer<ul id="ul_lyy_kyt_gdb">
+          <li>If no extension is available (busy, DND), following the ring group's settings, the
+            call will wait until an available extension picks up.</li>
+          <li>If there are idle extensions, but the idle extension does not answer the call, the
+            call will be directed to the next idle extension.</li>
+        </ul></p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Request Address </title>
+      <p product="cloudpbx">https://<codeph>{pbx domain}</codeph>/api/<codeph>{api
+          version}</codeph>/inbound/transfer_ringgroup?token=<codeph>{token}</codeph></p>
+      <p product="s-series">https://<codeph>{pbx ip}</codeph>:<codeph>{https
+          port}</codeph>/api/<codeph>{api
+          version}</codeph>/inbound/transfer_ringgroup?token=<codeph>{token}</codeph></p>
+      <p>
+        <note conref="api_login.dita#reference_blb_5ld_gdb/api_version_note"/>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.63*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.22*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.24*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>inboundid</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The inbound ID.</entry>
+              </row>
+              <row>
+                <entry><codeph>ringgroupid</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The ring group number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Request result:<ul id="ul_hfl_12r_52b2">
+                    <li>Failed.</li>
+                    <li>Success.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">Request successful</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>A unique identifier for the call.</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">Request failed</entry>
+              </row>
+              <row>
+                <entry><codeph>errno</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Error code.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>Transfer the
+        inbound call to ring group 6200.</p><p>
+        <codeblock outputclass="language-json">{
+    "inboundid": "1495700191.223",
+    "ringgroupid": "6200"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">{
+    "status": "Success",
+    "callid": "1495700191.223"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

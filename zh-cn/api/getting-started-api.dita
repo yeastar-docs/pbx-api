@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_jwd_ssb_wgb">
+    <title>API 快速入门指南</title>
+    <shortdesc>使用<ph keyref="product_name"/> API 之前，你需要先启用 PBX 的 API 功能、了解<ph keyref="product_name"
+        /> API 的通信方式、API 请求结构、响应消息和 API 报告。</shortdesc>
+</topic>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conference-add-member">
+    <title>邀请会议室成员</title>
+    <shortdesc>邀请内部成员或外部成员加入会议室。</shortdesc>
+    <refbody>
+        <section id="section_w4m_pdy_mjb">
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/conference/add_member?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_f5v_pdy_mjb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" id="table_wm2_sdy_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.45*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.16*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.68*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>会议室号码。表示邀请成员进入哪个会议室。</entry>
+                            </row>
+                            <row>
+                                <entry>operator</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>操作者号码。表示谁来执行邀请成员的动作。<note>只有主持人有权限邀请成员。</note></entry>
+                            </row>
+                            <row>
+                                <entry>invitenumber</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>要邀请的成员的号码。可邀请内部分机用户或外部用户。<p><b>取值范围</b>：</p><ul
+                                        id="ul_cty_why_mjb">
+                                        <li>单个号码：邀请单个成员。<p>例如：<codeph>"invitenumber":"2023"</codeph></p></li>
+                                        <li>多个号码：邀请多个成员。多个号码用半角逗号（,）隔开。<p>例如：<codeph>"invitenumber":"2023,2024"</codeph></p></li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>dialpermission</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>使用哪个分机的呼叫权限，邀请会议室成员。<?oxy_comment_start author="Becky" timestamp="20191029T101420+0800" comment="和需求不一样，必填项，邀请内部号码也不能为空，待确认" id="tmn_1lt_pjb" flag="done" mid="1"?><?oxy_comment_start author="carol" timestamp="20191104T201754+0800" comment="跟测试确认一下。" parentID="tmn_1lt_pjb" flag="done"?><note>如果
+                                            <codeph>invitenumber</codeph>
+                                            包含外部号码，<codeph>dialpermission</codeph>
+                                        必须为具备外呼权限的分机号码。<?oxy_comment_end?><?oxy_comment_end mid="1"?></note></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_e2g_qdy_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_lxv_5dy_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.06*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.14*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_tky_c3y_mjb"
+                ><title>示例</title><p><b>请求示例</b></p><p>邀请内部分机4001加入会议室6400。</p><p>
+                    <codeblock outputclass="language-json">POST /api/v2.0.0/conference/add_member?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6400",
+	"operator": "4000",
+	"invitemember": "4001",
+	"dialpermission": "4000"
+}</codeblock>
+                </p><b>响应示例</b><codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock></section>
+    </refbody>
+</reference>

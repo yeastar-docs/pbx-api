@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topic_dqt_mvb_wgb">
+    <title>请求结构</title>
+    <shortdesc>发起 API 请求的 URL 由不同参数拼凑而成，有固定的请求结构。本文介绍 <ph keyref="product_name"/>的 API
+        请求结构，包括通信协议、请求方式和请求地址说明。</shortdesc>
+    <conbody>
+        <section id="section_etz_wjb_4jb">
+            <title>结构示例</title>
+            <p>下面为 <xref href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>的请求示例。</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/queue/add_dynamicagent?token=1e3b3ebb6a974cb42ed31de5413df52d 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+	"queuenumber": "6700",
+	"extnumber": "1000",
+	"password": "6700123"
+}</codeblock>
+            </p>
+            <p>
+                <ul id="ul_qhp_rfc_wgb">
+                    <li><?oxy_comment_start author="Becky" timestamp="20191119T095651+0800" comment="改"?><codeph>POST</codeph>
+                        表示请求方式。</li>
+                    <li><codeph>/api/v2.0.0</codeph> 即 API 路径，表示 API 版本号。</li>
+                    <li><codeph>queue/add_dynamicagent</codeph> 表示要调用的 API 接口<xref
+                            href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>。</li>
+                    <li><codeph>token=1e3b3ebb6a974cb42ed31de5413df52d</codeph> 表示用于验证请求合法性的
+                        token。</li>
+                    <li><codeph>Content-Type:application/json; charset=utf-8</codeph> 表示请求内容格式。</li>
+                    <li><codeph>Host</codeph> 表示<ph product="k2 s-series"><ph keyref="product_name"
+                            />的 IP 地址。</ph><ph product="cloudpbx"><ph keyref="product_name"/>
+                            的域名。</ph></li>
+                    <li><codeph>queuenumber</codeph>、<codeph>extnumber</codeph>、<codeph>password</codeph>
+                        表示具体请求参数。</li><?oxy_comment_end?>
+                </ul>
+            </p>
+        </section>
+        <section id="section_f3t_jjb_4jb">
+            <title>通信协议</title>
+            <p product="k2 s-series"><ph keyref="product_name"/> API 支持 HTTP 或 HTTPS 协议请求通信，所有 API
+                请求均使用 HTTP/HTTPS POST 方式调用。为了获得更高的安全性，建议你使用 HTTPS 协议发送请求。</p>
+            <p product="cloudpbx"><ph keyref="product_name"/> API 使用 HTTPS 通信协议，所有 API 请求均使用 HTTPS
+                POST 方式调用。</p>
+        </section>
+        <section id="section_kcq_15f_xgb">
+            <title>请求地址格式</title>
+            <p>API URL 由 Base URL、Endpoint 和 API token 组成，统一格式如下。</p>
+            <p>
+                <note><xref href="login.dita"/><ph product="cloudpbx"> 和 <xref
+                            href="token-refresh.dita"/></ph> 请求地址无需带 token。</note>
+            </p>
+            <p>
+                <codeblock><varname>{base_url}</varname>/<varname>{api_path}</varname>/<varname>{endpoint}</varname>?token=<varname>{token}</varname></codeblock>
+                <dl>
+                    <dlentry>
+                        <dt id="base-url">{base_url}</dt>
+                        <dd>
+                            <p product="cloudpbx">本手册中，所有 API 请求示例，都使用下面的的Base URL：</p>
+                            <p product="cloudpbx">
+                                <codeblock>https://<varname>{pbx_domain}</varname></codeblock>
+                            </p>
+                            <p product="k2 s-series">根据 PBX 的网页访问协议设置，填写 API 请求的 Base URL。</p>
+                            <p product="k2 s-series">
+                                <ul id="ul_mvs_4lb_4jb">
+                                    <li>如果 PBX 网页访问协议为 HTTPS，Base URL 的格式如下：<p>
+                                            <codeblock>https://<varname>{pbx_ip}</varname>:<varname>{https_port}</varname></codeblock>
+                                        </p></li>
+                                </ul>
+                            </p>
+                            <p product="k2 s-series">
+                                <ul id="ul_pfc_rlb_4jb">
+                                    <li>如果 PBX 网页访问协议为 HTTP，Base URL 的格式如下：<p>
+                                            <codeblock>http://<varname>{pbx_ip}</varname>:<varname>{http_port}</varname></codeblock>
+                                        </p></li>
+                                </ul>
+                            </p>
+                        </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt id="api-path">{api_path}</dt>
+                        <dd>API 的路径格式为
+                                <codeph>api/<varname>{version}</varname></codeph>，其中，<varname>{version}</varname>
+                            为 API 版本号。</dd>
+                        <dd>本文档中，使用的 API 版本为 v2.0.0，所有的 API 接口的 api_path 都是
+                                <codeph>api/v2.0.0</codeph></dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>{endpoint}</dt>
+                        <dd>
+                            <p>Endpoint （终点），也称作 “路径”，表示 API 请求地址的具体地址。</p>
+                            <p>关于 <ph keyref="product_name"/> 支持的所有 Endponit，请参见 <xref
+                                    href="api-interfaces-overview.dita"/>。</p>
+                        </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt id="token">{token}</dt>
+                        <dd>
+                            <p>Token 为 API 接口的调用凭证。应用服务器请求调用 PBX 的 API 接口之前，必须先 <xref
+                                    href="login.dita"/>。之后的所有 API 请求都必须在 API URL 带上 token，否则 API
+                                接口调用将会失败。</p>
+                            <p>详细的 API 认证说明，请参见<xref href="api-authentication.dita"/>。</p>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>

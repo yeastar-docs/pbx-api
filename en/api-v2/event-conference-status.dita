@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="event-conference-status">
+    <title>ConferenceStatus</title>
+    <shortdesc>When the number of participants changes, PBX will send a ConferenceStatus report to
+        the application server. The ConferenceStatus includes the participants information in the
+        conference.</shortdesc>
+    <body>
+        <section id="section_uj4_hxs_njb">
+            <title>Report parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.37*"/>
+                        <colspec colname="c3" colnum="3" colwidth="2.88*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry> Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>conferencenumber</entry>
+                                <entry>Integer</entry>
+                                <entry>The conference number.</entry>
+                            </row>
+                            <row>
+                                <entry>conferencename</entry>
+                                <entry>Integer</entry>
+                                <entry>The conference name.</entry>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#event-conference-status/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <dl>
+            <dlentry id="membertype">
+                <dt>MemberType</dt>
+                <dd>
+                    <table frame="all" rowsep="1" colsep="1" id="table_hmk_1px_pjb">
+                        <tgroup cols="3">
+                            <colspec colname="c1" colnum="1" colwidth="1*"/>
+                            <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                            <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                            <thead>
+                                <row>
+                                    <entry>Parameter</entry>
+                                    <entry> Type</entry>
+                                    <entry>Description</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>ext</entry>
+                                    <entry>Object <xref
+                                            href="#event-conference-status/extensioninfo"
+                                            format="dita">&lt;ExtensionInfo></xref></entry>
+                                    <entry>Extension information.</entry>
+                                </row>
+                                <row>
+                                    <entry>outbound</entry>
+                                    <entry>Object <xref href="#event-conference-status/outbound"
+                                            format="dita">&lt;OutboundInfo></xref></entry>
+                                    <entry>The information of outbound calls.</entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </dd>
+            </dlentry>
+        </dl>
+        <dl>
+            <dlentry id="extensioninfo">
+                <dt>ExtensionInfo</dt>
+                <dd>
+                    <p>
+                        <table frame="all" rowsep="1" colsep="1" id="table_lhq_ynx_pjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry> Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/ext-number">
+                                        <entry/>
+                                    </row>
+                                    <row
+                                        conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                                        <entry/>
+                                    </row>
+                                    <row id="memberstatus">
+                                        <entry>memberstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>The participant status.<p>
+                                                <ul id="ul_m3m_2fq_pjb">
+                                                  <li>ANSWERED: The participant dials the conference
+                                                  number, and joins the conference call.</li>
+                                                  <li>ANSWER: The participant accepts the conference
+                                                  invitation, and joins the conference all.</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                    <?oxy_comment_start author="Sunmy" timestamp="20200414T114414+0800" comment="13.B"?>
+                                    <row id="callpath">
+                                        <entry>callpath</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The call path (conference number) that indicates how
+                                            the call is established.</entry>
+                                    </row><?oxy_comment_end?>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </p>
+                </dd>
+            </dlentry>
+        </dl>
+        <dl>
+            <dlentry id="outbound">
+                <dt>OutboundInfo</dt>
+                <dd>
+                    <p>
+                        <table frame="all" rowsep="1" colsep="1" id="table_phm_j4x_pjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry> Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                                        <entry/>
+                                    </row>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                                        <entry/>
+                                    </row>
+                                    <row
+                                        conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-outbound">
+                                        <entry/>
+                                    </row>
+                                    <row
+                                        conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                                        <entry/>
+                                    </row>
+                                    <row>
+                                        <entry>memberstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>The participant status.<p>
+                                                <ul id="ul_jjm_zrv_qjb">
+                                                  <li>ANSWERED: The participant dials the conference
+                                                  number, and joins the conference call.</li>
+                                                  <li>ANSWER: The participant accepts the conference
+                                                  invitation, and joins the conference all.</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                    <row conref="#event-conference-status/callpath">
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_hth_3xs_njb">
+            <title>Report example</title>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+Host: 192.168.5.150: 8260
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "ConferenceStatus",
+	"callid": "1572313740.138",
+	"conferencenumber": "6409",
+	"conferencename": " 6409",
+	"members": [
+		{
+			"outbound": {
+				"from": "6409",
+				"to": "2100",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-0000001f",
+				"memberstatus": "ANSWERED",
+                                <?oxy_comment_start author="Sunmy" timestamp="20200414T114522+0800" comment="13.b"?>"callpath":"6409"<?oxy_comment_end?>
+			}
+		},
+		{
+			"ext": {
+				"number": "1020",
+				"channelid": "PJSIP/1020-0000001e",
+				"memberstatus": "ANSWERED",
+                                <?oxy_comment_start author="Sunmy" timestamp="20200414T114522+0800" comment="13.b"?>"callpath":"6409"<?oxy_comment_end?>
+			}
+		},
+		{
+			"ext": {
+				"number": "2023",
+				"channelid": "PJSIP/2023-0000001d",
+				"memberstatus": "ANSWERED",
+                                <?oxy_comment_start author="Sunmy" timestamp="20200414T114522+0800" comment="13.b"?>"callpath":"6409"<?oxy_comment_end?>
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

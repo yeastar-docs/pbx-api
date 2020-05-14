@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_w23_cs2_gdb">
+  <title>查询中继列表</title>
+  <shortdesc>查询 PBX 上所有中继的基本信息，如：中继名称、中继状态、中继类型等。</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/list?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>无参数，直接发送查询中继列表的请求即可。</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>响应参数</title>
+      <table frame="all" id="table_sww_xnz_pjb">
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+          <colspec colname="c2" colnum="2" colwidth="1.59*" colsep="1" rowsep="1"/>
+          <colspec colname="c3" colnum="3" colwidth="3.41*" colsep="1" rowsep="1"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>类型</entry>
+              <entry>描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>status</entry>
+              <entry>String</entry>
+              <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                  <li>Success：成功。</li>
+                  <li>Failed：失败。</li>
+                </ul></entry>
+            </row>
+            <row>
+              <entry>trunklist</entry>
+              <entry>Array<xref href="#reference_w23_cs2_gdb/trunkinfo" format="dita"
+                  >&lt;TrunkInfo></xref></entry>
+              <entry>中继信息列表。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <dl>
+        <dlentry>
+          <dt id="trunkinfo">TrunkInfo</dt>
+          <dd>
+            <table frame="all" id="table_v4t_l4z_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.17*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="4.03*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row valign="middle">
+                    <entry>trunkname</entry>
+                    <entry>String</entry>
+                    <entry>中继名称。</entry>
+                  </row>
+                  <row>
+                    <entry>id</entry>
+                    <entry>Integer</entry>
+                    <entry>中继的唯一 ID。</entry>
+                  </row>
+                  <row product="cloudpbx k2" valign="middle">
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>中继类型。</entry>
+                  </row>
+                  <row product="cloudpbx k2" valign="middle">
+                    <entry>status</entry>
+                    <entry>String</entry>
+                    <entry>中继当前状态。<ul id="ul_wt4_n4z_pjb">
+                        <li>Registering：注册中。</li>
+                        <li>Failure：注册失败。</li>
+                        <li>Registered：已注册。</li>
+                        <li>Disable：禁用。</li>
+                        <li>Unknown：未知。</li>
+                      </ul></entry>
+                  </row>
+                  <row product="s-series" valign="middle">
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>中继类型。<ul id="ul_a54_n4z_pjb">
+                        <li>IAX：IAX 协议类型的 VoIP 中继。</li>
+                        <li>SIP：SIP 协议类型的 VoIP 中继。</li>
+                        <li>FXO：FXO 模拟中继。</li>
+                        <li>GSM：GSM/3G/4G 无线中继。</li>
+                        <li>BRI： BRI 数字中继。</li>
+                        <li>E1：E1/T1/J1 数字中继。</li>
+                      </ul></entry>
+                  </row>
+                  <row valign="middle" product="s-series">
+                    <entry morerows="3">status</entry>
+                    <entry morerows="3">String</entry>
+                    <entry>
+                      <p>SIP/IAX 中继状态。</p>
+                      <p>
+                        <ul id="ul_f54_n4z_pjb">
+                          <li>Registering：注册中。</li>
+                          <li>Failure：注册失败。</li>
+                          <li>Registered：已注册。</li>
+                          <li>Disable：禁用。</li>
+                          <li>Unknown：未知。</li>
+                        </ul>
+                      </p>
+                    </entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>FXO 中继状态。<p>
+                        <ul id="ul_n54_n4z_pjb">
+                          <li>Fault：故障。</li>
+                          <li>Idle：空闲。</li>
+                          <li>Busy：忙线。</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>BRI/E1 中继状态。<p>
+                        <ul id="ul_t54_n4z_pjb">
+                          <li>Fault：故障。</li>
+                          <li>Alarm：连接错误。</li>
+                          <li>Down：不可用。</li>
+                          <li>Up：可用。</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>GSM/3G/4G 中继状态。<p>
+                        <ul id="ul_y54_n4z_pjb">
+                          <li>Power Off ：模块关机。</li>
+                          <li>Alarm：连接错误。</li>
+                          <li>No SIM：SIM 卡未接入。</li>
+                          <li>No Signal：无信号。</li>
+                          <li>Pin Error：PIN 码错误。</li>
+                          <li>Unregister：注册不上运营商。</li>
+                          <li>Busy：忙线。</li>
+                          <li>Idle：空闲。</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>port</entry>
+                    <entry>String</entry>
+                    <entry>中继端口。</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section>
+      <title>示例</title>
+      <p><b>请求示例</b></p>
+      <p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/list?token=277ac400357b509b4a587ff2157f7ad5 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p>
+      <p><b>响应示例</b></p>
+      <p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"trunklist": [
+		{
+			"trunkname": "siptrunk",
+			"id": "7",
+			"status": "registered",
+			"type": "SIP"
+		}
+	]
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

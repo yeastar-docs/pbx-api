@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_ocs_zmc_wgb">
+    <title>API 报告推送</title>
+    <shortdesc>第三方服务器通过 API 接口与<ph keyref="product_name"/> 对接后，PBX 会主动发送 API 报告给第三方服务器。</shortdesc>
+    <body>
+        <p>第三方服务器通过 API 接口 <xref href="api_login.dita"/> PBX，需要带 <codeph>port</codeph>
+                参数。<codeph>port</codeph> 表示 API 报告监听端口。PBX 将 API 报告发送到该端口。</p>
+        <p>
+            <note>
+                <ul id="ul_qrg_hnc_wgb">
+                    <li>第三方服务器接收到报告后，必须回复 200 OK 给 PBX， 否则 PBX 重复发送报告。</li>
+                    <li>如果第三方服务器与 PBX 不在同一个网络，你需要将监听端口（默认 TCP 8260）映射到外网。 </li>
+                    <li>如果你需要在第三方服务器接收分机和中继相关的事件报告，你需要在 PBX API 配置界面，启用分机和中继的
+                            <uicontrol>状态监控</uicontrol>。</li>
+                </ul>
+            </note>
+        </p>
+        <section id="section_f5b_j4c_wgb">
+            <title>API 报告格式</title>
+            <p><ph keyref="product_name"/> 通过 POST 方式向第三方服务器发送 API 报告，报告格式为 JSON。</p>
+            <p>下面为 PBX 系统启动的 API 报告示例。</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "BootUp",
+    "sn": "369351034049"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

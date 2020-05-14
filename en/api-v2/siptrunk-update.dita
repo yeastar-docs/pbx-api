@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_nt2_b2g_vgb">
+    <title>Edit a SIP Trunk</title>
+    <shortdesc>Edit basic settings and DOD number settings of a SIP trunk.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/update_siptrunk?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_dxf_stn_vgb"><title>Request parameters</title>Send different request
+            parameters according to different types of SIP trunk.<ul id="ul_ubf_l4t_sjb">
+                <li><xref href="#reference_nt2_b2g_vgb/Registertrunk" format="dita">Edit a register
+                        trunk</xref></li>
+                <li><xref href="#reference_nt2_b2g_vgb/Peertrunk" format="dita">Edit a peer
+                        trunk</xref></li>
+                <li><xref href="#reference_nt2_b2g_vgb/Accounttrunk" format="dita">Edit an account
+                        trunk</xref></li>
+            </ul><p>
+                <dl>
+                    <dlentry>
+                        <dt id="Registertrunk">Edit a register trunk</dt>
+                        <dd>
+                            <table frame="all" id="table_qxp_n4t_sjb">
+                                <tgroup cols="4" align="left">
+                                    <colspec colname="c1" colnum="1" colwidth="1.56*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1.23*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c4" colnum="4" colwidth="6.83*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry>Required</entry>
+                                            <entry> Type</entry>
+                                            <entry> Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>Yes</entry>
+                                            <entry>Integer</entry>
+                                            <entry>The unique ID of a trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk name.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk type.<p><b>Valid value</b>:
+                                                register</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>host</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The domain or IP address of the ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>port</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The port of the SIP trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>domain</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The domain or IP address of the ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>username</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The SIP account that is provided by the
+                                                ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>authname</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The SIP account that is provided by the
+                                                ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>fromuser</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry>If <codeph>fromuser</codeph> is set, all outgoing
+                                                calls from this SIP trunk will use the
+                                                  <codeph>fromuser</codeph> value as From Header of
+                                                the SIP INVITE packets.<p>
+                                                  <note>Leave the parameter blank if ITSP does not
+                                                  support this feature.</note>
+                                                </p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>password</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The password of the SIP account.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionDOD"
+                                            />
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensiongroupDOD"
+                                            />
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt id="Peertrunk">Edit a peer trunk</dt>
+                        <dd>
+                            <table frame="all" id="table_yyt_v4t_sjb">
+                                <tgroup cols="4" align="left">
+                                    <colspec colname="c1" colnum="1" colwidth="1.42*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1.12*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c4" colnum="4" colwidth="4.56*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry>Required</entry>
+                                            <entry> Type</entry>
+                                            <entry> Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>Yes</entry>
+                                            <entry>Integer</entry>
+                                            <entry>The unique ID of a trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk name.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk type.<p><b>Valid value</b>:
+                                                peer</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>host</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The domain or IP address of the ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>port</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The port of the SIP trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>domain</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The domain or IP address of the ITSP.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionDOD"
+                                            />
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensiongroupDOD"
+                                            />
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt id="Accounttrunk">Edit an account trunk</dt>
+                        <dd>
+                            <table frame="all" id="table_hfv_dpt_sjb">
+                                <tgroup cols="4" align="left">
+                                    <colspec colname="c1" colnum="1" colwidth="1.43*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1.09*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1"
+                                        rowsep="1"/>
+                                    <colspec colname="c4" colnum="4" colwidth="4.65*" colsep="1"
+                                        rowsep="1"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry>Required</entry>
+                                            <entry> Type</entry>
+                                            <entry> Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>id</entry>
+                                            <entry>Yes</entry>
+                                            <entry>Integer</entry>
+                                            <entry>The unique ID of a trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunkname</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk name.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>trunktype</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>Trunk type.<p><b>Valid value</b>:
+                                                account.</p></entry>
+                                        </row>
+                                        <row>
+                                            <entry>username</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The user name of the Account Trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>authname</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The authentication name of the Account
+                                                Trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>password</entry>
+                                            <entry>Yes</entry>
+                                            <entry>String</entry>
+                                            <entry>The password of the Account Trunk.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>extensionsdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensionDOD"
+                                            />
+                                        </row>
+                                        <row>
+                                            <entry>extensionsgroupdod</entry>
+                                            <entry>No</entry>
+                                            <entry>String</entry>
+                                            <entry
+                                                conref="siptrunk-add.dita#reference_oxq_zdg_vgb/extensiongroupDOD"
+                                            />
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p></section>
+        <section id="section_g3j_ww1_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/update_siptrunk?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+    "id":"8",
+    "trunkname": "siptrunk1",
+    "trunktype": "register",
+    "host": "192.168.12.161",
+    "port": "5060",
+    "domain": "192.168.12.161",
+    "username": "1001",
+    "authname": "1001",
+    "password": "Pajsjx9183",
+}</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

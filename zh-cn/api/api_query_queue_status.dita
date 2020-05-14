@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_t3d_sdf_h2b">
+    <title>查询队列状态</title>
+    <shortdesc>查询队列坐席的状态。</shortdesc>
+    <refbody>
+        <section>
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/queuestatus/query?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_vjw_5qd_gdb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_kdz_32f_h2b">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.2*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.45*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.68*"/>
+                        <tbody>
+                            <row>
+                                <entry><b>名称</b></entry>
+                                <entry><b>是否必需</b></entry>
+                                <entry><b> 类型</b></entry>
+                                <entry><b> 描述</b></entry>
+                            </row>
+                            <row>
+                                <entry>queueid</entry>
+                                <entry>是</entry>
+                                <entry>Int</entry>
+                                <entry>队列号码。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_ncs_v2f_h2b">
+            <title>响应参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_itl_nff_h2b">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                    <colspec colname="c3" colnum="2" colwidth="1.06*"/>
+                    <colspec colname="c4" colnum="3" colwidth="3.33*"/>
+                    <tbody>
+                        <row>
+                            <entry><b>名称</b></entry>
+                            <entry><b> 类型</b></entry>
+                            <entry><b> 描述</b></entry>
+                        </row>
+                        <row>
+                            <entry>queues</entry>
+                            <entry>Object</entry>
+                            <entry>队列。</entry>
+                        </row>
+                        <row>
+                            <entry>queuenumber</entry>
+                            <entry>Int</entry>
+                            <entry>队列号码。</entry>
+                        </row>
+                        <row>
+                            <entry>queuestatus</entry>
+                            <entry>Object</entry>
+                            <entry>队列状态。</entry>
+                        </row>
+                        <row>
+                            <entry>callercount</entry>
+                            <entry>Int</entry>
+                            <entry>当前队列等候人数。</entry>
+                        </row>
+                        <row>
+                            <entry>members</entry>
+                            <entry>Object</entry>
+                            <entry>队列成员。</entry>
+                        </row>
+                        <row>
+                            <entry>agent</entry>
+                            <entry>Int</entry>
+                            <entry>坐席号码。</entry>
+                        </row>
+                        <row>
+                            <entry>agentstatus</entry>
+                            <entry>Int</entry>
+                            <entry>坐席状态。<p>
+                                    <ul id="ul_fkp_lgf_h2b">
+                                        <li>0-Unknown：未知</li>
+                                        <li>1-Not In Use：坐席处于空闲状态</li>
+                                        <li>2-In Use：坐席处于通话中</li>
+                                        <li>3-Busy：未知</li>
+                                        <li>4-Invalid：未知</li>
+                                        <li>5-Unavailable：坐席分机未注册上</li>
+                                        <li>6-Ringing：坐席分机正在响铃</li>
+                                        <li>7-In Use Ringing：坐席通话中收到新来电</li>
+                                        <li>8-On Hold：坐席保持当前通话</li>
+                                        <li>9-Paused：坐席被暂停服务，不接收来电业务</li>
+                                        <li>10-Warp-up time：坐席处于休息状态，不接收来电业务</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>实际示例</title><p><b>请求示例</b></p><p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/queuestatus/query?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6700"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "queues": [
+        {
+            "queuenumber": "6700",
+            "queuestatus": [
+                {
+                    "callercount": "0",
+                    "members": [
+                        {
+                            "agent": "8034",
+                            "agentstatus": "1"
+                        },
+                        {
+                            "agent": "8033",
+                            "agentstatus": "1"
+                        },
+                        {
+                            "agent": "5007",
+                            "agentstatus": "1"
+                        },
+                        {
+                            "agent": "1004",
+                            "agentstatus": "9"
+                        },
+                        {
+                            "agent": "6000",
+                            "agentstatus": "5"
+                        },
+                        {
+                            "agent": "6036",
+                            "agentstatus": "5"
+                        },
+                        {
+                            "agent": "6001",
+                            "agentstatus": "5"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

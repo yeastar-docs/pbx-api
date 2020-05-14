@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_itj_qhf_jjb">
+    <title>PBX API 网页设置</title>
+    <shortdesc>在连接应用服务器与 PBX 之前，你要先在 PBX 网页启用 API 并做好相关的配置。本文介绍 PBX API 的相关网页设置。</shortdesc>
+    <body>
+        <section id="section_ezw_ndp_4jb">
+            <title id="api-basic-settings">二次开发接口- 基本设置</title>
+            <p>使用 API 功能，你必须启用API 并做好基本设置。</p>
+            <p>登录 PBX 网页，进入 <menucascade>
+                    <uicontrol>配置</uicontrol>
+                    <uicontrol>PBX</uicontrol>
+                    <uicontrol>常规设置</uicontrol>
+                    <uicontrol>二次开发接口</uicontrol>
+                </menucascade>，启用并更改 API 基本设置。</p>
+            <p><image href="../Images/pbx-api/api-basic-settings.png" width="650"
+                    id="image_nmz_hhp_4jb"/></p>
+            <p>
+                <ul id="ul_ewz_mgp_4jb">
+                    <li><uicontrol>启用</uicontrol>：是否启用 API 功能。</li>
+                    <li id="report-methods"
+                            ><uicontrol>报告发送方法</uicontrol>：选择发送事件报告的方式。关于两种事件报告发送形式的说明，请参见<xref
+                            href="api-reports.dita"/>。<p>
+                            <ul id="ul_vby_sfp_4jb">
+                                <li><uicontrol>HTTP</uicontrol>：PBX 采用 TCP 短连接的方式发送 HTTP 事件报告。</li>
+                                <li><uicontrol>TCP</uicontrol>：PBX 采用 TCP 长连接的方式发送 TCP 事件报告。</li>
+                            </ul>
+                        </p></li>
+                    <li><uicontrol>用户名</uicontrol>：填写自定义的用户名。</li>
+                    <li><uicontrol>密码</uicontrol>：填写自定义的密码。<p>
+                            <note>此处的用户名和密码是应用服务器对接到 PBX 时要用到的用户名及密码。<ul id="ul_dbp_s2p_4jb">
+                                    <li>请求<xref href="login.dita"/> 带的 password 参数为MD5
+                                        加密后的32位小写字符串。</li>
+                                    <li>发送 <xref href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login"
+                                            >TCP login 数据包</xref>带的 password 参数为此处填写的明文密码。</li>
+                                </ul></note>
+                        </p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_lxz_mgp_4jb">
+            <title id="api-advanced-settings">二次开发接口- 高级设置</title>
+            <p>如果你需要在应用服务器监控分机和外线的状态或操控外线来电，你需要在 <uicontrol>高级设置</uicontrol> 里开启相应的开关。</p>
+            <p>登录 PBX 网页，进入 <menucascade>
+                    <uicontrol>配置</uicontrol>
+                    <uicontrol>PBX</uicontrol>
+                    <uicontrol>常规设置</uicontrol>
+                    <uicontrol>二次开发接口</uicontrol>
+                </menucascade>，更改 API 高级设置。</p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>分机</dt>
+                        <dd>选择是否监控分机的状态。</dd>
+                        <dd>当该分机状态有变更时（如：分机状态从忙变为空闲），PBX 会主动向应用服务器发送<xref
+                                href="event-ExtensionStatus.dita"/>。</dd>
+                        <dd><image href="../Images/admin/enable_api_extension.png"
+                                id="image_lhz_chd_gdb"/></dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>中继</dt>
+                        <dd>选择是否控制中继的来电、是否监控中继的通话状态。</dd>
+                        <dd><image href="../Images/admin/enable_api_trunk.png"
+                                id="image_pq2_whd_gdb"/></dd>
+                        <dd>
+                            <ul>
+                                <li id="inbound-control"><uicontrol
+                                        id="control-inbound-call-answering"
+                                    >来电接听控制</uicontrol>：勾选来电接听控制之后，当外线来电通过该中继呼入时，PBX 将发送<xref
+                                        href="event-Invite.dita"/> 到应用服务器，并预留 10 秒时间让应用服务选择接受或拒绝来电。<p>
+                                        <note>如果应用服务器没有在 10 秒内作出操作，PBX
+                                            将接受该来电，并将该来电引导到呼入路由的目的地。</note>
+                                    </p><ul id="ul_ltc_zjd_gdb">
+                                        <li>
+                                            <p><uicontrol>接受</uicontrol>：应用服务器调用 <xref
+                                                  href="call-accept-inbound.dita#reference_gtw_4m2_hdb"
+                                                  >call/accept_inbound</xref> 来接受来电。</p>
+                                            <p>来电会进入对应呼入路由目的地。</p>
+                                        </li>
+                                        <li>
+                                            <p><uicontrol>拒绝</uicontrol>：应用服务器调用 <xref
+                                                  href="call-refuse-inbound.dita#reference_nk3_qm2_hdb"
+                                                  >call/refuse_inbound</xref> 来拒绝来电。</p>
+                                            <p>来电会被挂断，且不会到达 PBX。PBX 不会生成相关的通话记录。</p>
+                                        </li>
+                                    </ul></li>
+                                <li id="inbound-dest-control"
+                                    ><uicontrol>呼入目的地控制</uicontrol>：勾选呼入目的地控制后，当外线来电通过该中继呼入且已被 PBX
+                                    接受时，PBX 将发送<xref href="event-Incoming.dita"/> 到应用服务器，且预留 10 秒时间让应用服务器操控该来电的目的地。<p>
+                                        <note>
+                                            <ul id="ul_qmb_jj5_4jb">
+                                                <li>应用服务器调用 <xref
+                                                  href="call-transfer.dita#reference_kz1_lhg_vgb"
+                                                  >call/transfer</xref> 来操控来电的目的地。</li>
+                                                <li>如果应用服务器没有在 10 秒内作出操作，PBX 会将来电引导到呼入路由的目的地。</li>
+                                            </ul>
+                                        </note>
+                                    </p></li>
+                                <li id="trunk-monitor"
+                                        ><?oxy_comment_start author="carol" timestamp="20191031T181647+0800" comment="api v1.0 的描述有错误，需要改正！"?><uicontrol>状态监控</uicontrol>：<?oxy_comment_end?>勾选中继的状态监控后，PBX
+                                        会发送该中继的<xref href="event-CallStatus.dita"/>到应用服务器。</li>
+                            </ul>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="delete-api-ip">
+            <title>删除被拉黑的 API IP</title>
+            <p>如果某个 IP 在短时间内，多次尝试登陆 API 接口失败，PBX 会将该 IP 拉入黑名单，并将该 IP 类型标记为“API-IP”。如果该 IP 为受信任的
+                IP，你可以将这个 IP 从黑名单列表中删除。</p>
+            <p>
+                <ol id="ol_an3_xl5_4jb">
+                    <li>进入 <menucascade>
+                            <uicontrol>PBX</uicontrol>
+                            <uicontrol>系统</uicontrol>
+                            <uicontrol>安全中心</uicontrol>
+                            <uicontrol>IP自动防御</uicontrol>
+                            <uicontrol>IP黑名单</uicontrol>
+                        </menucascade>，查看被拉黑的 IP。<p><image href="../Images/admin/api_blocked_ip.png"
+                                width="650" id="image_bns_q2d_nfb"/></p></li>
+                    <li>选择 IP 地址，点击 <image href="../Images/ui_icons/delete.png" width="20"
+                            id="image_mlx_s2d_nfb"/>。</li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

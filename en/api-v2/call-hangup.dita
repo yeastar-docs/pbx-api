@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_vqs_dkg_jjb">
+    <?oxy_comment_start author="Becky" timestamp="20191120T160141+0800" comment="hang up就可以表示挂断电话的意思了，和call搭一起有点重复" flag="done"?>
+    <title>Hang up a Call</title><?oxy_comment_end?>
+    <shortdesc>Hang up a specified call.</shortdesc>
+    <refbody>
+        <section id="section_h2d_1m5_ljb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph conref="call-query.dita#reference_a5v_rt2_gdb/request-address"/>/call/hangup?token=<ph conref="call-query.dita#reference_a5v_rt2_gdb/token"/></codeblock>
+            </p>
+        </section>
+        <section id="section_xtt_cm5_ljb">
+            <title>Request parameters</title>
+            <p>
+                <table conref="call-accept-inbound.dita#reference_gtw_4m2_hdb/channelid-request"
+                    id="table_yfp_wmr_pjb">
+                    <tgroup cols="1">
+                        <tbody>
+                            <row>
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_pgx_2m5_ljb">
+            <title>Response parameters</title>
+        </section>
+        <section id="section_x5r_bmr_pjb">
+            <p>
+                <table conref="call-dial.dita#reference_b2r_p3g_jjb/status-callid"
+                    id="table_y5r_bmr_pjb">
+                    <tgroup cols="1">
+                        <tbody>
+                            <row>
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_ith_d45_ljb">
+            <title>Example</title>
+            <p><b>Request
+                example</b><codeblock>POST /api/v2.0.0/call/hangup?token=1a4d2fb22b1942ca34a3691b0c7234ab HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"channelid": "PJSIP/1023-000000c0"
+}</codeblock></p>
+            <p><b>Response example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"callid": "1571646222.312"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

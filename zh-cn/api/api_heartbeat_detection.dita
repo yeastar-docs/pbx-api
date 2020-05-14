@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mgq_532_gdb">
+  <title>Heartbeat Detection</title>
+  <refbody>
+    <section id="section_frq_wj2_gdb">
+      <p>With heartbeat packet, the PBX can update IP, Port, and URL of the connected 3rd party
+        application server if there are any changes. In addition, when there is no event interaction
+        between the application server and PBX API, heartbeat packets can be sent to the PBX
+        periodically to prolong the validity time of the token, so to avoid failure of report if the
+        token was erased after 1800s.<note>Every time a heartbeat packet is sent, the validity time
+          of the token will be prolonged for 1800s.</note></p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Request Address </title>
+      <p><userinput>POST</userinput>   https://<codeph>{pbx domain}</codeph>/api/<codeph>{api
+          version}</codeph>/heartbeat?token=<codeph>{token}</codeph></p>
+    </section>
+    <section id="section_ksn_f4d_gdb">
+      <title>Request Sample</title>
+      <p>
+        <codeblock>{"ipaddr": "192.168.5.150","port": "8260","url":"1112121212"}</codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph> ipaddr </codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Updated IP address of the application server.</entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>port</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Updated port number; this port will be used by the application server to
+                  monitor the report sent by API.<p>Port range: 0 ~ 65536</p></entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>url</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Updated URL of the application server.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_spy_qqd_gdb">
+      <title>Response Sample</title>
+      <p>
+        <codeblock>{"status":"Success"}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_g3t_zr2_gdb">
+  <title>Modify an Extension</title>
+  <shortdesc>Configure the settings of an individual extension, such as extension number, name,
+    concurrent registrations, email address, mobility extension, etc. </shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/extension/update?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="3.48*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.63*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.18*"/>
+            <thead>
+              <row>
+                <entry>Name </entry>
+                <entry>Importance</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The extension number of the extension to be configured.</entry>
+              </row>
+              <row>
+                <entry><codeph>extnumber</codeph></entry>
+                <entry>Optional</entry>
+                <entry>Int</entry>
+                <entry>The extension number.</entry>
+              </row>
+              <row>
+                <entry><codeph>username</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The user's name.<p>Letters and digits, maximum length 31. Could be
+                  blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>callerid</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Caller ID..<p>Letters and digits, maximum length 31. Could be
+                  blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>registername</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The registration name.<p>Letters and digits, maximum length 31. Cannot be
+                    blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>registerpassword</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The registration password.<p>;&amp;"'\&lt;>` | are invalid for password.
+                    Neither is space valid. Maximum length is 31. Cannot be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>maxregistrations</codeph></entry>
+                <entry>Optional</entry>
+                <entry>Int</entry>
+                <entry>Allowed maximum concurrent registrations.<p>A range from 1 to 5.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>loginpassword</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The login password.<p>;&amp;"'\&lt;>` | are invalid for password. Neither is
+                    space valid. Length from 6 to 63.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>email</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The email address.</entry>
+              </row>
+              <row>
+                <entry><codeph>mobile</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The mobile number.<p>Digits. Maximum length is 31.When calls are set to be
+                    forwarded to the extension's associated mobile number or when Mobility Extension
+                    is enabled, this cannot be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>hasvoicemail</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable Voicemail feature.<p>
+                    <ul id="ul_k2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>vmsecret</codeph></entry>
+                <entry>Optional</entry>
+                <entry>Int</entry>
+                <entry>The voicemail password.<p>Digits. Maximum length is 63.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>enablevmtoemail</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Whether to enable Send Voicemail to Email feature or not.<p>
+                    <ul id="ul_l2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>alwaysforward</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable Always Call Forwarding feature.<p>
+                    <ul id="ul_m2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>atransferto</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Always call forwarding destination.<p>
+                    <ul id="ul_o2d_ksj_gdb">
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>atransferext</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The extension ID, when the forward destination is extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>atransferprefix</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The outbound calls prefix, when the forward destination is a custom number or
+                  the extension's associated mobile number.<p>Maximum length is 7.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>atransfernum</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The number of the outbound call, when the forward destination is a custom
+                  number or the extension's associated mobile number.<p>Maximum length is 15. The
+                    forward destination Custom Number can't be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>noanswerforward</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable No Answer Call Forwarding feature.<ul id="ul_rwf_b4j_gdb">
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>ntransferto</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>No answer call forwarding destination.<p>
+                    <ul>
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>ntransferext</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The extension ID, when the forward destination is extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>ntransferprefix</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The outbound calls prefix, when the forward destination is a custom number or
+                  the extension's associated mobile number.<p>Maximum length is 15. The forward
+                    destination Custom Number can't be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>ntransfernum</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The number of the outbound call, when the forward destination is a custom
+                  number or the extension's associated mobile number.<p>Maximum length is 15. Cannot
+                    be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>busyforward</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable When Busy Call Forwarding feature.<p>
+                    <ul id="ul_n2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>btransferto</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>When Busy call forwarding destination.<p>
+                    <ul id="ul_spl_btj_gdb">
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>btransferext</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The extension ID, when the forward destination is extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>btransferprefix</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The outbound calls prefix, when the forward destination is a custom number or
+                  the extension's associated mobile number.<p>Maximum length is 15. The forward
+                    destination Custom Number can't be blank.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>btransfernum</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The number of the outbound call, when the forward destination is a custom
+                  number or the extension's associated mobile number.<p>Maximum length is 15. Cannot
+                    be blank.</p></entry>
+              </row>
+              <row product="s-series">
+                <entry><codeph>enablemobile</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable Mobility Extension feature.<p>
+                    <ul id="ul_o2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry><codeph>ringsimultaneous</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable Simultaneous Ringing of Mobility Extension.<p>
+                    <ul id="ul_p2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry><codeph>mobileprefix</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>A prefix match ing the outbound route.<p> Maximum length is 7.</p></entry>
+              </row>
+              <row>
+                <entry><codeph>allowbeingmonitored</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Allow being monitored.<p>
+                    <ul id="ul_q2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>monitormode</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The monitor mode.<p>
+                    <ul id="ul_f3p_gtj_gdb">
+                      <li>Disabled</li>
+                      <li>Extensive</li>
+                      <li>Listen</li>
+                      <li>Whisper</li>
+                      <li>Barge-in</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>ringtimeout</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The ring timeout in seconds.<p>
+                    <ul id="ul_sp2_jtj_gdb">
+                      <li>15</li>
+                      <li>30</li>
+                      <li>60</li>
+                      <li>120</li>
+                      <li>300</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>maxduration</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The maximum call duration allowed in seconds.<p>
+                    <ul id="ul_czt_ltj_gdb">
+                      <li>Follow System</li>
+                      <li>Unlimited</li>
+                      <li>60</li>
+                      <li>300</li>
+                      <li>600</li>
+                      <li>900</li>
+                      <li>1800</li>
+                      <li>3600</li>
+                      <li>6000</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>dnd</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable DND feature.<p>
+                    <ul id="ul_dsj_qnj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>callrestriction</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Enable or disable outbound dialing restriction.<p>
+                    <ul id="ul_r2p_gqj_gdb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>agentid</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The agent ID to be announced in the greeting prompt. If left null, the
+                  extension number will be announced instead. It is null by default.</entry>
+              </row>
+              <row>
+                <entry><codeph>selectoutroute</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Select an outbound route for the extension from the <b>unselectoutroute</b>
+                  list. The maximum length of <b>selectoutroute</b> is 4096.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request
+        Example</b><codeblock outputclass="language-json">POST /api/v1.1.0/extension/update?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "extid": "1002",
+    "username": "Amy"
+}</codeblock><b>Response
+        Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

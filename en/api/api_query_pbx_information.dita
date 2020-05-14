@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qbg_5l2_gdb">
+  <title>Query PBX Information</title>
+  <shortdesc>Query PBX information, such as firmware version, system time, etc.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/deviceinfo/query?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb">
+      <title>Request Parameters</title>
+      <p>No request parameters. Only need to send the request address.</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.86*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="5.05*"/>
+            <thead>
+              <row>
+                <entry>Name </entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>devicename</codeph></entry>
+                <entry>String</entry>
+                <entry>The device name.</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>Serial Number.</entry>
+              </row>
+              <row product="s-series">
+                <entry><codeph>hardwarever</codeph></entry>
+                <entry>String</entry>
+                <entry>Hardware version.</entry>
+              </row>
+              <row>
+                <entry><codeph>firmwarever</codeph></entry>
+                <entry>String</entry>
+                <entry>Firmware version.</entry>
+              </row>
+              <row>
+                <entry><codeph>systemtime</codeph></entry>
+                <entry>String</entry>
+                <entry>System time.</entry>
+              </row>
+              <row>
+                <entry><codeph>uptime</codeph></entry>
+                <entry>String</entry>
+                <entry>Up time.</entry>
+              </row>
+              <row>
+                <entry><codeph>extensionstatus</codeph></entry>
+                <entry>String</entry>
+                <entry>Number of registered extensions/Total number of extensions.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+     
+    </section>
+    <section id="section_spy_qqd_gdb"><title>Examples</title><p><b>Request Example</b></p><p>
+        <codeblock>POST /api/v1.1.0/deviceinfo/query?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock product="cloudpbx" outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "deviceinfo": {
+        "devicename": "Yeastar Cloud PBX",
+        "sn": "3682804SWHO36DV3",
+        "firmwarever": "81.4.0.0",
+        "systemtime": "2018-03-22 20:26:02 UTC+8",
+        "uptime": "3days 03:57:42",
+        "extensionstatus": "3/5"
+    }
+}</codeblock>
+      </p><codeblock product="s-series" outputclass="language-json">HTTP/1.1 200 OK
+{
+    "status": "Success",
+    "deviceinfo": {
+        "devicename": "Yeastar S100",
+        "sn": "369364835218",
+        "hardwarever": "V1.30 0000-0000",
+        "firmwarever": "30.5.0.19",
+        "systemtime": "2017-05-24 23:25:20 UTC-8",
+        "uptime": "03:25:04",
+        "extensionstatus": "7/100"
+    }
+}</codeblock></section>
+  </refbody>
+</reference>

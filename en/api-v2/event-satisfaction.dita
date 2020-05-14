@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qng_qw3_gdb">
+  <title>Satisfaction</title>
+  <shortdesc>If PBX receives DTMF digits that are entered by callers, PBX will send a satisfaction
+    report to the application server.</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.56*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.41*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row>
+                <entry>callid</entry>
+                <entry>String</entry>
+                <entry>The unique ID of each call.</entry>
+              </row>
+              <row>
+                <entry>surveyresult</entry>
+                <entry>String</entry>
+                <entry>The result of the customer satisfaction survey (The DTMF key pressed by the
+                  caller.).</entry>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example</title>
+      <p outputclass="language-json">
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "satisfaction",
+	"callid": "1571972541.133",
+	"surveyresult": "1",
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

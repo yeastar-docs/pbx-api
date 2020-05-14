@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_qyn_qw5_jjb">
+    <title>Forward（呼叫前转事件）</title>
+    <shortdesc>分机开启呼叫转移后，当该分机的来电被转移时，PBX 向应用服务器发送 Forward 报告。</shortdesc>
+    <refbody>
+        <section id="section_up3_qwp_mjb">
+            <title>报告参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_gby_pwf_qjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="2.16*"/>
+                        <colspec colname="c3" colnum="3" colwidth="4.13*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#reference_qyn_qw5_jjb/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/member-info"/>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry id="membertype">
+                    <dt>MemberTye</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="2" colwidth="2.12*"/>
+                                    <colspec colname="c4" colnum="3" colwidth="3.19*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry> 类型</entry>
+                                            <entry> 描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>inbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_qyn_qw5_jjb/inboundinfo"
+                                                  format="dita">&lt;InboundInfo></xref></entry>
+                                            <entry>外线来电的信息。</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+                <dlentry id="inboundinfo">
+                    <dt>InboundInfo</dt>
+                    <dd>
+                        <table frame="all" rowsep="1" colsep="1" id="table_inboundinfo">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.12*"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.14*"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                                        <entry/>
+                                    </row>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                                        <entry/>
+                                    </row>
+                                    <row
+                                        conref="call-query.dita#reference_a5v_rt2_gdb/inbound-trunkname">
+                                        <entry/>
+                                    </row>
+                                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid">
+                                        <entry/>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_ish_nrp_mjb">
+            <title>报告示例</title>
+            <p>外部用户 12345678 呼叫分机 1020，分机 1020 将电话转移到另外一个号码。</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "Forward",
+	"callid": "1571901993.46",
+	"members": [
+		{
+			"inbound": {
+				"from": "12345678",
+				"to": "1020",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-0000001c"
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

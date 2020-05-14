@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_zcj_fw3_gdb">
+  <title>‘按键信息’报告</title>
+  <shortdesc>通话过程中，当用户根据提示输入相关的按键（如通过 IVR 输入按键），PBX 向应用服务器推送“按键信息”报告。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.71*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.08*"/>
+                        <colspec colname="c3" colnum="3" colwidth="5.76*"/>
+                        <thead>
+                            <row>
+                                <entry>名称</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>action</codeph></entry>
+                                <entry>String</entry>
+                                <entry>按键事件。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>callid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>该通通话的 id。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>ext</codeph></entry>
+                                <entry>Int</entry>
+                                <entry>分机对象。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>主叫分机号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>info</codeph></entry>
+                                <entry>String</entry>
+                                <entry>单个按键信息。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>inboundid</codeph><p><codeph>outboundid</codeph></p></entry>
+                                <entry>String</entry>
+                                <entry>来电编码或去电编码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>outbound</codeph><p><codeph>inbound</codeph></p></entry>
+                                <entry>String</entry>
+                                <entry>对象参数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>from</codeph></entry>
+                                <entry>String</entry>
+                                <entry>原始主叫号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>to</codeph></entry>
+                                <entry>String</entry>
+                                <entry>原始被叫号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunk</codeph></entry>
+                                <entry>String</entry>
+                                <entry>通过的中继名称。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>flag</codeph></entry>
+                                <entry>Int</entry>
+                                <entry>标识 DTMF 按键的顺序。<p>
+                                        <note>flag 从0开始标识。0表示第一个 DTMF 按键；1表示第二个 DTMF 按键；以此类推。</note>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>infos</codeph></entry>
+                                <entry>String</entry>
+                                <entry>DTMF 按键串。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>sn</codeph></entry>
+                                <entry>String</entry>
+                                <entry>PBX 的 SN 码。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>分机 1005 拨打 IVR 号码，输入按键 2。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "DTMF",
+    "callid": "1547389829.281",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "info": "2",
+    "flag": "0",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p>外部号码 192883838 呼入 IVR 6500，拨打分机 1005。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "DTMF",
+    "callid": "1547391097.305",
+    "call": [
+        {
+            "inbound": {
+                "from": "192883838",
+                "to": "6500",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547391097.305",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "info": "1",
+    "flag": "0",
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "DTMF",
+    "callid": "1547391097.305",
+    "call": [
+        {
+            "inbound": {
+                "from": "192883838",
+                "to": "6500",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547391097.305",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "info": "0",
+    "flag": "1",
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "DTMF",
+    "callid": "1547391097.305",
+    "call": [
+        {
+            "inbound": {
+                "from": "192883838",
+                "to": "6500",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547391097.305",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "info": "0",
+    "flag": "2",
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "DTMF",
+    "callid": "1547391097.305",
+    "call": [
+        {
+            "inbound": {
+                "from": "192883838",
+                "to": "6500",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547391097.305",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "info": "5",
+    "flag": "3",
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "DTMF",
+    "callid": "1547391097.305",
+    "call": [
+        {
+            "inbound": {
+                "from": "192883838",
+                "to": "6500",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547391097.305",
+                "callpath": "6500"
+            }
+        }
+    ],
+    "infos": "1005",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p>分机 1005 拨打外部号码，进入对方的 IVR，输入按键 1。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "DTMF",
+    "callid": "1547391490.309",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "info": "1",
+    "flag": "0",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

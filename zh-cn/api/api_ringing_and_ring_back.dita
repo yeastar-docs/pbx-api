@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_gtg_3df_gdb">
+  <title>‘响铃&amp;回铃’报告</title>
+  <shortdesc>当 PBX 的分机拨打电话或收到来电时，PBX 会向第三方服务器发送回铃报告（ALERT）和响铃报告（RING）。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note>
+          <ul id="ul_kxl_llr_32b">
+            <li>必须在 PBX 的 API 配置界面启用分机的 <xref
+                href="enable_api_access_on_pbx.dita#task_zm3_wdd_gdb/extension-monitor"
+                  ><uicontrol>状态监控</uicontrol></xref>，PBX 才会发送响铃报告和回铃报告。</li>
+            <li>同一个呼叫事件中，PBX 同时发送响铃报告和回铃报告。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数-回铃事件</title>
+      <p>主叫拨打被叫号码后，被叫响铃后，主叫听到回铃音。</p>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.63*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.92*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>回铃事件：ALERT。</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通电话的 id。</entry>
+              </row>
+              <row>
+                <entry><codeph>call</codeph></entry>
+                <entry>Object</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry nameend="c3" namest="c1">主叫为分机</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>Object</entry>
+                <entry>分机对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry nameend="c3" namest="c1">主叫为外线号码</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>inbound</codeph></p>
+                </entry>
+                <entry>Object</entry>
+                <entry>外线来电对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>通过哪条中继呼入。</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>inboundid</codeph></p>
+                </entry>
+                <entry>String</entry>
+                <entry>外线来电编号。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX 的 SN 码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_pyd_st1_wgb">
+      <title>报告参数-响铃事件</title>
+      <p>被叫收到来电后，被叫听到响铃音。</p>
+      <p>
+        <note>响铃报告事件中会显示被叫号码和主叫号码。报告中，先显示被叫号码，再显示主叫号码。</note>
+      </p>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ozd_st1_wgb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.63*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.92*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>回铃事件：RING。</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>该通电话的 id。</entry>
+              </row>
+              <row>
+                <entry><codeph>call</codeph></entry>
+                <entry>Object</entry>
+                <entry>对象参数。</entry>
+              </row>
+              <row>
+                <entry nameend="c3" namest="c1">主叫为分机，被叫为分机</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>Object</entry>
+                <entry>分机对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>分机号码。</entry>
+              </row>
+              <row>
+                <entry nameend="c3" namest="c1"
+                    >主叫为分机，被叫为外线号码，先显示<codeph>outbound</codeph>对象，再显示<codeph>ext</codeph>对象。</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>outbound</codeph></p>
+                </entry>
+                <entry>Object</entry>
+                <entry>外线去电对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>通过哪条中继呼出。</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>outboundid</codeph></p>
+                </entry>
+                <entry>String</entry>
+                <entry>外线去电编码。</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c3"
+                    >主叫为外线号码，被叫为分机，先显示<codeph>ext</codeph>对象，再显示<codeph>inbound</codeph>对象。</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>inbound</codeph></p>
+                </entry>
+                <entry>Object</entry>
+                <entry>外线来电对象。</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>主叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>被叫号码。</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>通过哪条中继呼入。</entry>
+              </row>
+              <row>
+                <entry>
+                  <p><codeph>inboundid</codeph></p>
+                </entry>
+                <entry>String</entry>
+                <entry>外线来电编号。</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>PBX 的 SN 码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb"><title>报告示例</title>分机 1001 呼叫分机
+        1002。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "ALERT",
+    "callid": "1550710849.199",
+    "call": [
+        {
+            "ext": {
+                "extid": "1001"
+            }
+        }
+    ],
+    "sn": "369351034049"
+}
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "RING",
+    "callid": "1550710849.199",
+    "call": [
+        {
+            "ext": {
+                "extid": "1002"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1001"
+            }
+        }
+    ],
+    "sn": "369351034049"
+}</codeblock><p>分机1001
+        拨打外线号码 9282883883。</p><p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "ALERT",
+    "callid": "1547396927.428",
+    "call": [
+        {
+            "ext": {
+                "extid": "1001"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "RING",
+    "callid": "1547396927.428",
+    "call": [
+        {
+            "outbound": {
+                "from": "1001",
+                "to": "9282883883",
+                "trunk": "SPS-6-36",
+                "outboundid": "1547396927.429"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1001"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock>
+      </p><p>外线号码123838838呼叫分机1002。</p><p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+Content-Length: 98
+
+{
+    "action": "ALERT",
+    "callid": "1550714393.225",
+    "call": [
+        {
+            "inbound": {
+                "from": "123838838",
+                "to": "1002",
+                "trunk": "spstrunk",
+                "inboundid": "1550714393.225"
+            }
+        }
+    ],
+    "sn": "369351034049"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "RING",
+    "callid": "1550714393.225",
+    "call": [
+        {
+            "ext": {
+                "extid": "1002"
+            }
+        },
+        {
+            "inbound": {
+                "from": "123838838",
+                "to": "1002",
+                "trunk": "spstrunk",
+                "inboundid": "1550714393.225"
+            }
+        }
+    ],
+    "sn": "369351034049"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

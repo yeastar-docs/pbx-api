@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ty3_yv3_gdb">
+  <title>‘通话结束’报告</title>
+  <shortdesc>当一路通话释放，即通话挂断时，PBX 会向第三方应用服务器发送两个 BYE 报告。在第一个
+        BYE报告中，先记录主动挂断电话的用户号码，后记录被挂断电话的用户号码。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                        <colspec colname="c3" colnum="3" colwidth="7.01*"/>
+                        <thead>
+                            <row>
+                                <entry>名称</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>action</codeph></entry>
+                                <entry>String</entry>
+                                <entry>通话结束报告。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>callid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>该通通话的 id。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>ext</codeph></entry>
+                                <entry>String</entry>
+                                <entry>分机对象。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>分机号。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>inboundid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>来电编码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>outboundid</codeph></entry>
+                                <entry>String</entry>
+                                <entry>去电编码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>outbound</codeph></entry>
+                                <entry>String</entry>
+                                <entry>对象参数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>inbound</codeph></entry>
+                                <entry>String</entry>
+                                <entry>对象参数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>from</codeph></entry>
+                                <entry>String</entry>
+                                <entry>来电的原始主叫号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>to</codeph></entry>
+                                <entry>String</entry>
+                                <entry>来电的原始被叫号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunk</codeph></entry>
+                                <entry>String</entry>
+                                <entry>通过哪条中继呼入。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>sn</codeph></entry>
+                                <entry>String</entry>
+                                <entry>PBX 的 SN 码。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb"><title>报告示例</title>分机1006 与分机1005 通话中，分机 1006
+                挂断电话。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "BYE",
+    "callid": "1547375817.78",
+    "call": [
+        {
+            "ext": {
+                "extid": "1006"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "BYE",
+    "callid": "1547375817.78",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1006"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock><p>分机
+                1005 与外部用户 12564555 通话中，外部用户 12564555
+                挂断电话。<codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "BYE",
+    "callid": "1547376084.84",
+    "call": [
+        {
+            "outbound": {
+                "from": "1005",
+                "to": "12564555 ",
+                "trunk": "SPS-6-36",
+                "outboundid": "1547376084.85"
+            }
+        },
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}
+
+POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "BYE",
+    "callid": "1547376084.84",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        },
+        {
+            "outbound": {
+                "from": "1005",
+                "to": "12564555",
+                "trunk": "SPS-6-36",
+                "outboundid": "1547376084.85"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock></p></section>
+  </refbody>
+</reference>

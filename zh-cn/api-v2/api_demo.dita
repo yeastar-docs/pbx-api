@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_htc_pt2_h2b">
+    <title>API Demo</title>
+    <shortdesc>朗视提供API demo软件，你可以通过API demo软件测试API接口。 </shortdesc>
+    <conbody>
+        <section id="section_xmy_tt2_h2b">
+            <title>下载 API Demo</title>
+            <p><xref href="https://www.yeastar.com/download/API-Demo.zip" format="zip"
+                    scope="external">点击下载 API demo</xref></p>
+        </section>
+        <section id="section_ixk_yt2_h2b">
+            <title>如何使用 API Demo</title>
+            <p>
+                <ol id="ol_ulq_d52_h2b">
+                    <li>解压下载下来的API Demo压缩文件。</li>
+                    <li>双击 API Demo <codeph>exe</codeph> 文件。</li>
+                    <li>根据你的 PBX 的API 设置，填写 API 登录信息。<p><image href="../Images/admin/api_demo.png"
+                                width="650" id="image_rgm_vw2_h2b" product="cloudpbx"/></p><p><image
+                                href="../Images/admin/api_demo_s.png" width="650" product="s-series"
+                                id="image_ywz_b2g_h2b"/></p><p>
+                            <ul id="ul_lvz_zw2_h2b">
+                                <li><uicontrol>Version</uicontrol>：填写 <codeph>1.1.0</codeph>
+                                </li>
+                                <li><uicontrol>API Request</uicontrol>：选择
+                                        <uicontrol>login</uicontrol>。</li>
+                                <li product="cloudpbx"><uicontrol>Destination
+                                    Address</uicontrol>：填写PBX的域名。</li>
+                                <li product="cloudpbx"><uicontrol>Port</uicontrol>：填写 443。</li>
+                                <li product="cloudpbx">选择通信协议：HTTPS。</li>
+                                <li product="s-series">选择通信协议：HTTPS。</li>
+                                <li product="s-series"><uicontrol>Destination
+                                    Address</uicontrol>：填写PBX的IP地址。</li>
+                            </ul>
+                            <ul id="ul_fdr_zcg_h2b">
+                                <li product="s-series"><uicontrol>Port</uicontrol>：默认端口为
+                                        <codeph>8088</codeph>。</li>
+                            </ul>
+                        </p></li>
+                    <li>在输入框内，根据PBX的API设置，更改API登录的username 和 password。</li>
+                    <li>点击 <uicontrol>Send Request</uicontrol>。</li>
+                    <li>API 登录成功后，你可以选择 <uicontrol>API Request</uicontrol> 类型，在左边的输入框内更改相应的请求信息，点击
+                            <uicontrol>Send Request</uicontrol> 测试API。</li>
+                </ol>
+            </p>
+        </section>
+    </conbody>
+</concept>

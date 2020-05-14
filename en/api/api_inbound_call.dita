@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_gkj_3w3_gdb">
+  <title>'Inbound Call' Report</title>
+  <shortdesc>If the trunk's API has <uicontrol>Control Inbound Call Destination</uicontrol> enabled,
+    then when the trunk answers the call, the PBX will send an Incoming event to the application
+    server.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+      <!--Carol-->
+      <revised modified="2018/11/26"/>
+      <!--Carol-->
+      <revised modified="2019/01/15"/>
+      <!--Carol-->
+      <revised modified="2019/01/16"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.46*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="6.29*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>Incoming event.</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique identifier of the call.</entry>
+              </row>
+              <row>
+                <entry><codeph>inbound</codeph></entry>
+                <entry>Object</entry>
+                <entry>Inbound call .</entry>
+              </row>
+              <row>
+                <entry><codeph>inboundid</codeph></entry>
+                <entry>String</entry>
+                <entry>Inbound ID.</entry>
+              </row>
+              <row>
+                <entry><codeph>from</codeph></entry>
+                <entry>String</entry>
+                <entry>The caller number.</entry>
+              </row>
+              <row>
+                <entry><codeph>to</codeph></entry>
+                <entry>String</entry>
+                <entry>The callee number.</entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>The trunk name.</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>The PBX's serial number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report Examples</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "Incoming",
+    "callid": "1547393303.354",
+    "call": [
+        {
+            "inbound": {
+                "from": "182737733",
+                "to": "1005",
+                "trunk": "SPS-6-36",
+                "inboundid": "1547393303.354"
+            }
+        }
+    ],
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

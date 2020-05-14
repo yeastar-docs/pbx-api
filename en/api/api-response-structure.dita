@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_uxg_pvb_wgb">
+    <title>Response Results</title>
+    <shortdesc><ph keyref="product_name"/> returns the API responses in JSON format.</shortdesc>
+    <body>
+        <p>The HTTP status code for a success response or an error response is 200 OK.</p>
+        <section id="section_ips_fjc_wgb">
+            <title>Success response example</title>
+            <p>Every successful response has a "Success" status. For some API responses, the
+                relevant response parameters will be displayed. </p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+        <section>
+            <title>Error response example</title>
+            <p>Every error response has a "Failed" status and an error code.</p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+{
+    "status": "Failed",
+    "errno": "10003"
+}</codeblock>
+            </p>
+        </section>
+    </body>
+</topic>

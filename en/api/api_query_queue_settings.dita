@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_mr1_js2_gdb">
+  <title>Query Queue Settings</title>
+  <shortdesc>Query detailed information of one or more queues， like queue number, queue name, static
+    agents, dynamic agents, etc. </shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/queue/query?token=<varname>{token}</varname></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.33*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.64*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <codeph>queueid</codeph>
+                </entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>The Queue number.<p>
+                    <ul>
+                      <li><b>Query a Queue</b>: Set <codeph>queueid</codeph> to the Queue
+                          number.<p>Example: <codeph>"queueid":"6700"</codeph></p></li>
+                      <li><b>Query multiple Queues</b>: Set <codeph>queueid</codeph> to the Queue
+                        number. Separate multiple Queues with <codeph>,</codeph>. <p>Example:
+                            <codeph>"queueid": "6700,6701"</codeph></p></li>
+                      <li><b>Query all Queues</b>: Do not send <codeph>queueid</codeph>
+                        parameter.</li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_w4q_cjk_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="2.06*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="5.33*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>queues</codeph></entry>
+                <entry>Object</entry>
+                <entry>Object.</entry>
+              </row>
+              <row>
+                <entry><codeph>queuenumber</codeph></entry>
+                <entry>Int</entry>
+                <entry>The queue number.</entry>
+              </row>
+              <row>
+                <entry><codeph>queuename</codeph></entry>
+                <entry>String</entry>
+                <entry>The queue number.</entry>
+              </row>
+              <row>
+                <entry><codeph>password</codeph></entry>
+                <entry>String</entry>
+                <entry>The password to join dynamic agent.</entry>
+              </row>
+              <row>
+                <entry><codeph>ringstrategy</codeph></entry>
+                <entry>String</entry>
+                <entry>The ring strategy.<ul id="ul_cpn_2lk_gdb">
+                    <li>Ring All</li>
+                    <li>Least Recent</li>
+                    <li>Fewest Calls</li>
+                    <li>Random</li>
+                    <li>Rrmemory</li>
+                    <li>Linear</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>failoveraction</codeph></entry>
+                <entry>String</entry>
+                <entry>The failover destination.</entry>
+              </row>
+              <row>
+                <entry><codeph>agents</codeph></entry>
+                <entry>String</entry>
+                <entry>Static agents.</entry>
+              </row>
+              <row>
+                <entry><codeph>dynamicagents</codeph></entry>
+                <entry>String</entry>
+                <entry>Dynamic agents.</entry>
+              </row>
+              <row>
+                <entry><codeph>agenttimeout</codeph></entry>
+                <entry>String</entry>
+                <entry>The agent timeout.</entry>
+              </row>
+              <row>
+                <entry><codeph>agentannounce</codeph></entry>
+                <entry>String</entry>
+                <entry>The agent announcement.</entry>
+              </row>
+              <row>
+                <entry><codeph>wrapuptime</codeph></entry>
+                <entry>Int</entry>
+                <entry>The wrap-up time.</entry>
+              </row>
+              <row>
+                <entry><codeph>ringinuse</codeph></entry>
+                <entry>String</entry>
+                <entry>Ring the members whose device are known to be “in use”.<ul
+                    id="ul_kff_llk_gdb">
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>retry</codeph></entry>
+                <entry>Int</entry>
+                <entry>The number of seconds to wait before trying all the phones again.</entry>
+              </row>
+              <row>
+                <entry><codeph>musiconhold</codeph></entry>
+                <entry>String</entry>
+                <entry>The on-hold music.</entry>
+              </row>
+              <row>
+                <entry><codeph>maxwaittime</codeph></entry>
+                <entry>Int</entry>
+                <entry>The caller max wait time.</entry>
+              </row>
+              <row>
+                <entry><codeph>joinempty</codeph></entry>
+                <entry>String</entry>
+                <entry>Allow callers to join a queue that has no agents.<ul id="ul_y4y_nlk_gdb">
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>leavewhenempty</codeph></entry>
+                <entry>String</entry>
+                <entry>Callers already on hold will be forced out of a queue when no agents are available.<ul>
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>joinannounce</codeph></entry>
+                <entry>String</entry>
+                <entry>Announcement played to callers prior to joining the queue.</entry>
+              </row>
+              <row>
+                <entry><codeph>announcepos</codeph></entry>
+                <entry>String</entry>
+                <entry>Announce position of caller in the queue.<ul>
+                    <li>on: enable</li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry><codeph>announcefreq</codeph></entry>
+                <entry>String</entry>
+                <entry>How often to announce queue position and estimated hold time.</entry>
+              </row>
+              <row>
+                <entry><codeph>announceholdtime</codeph></entry>
+                <entry>Int</entry>
+                <entry>Announce the hold time to the caller periodically.</entry>
+              </row>
+              <row>
+                <entry><codeph>userannounce</codeph></entry>
+                <entry>String</entry>
+                <entry>An periodic announcement.</entry>
+              </row>
+              <row>
+                <entry><codeph>userannouncefreq</codeph></entry>
+                <entry>Int</entry>
+                <entry>How often to play the periodic announcements.</entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutkey</codeph></entry>
+                <entry>String</entry>
+                <entry>The breakout key.</entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutaction</codeph></entry>
+                <entry>String</entry>
+                <entry>The breakout action.</entry>
+              </row>
+              <row>
+                <entry><codeph>breakoutdest</codeph></entry>
+                <entry>String</entry>
+                <entry>The breakout destination.</entry>
+              </row>
+              <row>
+                <entry><codeph>idannouncement</codeph></entry>
+                <entry>String</entry>
+                <entry>The file name of the prompt that announces the agent ID. It is "None" by
+                  default. Note: When querying one or more queues, this parameter is bound to return
+                  value(s).</entry>
+              </row>
+              <row>
+                <entry><codeph>satisfactionsurvey</codeph></entry>
+                <entry>String</entry>
+                <entry>The file name of the prompt for customer satisfaction survey. It is "None" by
+                  default. If it is not specified, the prompt will not be played.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>Query Queue
+        6701.</p><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/queue/query?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "queueid": "6701"
+}</codeblock>
+      </p><p>Query all Queues.</p><p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/queue/query?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "queues": [
+        {
+            "queuenumber": "6700",
+            "password": "6700123",
+            "queuename": "6700",
+            "ringstrategy": "Ring All",
+            "failoveraction": "Hang up",
+            "agents": "103,102,",
+            "dynamicagents":"Local/4001@only-dialextension-q6700,
+      ","agenttimeout":"10","agentannounce":"[None
+            ]","wrapuptime":"10",
+      "ringinuse": "on",
+            "retry": "10",
+            "musiconhold": "[None]",
+            "maxwaittime": "30",
+            "joinempty": "on",
+            "leavewhenempty": "on",
+            "joinannounce": "[None]",
+            "announcepos": "off",
+            "announcefreq": "15",
+            "announceholdtime": "on",
+            "userannounce": "[None]",
+            "userannouncefreq": "60",
+            "breakoutkey": "0",
+            "breakoutaction": "Hang up",
+            "satisfactionsurvey": "None",
+            "idannouncement": "Default"
+        }
+    ]
+}</codeblock>
+      </p></section>
+  
+  </refbody>
+</reference>

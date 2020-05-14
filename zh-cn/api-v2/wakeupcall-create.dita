@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_v5n_lz2_gdb">
+  <title>添加闹铃</title>
+  <shortdesc>为指定分机设置闹铃。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/wakeupcall/create?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <table frame="all" id="table_ygv_5fr_rjb">
+        <tgroup cols="4">
+          <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+          <colspec colname="c2" colnum="2" colwidth="1.37*" colsep="1" rowsep="1"/>
+          <colspec colname="c3" colnum="3" colwidth="2.43*" colsep="1" rowsep="1"/>
+          <colspec colname="c4" colnum="4" colwidth="4.22*" colsep="1" rowsep="1"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>是否必选</entry>
+              <entry> 类型</entry>
+              <entry> 描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>number</entry>
+              <entry>是</entry>
+              <entry>Integer</entry>
+              <entry>分机号码。<p><b>取值范围</b>：</p><p>
+                  <ul id="ul_wqs_wfr_rjb">
+                    <li>单个分机号码：为指定分机添加闹铃。<p>例如：<codeph>"number":"1000"</codeph></p></li>
+                    <?oxy_comment_start author="carol" timestamp="20191111T103043+0800" comment="这个应该是只能为一个分机设置闹铃，你确认一下。" id="ehw_rfr_rjb" flag="done"?>
+                    <?oxy_comment_start author="Becky" timestamp="20191111T163826+0800" comment="{&quot;number&quot;:&quot;4000,4001,4003&quot;,&quot;wakeup&quot;:[{&quot;time&quot;:&quot;11:00&quot;,&quot;type&quot;:&quot;onetime&quot;,&quot;repeats&quot;:&quot;3&quot;,&quot;repeatinterval&quot;:&quot;5&quot;}]};
+
+仍然是success" parentID="ehw_rfr_rjb" flag="done" mid="1"?>
+                    <li>多个分机号码：为多个分机添加同一个闹铃。多个分机号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"1000,1001"</codeph><?oxy_comment_end?><?oxy_comment_end mid="1"?></p></li>
+                  </ul>
+                </p></entry>
+            </row>
+            <row>
+              <entry>wakeup</entry>
+              <entry>是</entry>
+              <?oxy_comment_start author="carol" timestamp="20191111T111309+0800" comment="这边要分两个表格。
+
+这个参数有跟研发讨论，要改成Object，最终实现结果，你跟踪一下。" flag="done"?>
+              <entry>Object<xref href="#reference_v5n_lz2_gdb/ExtensionWakeup" format="dita"
+                  >&lt;ExtensionWakeup></xref></entry><?oxy_comment_end?>
+              <entry>分机闹铃信息。<note>
+                  <p>一次只能添加一个闹铃。如果一次添加多个，则只有第一个生效。</p>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <dl>
+        <dlentry>
+          <dt id="ExtensionWakeup">ExtensionWakeup</dt>
+          <dd>
+            <table frame="all" id="table_vtx_wgr_rjb">
+              <tgroup cols="4">
+                <colspec colname="c1" colnum="1" colwidth="2.48*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1.6*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c4" colnum="4" colwidth="5.95*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>是否必选</entry>
+                    <entry> 类型</entry>
+                    <entry> 描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>time</entry>
+                    <entry>是</entry>
+                    <entry>String</entry>
+                    <entry>闹铃时间。</entry>
+                  </row>
+                  <row>
+                    <entry>type</entry>
+                    <entry>是</entry>
+                    <entry>String</entry>
+                    <entry>闹铃类型。<p><b>取值范围</b>：</p><ul id="ul_egy_1hr_rjb">
+                        <li>onetime：一次。<p>当闹铃完成设置的重复次数之后，该条闹铃将被自动删除。</p></li>
+                        <li>everyday：每天。</li>
+                        <li>custom：自定义。<p><codeph>type</codeph> 为 <codeph>custom</codeph>
+                              时，<codeph>weekdays</codeph> 不为空。</p></li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>weekdays</entry>
+                    <entry>否</entry>
+                    <entry>Integer</entry>
+                    <entry>
+                      <p>闹铃适用的星期。</p>
+                      <p><b>取值范围</b>：0~6。</p>
+                      <p>其中，0表示周日，1-6表示周一到周六。<note>
+                          <p><codeph>type</codeph> 为 <codeph>custom</codeph> 时，此项不为空。</p>
+                        </note></p>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>repeats</entry>
+                    <entry>是</entry>
+                    <entry>Integer</entry>
+                    <entry>闹铃的重复次数。<p><b>取值范围</b>：1~3。</p></entry>
+                  </row>
+                  <row>
+                    <entry>repeatinterval</entry>
+                    <entry>否</entry>
+                    <entry>String</entry>
+                    <entry>重复响铃间隔时间，以分钟为单位。<p>同时设置重复次数和重复间隔时间，话机第一次响铃后，会在间隔时间后再次响铃。</p></entry>
+                  </row>
+                  <row>
+                    <entry>prompt</entry>
+                    <entry>否</entry>
+                    <entry>String</entry>
+                    <entry>闹铃提示音。<p>此提示音必须为自定义提示音。不加字段则用系统默认的 macroform-cold_day 提示音。</p></entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_ud2_ymp_mjb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.22*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="4.61*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><b>请求示例</b><p>为分机1000添加闹铃。</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/wakeupcall/create?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "4000",
+	"wakeup": 
+		{
+			"time": "11:00",
+			"type": "onetime",
+			"repeats": "3",
+			"repeatinterval": "5"
+		}
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

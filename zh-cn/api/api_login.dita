@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_blb_5ld_gdb">
+  <title>登录</title>
+  <shortdesc><ph keyref="product_name"/> API 采用用户名和密码的方式验证，只有用户名和密码验证通过的应用服务器，API
+    才会处理其发送的请求。</shortdesc>
+  <refbody>
+    <section>
+      <p>
+        <note>
+          <ul id="ul_t25_4md_gdb">
+            <li>你需要先将 API 的密码通过 MD5 加密，获取32位小写密码。使用加密过的密码进行 API 验证。</li>
+            <li>如果密码连续错误五次，则该第三方应用的 IP 将会被锁10分钟。</li>
+          </ul>
+        </note>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Endpoint</title>
+      <p>
+        <codeblock>POST /api/v1.1.0/login</codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.35*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.17*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <codeph>username</codeph>
+                </entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>在 PBX 二次开发接口界面设置的用户名。</entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>password </codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>将 PBX 二次开发接口界面设置的密码通过 MD5 加密。<p>填写加密后的32位小写密码。</p></entry>
+              </row>
+              <row>
+                <entry>
+                  <codeph>port</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>端口号，此端口号为第三方应用用于监听 API 发送的事件报告的端口号。</entry>
+              </row>
+              <row>
+                <entry><codeph> url</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>第三方应用服务器获取 API 报告的 URL。<p>
+                    <note>如果不带此参数，则 PBX 默认向第三方应用服务器的 IP 地址发送 API 报告。</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>version</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>发送 API 事件报告格式的版本。<p>
+                    <note>设置<codeph>"version":"1.0.2"</codeph>可以修复 API 事件报告的语句不符合 JSON 格式的问题。</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>urltag</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>指定 URL 的类型：<p>
+                    <ul id="ul_dq2_yv2_j2b">
+                      <li>0：定义<codeph>url</codeph>的值为相对路径。PBX 会将相对路径的 <codeph>url</codeph> 与第三方服务器
+                        IP 地址结合起来，发送 API 报告到具体的路径。<p>例如：第三方服务器 IP
+                            地址为110.22.2.3；监听端口为8260；<codeph>url</codeph>设置为 report；则 PBX 发送 API
+                          报告到110.22.2.3:8260/report 。</p></li>
+                      <li>1：定义<codeph>url</codeph> 的值为绝对路径。<p>例如：第三方服务器 IP
+                            地址为110.22.2.3；<codeph>url</codeph> 设置为110.22.2.3:8260/report；则 PBX 发送
+                          API 报告到110.22.2.3:8260/report 。</p><p>
+                          <note>使用绝对路径，可以避免复杂网络环境下，API 报告无法发送成功的问题。</note>
+                        </p></li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section>
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.63*"/>
+            <colspec colname="c3" colnum="2" colwidth="1*"/>
+            <colspec colname="c4" colnum="3" colwidth="6*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>token</codeph></entry>
+                <entry>String</entry>
+                <entry>调用接口凭证，所有的 API 请求都需用到该 token。</entry>
+              </row>
+              <row product="cloudpbx">
+                <entry><codeph>refreshtoken</codeph></entry>
+                <entry>String</entry>
+                <entry>使用<codeph>refreshtoken</codeph> 获取新的 <codeph>token</codeph> 和
+                    <codeph>refreshtoken</codeph>。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <p>
+        <note>
+          <p>
+            <ul id="ul_rj4_4d1_t2b">
+              <li>API <codeph>token</codeph> 是第三方应用成功连接 PBX 后生成的。所有的 API 请求都需要带上 API
+                验证时所返回的token。</li>
+              <li product="cloudpbx">token 有效时长为30分钟。<p>为了保证第三方服务器能跟 PBX 通过 API
+                  正常交互，第三方服务器必须在每30分钟之内 <xref href="refresh_api_token.dita#reference_dns_psf_hdb"
+                  />。</p></li>
+              <li product="k2 s-series">token 有效时长为30分钟。<p>30分钟内如果 API 和第三方应用没有任何交互（如：第三方应用发送 API
+                  请求），则该 token 将被 IPPBX 系统清除。可通过<xref
+                    href="heartbeat_packet.dita#reference_ovf_3mg_h2b">心跳包</xref>接口延长 token
+                  的有效时长，每发送一次心跳包可使 token 的有效时长延长为30分钟。</p></li>
+            </ul>
+          </p>
+        </note>
+      </p>
+    </section>
+    <section id="section_spy_qqd_gdb">
+      <title>实际示例</title>
+      <p><b>请求示例</b></p>
+      <p>
+        <codeblock outputclass="language-json">POST /api/v1.1.0/login HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "username": "api",
+    "password": "2d7257a528679d01a19c70e3fa773620",
+    "port": "8260",
+    "version": "1.0.2",
+    "url": "110.22.2.3:8260/report",
+    "urltag": "1"
+}</codeblock>
+      </p>
+      <p><b>响应示例</b></p>
+      <p>第三方应用服务器登录成功。</p>
+      <p>
+        <codeblock product="cloudpbx" outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "token": "2bc5a7494ef88b0506da66c60ccf232d",
+    "refreshtoken": "58f29c380365e5546cd3ac8c34edc88c"
+}</codeblock>
+      </p>
+      <p><codeblock product="k2 s-series" outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "token": "48a7d7481a5355aa4fb5dc285edeb40e"
+}</codeblock><?oxy_comment_start author="Sunmy" timestamp="20200331T095949+0800" comment="13.B 加入更新
+【【S系列】30.13.0.23+city+API没有推送】https://www.tapd.cn/32809406/bugtrace/bugs/view?bug_id=1132809406001022726"?>第三方应用服务器登录失败。<codeblock>HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+      "status": "Failed", 
+      "errno": "30003"
+}</codeblock></p>
+    </section>
+  </refbody><?oxy_comment_end?>
+</reference>

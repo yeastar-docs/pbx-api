@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_bpk_bw3_gdb">
+  <title>CallFailed（呼叫失败事件）</title>
+  <shortdesc>当发起的呼叫失败时，PBX 会向应用服务器发送 CallFailed 报告。</shortdesc>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>
+        <note> 通过 API 接口调用的通话或用话机建立的通话，呼叫失败都会触发该事件。呼叫失败不包括通话被转到语音留言的情况。</note>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.74*"/>
+            <colspec colname="c3" colnum="3" colwidth="3.08*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                <entry/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                <entry/>
+              </row>
+              <row>
+                <entry>reason</entry>
+                <entry>String</entry>
+                <entry><?oxy_comment_start author="carol" timestamp="20191108T144630+0800" comment="reason 返回的参数，待研发整理确认。"?>呼叫失败原因<?oxy_comment_end?>：<ul
+                    id="ul_v4z_ws4_t2b">
+                    <li>NO Outbound Restriction：分机无呼出权限。</li>
+                    <li>Circuit/channel congestion：占线，通话通道被占用。</li>
+                    <li>DND：被叫启用了 DND。</li>
+                    <li>Line Unreachable：外线不可用。</li>
+                    <li>User Busy：被叫拒接来电。</li>
+                    <li>410 Gone：离开。</li>
+                    <li>404 NOT found：未找到被叫号码。</li>
+                    <li>408 Request Time：被叫未接听来电，或被叫关机。</li>
+                    <li>480 Temporatily Unavailable：被叫没有接听来电。</li>
+                    <li>484 Address incomplete：呼出号码格式错误。</li>
+                    <li>486 Busy here：被叫拒接。</li>
+                    <li>603 Declined：被叫响铃超时。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>members</entry>
+                <entry>Array <xref href="#reference_bpk_bw3_gdb/membertype" format="dita"
+                    >&lt;MemberType></xref></entry>
+                <entry conref="call-query.dita#reference_a5v_rt2_gdb/member-info"/>
+              </row>
+              <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1*"/>
+                  <colspec colname="c3" colnum="2" colwidth="2.12*"/>
+                  <colspec colname="c4" colnum="3" colwidth="3.07*"/>
+                  <thead>
+                    <row>
+                      <entry>参数</entry>
+                      <entry> 类型</entry>
+                      <entry> 描述</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry>ext</entry>
+                      <entry>Object <xref href="#reference_bpk_bw3_gdb/extensionInfo" format="dita"
+                          >&lt;ExtensionInfo></xref></entry>
+                      <entry>分机的信息。</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="extensionInfo">
+          <dt>ExtensionInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_zvk_wvf_qjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.88*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.55*"/>
+                  <thead>
+                    <row>
+                      <entry>参数</entry>
+                      <entry> 类型</entry>
+                      <entry> 描述</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/extension-number">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"callid": "1573097568.15",
+	"event": "CallFailed",
+	"reason": "NO Outbound Restriction",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-0000000a",
+			}
+		}
+	],
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

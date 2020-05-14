@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_lnm_rz2_gdb">
+  <title>删除闹铃</title>
+  <shortdesc>删除指定分机的闹铃。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/wakeupcall/delete?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.16*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.34*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>number</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>分机号码。<p><b>取值范围</b>：</p><p>
+                    <ul id="ul_wyq_4hw_rjb">
+                      <li>单个分机号码：删除指定分机的闹铃。<p>例如：<codeph>"number":"1005"</codeph></p></li>
+                      <li>多个分机号码：删除多个分机的闹铃。多个分机号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"1005,1006"</codeph></p></li>
+                      <li>all：删除所有分机的闹铃。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>wakeupid</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>闹铃的唯一 ID。不带此参数，表示删除指定分机的所有闹铃。<p><b>取值范围</b>：</p><p>
+                    <ul>
+                      <li>单个闹铃 ID：删除指定分机的指定闹铃。<p>例如：<codeph>"wakeupid":"1"</codeph></p></li>
+                      <li>多个闹铃 ID：删除指定分机的多个闹铃。多个闹铃 ID 用半角逗号（,）隔开。<p>例如：<codeph>"wakeupid":
+                            "1,2"</codeph></p></li>
+                      <li>all：删除指定分机的所有闹铃。<p>例如：<codeph>"wakeupid": "all"</codeph></p></li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_scy_mrp_mjb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"
+        ><title>示例</title><p><b>请求示例</b></p><p>删除分机1000的闹铃。</p><codeblock outputclass="language-json">POST /api/v2.0.0/wakeupcall/delete?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1000"
+}</codeblock><b>响应示例</b>
+      <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock></section>
+  </refbody>
+</reference>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_ejm_vhf_jjb">
+    <title>API Authentication Methods</title>
+    <shortdesc>This topic introduces API authentication methods for API requests and API events. </shortdesc>
+    <conbody>
+        <section id="section_v5p_tgn_4jb"><title>Authentication methods</title>API requests use
+            token for authentication; API events use different authentication methods according to
+            different event protocols.<p>
+                <ul id="ul_qkj_ffn_4jb">
+                    <li><b>API requests</b><p>The application server should get an API token from
+                            PBX using API username and password (a 32-digit lowercase string,
+                            encrypted in MD5). Valid token must be appended every time the
+                            application server calls an API interface.</p><p>
+                            <note><ph product="cloudpbx">Refresh API token</ph><ph
+                                    product="k2 s-series">or extend API token validity</ph> to
+                                ensure token validity.</note>
+                        </p></li>
+                </ul>
+            </p><p>
+                <ul id="ul_rgb_5dn_4jb">
+                    <li><b>HTTP events</b><p>The application server should get an API token from PBX
+                            using API username and password (a 32-digit lowercase string, encrypted
+                            in MD5) and ensure token validity, so that PBX can send events to the
+                            application server.</p><p>
+                            <note><ph product="cloudpbx">Refresh API token</ph><ph
+                                    product="k2 s-series">or extend API token validity</ph> to
+                                ensure token validity.</note>
+                        </p></li>
+                    <li><b>TCP events</b><p>After a TCP connection between the application server
+                            and PBX is established, the application server should send <xref
+                                href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP login
+                                data</xref> to PBX using API username and password (cleartext).
+                            After the authentication is passed, PBX will send events to the
+                            application server.</p><p>
+                            <note>When PBX or the application server reboots or meets with network
+                                error, the application server should establish a new TCP connection
+                                and send TCP login data again.</note>
+                        </p></li>
+                </ul>
+            </p></section>
+        <section id="section_zby_phh_4jb">
+            <title>Token expiration</title>
+            <p>A token expires after 30 minutes.</p>
+            <p product="cloudpbx">If the application server needs access to the PBX API after 30
+                minutes, you need to <xref href="token-refresh.dita"/>. A refreshed token allows the
+                application server to obtain a new token.</p>
+            <p product="k2 s-series">If no interaction between PBX and the application server within
+                30 minutes (e.g. the application server sends API requests to PBX), PBX will clear
+                the token.</p>
+            <p product="k2 s-series">The application server can use heartbeat to <xref
+                    href="heartbeat.dita"/>. Every time heartbeat is sent, token validity can be
+                extended to 30 minutes.</p>
+        </section>
+    </conbody>
+</concept>
+<?oxy_options track_changes="on"?>

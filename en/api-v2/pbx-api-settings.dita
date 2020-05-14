@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_itj_qhf_jjb">
+    <title>API Settings on PBX</title>
+    <shortdesc>Before establishing a connection between the application server and PBX, you need to
+        enable API feature and configure relevant settings on PBX web interface.</shortdesc>
+    <body>
+        <section id="section_ezw_ndp_4jb">
+            <title id="api-basic-settings">API - basic settings</title>
+            <p>Before using API feature, you need to enable API and configure basic settings.</p>
+            <p>Log in the PBX web interface, go to <menucascade>
+                    <uicontrol>Settings</uicontrol>
+                    <uicontrol>PBX</uicontrol>
+                    <uicontrol>General</uicontrol>
+                    <uicontrol>API</uicontrol>
+                </menucascade>, enable API and configure relevant settings.</p>
+            <p><image href="../Images/pbx-api/api-basic-settings.png" width="650"
+                    id="image_nmz_hhp_4jb"/></p>
+            <p>
+                <ul id="ul_ewz_mgp_4jb">
+                    <li><uicontrol>Enabled</uicontrol>: Whether to enable API feature or not.</li>
+                    <li id="report-methods"><uicontrol>Report Method</uicontrol>: Select the
+                        protocol which is used to sending events. For details of the two report
+                        methods, refer to <xref href="api-reports.dita"/>.<p>
+                            <ul id="ul_vby_sfp_4jb">
+                                <li><uicontrol>HTTP</uicontrol>: PBX sends HTTP events by short-live
+                                    TCP flows.</li>
+                                <li><uicontrol>TCP</uicontrol>: PBX sends TCP events by keep-alive
+                                    TCP flows.</li>
+                            </ul>
+                        </p></li>
+                    <li><uicontrol>Username</uicontrol>: User-defined name.</li>
+                    <li><uicontrol>Password</uicontrol>: User-defined password.<p>
+                            <note>The username and password are the credentials for the application
+                                server to connect to PBX.<ul id="ul_dbp_s2p_4jb">
+                                    <li>In the request of <xref href="login.dita"/>, the password is
+                                        a 32-digit lowercase string, encrypted by MD5
+                                        (Message-Digest Algorithm).</li>
+                                    <li>In the <xref
+                                            href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP
+                                            login data</xref>, the password is a clear-text
+                                        password.</li>
+                                </ul></note>
+                        </p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_lxz_mgp_4jb">
+            <title id="api-advanced-settings">API - advanced settings</title>
+            <p>If you want to monitor the status of extensions and trunks, or control inbound calls
+                from external numbers, you need to check relevant options in <uicontrol>Advanced
+                    Settings</uicontrol>.</p>
+            <p>Log in the PBX web interface, and go to <menucascade>
+                    <uicontrol>Settings</uicontrol>
+                    <uicontrol>PBX</uicontrol>
+                    <uicontrol>General</uicontrol>
+                    <uicontrol>API</uicontrol>
+                </menucascade>, edit API advanced settings.</p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Extension</dt>
+                        <dd>Whether to monitor extension status or not.</dd>
+                        <dd>When the extension status changes (e.g. extension status is changed from
+                            busy to idle), PBX sends <xref href="event-ExtensionStatus.dita"/> event
+                            to the application server.</dd>
+                        <dd><image id="image_qm3_zzl_sjb"
+                                href="../Images/pbx-api/enable_api_extension.png" width="650"/></dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>Trunk</dt>
+                        <dd>Whether to control inbound calls from the selected trunks, or monitor
+                            call status on the selected trunks or not.</dd>
+                        <dd><image id="image_z5c_bfm_sjb"
+                                href="../Images/pbx-api/enable_api_trunk.png" width="650"/></dd>
+                        <dd>
+                            <ul>
+                                <li id="inbound-control"><uicontrol
+                                        id="Control-Inbound-Call-Answering">Control Inbound Call
+                                        Answering</uicontrol>: After enabled, PBX will send <xref
+                                        href="event-Invite.dita"/> events to the application server
+                                    when receiving an inbound call through the trunk.  The
+                                    application server has 10 seconds to decide whether to answer
+                                    the call or not.<p>
+                                        <note>If no response from the application server within 10
+                                            seconds, PBX will accept and route the call to the
+                                            destination of originated inbound route.</note>
+                                    </p><ul id="ul_ltc_zjd_gdb">
+                                        <li>
+                                            <p><uicontrol>Accept</uicontrol>: The application server
+                                                calls <xref
+                                                  href="call-accept-inbound.dita#reference_gtw_4m2_hdb"
+                                                  >call/accept_inbound</xref> to accept the
+                                                call.</p>
+                                            <p>The call will be routed to the destination of
+                                                originated inbound route.</p>
+                                        </li>
+                                        <li>
+                                            <p><uicontrol>Reject</uicontrol>: The application server
+                                                calls <xref
+                                                  href="call-refuse-inbound.dita#reference_nk3_qm2_hdb"
+                                                  >call/refuse_inbound</xref> to reject the
+                                                call.</p>
+                                            <p>The call will be ended and will not reach PBX. PBX
+                                                will not generate any CDR.</p>
+                                        </li>
+                                    </ul></li>
+                                <li id="inbound-dest-control"><uicontrol>Control Inbound Call
+                                        Destination</uicontrol>: After enabled, PBX will send<xref
+                                        href="event-Incoming.dita"/> events to the application
+                                    server when an inbound call through the trunk is accepted. The
+                                    application server has 10 seconds to control destination of the
+                                    inbound call.<p>
+                                        <note>
+                                            <ul id="ul_qmb_jj5_4jb">
+                                                <li>The application server calls <xref
+                                                  href="call-transfer.dita#reference_kz1_lhg_vgb"
+                                                  >call/transfer</xref> to control the destination
+                                                  of the inbound call.</li>
+                                                <li>If no response from the application server
+                                                  within 10 seconds, PBX will route the call to the
+                                                  destination of the originated inbound route.</li>
+                                            </ul>
+                                        </note>
+                                    </p></li>
+                                <li id="trunk-monitor"
+                                        ><?oxy_comment_start author="carol" timestamp="20191031T181647+0800" comment="api v1.0 的描述有错误，需要改正！"?><uicontrol
+                                        id="StatusMonitor">Status
+                                    Monitor</uicontrol><?oxy_comment_end?>: After enabled, PBX will
+                                    send a <xref href="event-CallStatus.dita"/> report of the trunk
+                                    to the application server.</li>
+                            </ul>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="delete-api-ip">
+            <title>Delete blacklisted API IP</title>
+            <?oxy_comment_start author="Becky" timestamp="20191114T132506+0800" comment="中文没有链接" flag="done"?>
+            <p>If an IP address fails to log in the PBX by calling <xref href="login.dita"/> for too
+                many times in a short time<?oxy_comment_end?>, PBX will blacklist and classify the
+                IP address as "API-IP". </p>
+            <p>If the IP address is a trusted IP address, you can delete it from the Blocked IP
+                Address list.</p>
+            <p>
+                <ol id="ol_an3_xl5_4jb">
+                    <li>Go to <menucascade>
+                            <uicontrol>PBX</uicontrol>
+                            <uicontrol>System</uicontrol>
+                            <uicontrol>Security</uicontrol>
+                            <uicontrol>IP Auto Defense</uicontrol>
+                            <uicontrol>Blocked IP address</uicontrol>
+                        </menucascade> to check the blacklisted IP address.<p><image
+                                href="../Images/admin/api_blocked_ip.png" width="650"
+                                id="image_bns_q2d_nfb"/></p></li>
+                    <li>Select an IP address, and click <image href="../Images/ui_icons/delete.png"
+                            width="20" id="image_mlx_s2d_nfb"/>.</li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

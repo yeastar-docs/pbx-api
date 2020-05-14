@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_t14_hx2_jjb">
+    <title>API Introduction</title>
+    <shortdesc>In this topic, we introduce what is <ph keyref="product_name"/> API and what features
+        can be achieved through API.</shortdesc>
+    <conbody>
+        <section id="section_lwk_sxw_mjb">
+            <title>
+                <ph keyref="product_name"/> API</title>
+            <p><ph product="k2 s-series">Yeastar</ph>
+                <ph keyref="product_name"/> offers API (Application Programming Interface).
+                Developers can use API to develop or connect to application servers, such as call
+                center, hotel, CRM (Customer Relationship Management), OA (Office Automation),
+                billing system, etc.</p>
+        </section>
+        <section id="section_ix4_dfh_4jb">
+            <title>Communication methods</title>
+            <p>After the application server is connected to the <ph keyref="product_name"/>, a
+                two-way communication is established, both parties can work as server and
+                client.</p>
+            <p>For detailed descriptions of communication methods and the process, refer to <xref
+                    href="api-requests.dita"/> and <xref href="api-reports.dita"/>.</p>
+            <p>
+                <ul id="ul_f1b_hyw_mjb">
+                    <li><b>The application server calls APIs to perform configurations on the
+                            PBX</b>:<p>Query parameters, query status, configure parameters, control
+                            calls, etc.</p></li>
+                    <li><b>PBX sends events to the application server in real-time</b>:<p>System
+                            status change, extension status change, trunk status change, call status
+                            change, DTMF report, CDR report, etc.</p></li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_mkj_zy3_mjb">
+            <title>Main features</title>
+            <p>You can achieve the following features through <ph keyref="product_name"/> API: </p>
+            <p>
+                <ul id="ul_w3d_ncj_mjb">
+                    <li>Parameter and status query</li>
+                    <li>Parameter configuration</li>
+                    <li>Call control</li>
+                    <li>Event Monitor</li>
+                </ul>
+            </p>
+        </section>
+    </conbody>
+</concept>

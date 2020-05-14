@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_rbf_yq2_gdb">
+  <title>Error Code</title>
+  <refbody>
+    <table frame="all" rowsep="1" colsep="1" id="table_r2w_nsm_gdb">
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="5.45*"/>
+        <thead>
+          <row>
+            <entry>Error Code</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>10002</entry>
+            <entry>Unsupported XML data packet format.</entry>
+          </row>
+          <row>
+            <entry>10003</entry>
+            <entry>Unsupported API request.</entry>
+          </row>
+          <row>
+            <entry>10004</entry>
+            <entry>The required parameter is blank.</entry>
+          </row>
+          <?oxy_comment_start author="Sunmy" timestamp="20191018T151111+0800" comment="需求新增" flag="done"?>
+          <row>
+            <entry>10005</entry>
+            <entry>The callid does not exist.</entry>
+          </row><?oxy_comment_end?>
+          <row>
+            <entry>10006</entry>
+            <entry>The extension does not exist.</entry>
+          </row>
+          <row>
+            <entry>10007</entry>
+            <entry>The call does not exist.</entry>
+          </row>
+          <row>
+            <entry>10008</entry>
+            <entry>The extension isn't idle.</entry>
+          </row>
+          <row>
+            <entry>10009</entry>
+            <entry>The extension does not allow to be monitored.</entry>
+          </row>
+          <row>
+            <entry>10010</entry>
+            <entry>The monitor mode does not match.</entry>
+          </row>
+          <row>
+            <entry>10011</entry>
+            <entry>The called number does not exist.</entry>
+          </row>
+          <row>
+            <entry>10012</entry>
+            <entry>The IVR does not exist.</entry>
+          </row>
+          <row>
+            <entry>10013</entry>
+            <entry>The queue does not exist.</entry>
+          </row>
+          <row>
+            <entry>10014</entry>
+            <entry>The ring group does not exist.</entry>
+          </row>
+          <row>
+            <entry>10015</entry>
+            <entry>The call is not connected.</entry>
+          </row>
+          <row>
+            <entry>10016</entry>
+            <entry><?oxy_comment_start author="Becky" timestamp="20191115T160218+0800" comment="The call is accepted/call refuse times out. "?>Call
+              acceptance/rejection times out.<?oxy_comment_end?></entry>
+          </row>
+          <row>
+            <entry>10017</entry>
+            <entry>The extension configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10018</entry>
+            <entry>The IVR configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10019</entry>
+            <entry>The queue configuration failed.</entry>
+          </row>
+          <row>
+            <entry>10020</entry>
+            <entry>Failed to add or modify an alarm.</entry>
+          </row>
+          <row>
+            <entry>10021</entry>
+            <entry>The alarm does not exist.</entry>
+          </row>
+          <row>
+            <entry>10022</entry>
+            <entry>The alarm already exists.</entry>
+          </row>
+          <row>
+            <entry>10023</entry>
+            <entry>The audio file does not exist.</entry>
+          </row>
+          <row>
+            <entry>10024</entry>
+            <entry>The extension does not have outbound call permission.</entry>
+          </row>
+          <row>
+            <entry>10025</entry>
+            <?oxy_comment_start author="Becky" timestamp="20191114T170823+0800" comment="High frequency of using system automatic apply of new configuration. "?>
+            <entry>High frequency of applying new configurations.</entry><?oxy_comment_end?>
+          </row>
+          <row product="s-series">
+            <entry>10026</entry>
+            <entry>The GSM module name doesn't exist.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10027</entry>
+            <entry>The GSM module is in use or there is no idle GSM Module</entry>
+          </row>
+          <row>
+            <entry>10028</entry>
+            <entry>The number cannot be blank.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10029</entry>
+            <entry>Fail to open SMS file.</entry>
+          </row>
+          <row product="s-series">
+            <entry>10030</entry>
+            <entry>The SMS contents cannot be blank.</entry>
+          </row>
+          <row>
+            <entry>10031</entry>
+            <entry>The callee number doesn't meet the requirement.</entry>
+          </row>
+          <row>
+            <entry>10032</entry>
+            <entry>Wrong password.</entry>
+          </row>
+          <row>
+            <entry>10033</entry>
+            <entry>Fail to save the outbound route settings for extension.</entry>
+          </row>
+          <?oxy_comment_start author="Becky" timestamp="20191114T151008+0800" comment="从10034到10131新增"?>
+          <row product="k2 s-series">
+            <entry>10034</entry>
+            <entry>Failed to add a paging group.</entry>
+          </row><?oxy_comment_end?>
+          <row product="k2 s-series">
+            <entry>10035</entry>
+            <entry>Add failed: Duplicate paging group.</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10036</entry>
+            <entry>Paging group does not exist. </entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10037</entry>
+            <entry>The paging group configuration failed.</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10038</entry>
+            <entry>The paging group was deleted.</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10039</entry>
+            <entry>Wrong paging group parameters.</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10040</entry>
+            <entry>Added failed: Reach the upper limit of paging group.</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10041</entry>
+            <entry>Add failed: Reach the upper limit of extension members in a paging group.</entry>
+          </row>
+          <row>
+            <entry>10042</entry>
+            <entry>Wrong trunk name.</entry>
+          </row>
+          <row>
+            <entry>10043</entry>
+            <entry>Duplicate trunk names.</entry>
+          </row>
+          <row>
+            <entry>10044</entry>
+            <entry>Wrong trunk type.</entry>
+          </row>
+          <row>
+            <entry>10045</entry>
+            <entry>Wrong hostname/IP.</entry>
+          </row>
+          <row>
+            <entry>10046</entry>
+            <entry>Wrong port.</entry>
+          </row>
+          <row>
+            <entry>10047</entry>
+            <entry>Wrong domain.</entry>
+          </row>
+          <row>
+            <entry>10048</entry>
+            <entry>Wrong username.</entry>
+          </row>
+          <row>
+            <entry>10049</entry>
+            <entry>Duplicate username.</entry>
+          </row>
+          <row>
+            <entry>10050</entry>
+            <entry>Wrong authentication name.</entry>
+          </row>
+          <row>
+            <entry>10051</entry>
+            <entry>Wrong From User.</entry>
+          </row>
+          <row>
+            <entry>10052</entry>
+            <entry>Wrong authentication password.</entry>
+          </row>
+          <row>
+            <entry>10053</entry>
+            <entry>Extension in the DOD setting does not exist.</entry>
+          </row>
+          <row>
+            <entry>10054</entry>
+            <entry>Extension group in the DOD setting does not exist.</entry>
+          </row>
+          <row>
+            <entry>10055</entry>
+            <entry>Wrong DOD number.</entry>
+          </row>
+          <row>
+            <entry>10056</entry>
+            <entry>Wrong length of DOD number.</entry>
+          </row>
+          <row>
+            <entry>10057</entry>
+            <entry>Wrong DOD name.</entry>
+          </row>
+          <row>
+            <entry>10058</entry>
+            <entry>Wrong length of DOD name.</entry>
+          </row>
+          <row>
+            <entry>10059</entry>
+            <entry>Wrong DOD format.</entry>
+          </row>
+          <row>
+            <entry>10060</entry>
+            <entry>Add failed: Reach the upper limit of trunks.</entry>
+          </row>
+          <row>
+            <entry>10061</entry>
+            <entry>Failed to delete the trunk.</entry>
+          </row>
+          <row>
+            <entry>10062</entry>
+            <entry>The trunk does not exist.</entry>
+          </row>
+          <row>
+            <entry>10063</entry>
+            <entry>Wrong inbound route name.</entry>
+          </row>
+          <row>
+            <entry>10064</entry>
+            <entry>Duplicate inbound route.</entry>
+          </row>
+          <row>
+            <entry>10065</entry>
+            <entry>Failed to save the DID settings for the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10066</entry>
+            <entry>Failed to save the settings of Caller ID pattern for the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10067</entry>
+            <entry>The trunk used by the inbound route does not exist.</entry>
+          </row>
+          <row>
+            <entry>10068</entry>
+            <entry>Wrong destination type of the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10069</entry>
+            <entry>Wrong destination of the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10070</entry>
+            <entry>Add failed: Reach the upper limit of inbound route.</entry>
+          </row>
+          <row>
+            <entry>10071</entry>
+            <entry>Failed to delete the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10072</entry>
+            <entry>The inbound route does not exist.</entry>
+          </row>
+          <row>
+            <entry>10073</entry>
+            <entry>Wrong outbound route name.</entry>
+          </row>
+          <row>
+            <entry>10074</entry>
+            <entry>Duplicate outbound routes.</entry>
+          </row>
+          <row>
+            <entry>10075</entry>
+            <entry>Wrong prefix of the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10076</entry>
+            <entry>Wrong strip of the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10077</entry>
+            <entry>Wrong prepend of the inbound route.</entry>
+          </row>
+          <row>
+            <entry>10078</entry>
+            <entry>The trunk which is available to the outbound route does not exist.</entry>
+          </row>
+          <row>
+            <entry>10079</entry>
+            <entry>The extension which is available to use the outbound route does not
+              exist.</entry>
+          </row>
+          <row>
+            <entry>10080</entry>
+            <entry>The extension group which is available to use the outbound route does not
+              exist.</entry>
+          </row>
+          <row>
+            <entry>10081</entry>
+            <entry>Add failed: Reach the upper limit of outbound route.</entry>
+          </row>
+          <row>
+            <entry>10082</entry>
+            <entry>Failed to delete outbound route.</entry>
+          </row>
+          <row>
+            <entry>10083</entry>
+            <entry>The outbound route does not exist.</entry>
+          </row>
+          <row>
+            <entry>10088</entry>
+            <entry>Wrong DID number of the trunk.</entry>
+          </row>
+          <row>
+            <entry>10089</entry>
+            <entry>Wrong length of DID number for the trunk.</entry>
+          </row>
+          <row>
+            <entry>10090</entry>
+            <entry>Wrong DID name of the trunk.</entry>
+          </row>
+          <row>
+            <entry>10091</entry>
+            <entry>Wrong length of DID name for the trunk.</entry>
+          </row>
+          <row>
+            <entry>10092</entry>
+            <entry>Add failed: Reach the upper limit of DID number for the trunk.</entry>
+          </row>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T162553+0800" comment="【通话监听 - call/listen】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001004922"?>
+          <row>
+            <entry>10100</entry>
+            <entry>Monitor type does not exist.</entry>
+          </row><?oxy_comment_end?>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T163407+0800" comment="【建立通话 -call/dial】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001004912"?>
+          <row>
+            <entry>10101</entry>
+            <entry>Request parameter is out of the features of the API interface. Check
+                <codeph>caller</codeph> and <codeph>callee</codeph>.</entry>
+          </row><?oxy_comment_end?>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T163430+0800" comment="【建立通话 -call/dial】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001004912"?>
+          <row>
+            <entry>10102</entry>
+            <entry><?oxy_comment_start author="Becky" timestamp="20191121T112408+0800" comment="会议室设置失败，因为部分参数有问题
+__________________________________
+会返回相应的error，提示哪个参数错误"?>Conference
+              configurations failed. Check the error data.<?oxy_comment_end?></entry>
+          </row><?oxy_comment_end?>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T161734+0800" comment="add
+【咨询转-call/attended_transfer】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001005068"?>
+          <row>
+            <entry>10103</entry>
+            <entry>The channelid does not exist.</entry>
+          </row><?oxy_comment_end?>
+          <?oxy_comment_start author="Sunmy" timestamp="20191022T110453+0800" comment="需求加
+【播放语音/发起音乐广播 - call/playprompt】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001004911"?>
+          <row>
+            <entry>10104</entry>
+            <entry>Prompt volume does not fall within 0-20.</entry>
+          </row><?oxy_comment_end?>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T161651+0800" comment="add
+【咨询转后操作-call/attended_transfer_operate】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001005069"?>
+          <row>
+            <entry>10105</entry>
+            <entry>Operation type for attended transfer does not exist.</entry>
+          </row><?oxy_comment_end?>
+          <row>
+            <entry>10118</entry>
+            <entry>Value of prompt volume can only be numeric.</entry>
+          </row>
+          <?oxy_comment_start author="Sunmy" timestamp="20191028T161826+0800" comment="add
+【咨询转-call/attended_transfer】 https://www.tapd.cn/32809406/prong/stories/view/1132809406001005068"?>
+          <row>
+            <entry>10130</entry>
+            <?oxy_comment_start author="Becky" timestamp="20191121T112546+0800" comment="外线无法执行咨询转 
+___________________
+只有内部分机可以"?>
+            <entry>Attended transfer is only available to internal
+            extensions.</entry><?oxy_comment_end?>
+          </row><?oxy_comment_end?>
+          <row>
+            <entry>20000</entry>
+            <entry>Only support <userinput>json</userinput> format.</entry>
+          </row>
+          <row>
+            <entry>20001</entry>
+            <entry>Only support <userinput>POST</userinput> request.</entry>
+          </row>
+          <row>
+            <entry>20002</entry>
+            <entry>User login failure (user locked out).</entry>
+          </row>
+          <row>
+            <entry>20003</entry>
+            <entry>User login failure (invalid username or password).</entry>
+          </row>
+          <row>
+            <entry>20004</entry>
+            <entry>No such Token.</entry>
+          </row>
+          <row>
+            <entry>20005</entry>
+            <entry>Token is blank.</entry>
+          </row>
+          <row>
+            <entry>20006</entry>
+            <entry>Token times out.</entry>
+          </row>
+          <row>
+            <entry>20007</entry>
+            <entry>Blank data.</entry>
+          </row>
+          <row>
+            <entry>20008</entry>
+            <entry>Wrong port.</entry>
+          </row>
+          <row>
+            <entry>20009</entry>
+            <entry>Blank request.</entry>
+          </row>
+          <row>
+            <entry>20010</entry>
+            <entry>Failed to send request to apisrv for processing.</entry>
+          </row>
+          <row>
+            <entry>20011</entry>
+            <entry>HeartBeat Configuration request failure.</entry>
+          </row>
+          <row>
+            <entry>20012</entry>
+            <entry>The random string of recording file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20013</entry>
+            <entry>Wrong captcha.</entry>
+          </row>
+          <row>
+            <entry>20014</entry>
+            <entry>The recording file does not exist.</entry>
+          </row>
+          <row>
+            <entry>20015</entry>
+            <entry>The setting of allowedip is wrong.</entry>
+          </row>
+          <row>
+            <entry>20016</entry>
+            <entry>The voicemail status is wrong.</entry>
+          </row>
+          <row>
+            <entry>20017</entry>
+            <entry>The random string of voicemail file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20018</entry>
+            <entry>The voicemail file does not exist.</entry>
+          </row>
+          <row>
+            <entry>20019</entry>
+            <entry>The CDR time format is wrong.</entry>
+          </row>
+          <row>
+            <entry>20020</entry>
+            <entry>The random string of CDR file is invalid.</entry>
+          </row>
+          <row>
+            <entry>20021</entry>
+            <entry>The CDR file does not exist.</entry>
+          </row>
+          <row>
+            <entry>30001</entry>
+            <entry>API codes error.</entry>
+          </row>
+          <row>
+            <entry>30003</entry>
+            <entry>The apisrv does not start up.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

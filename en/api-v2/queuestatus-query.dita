@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_t3d_sdf_h2b">
+    <title>Query Queue Status</title>
+    <shortdesc>Query agent status in a specified queue.</shortdesc>
+    <refbody>
+        <section>
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/query_status?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_vjw_5qd_gdb">
+            <title>Request parameters</title>
+            <table frame="all" id="table_tjr_cmh_mjb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.18*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.27*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c4" colnum="4" colwidth="4.54*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Required</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Yes</entry>
+                            <entry>Integer</entry>
+                            <entry>Queue number.</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_ncs_v2f_h2b">
+            <title>Response parameters</title>
+            <table frame="all" id="table_owx_hmh_mjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.49*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="3.29*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                    <li>Success</li>
+                                    <li>Failed</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>queues</entry>
+                            <entry>Array <xref href="#reference_t3d_sdf_h2b/QueueInfo" format="dita"
+                                    >&lt;QueueInfo></xref></entry>
+                            <entry>Queue information.</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <dl>
+                <dlentry>
+                    <dt id="QueueInfo">QueueInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_ptc_wgt_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.5*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="1.25*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Queue number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>queuestatus</entry>
+                                        <entry>Array <xref
+                                                href="#reference_t3d_sdf_h2b/QueuestatusInfo"
+                                                format="dita">&lt;QueuestatusInfo></xref></entry>
+                                        <entry>Queue status.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="QueuestatusInfo">QueuestatusInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_nkv_zgt_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.26*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="1.85*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>callercount</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The number of on-hold callers.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>members</entry>
+                                        <entry>Array <xref href="#reference_t3d_sdf_h2b/MemberInfo"
+                                                format="dita">&lt;MemberInfo></xref></entry>
+                                        <entry>Information of queue members.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="MemberInfo">MemberInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_w3w_fht_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.19*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.57*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry>Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>agent</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Agent number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>agentstatus</entry>
+                                        <entry>Integer</entry>
+                                        <entry>The agent status.<p>
+                                                <ul id="ul_fkp_lgf_h2b">
+                                                  <li>0-Unknown: Unknown</li>
+                                                  <li>1-Not In Use: The agent is idle</li>
+                                                  <li>2-In Use: The agent is in a call</li>
+                                                  <li>3-Busy: Unknown</li>
+                                                  <li>5-Unavailable: The agent's extension is
+                                                  unregistered</li>
+                                                  <li>6-Ringing: The agent's extension is
+                                                  ringing</li>
+                                                  <li>7-In Use Ringing: The agent receives a new
+                                                  call during a call</li>
+                                                  <li>8-On Hold: The agent holds a call</li>
+                                                  <li>9-Paused: The agent is paused, and would not
+                                                  receive calls</li>
+                                                  <li>10-warp-up time: The agent is in the wrap-up
+                                                  state</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request
+                example</b></p><p>Query agent status in queue 6700.</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/queue/query_status?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6700"
+}</codeblock>
+            </p><b>Response example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"queues": [
+		{
+			"number": "6700",
+			"queuestatus": [
+				{
+					"callercount": "0",
+					"members": [
+						{
+							"agent": "1000",
+							"agentstatus": "1"
+						},
+						{
+							"agent": "4000",
+							"agentstatus": "1"
+						}
+					]
+				}
+			]
+		}
+	]
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

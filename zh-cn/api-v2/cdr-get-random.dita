@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_vpd_43g_vgb">
+    <title>下载通话记录</title>
+    <shortdesc>下载指定分机或所有分机的通话记录。</shortdesc>
+    <refbody>
+        <section id="section_jgd_cnv_mjb">
+            <title>下载步骤</title>
+            <p>
+                <ol id="ol_uyn_cnv_mjb">
+                    <li>获取通话记录文件的随机串。</li>
+                    <li>使用随机串，组合成通话记录文件的<xref href="#reference_vpd_43g_vgb/section_ckz_xn2_hdb"
+                            format="dita">下载链接</xref>。<note>随机串的有效时长为30秒，并且每个随机串使用一次。</note></li>
+                </ol>
+            </p>
+        </section>
+        <section>
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/cdr/get_random?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_xc5_q4d_gdb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.14*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1.01*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.34*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>分机号码。表示要下载哪些分机的通话记录。<p><b>取值范围</b>：</p><p>
+                                        <ul id="ul_xyl_4v4_mjb">
+                                            <li>单个分机号码：下载指定分机的通话记录。<p>例如：<codeph>"number":"1000"</codeph></p></li>
+                                            <li>多个分机号码：下载多个分机的通话记录。多个分机号码用半角逗号（,）隔开。<p>例如：<codeph>"number":"1000,1001,1002"</codeph></p></li>
+                                            <li>all：下载所有分机的通话记录。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>starttime</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>通话记录的起始时间。<p>时间格式：<codeph>yyyy-mm-dd
+                                    hh:mm:ss</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>endtime</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>通话记录的结束时间。<p>时间格式：<codeph>yyyy-mm-dd
+                                    hh:mm:ss</codeph></p></entry>
+                            </row>
+                            <row>
+                                <entry>allowedip</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>
+                                    <p>设置允许下载通话记录的设备 IP 地址。默认不带此参数，表示只能通过应用服务器下载文件。</p>
+                                    <p><b>取值范围</b>：</p>
+                                    <p>
+                                        <ul>
+                                            <li>空值：只能通过应用服务器下载文件。<p>例如：<codeph>"allowedip":"
+                                                  "</codeph></p></li>
+                                            <li>IP 地址：只能通过该 IP
+                                                  地址或应用服务器下载文件。<p>例如：<codeph>"allowedip":"192.168.5.20"</codeph></p></li>
+                                        </ul>
+                                    </p>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_lv1_syk_gdb">
+            <title>响应参数</title>
+            <table frame="all" id="table_gvj_ccn_qjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="4.34*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Integer</entry>
+                            <entry>分机号码。</entry>
+                        </row>
+                        <row>
+                            <entry>starttime</entry>
+                            <entry>String</entry>
+                            <entry>通话记录的起始时间。</entry>
+                        </row>
+                        <row>
+                            <entry>endtime</entry>
+                            <entry>String</entry>
+                            <entry>通话记录的结束时间。</entry>
+                        </row>
+                        <row>
+                            <entry>random</entry>
+                            <entry>String</entry>
+                            <entry>通话记录文件的随机串。<p>使用这个随机串组合成该通话录音文件的下载链接。</p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>示例</title><b>请求示例</b><p>获取分机4000通话记录文件的随机串。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/cdr/get_random?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "4000",
+	"starttime": "2019-10-24 00:00:00",
+	"endtime": "2019-10-24 15:59:59"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"number": "4000",
+	"starttime": "2019-10-24 00:00:00",
+	"endtime": "2019-10-24 15:59:59",
+	"random": "7b5a748e176d1ed625793d3a231808dc"
+}</codeblock>
+            </p></section>
+        <section id="section_ckz_xn2_hdb"
+                    ><title>通话记录下载链接</title>使用随机串（random）组合成通话记录的下载链接。<p>通话记录文件的格式为CSV。<xref
+                    href="event-NewCdr.dita#reference_imy_gw3_gdb"
+                    >查看通话记录参数说明</xref>。</p><p><b>通话记录下载链接格式</b>：</p><p>
+                <codeblock product="k2 s-series">https://<varname>{pbx ip}</varname>:<varname>{https port}</varname>/api/v2.0.0/cdr/download?
+number=<varname>{number}</varname>&amp;starttime=<varname>{starttime}</varname>&amp;endtime=<varname>{endtime}</varname>&amp;token=<varname>{token}</varname>&amp;
+random=<varname>{random}</varname></codeblock>
+            </p><codeblock product="cloudpbx">https://<varname>{pbx domain}</varname>/api/v2.0.0/cdr/download?
+number=<varname>{number}</varname>&amp;starttime=<varname>{starttime}</varname>&amp;endtime=<varname>{endtime}</varname>&amp;token=<varname>{token}</varname>&amp;
+random=<varname>{random}</varname></codeblock><b>通话记录下载链接示例</b>：<p>
+                <codeblock product="k2 s-series">https://192.168.5.150:8088/api/v2.0.0/cdr/download?
+number=4000&amp;starttime=2019-10-24%2000:00:00&amp;endtime=2019-10-24%2015:59:59&amp;
+token=4555b319609ca31410f7b946671fcc69&amp;random=7b0ad48124d720235b05d2435a48bc30</codeblock>
+            </p><codeblock product="cloudpbx">https://api.yeastarcloud.com/api/v2.0.0/cdr/download?
+number=4000&amp;starttime=2019-10-24%2000:00:00&amp;endtime=2019-10-24%2015:59:59&amp;
+token=4555b319609ca31410f7b946671fcc69&amp;random=7b0ad48124d720235b05d2435a48bc30</codeblock></section>
+    </refbody>
+</reference>

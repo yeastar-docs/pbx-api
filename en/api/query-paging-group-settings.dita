@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_wkv_4xf_vgb">
+    <title>Query Paging Group Settings</title>
+    <shortdesc>Query the settings of a paging group, multiple paging groups, or all paging
+        groups.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/paginggroup/query?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>Request Parameters</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.15*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.24*"/>
+                    <colspec colname="c4" colnum="4" colwidth="3.8*"/>
+                    <thead>
+                        <row>
+                            <entry>Name</entry>
+                            <entry>Importance</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><codeph>number</codeph></entry>
+                            <entry>Required</entry>
+                            <entry>String</entry>
+                            <entry>Paging group number.<p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li><b>A paging group</b>: Set <codeph>number</codeph> to
+                                            the paging group number.<p>Example:
+                                                  <codeph>"number":"6300"</codeph></p></li>
+                                        <li><b>Multiple paging groups</b>: Set
+                                                <codeph>number</codeph> to paging group number.
+                                            Separate multiple paging groups with
+                                                <codeph>,</codeph>.<p>Example: <codeph>"number":
+                                                  "6300,6301"</codeph></p></li>
+                                        <li><b>All paging groups</b>: Set <codeph>number</codeph> to
+                                                <codeph>all</codeph>.</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>Response Parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.67*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1*"/>
+                        <colspec colname="c4" colnum="3" colwidth="5.65*"/>
+                        <thead>
+                            <row>
+                                <entry>Name</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>paginggroup</codeph></entry>
+                                <entry>Object</entry>
+                                <entry>Object parameter.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>id</codeph></entry>
+                                <entry>Int</entry>
+                                <entry>Paging group ID.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>number</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Paging group number.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>name</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Paging group name.</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>duplex</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Paging group type.<p>
+                                        <ul id="ul_bs1_m1m_vgb">
+                                            <li><codeph>paging</codeph>: 1-Way Paging. Typical one
+                                                way for announcement only.</li>
+                                            <li><codeph>intercom</codeph>: 2-Way Intercom. Make the
+                                                paging duplex, allowing all users in group to talk
+                                                and be heard by all.</li>
+                                            <li><codeph>multicast</codeph>: 1-Way Multicast Paging.
+                                                Broadcast an one-way announcement to users whose
+                                                phones are programmed to listen to a broadcast
+                                                address. <p>
+                                                  <note>Make sure your IP phone supports multicast
+                                                  paging and the broadcast address has been
+                                                  configured on the phone.</note>
+                                                </p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowexten</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Paging group members. <p>If extensions are set as paging
+                                        group members, the extension numbers are displayed as
+                                            <codeph>allowexten</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowextengroup</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Paging group members.<p>If extension groups are set as paging
+                                        group members, the extension groups are displayed as
+                                            <codeph>allowextengroup</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>enablekeyhanup</codeph></entry>
+                                <entry>String</entry>
+                                <entry>Weather to enable <uicontrol>Dial * to Answer</uicontrol>
+                                        feature.<p>If enabled, paging group members can dial * to
+                                        answer an announcement, and the group announcement will
+                                        terminate, and the extension who dials * can have a private
+                                        call with the initiator.</p><p>
+                                        <ul id="ul_nx3_fgm_vgb">
+                                            <li><codeph>yes</codeph>: Enable.</li>
+                                            <li><codeph>no</codeph>: Disable.</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>multicastip</codeph></entry>
+                                <entry>String</entry>
+                                <entry><codeph>multicastip</codeph> displays the multicast IP
+                                    address if the paging group type is
+                                    <codeph>multicast</codeph>.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section>
+            <title>Examples</title>
+            <p><b>Request Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/paginggroup/query?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "number": "6300"
+}</codeblock>
+            </p>
+            <p><b>Response Example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "paginggroup": [
+        {
+            "id": "1",
+            "number": "6300",
+            "name": "6300",
+            "duplex": "paging",
+            "allowexten": "1001,",
+            "allowextengroup": "",
+            "enablekeyhanup": "no",
+            "multicastip": ""
+        }
+    ]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

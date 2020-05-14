@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_c12_pcf_gdb">
+  <title>'Changed Extension Status' Report</title>
+  <shortdesc> The PBX will send a report to the application server when the extension status
+    changes.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+      <!--Carol-->
+      <revised modified="2018/11/26"/>
+      <!--Carol-->
+      <revised modified="2019/01/15"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p><b>Prerequisite</b>: Enable <uicontrol>Status Monitor</uicontrol> of the extension on the
+        PBX web interface: <menucascade>
+          <uicontrol>Settings</uicontrol>
+          <uicontrol>PBX</uicontrol>
+          <uicontrol>General</uicontrol>
+          <uicontrol>API</uicontrol>
+        </menucascade>.</p>
+    </section>
+    <section id="section_iv3_dw2_hdb">
+      <title>Extension Status</title>
+      <ul id="ul_zy3_gw2_hdb">
+        <li><b>Ringing</b>: The PBX will send a report when the extension is ringing.</li>
+        <li><b>Busy</b>: The PBX will send a report when the extension is off-hook.</li>
+        <li>
+          <p><b>Idle</b>: The PBX will send a report when the extension is on-hook.</p>
+        </li>
+        <li><b>Registered</b>: The PBX will send a report when the extension status is changed from
+            <b>Unregistered</b> to <uicontrol>Registered</uicontrol>.</li>
+        <li><b>Unregistered</b>: The PBX will send a report when the extension status is changed
+          from <b>Registered</b> to <uicontrol>Unregistered</uicontrol>.</li>
+      </ul>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Report Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.13*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="5.03*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>Status change of extension.</entry>
+              </row>
+              <row>
+                <entry><codeph>extension</codeph></entry>
+                <entry>Int</entry>
+                <entry>The number of extension with status change.</entry>
+              </row>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>String</entry>
+                <entry>The status of extension after change.</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>The PBX's serial number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report Example</title>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+{
+    "action": "ExtensionStatus",
+    "extension": "1006",
+    "status": "Registered",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

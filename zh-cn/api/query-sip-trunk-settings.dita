@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_j5k_vdg_vgb">
+    <title>查询 SIP 中继</title>
+    <shortdesc>查询单个 SIP 中继、多个 SIP 中继 或所有 SIP 中继的基本设置。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/siptrunk/query?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.15*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.03*"/>
+                    <colspec colname="c4" colnum="4" colwidth="3.99*"/>
+                    <thead>
+                        <row>
+                            <entry>名称</entry>
+                            <entry>是否必需</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><codeph>trunkname</codeph></entry>
+                            <entry>是</entry>
+                            <entry>String</entry>
+                            <entry>SIP 中继的名称。<p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li><b>查询单个 SIP 中继</b>：设置 <codeph>trunkname</codeph> 为 SIP
+                                                  中继的名称。<p>例如：<codeph>"trunkname":"SIP"</codeph></p></li>
+                                        <li><b>查询多个 SIP 中继</b>：设置 <codeph>trunkname</codeph> 为 SIP
+                                            中继的名称，多个 SIP 中继之间用 <codeph>,</codeph>
+                                                  隔开。<p>例如：<codeph>"trunkname":
+                                                "SIP1,SIP2"</codeph></p></li>
+                                        <li><b>查询所有 SIP 中继</b>：设置
+                                                <codeph>trunkname</codeph>为<codeph>all</codeph>。</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="2.71*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1*"/>
+                        <colspec colname="c4" colnum="3" colwidth="7.2*"/>
+                        <thead>
+                            <row>
+                                <entry>名称</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>trunks</codeph></entry>
+                                <entry>Object</entry>
+                                <entry>对象参数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>id</codeph></entry>
+                                <entry>Int</entry>
+                                <entry>中继的标识码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunkname</codeph></entry>
+                                <entry>String</entry>
+                                <entry>中继名称。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>trunktype</codeph></entry>
+                                <entry>String</entry>
+                                <entry>中继类型。<p>
+                                        <ul id="ul_tgn_wmn_vgb">
+                                            <li>register：注册中继。</li>
+                                            <li>peer：点对点中继。</li>
+                                            <li>account：账号中继。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">注册中继</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>host</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>port</codeph></entry>
+                                <entry>String</entry>
+                                <entry>中继的 SIP 端口。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>domain</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>username</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商提供的 SIP 账号。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>authname</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商提供的 SIP 账号。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>fromuser</codeph></entry>
+                                <entry>String</entry>
+                                <entry>From 头域。<p>
+                                        <note>如果 SIP 运营商不支持，则放空。</note>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>password</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 账号的密码。</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">点对点中继</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>host</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>port</codeph></entry>
+                                <entry>String</entry>
+                                <entry>中继的 SIP 端口。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>domain</codeph></entry>
+                                <entry>String</entry>
+                                <entry>SIP 运营商的域名或 IP 地址。</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">账号中继</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>username</codeph></entry>
+                                <entry>String</entry>
+                                <entry>账号中继的用户名。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>authname</codeph></entry>
+                                <entry>String</entry>
+                                <entry>账号中继的认证名。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>password</codeph></entry>
+                                <entry>String</entry>
+                                <entry>账号中继的密码。</entry>
+                            </row>
+                            <row>
+                                <entry namest="c1" nameend="c4">DOD 号码</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensionsdod</codeph></entry>
+                                <entry>String</entry>
+                                <entry><p>分机绑定的 DOD
+                                            号码。</p><p>显示格式为：<varname>｛dod_number｝</varname>-<varname>｛dod_name｝</varname>-<varname>{extension_number}</varname></p>例如：<codeph>"extensionsdod":"5503301-yeastar-1000"</codeph></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>extensionsgroupdod</codeph></entry>
+                                <entry>String</entry>
+                                <entry>分机组绑定的 DOD
+                                            号码。<p>显示格式为：<varname>｛dod_number｝</varname>-<varname>｛dod_name｝</varname>-<varname>{extension_group_name}</varname></p>例如：<codeph>"extensionsdod":"5503301-yeastar-sales"</codeph></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_dbx_ffn_vgb">
+            <title>实际示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/siptrunk/query?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "trunkname": "SIP"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "trunks": [
+        {
+            "id": "8",
+            "trunkname": "SIP",
+            "trunktype": "register",
+            "host": "192.168.11.158",
+            "port": "5060",
+            "domain": "192.168.11.158",
+            "username": "8001",
+            "authname": "8001",
+            "fromuser": "8001",
+            "password": "E7PO?LywXnXa_B-n",
+            "extensionsdod": "",
+            "extensionsgroupdod": ""
+        }
+    ]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

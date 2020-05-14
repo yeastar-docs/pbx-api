@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_lsr_2fg_vgb">
+    <title>删除呼出路由</title>
+    <shortdesc>删除单个呼出路由、多个呼出路由或所有呼出路由。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/outroute/delete?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.15*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.24*"/>
+                    <colspec colname="c4" colnum="4" colwidth="3.8*"/>
+                    <thead>
+                        <row>
+                            <entry>名称</entry>
+                            <entry>是否必需</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><codeph>name</codeph></entry>
+                            <entry>是</entry>
+                            <entry>String</entry>
+                            <entry>呼出路由的名称。<p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li><b>删除单个呼出路由</b>：设置 <codeph>name</codeph>
+                                                  为呼出路由的名称。<p>例如：<codeph>"name":"route1"</codeph></p></li>
+                                        <li><b>删除多个呼出路由</b>：设置 <codeph>name</codeph>
+                                            为呼出路由的名称，多个呼出路由之间用 <codeph>,</codeph>
+                                                  隔开。<p>例如：<codeph>"name":
+                                                "route1,route2"</codeph></p></li>
+                                        <li><b>删除所有呼出路由</b>：设置
+                                                <codeph>name</codeph>为<codeph>all</codeph>。</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_grk_jqm_vgb">
+            <title>实际示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/outroute/delete?token=1e3b3ebb6a974cb42ed31de5413df52d HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+{
+    "name": "route1,route2"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

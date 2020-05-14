@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_yyz_gs2_gdb">
+  <title>修改 IVR </title>
+  <shortdesc>修改 IVR 的配置，如：IVR 名称、提示音播放次数等。</shortdesc>
+  <refbody>
+    <section>
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/ivr/update?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="3.43*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.43*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="7.22*"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>是否必选</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>number</entry>
+                <entry>是</entry>
+                <entry>Integer</entry>
+                <entry>IVR 号码。</entry>
+              </row>
+              <row>
+                <entry>ivrname</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>IVR 名称。<note>
+                    <ul id="ul_ryv_zvv_4jb">
+                      <li>不允许输入空格和以下字符：<codeph>! $ ( ) / # ; , [ ] " = &lt; > &amp; ' ` ^ % @ { }
+                          |</codeph>。</li>
+                      <li>最大长度31位。</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>promptrepeat</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>提示音播放次数。<p><b>取值范围</b>：1~5。</p></entry>
+              </row>
+              <row>
+                <entry>responsetimeout</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>响应超时时间。单位：秒。<p><b>取值范围</b>：1~10。</p></entry>
+              </row>
+              <row>
+                <entry>digittimeout</entry>
+                <entry>否</entry>
+                <entry>Integer</entry>
+                <entry>按键超时时间。单位：秒。<p><b>取值范围</b>：1~10。</p></entry>
+              </row>
+              <row>
+                <entry>dialext</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>允许拨打分机号码。<p><b>取值范围</b>：</p><p>
+                    <ul>
+                      <li>on：允许。</li>
+                      <li>off：不允许。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>dialoutboundroutes</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>允许从呼出路由拨出。<p><b>取值范围</b>：</p><ul id="ul_oc1_3wv_4jb">
+                    <li>on：允许。</li>
+                    <li>off：不允许。</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>dialtocheckvoicemail</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>允许查阅语音留言。<p><b>取值范围</b>：</p><p>
+                    <ul>
+                      <li>on：允许。</li>
+                      <li>off：不允许。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_hbw_y2c_mjb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>参数</entry>
+                <entry>类型</entry>
+                <entry>描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                    <li>Success：成功。</li>
+                    <li>Failed：失败。</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p>修改 IVR 6500的名称为“Welcome”。<p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/ivr/update?token=1e3b3ebb6a974cb42ed31de5413df52d 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6500",
+	"ivrname": "Welcome"
+}</codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

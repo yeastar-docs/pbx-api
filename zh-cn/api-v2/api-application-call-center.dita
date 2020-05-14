@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-call-center">
+    <title>呼叫中心系统应用方案</title>
+    <shortdesc>通过 API 对接 <ph keyref="product_name"/> 和呼叫中心，实现自动话务分配、坐席管理、日常通话和满意度调查。</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>应用场景</dt>
+                <dd>
+                    <p>呼叫中心，是企业加强与客户的沟通，提高服务质量和服务效率，提高企业竞争能力的一种重要手段。随着互联网的迅速普及，怎样使呼叫中心接入互联网，同时解决呼叫中心的分布式组建和高成本等问题，成为中小型企业与跨地区企事业单位首要考虑的问题。<ph
+                            keyref="product_name"/> 提供的 API 接口，可以直接将 IP PBX 接入呼叫中心系统，直接替代昂贵的 ACD
+                        服务器，同时能更好地兼容 CTI 系统，实现坐席管理、自动话务分配和满意度调查等功能。</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_bk2_2j5_xjb">
+            <title>队列设置</title>
+        
+        <ul id="ul_rcq_cjr_dlb">
+            <li><b>创建坐席队列</b><p>根据不同的服务类型，设置不同的坐席分组。不同类型的客户来电可以分配给不同的坐席分组。</p><p>
+                        <ol>
+                            <li>登录 PBX 网页界面，进入 <menucascade>
+                                    <uicontrol>配置</uicontrol>
+                                    <uicontrol> PBX</uicontrol>
+                                    <uicontrol> 呼叫功能</uicontrol>
+                                    <uicontrol> 队列</uicontrol>
+                                </menucascade>。</li>
+                            <li>设置固定座席或者使用动态座席。<p>动态座席可以通过 API 迁入、迁出（上下班），建议使用动态座席。</p></li>
+                            <li>设置响铃策略。<p>一般是使用话务平均分配（ACD），选择最少被叫响铃、或者最少应答响铃。</p><p><image
+                                        href="../Images/pbx-api/api-call-center-add-queue.png"
+                                        width="650" id="image_i1n_jhx_dlb"/></p></li>
+                        </ol>
+                    </p></li>
+            <li><b>获取队列设置</b><p>在 PBX 上创建队列后，管理员可以在呼叫中心系统上获取队列信息，如：队列号码、队列名称、坐席成员等。</p><p>
+                        <ol id="ol_r2r_xkr_dlb">
+                            <li>管理员在呼叫中心系统上查看队列信息，呼叫中心系统向 PBX API 接口发送队列信息请求。</li>
+                            <li>PBX 收到请求，向呼叫中心系统发送队列信息。</li>
+                        </ol>
+                    </p><p>对接接口请参阅 <xref href="queue-query.dita"/>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-query-queue.png"
+                            id="image_fzb_gty_dlb" width="650"/></p></li>
+            <li><b>修改队列设置</b><p>管理员可以在呼叫中心系统上修改队列设置，如：响铃策略、固定坐席、按键目标等。</p><ol id="ol_zpt_fkr_dlb">
+                        <li>管理员在呼叫中心系统上修改队列设置，呼叫中心系统向 PBX API 接口发送队列变更请求。</li>
+                        <li>PBX 收到请求，变更队列设置，并向呼叫中心系统发送队列设置变更结果。</li>
+                    </ol><p>对接接口请参阅 <xref href="queue-update.dita"/>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-modify-queue.png" width="650"
+                            id="image_ypq_jvy_dlb"/></p></li>
+        </ul>
+        <ul id="ul_osl_kpr_dlb">
+            <li><b>查看队列状态</b><p>管理员可以在呼叫中心系统上查看队列话务状态及坐席状态。</p><p>
+                        <ol id="ol_oym_14r_dlb">
+                            <li>管理员在呼叫中心系统上查看队列 6700 的话务状态，呼叫中心系统向 PBX API 接口发送查看请求。</li>
+                            <li>PBX 收到请求，将队列 6700 的话务状态信息发送给呼叫中心系统。</li>
+                        </ol>
+                    </p><p>对接接口请参阅 <xref href="queuestatus-query.dita"/>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-check-queue-status.png"
+                            width="650" id="image_dkg_cyy_dlb"/></p><p>
+                        <note>若 API 接口启用分机状态监控后，坐席分机状态变更时，PBX 实时向呼叫中心系统发送坐席<xref
+                                href="event-ExtensionStatus.dita"
+                            >分机状态报告</xref>，管理员可以实时查看着坐席状态。</note>
+                    </p></li>
+        </ul>
+        </section>
+        <section id="section_p3n_dlr_dlb">
+            <title>坐席功能</title>
+            <p>
+                <ul id="ul_apr_flr_dlb">
+                    <li><b>签入队列</b><p>坐席签入队列即开始工作，系统自动向签入队列的坐席分配来电。</p><p>
+                            <ol id="ol_h5d_ttr_dlb">
+                                <li>坐席在呼叫中心系统上签入队列，呼叫中心系统向 PBX API 接口发送坐席签入请求。</li>
+                                <li>PBX 收到请求后，签入坐席，并向呼叫中心系统发送处理结果。</li>
+                            </ol>
+                        </p><p>对接接口请参阅 <xref href="queue-add-dynamicagent.dita"/>。</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-login.png" width="650"
+                                id="image_abl_ycz_dlb"/></p></li>
+                    <li><b>签出队列</b><p>坐席结束工作后，可以签出队列，系统停止向签出队列的坐席分配来电。<ol id="ol_lls_fvr_dlb">
+                                <li>坐席在呼叫中心系统上签出队列，呼叫中心系统向 PBX API 接口发送坐席签出请求。</li>
+                                <li>PBX 收到请求后，签出坐席，并向呼叫中心系统发送处理结果。</li>
+                            </ol></p><p>对接接口请参阅 <xref href="queue-del-dynamicagent.dita"
+                                />。</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-logout.png"
+                                id="image_snf_pdz_dlb" width="650"/></p></li>
+                    <li><b>暂停坐席服务</b><p>坐席暂时离开座位或短时间休息时，可以暂停坐席服务，系统停止向签出队列的坐席分配来电。</p><p>
+                            <ol id="ol_r5b_brr_dlb">
+                                <li>坐席在呼叫中心系统上启用暂停服务，呼叫中心系统向 PBX API 接口发送暂停坐席服务的请求。</li>
+                                <li>PBX 收到请求后，暂停坐席服务，并向呼叫中心系统发送处理结果。</li>
+                            </ol>
+                        </p><p>对接接口请参阅<xref href="queue-pause-agent.dita"/>。</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-pause.png" width="650"
+                                id="image_isj_32z_dlb"/></p></li>
+                    <li><b>恢复坐席服务</b><p>坐席重新投入工作后，可以恢复坐席服务，坐席状态变更为空闲时，系统自动向签出队列的坐席分配来电。<ol
+                                id="ol_owx_k5r_dlb">
+                                <li>坐席在呼叫中心系统启用恢复服务，呼叫中心系统向 PBX API 接口发送恢复坐席服务的请求。</li>
+                                <li>PBX 收到请求后，恢复坐席服务，并向呼叫中心系统发送处理结果。</li>
+                            </ol></p><p>对接接口请参阅 <xref href="queue-unpause-agent.dita"
+                                />。</p><p><image
+                                href="../Images/pbx-api/api-call-center-agent-resume.png"
+                                width="650" id="image_q2b_kgz_dlb"/></p></li>
+                            
+                </ul>
+            </p>
+        </section>
+        <section id="section_dsx_cl5_xjb">
+            <title>通话功能</title>
+        <ul id="ul_tbr_w5r_dlb">
+            <li><b>外线拨号</b><p>在做客户回访时，坐席直接使用分机呼叫客户。</p><p>
+                        <ol id="ol_dpn_tbs_dlb">
+                            <li>坐席在呼叫中心系统上发起外线呼叫，呼叫中心系统向 PBX API 接口发送外呼请求。</li>
+                            <li>PBX 收到请求后，先呼叫坐席分机，座席分机接听后，再呼叫客户。</li>
+                        </ol>
+                    </p><p>对接接口请参阅  <xref href="call-dial.dita">拨打外线号码</xref>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-make-outbound-call.png"
+                            width="650" id="image_hlg_snz_dlb"/></p></li>
+            <li><b>内线互拨</b><p>
+                        <ol id="ol_hrr_kcs_dlb">
+                            <li>坐席在呼叫中心系统上发起分机呼叫，呼叫中心系统向 PBX API 接口发送分机呼叫请求。</li>
+                            <li>PBX 收到请求后，先呼主叫分机；主叫分机接听后，再呼被叫分机。</li>
+                        </ol>
+                    </p><p>对接接口请参阅 <xref href="call-dial.dita">分机互拨</xref>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-call-extension.png" width="650"
+                            id="image_wy5_m4z_dlb"/></p></li>
+            <li><b>自动外呼</b><p>在电话销售时，呼叫中心可以自动呼叫客户，在客户接听后，将通话转接给坐席，避免繁琐的拨号操作，提高坐席工作效率。</p><ol
+                        id="ol_wvj_pcs_dlb">
+                        <li>呼叫中心系统向 PBX API 接口发送外呼请求。</li>
+                        <li>PBX 收到请求后，呼叫客户，在客户接听后，将通话转接到队列中，再由分配的坐席进行对接。</li>
+                    </ol><p>对接接口请参阅 <xref href="call-dial.dita">队列外呼</xref>。</p><p><image
+                            href="../Images/pbx-api/api-call-center-queue-auto-dial.png" width="650"
+                            id="image_ldk_5pz_dlb"/></p></li>
+        </ul>
+        </section>
+        <section id="section_llg_khr_dlb">
+            <title>满意度调查</title>
+            <p>座席挂断电话后，系统自动引导客户完成满意度调查，快速收集客户评价，以便更好的改善服务质量。<ol id="ol_gvh_b3s_dlb">
+                    <li>坐席挂断电话，系统自动向客户播报满意度调查提示，客户根据提示按键评价。</li>
+                    <li>PBX 收集按键信息，生成 <xref href="event-satisfaction.dita"
+                        >满意度调查报告</xref>，发送给呼叫中心系统，快速实现客服质量信息收集。</li>
+                </ol></p>
+            <p><image href="../Images/pbx-api/api-call-center-customer-satisfaction.png" width="650"
+                    id="image_svk_dsz_dlb"/></p>
+        </section>
+    </body>
+</topic>

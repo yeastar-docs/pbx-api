@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_hdx_kw3_gdb">
+  <title>'Prompt Play End' Report</title>
+  <shortdesc>Report the event when the prompt played to the extension and the external number
+    ends.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+      <!--Carol-->
+      <revised modified="2018/11/26"/>
+      <!--Carol-->
+      <revised modified="2019/01/16"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.66*"/>
+            <colspec colname="c2" colnum="2" colwidth="1*"/>
+            <colspec colname="c3" colnum="3" colwidth="7.55*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>action</codeph></entry>
+                <entry>String</entry>
+                <entry>Prompt play end.</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>String</entry>
+                <entry>A unique identifier of the call.</entry>
+              </row>
+              <row>
+                <entry><codeph>prompt</codeph></entry>
+                <entry>String</entry>
+                <entry>The prompt file name.</entry>
+              </row>
+              <row>
+                <entry><codeph>ext</codeph></entry>
+                <entry>String</entry>
+                <entry>Object parameter.</entry>
+              </row>
+              <row>
+                <entry><codeph>extid</codeph></entry>
+                <entry>String</entry>
+                <entry>Extension number.</entry>
+              </row>
+              <row>
+                <entry><codeph>outbound</codeph><p><codeph>inbound</codeph></p></entry>
+                <entry>String</entry>
+                <entry>Object parameter.</entry>
+              </row>
+              <row>
+                <entry><codeph>trunkname</codeph></entry>
+                <entry>String</entry>
+                <entry>Trunk name.<p>
+                    <note>If playing prompt to an external number, <codeph>trunkname</codeph>
+                      parameter will be used. For other reports, <codeph>trunk</codeph> parameter
+                      will be used.</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><codeph>trunk</codeph></entry>
+                <entry>String</entry>
+                <entry>Trunk name.</entry>
+              </row>
+              <row>
+                <entry><codeph>ivr</codeph></entry>
+                <entry>String</entry>
+                <entry>Object parameter.</entry>
+              </row>
+              <row>
+                <entry><codeph>ivrid</codeph></entry>
+                <entry>String</entry>
+                <entry>IVR number.</entry>
+              </row>
+              <row>
+                <entry><codeph>playtonum</codeph></entry>
+                <entry>String</entry>
+                <entry>Play prompt to which number.</entry>
+              </row>
+              <row>
+                <entry><codeph>sn</codeph></entry>
+                <entry>String</entry>
+                <entry>The PBX's serial number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report Examples</title>
+      <p><xref href="api_play_prompt_to_extension.dita#reference_qgn_c1f_gdb">Play prompt to an
+          extension</xref>. </p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395290.362",
+    "ext": {
+        "extid": "1001"
+    },
+    "prompt": "record",
+    "sn": "369362089179"
+}</codeblock>
+      <p><xref href="api_play_prompt_to_external_number.dita#reference_ync_21f_gdb">Play prompt to
+          an external user</xref>. </p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395463.366",
+    "outbound": {
+        "trunkname": "SPS-6-36"
+    },
+    "prompt": "record",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p><xref href="api_call_an_extension_via_ivr.dita#reference_rwt_kw2_gdb">Call an extension via
+          IVR</xref> or an extension calls to an IVR, PBX plays a prompt to the extension.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395676.370",
+    "call": [
+        {
+            "ext": {
+                "extid": "1005"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "1005",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p><xref href="api_call_an_external_number_via_ivr.dita#reference_qvw_mw2_gdb">Call an
+          external number via IVR</xref> or transfer an outbound call to IVR, PBX plays a prompt to
+        the external number.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395803.374",
+    "call": [
+        {
+            "outbound": {
+                "trunk": "SPS-6-36"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "9282837733",
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+      <p>Transfer an inbound call to IVR or an inbound call reaches IVR, PBX plays a prompt to the
+        inbound caller number.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+User-Agent: WebAPI
+<ph product="s-series">Host: 192.168.5.150: 8260</ph>
+<ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Content-Type: application/json
+Accept: application/json
+
+{
+    "action": "PlayPromptEnd",
+    "callid": "1547395941.380",
+    "call": [
+        {
+            "inbound": {
+                "trunk": "SPS-6-36"
+            }
+        }
+    ],
+    "ivr": {
+        "ivrid": "6500"
+    },
+    "playtonum": "81288833"
+    "sn": "369362089179"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

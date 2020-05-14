@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="concept_gsn_cm2_j2b">
+    <title>下载语音留言</title>
+    <shortdesc>下载分机的语音留言文件。</shortdesc>
+    <refbody>
+        <section id="section_y3g_rlv_mjb">
+            <title>下载步骤</title>
+            <p>
+                <ol id="ol_k5n_slv_mjb">
+                    <li>获取语音留言文件的随机串。</li>
+                    <li>使用随机串，组合成语音留言文件的<xref href="#concept_gsn_cm2_j2b/section_ckz_xn2_hdb"
+                            format="dita">下载链接</xref>。<note>随机串的有效时长为30秒，并且每个随机串只能使用一次。</note></li>
+                </ol>
+            </p>
+        </section><section>
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/voicemail/get_random?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section><section id="section_xc5_q4d_gdb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.82*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.74*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="7.44*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>分机号码。表示要下载哪个分机的语音留言文件。</entry>
+                            </row>
+                            <row>
+                                <entry>voicemailfile</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>语音留言文件名。</entry>
+                            </row>
+                            <row>
+                                <entry>voicemailstatus</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>语音留言的状态。<p><b>取值范围</b>：</p><p>
+                                        <ul id="ul_zbz_1d2_j2b">
+                                            <li>read：要下载的语音留言已读，从 read 文件夹获取指定的语音留言文件。</li>
+                                            <li>unread：要下载的语音留言未读，从 unread 文件夹获取指定的语音留言文件。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>allowedip</entry>
+                                <entry>否</entry>
+                                <entry>String</entry>
+                                <entry>
+                                    <p>设置允许下载语音留言的设备 IP 地址。默认不带此参数，表示只能通过应用服务器下载文件。</p>
+                                    <p><b>取值范围</b>：</p>
+                                    <p>
+                                        <ul id="ul_dr5_kcy_pjb">
+                                            <li>空值：只能通过应用服务器下载文件。<p>例如：<codeph>"allowedip":"
+                                                  "</codeph></p></li>
+                                            <li>IP 地址：只能通过该 IP
+                                                  地址或应用服务器下载文件。<p>例如：<codeph>"allowedip":"192.168.5.20"</codeph></p></li>
+                                        </ul>
+                                    </p>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section><section id="section_xzw_zn2_j2b">
+            <title>响应参数</title>
+            <table frame="all" id="table_aj2_2r4_mjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="2.93*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="9.29*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                    <li>Success：成功。</li>
+                                    <li>Failed：失败。</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Integer</entry>
+                            <entry>分机号码。表示下载的是哪个分机的语音留言。</entry>
+                        </row>
+                        <row>
+                            <entry>voicemailstatus</entry>
+                            <entry>String</entry>
+                            <entry>语音留言的状态<p>
+                                    <ul id="ul_srd_gr4_mjb">
+                                        <li>read：已读。</li>
+                                        <li>unread：未读。</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                        <row>
+                            <entry>voicemailfile</entry>
+                            <entry>String</entry>
+                            <entry>语音留言文件的名称。</entry>
+                        </row>
+                        <row>
+                            <entry>random</entry>
+                            <entry>String</entry>
+                            <entry>语音留言文件的随机串。<p>使用这个随机串组合成该语音留言文件的下载链接。</p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section><section><title>示例</title><p><b>请求示例</b></p><p>获取分机1023语音留言文件“msg0000.wav”的随机串。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/voicemail/get_random?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">
+Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1023",
+	"voicemailfile": "msg0000.wav",
+	"voicemailstatus": "unread"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"number": "1023",
+	"voicemailstatus": "unread",
+	"voicemailfile": "msg0000.wav",
+	"random": "7d48ba0d1fb647346ed81d6b677f7423"
+}</codeblock>
+            </p></section><section id="section_ckz_xn2_hdb">
+            <title>语音留言下载链接示例</title>
+            <p>使用随机串（random）组合成语音留言的下载链接。</p>
+            <p><b>语音留言下载链接格式</b>：</p>
+            <p>
+                <codeblock product="k2 s-series">https://<varname>{pbx ip}</varname>:<varname>{https port}</varname>/api/v2.0.0/voicemail/download?
+number=<varname>{number}</varname>&amp;voicemailstatus=<varname>{voicemailstatus}</varname>&amp;token=<varname>{token}</varname>&amp;voicemailfile=
+<varname>{voicemailfile}</varname>&amp;random=<varname>{random}</varname></codeblock>
+            </p>
+            <codeblock product="cloudpbx">https://<varname>{pbx domain}</varname>/api/v2.0.0/voicemail/download?
+number=<varname>{number}</varname>&amp;voicemailstatus=<varname>{voicemailstatus}</varname>&amp;token=<varname>{token}</varname>&amp;voicemailfile=
+<varname>{voicemailfile}</varname>&amp;random=<varname>{random}</varname></codeblock>
+            <p><b>语音留言下载链接示例</b>：</p>
+            <p>
+                <codeblock product="k2 s-series">https://192.168.5.150:8088/api/v2.0.0/voicemail/download?
+number=1005&amp;voicemailstatus=unread&amp;token=72d6640a05811af51e0279461e5272ce&amp;
+voicemailfile=msg0000.wav&amp;random=1635079c6517f8b82f811cb11e5860d8</codeblock>
+            </p>
+            <codeblock product="cloudpbx">https://api.yeastarcloud.com/api/v2.0.0/voicemail/download?
+number=1005&amp;voicemailstatus=unread&amp;token=72d6640a05811af51e0279461e5272ce&amp;
+voicemailfile=msg0000.wav&amp;random=1635079c6517f8b82f811cb11e5860d8</codeblock>
+        </section></refbody>
+</reference>

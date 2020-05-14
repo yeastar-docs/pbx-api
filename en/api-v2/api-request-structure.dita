@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topic_dqt_mvb_wgb">
+    <title>Request Structure</title>
+    <shortdesc>The request URL consists of several parameters, such as base URL, API version, token,
+        and API-specific parameters. This topic describes the request structure, including
+        communication protocol, request methods, and the URL format.</shortdesc>
+    <conbody>
+        <section id="section_etz_wjb_4jb">
+            <title>Structure example</title>
+            <p>Below is a request example of <xref
+                    href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>.</p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/queue/add_dynamicagent?token=1e3b3ebb6a974cb42ed31de5413df52d 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"queuenumber": "6700",
+	"extnumber": "1000",
+	"password": "6700123"
+}</codeblock>
+            </p>
+            <p>
+                <ul id="ul_qhp_rfc_wgb">
+                    <li><codeph>POST</codeph>indicates the request method.</li>
+                    <li><codeph>/api/v2.0.0</codeph> is the API path which indicates the API
+                        version.</li>
+                    <li><codeph>queue/add_dynamicagent</codeph> indicates the target API <xref
+                            href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>.</li>
+                    <li><codeph>token=1e3b3ebb6a974cb42ed31de5413df52d</codeph> indicates the token
+                        used for authentication.</li>
+                    <li><codeph>Content-Type:application/json; charset=utf-8</codeph> indicates the
+                        format of request content.</li>
+                    <li><codeph>Host</codeph> indicates <ph product="k2 s-series">the IP address of
+                                <ph keyref="product_name"/></ph><ph product="cloudpbx">the domain of
+                                <ph keyref="product_name"/></ph>.</li>
+                    <li><codeph>queuenumber</codeph>, <codeph>extnumber</codeph>,
+                            <codeph>password</codeph> are the request parameters of <xref
+                            href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>.</li>
+                </ul>
+            </p>
+        </section>
+        <section id="section_f3t_jjb_4jb">
+            <title>Communication protocols</title>
+            <p product="k2 s-series"><ph keyref="product_name"/> API supports HTTP protocol or HTTPS
+                protocol for communication. All API requests use POST method. For security reasons,
+                we recommend that you use HTTPS protocol to send API requests. </p>
+            <p product="cloudpbx"><ph keyref="product_name"/> API uses HTTPS protocol for
+                communication. All API requests use POST method.</p>
+        </section>
+        <section id="section_kcq_15f_xgb">
+            <title>Request URL format</title>
+            <p>The request URL format is as follows:</p>
+            <p>
+                <note>No token is needed in the request URL of <xref href="login.dita"/><ph
+                        product="cloudpbx">and <xref href="token-refresh.dita"/></ph>.</note>
+            </p>
+            <p>
+                <codeblock><varname>{base_url}</varname>/<varname>{api_path}</varname>/<varname>{endpoint}</varname>?token=<varname>{token}</varname></codeblock>
+                <dl>
+                    <dlentry>
+                        <dt id="base-url">{base_url}</dt>
+                        <dd>
+                            <p product="cloudpbx">All URLs referenced in the documentation have the
+                                following base URL:</p>
+                            <p product="cloudpbx">
+                                <codeblock>https://{pbx_domain}</codeblock>
+                            </p>
+                            <p product="k2 s-series"> Set the API base URL according to the web
+                                access settings on your PBX.</p>
+                            <p product="k2 s-series">
+                                <ul id="ul_mvs_4lb_4jb">
+                                    <li>If the web access protocol of PBX is HTTPS, use the
+                                        following base URL:<p>
+                                            <codeblock>https://{pbx_ip}:{https_port}</codeblock>
+                                        </p></li>
+                                </ul>
+                            </p>
+                            <p product="k2 s-series">
+                                <ul id="ul_pfc_rlb_4jb">
+                                    <li>If the web access protocol of PBX is HTTP, use the following
+                                        base URL:<p>
+                                            <codeblock>http://{pbx_ip}:{http_port}</codeblock>
+                                        </p></li>
+                                </ul>
+                            </p>
+                        </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt id="api-path">{api_path}</dt>
+                        <dd>The format of API path is
+                                <codeph>api/<varname>{version}</varname></codeph>; the
+                                <varname>{version}</varname> indicates the API version.</dd>
+                        <dd>All URLs referenced in the documentation use API version v2.0.0, and the
+                            API path is <codeph>api/v2.0.0</codeph>. </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>{endpoint}</dt>
+                        <dd>
+                            <p>Endpoint, also called path, indicates the specific address of API
+                                request.</p>
+                            <p>Refer to <xref href="api-interfaces-overview.dita"/> for all
+                                available Endpoints on <ph keyref="product_name"/>.</p>
+                        </dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt id="token">{token}</dt>
+                        <dd>
+                            <p>Token is used to authenticate API requests. The application server
+                                should <xref href="login.dita"/> before calling APIs. Each
+                                subsequent request requires the token for authentication.</p>
+                            <p>For detailed API authentication, refer to <xref
+                                    href="api-authentication.dita"/>.</p>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>
+<?oxy_options track_changes="on"?>

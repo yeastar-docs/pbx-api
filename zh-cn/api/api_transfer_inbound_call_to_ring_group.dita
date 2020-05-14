@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_o3v_gy2_gdb">
+  <title>来电转接到响铃组</title>
+  <shortdesc>通过本接口可将外线来电转接给响铃组，PBX会按照该响铃组的响铃规则将来电分配给组内的某个/某些空闲分机，从而实现外线来电和响铃组内的某个分机能够建立通话。</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Carol-->
+      <revised modified="2018/06/28"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/10"/>
+      <!--Carol-->
+      <revised modified="2018/09/03"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p><b>遇忙/无应答处理方式</b><ul id="ul_lyy_kyt_gdb">
+          <li>
+            <p>响铃组具有排队功能，如果响铃组内无分机可以受理该来电（如：忙线、免打扰），则该来电会排队等待，直到有分机空闲可以受理该来电。</p>
+          </li>
+          <li>
+            <p>如果响铃组内有空闲分机可以受理该来电，那么这些空闲分机会按照响铃组规则进行响铃，分机摘机后和来电建立通话。</p>
+          </li>
+        </ul></p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>请求地址</title>
+      <p product="cloudpbx">https://<codeph>{pbx domain}</codeph>/api/<codeph>{api
+          version}</codeph>/inbound/transfer_ringgroup?token=<codeph>{token}</codeph></p>
+      <p product="s-series">https://<codeph>{pbx ip}</codeph>:<codeph>{https
+          port}</codeph>/api/<codeph>{api
+          version}</codeph>/inbound/transfer_ringgroup?token=<codeph>{token}</codeph></p>
+      <p>
+        <note conref="api_login.dita#reference_blb_5ld_gdb/api_version_note"/>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.63*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.22*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.24*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>inboundid</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>外线来电编号。</entry>
+              </row>
+              <row>
+                <entry><codeph>ringgroupid</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>响铃组号码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>响应参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>名称</entry>
+                <entry>是否必需</entry>
+                <entry> 类型</entry>
+                <entry> 描述</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>是</entry>
+                <entry>String</entry>
+                <entry>请求状态：<p>
+                    <ul id="ul_yjw_1xf_t2b">
+                      <li>Success：请求成功。</li>
+                      <li>Failed：请求失败。</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">请求成功</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>该通通话的id。</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">请求失败</entry>
+              </row>
+              <row>
+                <entry>errno</entry>
+                <entry>否</entry>
+                <entry>String</entry>
+                <entry>错误代码。</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"
+          ><title>实际示例</title><p><b>请求示例</b></p><p>请求将编号为<codeph>1495700191.223</codeph>的来电转接给响铃组6200。</p><p/><p>
+        <codeblock outputclass="language-json">{
+    "inboundid": "1495700191.223",
+    "ringgroupid": "6200"
+}</codeblock>
+      </p><b>响应示例</b><p>请求成功。</p><p>
+        <codeblock outputclass="language-json">{
+    "status": "Success",
+    "callid": "1495700191.223"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

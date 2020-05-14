@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_g3t_zr2_gdb">
+  <title>Edit an Extension</title>
+  <shortdesc>Edit extension settings, such as Caller ID name, concurrent registrations, email
+    address, etc.</shortdesc>
+  <refbody>
+    <section>
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/extension/update?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_rxp_kx3_mjb">
+      <title>Request parameters</title>
+      <p>
+        <table frame="all" id="table_n4y_px3_mjb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.33*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.22*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c4" colnum="4" colwidth="4.88*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Required</entry>
+                <entry>Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>number</entry>
+                <entry>Yes</entry>
+                <entry>Integer</entry>
+                <entry>Extension number.<p>
+                    <note>
+                      <ul id="ul_k3x_zfh_4jb">
+                        <li>Only numbers are allowed.</li>
+                        <li>The maximum length is 7.</li>
+                      </ul>
+                    </note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>username</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Caller ID name.<note>The following characters are NOT
+                        allowed:<p><codeph>!</codeph>
+                      <codeph>%</codeph>
+                      <codeph>.</codeph>
+                      <codeph>@</codeph>
+                      <codeph>:</codeph>
+                      <codeph>;</codeph>
+                      <codeph>&amp;</codeph>
+                      <codeph>"</codeph>
+                      <codeph>'</codeph>
+                      <codeph>\</codeph>
+                      <codeph>&lt;</codeph>
+                      <codeph>></codeph><codeph>`</codeph>
+                      <codeph>$</codeph></p></note></entry>
+              </row>
+              <row>
+                <entry>registername</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Registration name.<p>
+                    <note>
+                      <ul id="ul_rjs_cgh_4jb">
+                        <li>Only alphanumerics are allowed.</li>
+                        <li>The maximum length is 31.</li>
+                      </ul>
+                    </note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>registerpassword</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Registration password.<note><p>Only alphanumerics and the following
+                      characters are allowed: <codeph>~</codeph>
+                      <codeph>^</codeph>
+                      <codeph>*</codeph>
+                      <codeph>-</codeph>
+                      <codeph>_</codeph>
+                      <codeph>?</codeph></p>Strong password is required by default.<ul
+                      id="ul_k2q_xdn_mfb">
+                      <li>Must contain non-consecutive numbers, uppercase and lowercase.</li>
+                      <li>The minimum length is 16.</li>
+                      <li>Do not contain "Extension" and "Caller ID Name" of this extension.</li>
+                    </ul></note></entry>
+              </row>
+              <row>
+                <entry>callerid</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Caller ID.<note>
+                    <ul id="ul_crv_l1j_mjb">
+                      <li>Only alphanumerics are allowed.</li>
+                      <li>The maximum length is 31.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>maxregistrations</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>Maximum concurrent registrations allowed.<p><b>Valid values</b>: <ph
+                      product="cloudpbx">1-4</ph><ph product="k2 s-series">1-5</ph></p></entry>
+              </row>
+              <row>
+                <entry>loginpassword</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Login password.<note>Only alphanumerics and the following characters are
+                    allowed: <codeph>~</codeph>
+                    <codeph>^</codeph>
+                    <codeph>*</codeph>
+                    <codeph>-</codeph>
+                    <codeph>_</codeph>
+                    <codeph>?</codeph><p>Strong password is required by default.</p><p>
+                      <ul id="ul_x3s_hgn_mfb">
+                        <li>Must contain non-consecutive numbers, uppercase and lowercase.</li>
+                        <li>The minimum length is 10.</li>
+                        <li>Do not contain "Extension" and "Caller ID Name" of this extension.</li>
+                      </ul>
+                    </p></note></entry>
+              </row>
+              <row>
+                <entry>email</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Email address.<note>
+                    <ul id="ul_xgn_y1j_mjb">
+                      <li>Must be in the format of email address.</li>
+                      <li>Space and the following characters are NOT allowed:<codeph>#</codeph>
+                        <codeph>;</codeph>
+                        <codeph>,</codeph>
+                        <codeph>[</codeph>
+                        <codeph>]</codeph>
+                        <codeph>=</codeph>
+                        <codeph>&amp;</codeph>
+                        <codeph>"</codeph>
+                        <codeph>'</codeph>
+                        <codeph>\</codeph>
+                        <codeph>&lt;</codeph><codeph>></codeph>
+                        <codeph>`</codeph>
+                        <codeph>$</codeph></li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>mobile</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>Mobile number.<note>
+                    <ul id="ul_izq_4bj_mjb">
+                      <li>When <ph product="s-series"><uicontrol>Enable Mobility
+                            Extension</uicontrol> feature is enabled or </ph><uicontrol>Call
+                          Forwarding</uicontrol> destination is set to <uicontrol>Mobile
+                          Number</uicontrol>, this parameter is required.</li>
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 31.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>hasvoicemail</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Enable Voicemail</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_l51_22j_mjb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>vmsecret</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>Voicemail password.<note>
+                    <ul id="ul_thd_1cj_mjb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 63.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>enablevmtoemail</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Send Voicemail to Email</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><ul id="ul_ils_m5s_ljb">
+                    <li>off: disable</li>
+                  </ul><p>
+                    <ul id="ul_rng_jcz_kjb">
+                      <li>on: enable. Send voicemail to extension user's email.</li>
+                      <li>custom: Send voicemail to custom email.</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>alwaysforward</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Always Call Forwarding</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_fv3_fbg_4jb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>atransferto</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>The destination of <codeph>alwaysforward</codeph>.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_o2d_ksj_gdb">
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>atransferext</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>atransferto</codeph> is <codeph>Extension</codeph>, the
+                  extension number should be configured.</entry>
+              </row>
+              <row>
+                <entry>atransferprefix</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>atransferto</codeph> is <codeph>Mobile Number</codeph> or
+                    <codeph>Custom Number</codeph>, prefix may need to be configured according to
+                  outbound routes.<note>
+                    <ul id="ul_m1w_zyg_4jb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 7.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>atransfernum</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>atransferto</codeph> is <codeph>Custom Number</codeph>, phone
+                  number must be configured.<note>
+                    <ul id="ul_nnw_lzg_4jb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 15.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>noanswerforward</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>No Answer Call Forwarding</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><ul id="ul_rwf_b4j_gdb">
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>ntransferto</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>The destination of <codeph>noanswerforward</codeph>.<p><b>Valid
+                    values</b>:</p><p>
+                    <ul id="ul_apr_grz_ljb">
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>ntransferext</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>ntransferto</codeph> is <codeph>Extension</codeph>, the
+                  extension number should be configured.</entry>
+              </row>
+              <row>
+                <entry>ntransferprefix</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>ntransferto</codeph> is <codeph>Mobile Number</codeph> or
+                    <codeph>Custom Number</codeph>, prefix may need to be configured according to
+                  outbound routes.<note>
+                    <ul id="ul_c3z_skp_4jb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 7.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>ntransfernum</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>ntransferto</codeph> is <codeph>Custom Number</codeph>, phone
+                  number must be configured.<note>
+                    <ul id="ul_pwg_fgj_mjb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 15.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>busyforward</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>When Busy Call Forwarding</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_q43_vdj_mjb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>btransferto</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>The destination of <codeph>busyforward</codeph>.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_spl_btj_gdb">
+                      <li>Voicemail</li>
+                      <li>Extension</li>
+                      <li>Mobile Number</li>
+                      <li>Custom Number</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>btransferext</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>btransferto</codeph> is <codeph>Extension</codeph>, the
+                  extension number should be configured.</entry>
+              </row>
+              <row>
+                <entry>btransferprefix</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>btransferto</codeph> is <codeph>Mobile Number</codeph> or
+                    <codeph>Custom Number</codeph>, prefix may need to be configured according to
+                  outbound routes.<note>
+                    <ul id="ul_dvw_r1h_4jb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 7.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row>
+                <entry>btransfernum</entry>
+                <entry>No</entry>
+                <entry>Integer</entry>
+                <entry>When <codeph>btransferto</codeph> is <codeph>Custom Number</codeph>, phone
+                  number must be configured.<note>
+                    <ul id="ul_cx4_vkp_4jb">
+                      <li>Only numbers are allowed.</li>
+                      <li>The maximum length is 15.</li>
+                    </ul>
+                  </note></entry>
+              </row>
+              <row product="s-series">
+                <entry>ringsimultaneous</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Ring Simultaneous</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_x1b_zxs_ljb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry>enablemobile</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Enable Mobility Extension</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_lbt_3lg_4jb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row product="s-series">
+                <entry>mobileprefix</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>When <uicontrol>Enable Mobility Extension </uicontrol> feature is enabled,
+                  prefix may need to be configured according to outbound routes.</entry>
+              </row>
+              <row>
+                <entry>allowbeingmonitored</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Allow Being Monitored</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_z1w_pkg_4jb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>monitormode</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Monitor mode.<p><b>Valid values</b>:</p><ul id="ul_hx2_pys_ljb">
+                    <li>Disabled</li>
+                    <li>Extensive</li>
+                    <li>Listen</li>
+                    <li>Whisper</li>
+                    <li>Barge-in</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>ringtimeout</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Ring timeout in seconds.</entry>
+              </row>
+              <row>
+                <entry>maxduration</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>The maximum call duration allowed in seconds.</entry>
+              </row>
+              <row>
+                <entry>dnd</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>DND</uicontrol> feature or not.<p><b>Valid
+                      values</b>:</p><ul id="ul_dsj_qnj_gdb">
+                    <li>on: enable </li>
+                    <li>off: disable</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry>callrestriction</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>Whether to enable <uicontrol>Outbound Restriction</uicontrol> feature or
+                      not.<p><b>Valid values</b>:</p><p>
+                    <ul id="ul_gpw_zkg_4jb">
+                      <li>on: enable </li>
+                      <li>off: disable</li>
+                    </ul>
+                  </p></entry>
+              </row>
+              <row>
+                <entry>agentid</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry conref="extension-list.dita#reference_ibj_vr2_gdb/agentid"/>
+              </row>
+              <row>
+                <entry>selectoutroute</entry>
+                <entry>No</entry>
+                <entry>String</entry>
+                <entry>The outbound routes that are available to the extension.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_mxr_rtz_ljb">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" id="table_dxs_nsy_kjb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1.08*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c3" colnum="3" colwidth="3.2*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success</li>
+                    <li>Failed</li>
+                  </ul></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request example</b></p><p>Set the
+        username of extension 1002 to Amy, keeping other settings unchanged.</p><p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/extension/update?token=7afa377107feb9566654d5dd3a9a2a93
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1002",
+	"username": "Amy"
+}</codeblock>
+      </p><b>Response example</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

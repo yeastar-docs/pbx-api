@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_zcj_fw3_gdb">
+  <title>DTMF（按键信息事件）</title>
+  <shortdesc>通话过程中，当用户根据提示输入相关的按键（如通过 IVR 输入按键），PBX 向应用服务器推送 DTMF 报告。</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>报告参数</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+          <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.73*"/>
+                        <colspec colname="c3" colnum="3" colwidth="2.28*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#reference_zcj_fw3_gdb/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/member-info"/>
+                            </row>
+                            <row>
+                                <entry>info</entry>
+                                <entry>String</entry>
+                                <entry>单个 DTMF 按键。</entry>
+                            </row>
+                            <row>
+                                <entry>flag</entry>
+                                <entry>Integer</entry>
+                                <entry>标识 DTMF 按键的顺序。<p>
+                                        <note>flag 从 0 开始标识。0 表示第一个 DTMF 按键；1 表示第二个 DTMF
+                                            按键；以此类推。</note>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>infos</entry>
+                                <entry>String</entry>
+                                <entry>DTMF 按键串。</entry>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+        </table>
+      </p>
+            <dl>
+                <dlentry id="membertype">
+                    <dt>MemberType</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_mqs_x2q_pjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="2" colwidth="1.91*"/>
+                                    <colspec colname="c4" colnum="3" colwidth="2.77*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry> 类型</entry>
+                                            <entry> 描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>ext</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_zcj_fw3_gdb/extensininfo"
+                                                  format="dita">&lt;ExtensionInfo></xref></entry>
+                                            <entry>分机的信息。</entry>
+                                        </row>
+                                        <row>
+                                            <entry>inbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_zcj_fw3_gdb/inboundinfo"
+                                                  format="dita">&lt;InboundInfo></xref></entry>
+                                            <entry>外线来电的信息。</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry id="extensininfo">
+                    <dt>ExtensionInfo</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_zvk_wvf_qjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1.88*"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="3" colwidth="7.55*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry> 类型</entry>
+                                            <entry> 描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/extension-number">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/channelid">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/memberstatus">
+                                            <entry/>
+                                        </row>
+                                        <?oxy_comment_start author="Sunmy" timestamp="20200414T144553+0800" comment="13.b"?>
+                                        <row>
+                                            <entry>callpath</entry>
+                                            <entry>Integer</entry>
+                                            <entry>通话建立使用的路径。<p>例如，分机呼叫 IVR （6500），输入按键信息，callpath
+                                                  即为 6500。</p></entry>
+                                        </row><?oxy_comment_end?>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+                <dlentry id="inboundinfo">
+                    <dt>InboundInfo</dt>
+                    <dd>
+                        <p>
+                            <table frame="all" rowsep="1" colsep="1" id="table_fqv_h5z_3lb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="2" colwidth="1.15*"/>
+                                    <colspec colname="c4" colnum="3" colwidth="3.52*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>参数</entry>
+                                            <entry> 类型</entry>
+                                            <entry> 描述</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                                            <entry/>
+                                        </row>
+                                        <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/inbound-trunkname">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/channelid">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/memberstatus">
+                                            <entry/>
+                                        </row>
+                                        <?oxy_comment_start author="Sunmy" timestamp="20200414T144544+0800" comment="13.b"?>
+                                        <row>
+                                            <entry>callpath</entry>
+                                            <entry>Integer</entry>
+                                            <entry>通话建立使用的路径。<p>例如，外线用户呼叫 IVR （6500），输入按键信息，callpath
+                                                  即为 6500。</p></entry>
+                                        </row><?oxy_comment_end?>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </p>
+                    </dd>
+                </dlentry>
+            </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>报告示例</title>
+      <p>分机 1023 拨打 IVR 号码，输入按键 2。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1571905397.97",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000039",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T151257+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"info": "2",
+	"flag": "0",
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+      <p><?oxy_comment_start author="carol" timestamp="20191104T172908+0800" comment="这个报告还得确认一下。
+应该是有5个event
+info：1
+flag：0
+
+info：0
+flag：1
+
+info：2
+flag：2
+
+info：0
+flag：0
+
+infos：1020
+" id="gk4_g3m_qjb" flag="done" mid="3"?><?oxy_comment_start author="Sunmy" timestamp="20191107T103916+0800" comment="复测，结果一样" parentID="gk4_g3m_qjb" flag="done" mid="4"?><?oxy_comment_start author="carol" timestamp="20191108T152716+0800" comment="我测试正常。
+代码已改成正常的" parentID="gk4_g3m_qjb" flag="done"?>外部号码
+                192929500 呼入 IVR 6500，拨打分机
+                1020。<?oxy_comment_end?><?oxy_comment_end mid="4"?><?oxy_comment_end mid="3"?></p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T151423+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"info": "1",
+	"flag": "0",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T164509+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"info": "0",
+	"flag": "1",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T164516+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"info": "2",
+	"flag": "2",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T164522+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"info": "0",
+	"flag": "3",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				<?oxy_comment_start author="Sunmy" timestamp="20200413T164529+0800" comment="13.b"?>"callpath": "6500"<?oxy_comment_end?>
+			}
+		}
+	],
+	"infos": "1020",
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+      <p>分机 1023 拨打外部号码，进入对方的 IVR，输入按键 1。</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573092021.6",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000002",
+				"memberstatus": "ANSWERED"
+			}
+		}
+	],
+	"info": "1",
+	"flag": "0",
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

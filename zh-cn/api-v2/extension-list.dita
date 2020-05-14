@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_ibj_vr2_gdb">
+  <title>查询分机列表</title>
+  <shortdesc>查询 PBX 上分机列表的基本信息，如：分机号码、分机状态、分机类型、分机名称等。</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>请求地址</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/extension/list?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>请求参数</title>
+      <p>无参数，直接发送查询分机列表的请求即可。</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>响应参数</title>
+      <table frame="all" id="table_g14_r2z_pjb">
+        <tgroup cols="3">
+          <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+          <colspec colname="c2" colnum="2" colwidth="2.1*" colsep="1" rowsep="1"/>
+          <colspec colname="c3" colnum="3" colwidth="3.93*" colsep="1" rowsep="1"/>
+          <thead>
+            <row>
+              <entry>参数</entry>
+              <entry>类型</entry>
+              <entry>描述</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>status</entry>
+              <entry>String</entry>
+              <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                  <li>Success：成功。</li>
+                  <li>Failed：失败。</li>
+                </ul></entry>
+            </row>
+            <row>
+              <entry>extlist</entry>
+              <entry>Array<xref href="#reference_ibj_vr2_gdb/extensioninfo" format="dita"
+                  >&lt;ExtensionInfo></xref></entry>
+              <entry>分机信息列表。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <dl>
+        <dlentry>
+          <dt id="extensioninfo">ExtensionInfo</dt>
+          <dd>
+            <table frame="all" id="table_zff_1fz_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.13*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="3.5*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>参数</entry>
+                    <entry>类型</entry>
+                    <entry>描述</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>分机号。</entry>
+                  </row>
+                  <row>
+                    <entry>status</entry>
+                    <entry>String</entry>
+                    <entry>分机当前状态。<ul id="ul_spt_2fz_pjb">
+                        <li>Unavailable：不可用。</li>
+                        <li>Registered：已注册。</li>
+                        <li>Ringing：响铃。</li>
+                        <li>Busy：忙线。</li>
+                        <li>Hold：通话保持。</li>
+                        <li>Malfunction：故障。</li>
+                        <li>Idle：空闲。</li>
+                        <li product="s-series">Fxsnoport</li>
+                      </ul></entry>
+                  </row>
+                  <row>
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>分机类型。<ul id="ul_aqt_2fz_pjb">
+                        <li product="s-series">FXS</li>
+                        <li product="s-series">IAX</li>
+                        <li>SIP</li>
+                      </ul></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>port</entry>
+                    <entry>String</entry>
+                    <entry>分机端口。当分机为模拟分机时显示该项。</entry>
+                  </row>
+                  <row>
+                    <entry>username</entry>
+                    <entry>String</entry>
+                    <entry>用户名。</entry>
+                  </row>
+                  <row>
+                    <entry>agentid</entry>
+                    <entry>String</entry>
+                    <entry>用户呼入队列后，系统播报的坐席工号。此参数默认为空，表示播报分机号作为坐席的工号。<p>
+                        <note type="tip">调用 <xref href="extension-update.dita"
+                            >extension/update</xref> 接口可以编辑分机的 <codeph>agentid</codeph>。</note>
+                      </p></entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section><title>示例</title><p><b>请求示例</b></p><p>
+      <codeblock outputclass="language-json">POST /api/v2.0.0/extension/list?token=7dff09fe45414a4f340e978e274b53ea
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p><b>响应示例</b><p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"extlist": [
+		{
+			"number": "1022",
+			"status": "Idle",
+			"type": "SIP",
+			"username": "1022"
+		},
+		{
+			"number": "1023",
+			"status": "Registered",
+			"type": "SIP",
+			"username": "1023"
+		}
+	]
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>
+<?oxy_options track_changes="on"?>

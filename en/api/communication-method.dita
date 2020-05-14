@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_zph_m5t_lgb">
+    <title>Communication Methods</title>
+    <shortdesc><ph keyref="product_name"/> communicates with the 3rd-party application server by two
+        methods.</shortdesc>
+    <conbody>
+        <section id="section_c51_skf_xgb">
+            <title>Communication protocol</title>
+            <dl>
+                <dlentry>
+                    <dt>Request and Response</dt>
+                    <dd product="cloudpbx">The API requests and API responses are served over
+                        HTTPS.</dd>
+                    <dd product="k2 s-series s50">
+                        <p>Request over HTTP or HTTPS is supported. The API communication protocol
+                            and port are the same as the web access settings of the <ph
+                                keyref="product_name"/>.</p>
+                        <p><note>We recommend that you send requests over HTTPS to enhance security
+                                and upload an HTTPS certification to the PBX.</note>The following
+                            figure shows the default web access settings on the <ph
+                                keyref="product_name"/>. With the default settings, you can access
+                            the API interfaces by HTTPS (port 8088) or HTTP (port 80).</p>
+                        <p>
+                            <ul id="ul_awk_qrf_xgb">
+                                <li><b>Protocol</b>: HTTPS (port 8088)</li>
+                                <li><uicontrol>Redirect from port 80</uicontrol>: Enabled. Accessing
+                                    the web by HTTP (port 80) will be redirected to HTTPS
+                                    (8088).</li>
+                            </ul>
+                        </p>
+                        <p><image href="../Images/admin/default-web-settings.png"
+                                id="image_g4c_vcc_wgb"/></p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>API Reports</dt>
+                        <dd>The 3rd-party application server sends API reports to the PBX through
+                            HTTP protocol.</dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_w1g_br4_c3b">
+            <title>Communication method</title>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>1. The 3rd-party application server sends request to the PBX.</dt>
+                        <dd>
+                            <p>The 3rd-party application server acts as a client; PBX acts as a
+                                server.</p>
+                            <p product="cloudpbx">
+                                <note>
+                                    <ul id="ul_mwx_vvt_lgb">
+                                        <li>All API requests should contain an API
+                                                <codeph>token</codeph>.<p>The API
+                                                  <codeph>token</codeph> is generated when the
+                                                3rd-party application server logs in the PBX API
+                                                successfully. </p></li>
+                                        <li>The API <codeph>token</codeph> is valid in 30 minutes.
+                                                <p>To ensure the 3rd-party application server and
+                                                the PBX are connected via API interface, the
+                                                3rd-party application should <xref
+                                                  href="refresh_api_token.dita#reference_dns_psf_hdb"
+                                                  >refresh the token</xref> in each 30
+                                            minutes.</p></li>
+                                    </ul>
+                                </note>
+                            </p>
+                        </dd>
+                        <dd product="k2 s-series">
+                            <note>
+                                <ul id="ul_o22_jft_c3b">
+                                    <li>All API requests should contain an API
+                                            <codeph>token</codeph>.<p>The API <codeph>token</codeph>
+                                            is generated when the 3rd-party application server logs
+                                            in the PBX API successfully. </p></li>
+                                    <li>The API <codeph>token</codeph> is valid in 30 minutes.
+                                            <p>Within the validity time of the token, if there is no
+                                            event interaction between the API and the application
+                                            server ( for example, the application server sends API
+                                            request to the PBX, or S-Series API sends event report
+                                            to the application server), the token will be erased by
+                                            the PBX.</p>The application server can prolong the
+                                        validity time of the token by sending a <xref
+                                            href="heartbeat_packet.dita#reference_ovf_3mg_h2b"
+                                            >Heartbeat packet</xref> to the PBX via the Heartbeat
+                                        packet interface. Every time a packet is sent, the token
+                                        validity time will be prolonged for 30 minutes.</li>
+                                </ul>
+                            </note>
+                        </dd>
+                        <dd><b>Scenario</b>: The 3rd-party application server initiates a call or
+                            query request.</dd>
+                        <dd><image href="../Images/interaction_model1.png" width="700"
+                                id="image_lwx_vvt_lgb" product="cloudpbx"/></dd>
+                        <dd><image href="../Images/admin/api_interaction_method1_s-api-requests.png"
+                                width="700" id="image_pwx_vvt_lgb" product="s-series"/></dd>
+                    </dlentry>
+                </dl>
+                <dl>
+                    <dlentry>
+                        <dt>2. The PBX automatically sends API reports to the 3rd-party application
+                            server.</dt>
+                        <dd>
+                            <p><b>Prerequisite</b>: The 3rd-party application server should be
+                                connected to the PBX via API interface.</p>
+                            <p>The 3rd-party application server acts as a server; PBX acts as a
+                                client.</p>
+                            <p>
+                                <note>After receiving API reports from the PBX, the 3rd-party
+                                    application server should response 200OK, or the PBX will send
+                                    API reports repeatedly.</note>
+                            </p>
+                            <p><b>Scenario</b>: PBX sends extension status to the application
+                                server. </p>
+                        </dd>
+                        <dd><image href="../Images/interaction_model2-api-reports.png" width="700"
+                                id="image_nwx_vvt_lgb" product="cloudpbx"/></dd>
+                        <dd><image href="../Images/admin/api_interaction_method2_s.png" width="700"
+                                id="image_rwx_vvt_lgb" product="s-series"/></dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+    </conbody>
+</concept>

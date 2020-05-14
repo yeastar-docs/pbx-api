@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-paging">
+    <title>Dispatching System APIs</title>
+    <shortdesc>Connect Dispatching System and <ph keyref="product_name"/> via API to dispatch tasks
+        by one-way paging, one-way multicast paging, or two-way intercom via phone
+        terminals.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>Scenario</dt>
+                <dd>
+                    <p>Dispatching System is one of the most important communication method of a
+                        company's production and operation, widely used in industrial production,
+                        mining operation, railways, airports, and hotels. With <ph
+                            keyref="product_name"/> API, you can integrate Dispatching System and
+                        PBX. The grouping ability allows you to quickly and accurately make
+                        announcements to corresponding groups. It not only serves for daily
+                        communication, but also improves work efficiency and emergency
+                        management.</p>
+                    <p>Take industrial production as an example, the work flow in production line is
+                        closely connected and tends to be complex. You can set various paging groups
+                        for production lines so that production lines can efficiently deliver
+                        messages and deal with emergencies. It not only improves communication
+                        between production lines and plant management, but also helps your business
+                        run more efficiently. </p>
+                    <p><image href="../Images/pbx-api/api-paging.png" id="image_rhj_yfg_zkb"
+                            width="650"/></p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_dgw_kxm_2kb">
+            <title>Add a paging group</title>
+            <p>Dispatcher can group extensions in the same department into different paging groups,
+                and set different paging group types according to different responsibilities those
+                staffs take.</p>
+            <p>
+                <ol id="ol_bsv_rgf_zkb">
+                    <li>The dispatcher adds line1 and line2 to an 2-way intercom group. The
+                        Dispatching System sends a request to API interface to add a paging
+                        group.</li>
+                    <li>After receiving the request, PBX creates a paging group, adds line1 and
+                        line2 to the group, and responds result to Dispatching System.</li>
+                </ol>
+            </p>
+            <p> For API interface, refer to <xref href="paginggroup-add.dita"/>.</p>
+        </section>
+        <p><image href="../Images/pbx-api/api-paging-add-group.png" width="650"
+                id="image_gbs_mdf_zkb"/></p>
+        <section id="section_dhb_rxy_ykb">
+            <title>Query a paging group</title>
+            <p>Dispatcher can check paging groups on Dispatching System when broadcasting.<ol
+                    id="ol_scg_5ff_zkb">
+                    <li>When dispatcher checks paging groups on Dispatching System, the system sends
+                        a quest to API interface to query extension list.</li>
+                    <li>After receiving the request, PBX sends information of extension list to
+                        Dispatching System.</li>
+                </ol></p>
+            <p> For API interface, refer to <xref href="paginggroup-query.dita"/>.</p>
+            <p><image href="../Images/pbx-api/api-paging-query-group.png" width="650"
+                    id="image_psc_rff_zkb"/></p>
+        </section>
+        <section id="section_d2d_1yy_ykb">
+            <title>Update settings of a paging group</title>
+            <p>When members or departments change, dispatcher can add or delete members in a paging
+                group, or change paging group type.</p>
+            <p>
+                <ol id="ol_utv_x3f_zkb">
+                    <li>When dispatcher adds a member to a specific paging group on Dispatching
+                        System, the system sends a request to API interface to change paging group
+                        settings.</li>
+                    <li>After receiving the request, PBX updates settings for the specified paging
+                        group, and responds result to Dispatching System.</li>
+                </ol>
+            </p>
+            <p> For API interface, refer to <xref href="paginggroup-update.dita"/>.</p>
+            <p><image href="../Images/pbx-api/api-paging-edit-group.png" width="650"
+                    id="image_qqs_h4f_zkb"/></p>
+        </section>
+        <section id="section_twq_kyy_ykb">
+            <title>Make an announcement</title>
+            <p>Dispatcher can make an announcement to members via Dispatching System; In case of any
+                emergencies, dispatcher can initiate an intercom call to give correct instructions
+                to staffs; In spare time, dispatcher can play recorded voice announcement like
+                safety instructions to staffs.<ol id="ol_ecj_hwf_zkb">
+                    <li>When dispatcher plays a voice announcement to a paging group on Dispatching
+                        System, the system sends a request to API interface to play voice
+                        announcement.</li>
+                    <li>After receiving the request, PBX makes a paging call to the specified
+                        extension, plays the pre-configured voice messages, and responds result to
+                        Dispatching System.</li>
+                </ol></p>
+            <p> For API interface, refer to <xref href="call-playprompt.dita"/>.</p>
+            <p><image href="../Images/pbx-api/api-paging-play-music.png" width="650"
+                    id="image_g1m_stf_zkb"/></p>
+            <p>
+                <dl>
+                    <dlentry>
+                        <dt>Customize paging prompts</dt>
+                        <dd>
+                            <ol id="ol_ksv_hwm_2kb">
+                                <li>Log in PBX web page, go to <menucascade>
+                                        <uicontrol>PBX</uicontrol>
+                                        <uicontrol> Voice Prompts</uicontrol>
+                                        <uicontrol> Custom Prompts</uicontrol>
+                                    </menucascade>, upload an audio file.<p><image
+                                            href="../Images/pbx-api/api-custom-prompt.png"
+                                            width="650" id="image_awm_jxm_2kb"/></p></li>
+                            </ol>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_jzz_p1z_ykb">
+            <title>Stop paging group music</title>
+            <p>If Dispatching System is playing a voice prompt to members, the dispatcher can stop
+                paging group music.<ol id="ol_hr2_ndg_zkb">
+                    <li>When dispatcher ends paging on Dispatching System, the system sends a
+                        request to API interface to stop paging group music.</li>
+                    <li>After receiving the request, PBX hangs up the call on specified extension,
+                        and responds result to Dispatching System.</li>
+                </ol></p>
+            <p> For API interface, refer to <xref href="hangup-paging-music.dita"/>.</p>
+            <p><image href="../Images/pbx-api/api-paging-end.png" width="650" id="image_eky_mdg_zkb"
+                /></p>
+        </section>
+    </body>
+</topic>

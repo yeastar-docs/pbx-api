@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-call-alarm-system">
+    <title>IVR Alarm System APIs</title>
+    <shortdesc>Connect Alarm System and <ph keyref="product_name"/> via API to provide alarm service
+        via IVR prompts.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>Scenario</dt>
+                <dd>Alarm System is
+                    <?oxy_comment_start author="Sunmy" timestamp="20200409T133229+0800" comment="是常用于，类似广泛应用于 xxx。
+不是通常用于" flag="done"?>widely
+                    used<?oxy_comment_end?> in industrial production, meteorological disaster
+                    monitoring<?oxy_comment_start author="Sunmy" timestamp="20200409T133329+0800" comment="列举的项里面有个 “等”，的意思全面了？" flag="done"?>,
+                    fire protection<?oxy_comment_end?>,and so on. Alarm System plays an important
+                    role in safety production, disaster prevention &amp; reduction, and operation
+                    management. However, most Alarm Systems send alarm messages in a simplex mode,
+                    which makes it difficult for monitor to timely and efficiently share information
+                    when emergencies occur. With <ph keyref="product_name"/> API, you can integrate
+                    Alarm System with PBX. When an alarm is tripped, Alarm System makes an outbound
+                    call to inform relevant personnel of the alarm. The personnel can contact
+                    responsible departments to timely deal with the emergency. </dd>
+            </dlentry>
+        </dl>
+        <section id="section_edl_w25_xjb">
+            <title>Make an outbound call through IVR</title>
+            <p>
+                <ol id="ol_zlp_mbv_2lb">
+                    <li>Alarm System sends a request to API interface to make an outbound call
+                        through IVR.</li>
+                    <li>After receiving the request, PBX calls relevant personnel through IVR.</li>
+                    <li>After alarm ends, relevant personnel can follow the IVR prompt to press
+                        corresponding keys on keypad to call Emergency Center agent or other
+                        responsible personnels.</li>
+                </ol>
+            </p>
+            <p>For API interface, refer to <xref href="call-dial.dita"/>.</p>
+            <p><image href="../Images/pbx-api/api-alarm-system.png" width="650"
+                    id="image_lw3_m2v_2lb"/></p>
+        </section>
+        <section id="section_x4p_mbv_2lb">
+            <title>Report of IVR alarm status </title>
+            <p>PBX informs Alarm System of current calling status in real time.<ul
+                    id="ul_onp_pqt_2lb">
+                    <li>When an outbound call is answered, PBX sends a <xref
+                            href="event-CallStatus.dita"/> report to Alarm System.<note>By default,
+                            the call status for outbound calls through analog trunks is "answered".
+                            To distinguish answered calls from unanswered calls, make sure
+                            polarity-reversal is enabled for the analog trunk, and <uicontrol>Answer
+                                Detection Method</uicontrol> on PBX is set to <uicontrol>Polarity
+                                Reversal</uicontrol>. To know exactly whether the call is answered,
+                            we recommend you to use E1 trunk or IMS trunk.</note></li>
+                    <li>After a prompt for extension number or external number ends, PBX sends a
+                            <xref href="event-PlayPromptEnd.dita"/> report to Alarm System. By
+                        recording end time of the prompt, user can know whether the prompt is played
+                        completely.</li>
+                    <li>When a call is ended, PBX sends a <xref href="event-NewCdr.dita"/> report to
+                        Alarm System. The system can record the time and frequency of the alarm by
+                        CDR Reports.</li>
+                </ul></p>
+        </section>
+        <section id="section_ll4_lrt_xjb">
+            <title>IVR settings</title>
+            <p>
+                <ol>
+                    <li>Upload an IVR prompt.<p>
+                            <ul id="ul_rvk_rst_xjb">
+                                <li>Upload an IVR prompt on PBX.<p>Log in PBX web page, go to <menucascade>
+                                            <uicontrol>Settings</uicontrol>
+                                            <uicontrol> PBX</uicontrol>
+                                            <uicontrol> Voice Prompts</uicontrol>
+                                            <uicontrol> Custom Prompts</uicontrol>
+                                        </menucascade>, upload a prompt.</p><p><image
+                                            href="../Images/pbx-api/api-custom-prompt.png"
+                                            width="650" id="image_tvq_bck_flb"/></p></li>
+                                <li>
+                                    <p>Upload audio file via FTP.</p>
+                                    <p>Refer to the following FTP path:
+                                            <filepath>/ysapps/pbxcenter/var/lib/asterisk/sounds/record/</filepath>.</p>
+                                    <p><image
+                                            href="../Images/pbx-api/api-call-alarm-IVR-FTP-upload.jpg"
+                                            id="image_b4l_k25_xjb"/></p>
+                                </li>
+                            </ul>
+                        </p></li>
+                    <li>Add an IVR.<p>Go to <menucascade>
+                                <uicontrol>Settings</uicontrol>
+                                <uicontrol> PBX</uicontrol>
+                                <uicontrol> Call Features</uicontrol>
+                                <uicontrol> IVR</uicontrol>
+                            </menucascade>, click <uicontrol>Add</uicontrol> to add an IVR, and
+                            select a prompt.</p><p><image
+                                href="../Images/pbx-api/api-call-alarm-create-IVR.jpg"
+                                id="image_ew2_q25_xjb" width="650"/></p></li>
+                    <li>Set <uicontrol>Key Press Event</uicontrol>.<p>When an alarm call is
+                            answered, relevant personnel can press keys on keypad to make a call to
+                            corresponding department according to alarm level.</p><p><image
+                                href="../Images/pbx-api/api-call-alarm-IVR-key.jpg"
+                                id="image_h2s_525_xjb" width="650"/></p></li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_zcj_fw3_gdb">
+    <title>DTMF</title>
+    <shortdesc>If a user enters the DTMF digits during a call, PBX will send a DTMF report to the
+        application server.</shortdesc>
+    <refbody>
+        <section id="section_lv1_syk_gdb">
+            <title>Report parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.29*"/>
+                        <colspec colname="c3" colnum="3" colwidth="2.7*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry> Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry>callid</entry>
+                                <entry>String</entry>
+                                <entry>The unique ID of each call.</entry>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Array <xref href="#reference_zcj_fw3_gdb/membertype"
+                                        format="dita">&lt;MemberType></xref></entry>
+                                <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+                            </row>
+                            <row>
+                                <entry>infos</entry>
+                                <entry>String</entry>
+                                <entry>A DTMF string.</entry>
+                            </row>
+                            <row>
+                                <entry>flag</entry>
+                                <entry>Integer</entry>
+                                <entry>The sequence of DTMF.<p>
+                                        <note><codeph>flag</codeph> starts from digit 0. 0 indicates
+                                            the first DTMF; 1 indicates the second DTMF, and the
+                                            like.</note>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>info</entry>
+                                <entry>String</entry>
+                                <entry>A DTMF character.</entry>
+                            </row>
+                            <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+                <dl>
+                    <dlentry id="membertype">
+                        <dt>MemberType</dt>
+                        <dd>
+                            <table frame="all" rowsep="1" colsep="1" id="table_hmk_1px_pjb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1*"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                                    <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry> Type</entry>
+                                            <entry>Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row>
+                                            <entry>ext</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_zcj_fw3_gdb/extensioninfo"
+                                                  format="dita">&lt;ExtensionInfo></xref></entry>
+                                            <entry>Extension information.</entry>
+                                        </row>
+                                        <row>
+                                            <entry>inbound</entry>
+                                            <entry>Object <xref
+                                                  href="#reference_zcj_fw3_gdb/inboundinfo"
+                                                  format="dita">&lt;InboundInfo></xref></entry>
+                                            <entry>The information of inbound calls.</entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                    <dlentry id="extensioninfo">
+                        <dt>ExtensionInfo</dt>
+                        <dd>
+                            <p>
+                                <table frame="all" rowsep="1" colsep="1" id="table_lhq_ynx_pjb">
+                                    <tgroup cols="3">
+                                        <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                        <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                                        <thead>
+                                            <row>
+                                                <entry>Parameter</entry>
+                                                <entry> Type</entry>
+                                                <entry>Description</entry>
+                                            </row>
+                                        </thead>
+                                        <tbody>
+                                            <row
+                                                conref="call-query.dita#reference_a5v_rt2_gdb/ext-number">
+                                                <entry/>
+                                            </row>
+                                            <row
+                                                conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                                                <entry/>
+                                            </row>
+                                            <row
+                                                conref="call-query.dita#reference_a5v_rt2_gdb/memberstatus">
+                                                <entry/>
+                                            </row>
+                                            <row>
+                                                <entry>callpath</entry>
+                                                <entry>Integer</entry>
+                                                <entry>The call path that indicates how the call is
+                                                  established.<p>Example: Extension user 1000 calls
+                                                  to IVR (6500), and enters DTMF digits, the
+                                                  <codeph>callpath</codeph> value is
+                                                  6500.</p></entry>
+                                            </row>
+                                        </tbody>
+                                    </tgroup>
+                                </table>
+                            </p>
+                        </dd>
+                    </dlentry>
+                    <dlentry id="inboundinfo">
+                        <dt>InboundInfo</dt>
+                        <dd>
+                            <table frame="all" rowsep="1" colsep="1" id="table_dgb_dzp_klb">
+                                <tgroup cols="3">
+                                    <colspec colname="c1" colnum="1" colwidth="1.67*"/>
+                                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                                    <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                                    <thead>
+                                        <row>
+                                            <entry>Parameter</entry>
+                                            <entry>Type</entry>
+                                            <entry>Description</entry>
+                                        </row>
+                                    </thead>
+                                    <tbody>
+                                        <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                                            <entry/>
+                                        </row>
+                                        <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-inbound">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                                            <entry/>
+                                        </row>
+                                        <row
+                                            conref="call-query.dita#reference_a5v_rt2_gdb/memberstatus">
+                                            <entry/>
+                                        </row>
+                                        <row>
+                                            <entry>callpath</entry>
+                                            <entry>Integer</entry>
+                                            <entry>The call path that indicates how the call is
+                                                  established.<p>For example, external user 1000
+                                                  calls to IVR (6500), and enters DTMF digits, the
+                                                  <codeph>callpath</codeph> value is
+                                                6500.</p></entry>
+                                        </row>
+                                    </tbody>
+                                </tgroup>
+                            </table>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </p>
+        </section>
+        <section id="section_off_dnd_gdb">
+            <title>Report example</title>
+            <p>Extension 1023 dials in an IVR, and dials digit 2.</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1571905397.97",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000039",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"info": "2",
+	"flag": "0",
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+            <p>External user 192929500 dials in IVR 6500, and dials extension number 1020.</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"info": "1",
+	"flag": "0",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"info": "0",
+	"flag": "1",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"info": "2",
+	"flag": "2",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"info": "0",
+	"flag": "3",
+	"sn": "369451090405"
+}
+POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573197470.151",
+	"members": [
+		{
+			"inbound": {
+				"from": "192929500",
+				"to": "6500",
+				"trunkname": "To6.36",
+				"channelid": "PJSIP/trunk-To6.36-endpoint-0000003d",
+				"memberstatus": "ANSWERED",
+				"callpath": "6500"
+			}
+		}
+	],
+	"infos": "1020",
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+            <p>Extension user 1023 places an outbound call, and the call is routed to an external
+                IVR. Extension user dials digit 1.</p>
+            <p>
+                <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "DTMF",
+	"callid": "1573092021.6",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000002",
+				"memberstatus": "ANSWERED"
+			}
+		}
+	],
+	"info": "1",
+	"flag": "0",
+	"sn": "369451090405"
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

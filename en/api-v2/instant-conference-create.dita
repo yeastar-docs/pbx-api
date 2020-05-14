@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="instant-conference-create">
+    <title>Add an Instant Conference</title>
+    <shortdesc>Add and configure an instant conference, and invite members to join the conference in
+        real time.</shortdesc>
+    <refbody>
+        <section id="section_wjf_nfv_mjb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/instant_conference/start?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_z3w_d5v_mjb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" id="table_k5q_f5v_mjb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="1.22*" colsep="1" rowsep="1"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.37*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Number of an instant conference.<note>
+                                        <p>The number must be idle. Other conferences, instant
+                                            conferences, or features can not use the number.</p>
+                                    </note></entry>
+                            </row>
+                            <row>
+                                <entry>name</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Name of an instant conference.</entry>
+                            </row>
+                            <row>
+                                <entry>moderators</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Moderator of an instant conference.<p><b>Valid
+                                        values</b>:</p><ul id="ul_jyl_w5v_mjb">
+                                        <li>An extension number: Set a moderator only.</li>
+                                        <li>Multiple extension numbers: Set multiple moderators.
+                                            Separate multiple extension numbers with
+                                                <codeph>,</codeph>.<note>To successfully add an
+                                                instant conference, at least one moderator should be
+                                                in the conference.</note></li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>members</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Members of an instant conference. <p><b>Valid
+                                        value</b>:</p><p>Support to enter both internal and external
+                                        numbers. Separate multiple numbers with
+                                        <codeph>,</codeph>.</p></entry>
+                            </row>
+                            <row>
+                                <entry>dialpermission</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry id="dialpermission">
+                                    <p>Use which extension's call permission to invite members to
+                                        join the conference.</p>
+                                    <note>If <codeph>members</codeph> includes external numbers,
+                                            <codeph>dialpermission</codeph> must be the extension
+                                        which is of outbound call permission.</note>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_lry_yvv_mjb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" id="table_wsd_1wv_mjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.01*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.36*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Response status.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_hcq_2wv_mjb"><title>Examples</title><p><b>Request example</b></p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/instant_conference/start?token=721eebe15cb3c27b60daeb1f120f0c05
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6466",
+	"name": "6466",
+	"members": "4000,4001",
+	"moderators": "4000",
+	"dialpermission": "4000"
+}</codeblock>
+            </p><b>Response example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

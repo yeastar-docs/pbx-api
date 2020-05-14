@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_wkv_4xf_vgb">
+    <title>查询广播组</title>
+    <shortdesc>查询单个广播组、多个广播组或所有广播组的设置参数。</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Endpoint</title>
+            <p>
+                <codeblock>POST /api/v1.1.0/paginggroup/query?token=<varname>{token}</varname></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>请求参数</title>
+            <table frame="all" rowsep="1" colsep="1" id="table_s5y_dzh_vgb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.15*"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*"/>
+                    <colspec colname="c3" colnum="3" colwidth="1.03*"/>
+                    <colspec colname="c4" colnum="4" colwidth="4*"/>
+                    <thead>
+                        <row>
+                            <entry>名称</entry>
+                            <entry>是否必需</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><codeph>number</codeph></entry>
+                            <entry>是</entry>
+                            <entry>String</entry>
+                            <entry>广播组号码。<p>
+                                    <ul id="ul_gnr_hd3_vgb">
+                                        <li><b>查询单个广播组</b>：设置 <codeph>number</codeph>
+                                                  为广播组号码。<p>例如：<codeph>"number":"6300"</codeph></p></li>
+                                        <li><b>查询多个广播组</b>：设置 <codeph>number</codeph>
+                                            为广播组号码，多个广播组号码之间用 <codeph>,</codeph>
+                                                  隔开。<p>例如：<codeph>"number":
+                                                "6300,6301"</codeph></p></li>
+                                        <li><b>查询所有广播组</b>：设置 <codeph>number</codeph> 为
+                                                <codeph>all</codeph>。</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1.67*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1*"/>
+                        <colspec colname="c4" colnum="3" colwidth="5.65*"/>
+                        <thead>
+                            <row>
+                                <entry>名称</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry><codeph>paginggroup</codeph></entry>
+                                <entry>Object</entry>
+                                <entry>对象参数。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>id</codeph></entry>
+                                <entry>Int</entry>
+                                <entry>广播组标识码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>number</codeph></entry>
+                                <entry>String</entry>
+                                <entry>广播组号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>name</codeph></entry>
+                                <entry>String</entry>
+                                <entry>广播组名称。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>duplex</codeph></entry>
+                                <entry>String</entry>
+                                <entry>广播组类型。<p>
+                                        <ul id="ul_bs1_m1m_vgb">
+                                            <li>paging：单向传呼。广播组内的分机只能听到发起者的声音。</li>
+                                            <li>intercom：双向对讲。广播组内的所有电话分机都可以进行通话并且都能听见彼此的声音。</li>
+                                            <li>multicast：单向组播。向指定的组播地址发送语音，监听指定组播地址的话机均可以听到该广播。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowexten</codeph></entry>
+                                <entry>String</entry>
+                                <entry>广播组成员。如选择分机为广播组成员，则显示分机号码。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>allowextengroup</codeph></entry>
+                                <entry>String</entry>
+                                <entry>广播组成员。如选择分机组为广播组成员，则显示分机组名称。</entry>
+                            </row>
+                            <row>
+                                <entry><codeph>enablekeyhanup</codeph></entry>
+                                <entry>String</entry>
+                                <entry>是否开启 <uicontrol>按*应答</uicontrol> 功能。启用该功能，分机可以按*应答广播。应答后，该分机与发起者进行通话，其他分机的广播终止。<p>
+                                        <ul id="ul_nx3_fgm_vgb">
+                                            <li>yes：开启。</li>
+                                            <li>no：关闭。</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry><codeph>multicastip</codeph></entry>
+                                <entry>String</entry>
+                                <entry>如果广播组类型为 <codeph>multicast</codeph>，则显示该广播组的组播地址。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section>
+            <title>实际示例</title>
+            <p><b>请求示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v1.1.0/paginggroup/query?token=277ac400357b509b4a587ff2157f7ad5 HTTP/1.1
+Content-Type:application/json; charset=utf-8
+<ph>Host: 192.168.5.150</ph>
+{
+    "number": "6300"
+}</codeblock>
+            </p>
+            <p><b>响应示例</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+{
+    "status": "Success",
+    "paginggroup": [
+        {
+            "id": "1",
+            "number": "6300",
+            "name": "6300",
+            "duplex": "paging",
+            "allowexten": "1001,",
+            "allowextengroup": "",
+            "enablekeyhanup": "no",
+            "multicastip": ""
+        }
+    ]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

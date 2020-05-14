@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_rpy_fwb_wgb">
+    <title>通信协议</title>
+    <shortdesc><ph>朗视 <ph keyref="product_name"/>  API 支持使用 HTTPS 协议和 HTTP 协议进行通信。</ph></shortdesc>
+    <body>
+        <p>
+            <note>为加强通信安全，我们建议你使用 HTTPS 协议，并上传专业证书机构制作的 HTTPS 证书到 PBX。</note>
+        </p>
+        <section>
+            <title>通信协议与端口</title>
+            <p>朗视 <ph keyref="product_name"/> API 使用的通信协议与端口与 PBX 的网页协议和端口一致。</p>
+            <p>PBX 默认使用 HTTPS 网页访问协议，端口 8088，且启用 <uicontrol>80端口重定向</uicontrol>，你可以选择 HTTPS （端口
+                8088）或 HTTP（端口80）协议进行 API 通信。</p>
+            <p><image href="../Images/admin/default-web-settings.png" id="image_g4c_vcc_wgb"/></p>
+        </section>
+        <section id="section_yfp_xcc_wgb">
+            <title>外网 HTTP 通信</title>
+            <p>在中国，如果你要通过外网连接第三方服务器 和 PBX API，80 端口无法使用，需要备案信息。你可以更改 PBX 设置，使用其他端口。</p>
+            <p>登录 PBX 网页，进入 <menucascade>
+                    <uicontrol>配置</uicontrol>
+                    <uicontrol>系统</uicontrol>
+                    <uicontrol>安全中心</uicontrol>
+                    <uicontrol>服务</uicontrol>
+                </menucascade>， 选择 <uicontrol>网络访问协议</uicontrol> 为 <uicontrol>HTTP</uicontrol>，将默认的
+                80 端口改为其他端口。</p>
+            <p><image href="../Images/admin/change-http-port.png" id="image_x3z_vdc_wgb"/></p>
+        </section>
+    </body>
+</topic>

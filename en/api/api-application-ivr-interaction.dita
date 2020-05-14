@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-ivr-interaction">
+    <title>Voice Interactive Service APIs</title>
+    <shortdesc>Connect <ph keyref="product_name"/> and Application System to offer customers voice
+        interactive service.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>Scenario</dt>
+                <dd>
+                    <p>IVR (Interactive Voice Response) is an automated telephony system that
+                        interacts with human callers. IVR responds customers with pre-recorded voice
+                        or TTS (Text to Speech) prompts, and provides guidance for customers by
+                        voice menus. IVR is widely used in information query &amp; confirmation,
+                        questionnaire, satisfaction survey and promotion. With <ph
+                            keyref="product_name"/> API, Application System and PBX can be
+                        integrated to help customers accomplish routine tasks in the IVR, assist
+                        company in automatically gathering and confirming customers information and
+                        so on, which saves man-hours and improves work efficiency.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <section id="section_vf1_hxz_zkb">
+            <title>Example of IVR application </title>
+            <p>Take service-processing as an example: Application System makes an outbound call to a
+                customer, plays a voice prompt to inform customer of service type and provides
+                guidance for operation. After customer enters corresponding verification code, the
+                service is processed successfully.</p>
+            <p><image href="../Images/pbx-api/api-ivr-interaction.png" width="750"
+                    id="image_u4z_dzt_zkb"/></p>
+            <p>
+                <ol id="ol_fjm_cn5_zkb">
+                    <li>The Application System sends a request to API interface to make an outbound
+                        call to a customer via IVR. When customer answers the call, the system plays
+                        the prompt of IVR 6500.</li>
+                    <li>Customer presses 1 on keypad according to voice prompt. PBX responds by
+                        transferring the call to IVR 6501, and prompting customer to enter
+                        verification code.</li>
+                    <li>Customer enters verification code according to voice prompt. When receiving
+                        the key event, PBX plays hold music to customer, generates a DTMF report,
+                        and sends the DTMF report to Application System.</li>
+                    <li>After receiving DTMF report, the Application System verifies customer
+                        information (in DTMF report), and sends a call-transfer request to PBX
+                        according to the verification result. <ul id="ul_rfk_lwz_zkb">
+                            <li>Verify success: PBX transfers the call to IVR 6502, and plays a
+                                voice prompt to inform customer of the successful operation.</li>
+                            <li>Verify failed: PBX transfers the call to IVR 6503, and plays a voice
+                                prompt to inform customer of the wrong code and require a re-entered
+                                verification code.</li>
+                        </ul></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_hmc_5x1_1lb">
+            <title>Make an outbound call through IVR</title>
+            <p>
+                <ol id="ol_zdl_vx1_1lb">
+                    <li>Application System sends a request to API interface to make an outbound call
+                        through IVR.</li>
+                    <li>After receiving the request, PBX makes an outbound call to customer through
+                            IVR.<p>For API interface, refer to <xref
+                                href="api_call_an_external_number_via_ivr.dita"/>.</p></li>
+                    <li>PBX informs Application System of call status in real time.<p>For API report
+                            of ringing status, refer to <xref href="api_ringing.dita"/> and <xref
+                                href="api_ring_back.dita"/>. For API report of answering status,
+                            refer to <xref href="api_answer_a_call.dita"/>.</p><p><image
+                                href="../Images/pbx-api/api-ivr-outbound.png" width="500"
+                                id="image_myh_dbb_1lb"/></p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_cdw_ybb_1lb">
+            <title>DTMF report</title>
+            <p>
+                <ol id="ol_zzy_ncb_1lb">
+                    <li>Customer presses keys on keypad according to voice prompt.</li>
+                    <li>PBX gathers key information, generates a <xref
+                            href="api_keypress.dita#reference_zcj_fw3_gdb">'Keypress' Report</xref>
+                        and sends the report to Application System.<p><image
+                                href="../Images/pbx-api/api-ivr-dtmf.png" width="500"
+                                id="image_y1j_xgb_1lb"/></p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_lct_fhb_1lb">
+            <title>Transfer outbound call to IVR</title>
+            <p>
+                <ol id="ol_h5j_jhb_1lb">
+                    <li>After receiving a DTMF report and verifying customer information (in DTMF
+                        report), Application System sends a request to API interface to transfer the
+                        call to IVR.</li>
+                    <li>After receiving the request, PBX transfers the call to corresponding IVR,
+                        and plays the IVR's voice prompt to customer.<p><image
+                                href="../Images/pbx-api/api-ivr-outbound-transfer.png" width="650"
+                                id="image_rvg_rkb_1lb"/></p><p>For API interface, refer to <xref
+                                href="api_transfer_outbound_calls.dita"/>.</p></li>
+                </ol>
+            </p>
+        </section>
+        <section id="section_p2q_fqm_zkb">
+            <title>IVR configuration</title>
+            <p>
+                <ol id="ol_ihj_3qm_zkb">
+                    <li>On PBX web page, add an IVR.<p><image
+                                href="../Images/pbx-api/api-ivr-interaction-create-IVR.png"
+                                id="image_omc_3s5_xjb" width="650"/></p></li>
+                    <li>Configure IVR prompt.<p>The <b>wav</b> file generated from TTS should be
+                            mounted to network drive so that PBX can retrieve the file.</p><ol
+                            id="ol_obs_gtm_zkb">
+                            <li>Upload IVR prompt to network drive, and set the IVR folder to
+                                        "Shared".<p><image
+                                        href="../Images/pbx-api/api-ivr-interaction-share-disk.png"
+                                        id="image_i3g_ls5_xjb" width="600"/></p></li>
+                            <li>Mount the network drive to PBX.<p>The path for the first mounted
+                                    network drive is
+                                    <filepath>/tmp/media/networkdisk1</filepath>.</p><p><image
+                                        href="../Images/pbx-api/api-ivr-interaction-netdisk.png"
+                                        width="450" id="image_u43_ydn_zkb"/></p></li>
+                        </ol></li>
+                    <li>Set IVR voice menu.<p>Contact Yeastar Support to obtain the script of IVR
+                            voice menu.</p><p>Log in PBX web page, go to
+                                <filepath>/ysdisk/support//customcfg/extensions_support.conf</filepath>
+                            via SSH, and edit <filepath>extensions_support.conf</filepath>.</p><p>
+                            <ul>
+                                <li>IVR 6500: Inform customer of current service type, and prompt
+                                    customer to press 1 on keypad for
+                                    appointment.<codeblock>[ivr_6500]
+exten = 6500,1,NoOp(6500)
+exten = 6500,n,Set(TIMEOUT(digit)=3)
+exten = 6500,n,Background(/tmp/media/networkdisk1/notice) //notice.wav   This is xxx Service
+exten = 6500,n,Background(/tmp/media/networkdisk1/${EXTEN}) //The file is named after callee's phone number. Different voice prompts for different callees. The file is temporarily named as test.wav. Prompt message: Make an appointment for road test on March 12
+exten = 6500,n,Background(/tmp/media/networkdisk1/confirm}) //confirm.wav  Press 1 to confirm
+exten = 6500,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6500,n,WaitExten(1)
+exten = 6500,n,Set(TIMEOUT(digit)=3)
+exten = 6500,n,Background(/tmp/media/networkdisk1/notice) //notice.wav This is xxx Service
+exten = 6500,n,Background(/tmp/media/networkdisk1/${EXTEN}) //The file is named after callee's phone number. Different voice prompts for different callees. The file is temporarily named as test.wav. Prompt message: Make an appointment for road test on March 12
+exten = 6500,n,Background(/tmp/media/networkdisk1/confirm}) //confirm.wav   Press 1 to confirm
+exten = 6500,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6500,n,WaitExten(1)
+exten = 6500,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6500,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 6500,n,Goto(t,1)
+exten = 1,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 1,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 1,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = 1,4,Goto(ivrs,6501,1)
+exten = unknown,1,NoOp(No Action)</codeblock></li>
+                                <li>
+                                    <p>IVR6501: Prompt the customer to press 1 on keypad to enter
+                                        IVR 6501, and then enter verification code . After entering
+                                        verification code, the customer can hear another prompt and
+                                        hold music.
+                                        <codeblock>[ivr_6501]
+exten = 6501,1,NoOp(6501)
+exten = 6501,n,Set(TIMEOUT(digit)=3)
+exten = 6501,n,Background(/tmp/media/networkdisk1/password) //password.wav  Enter the verification code for appointment, and end with #
+exten = 6501,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6501,n,WaitExten(4)
+exten = 6501,n,Set(TIMEOUT(digit)=3)
+exten = 6501,n,Background(/tmp/media/networkdisk1/password) //password.wav  Enter the verification code for appointment, and end with #
+exten = 6501,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6501,n,WaitExten(4)
+exten = 6501,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6501,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = _X.#,1,UserEvent(DtmfEndString,Info: ${EXTEN})
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //holdon.wav   Wait a moment, please
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //Play hold music
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //Wait a moment, please
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //Play hold music
+exten = _X.#,n,NoOp(exten:${EXTEN})
+exten = _X.#,n,Goto(ivrs,6501,1)
+exten = 6501,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                                <li>
+                                    <p>IVR6502: If verification succeeds, transfer the call to IVR
+                                        6502 to inform customer of the successful operation, and
+                                        then end the
+                                        call.<codeblock>[ivr_6502]
+exten = 6502,1,NoOp(6502)
+exten = 6502,n,Set(TIMEOUT(digit)=3)
+exten = 6502,n,Background(/tmp/media/networkdisk1/ok) //Appointment made, bye
+exten = 6502,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6502,n,WaitExten(1)
+exten = 6502,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6502,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = 6502,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                                <li>
+                                    <p>IVR6503: If verification fails, transfer the call to IVR 6503
+                                        to ask customer to re-enter verification code. When the code
+                                        is verified successfully, transfer the call to IVR 6502; if
+                                        not, transfer the call to IVR
+                                        6503.<codeblock>[ivr_6503]
+exten = 6503,1,NoOp(6503)
+exten = 6503,n,Set(TIMEOUT(digit)=3)
+exten = 6503,n,Background(/tmp/media/networkdisk1/password1) //password1.wav Verification code error, please re-enter the verification code for appointment, and end with #
+exten = 6503,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6503,n,WaitExten(4)
+exten = 6503,n,Set(TIMEOUT(digit)=3)
+exten = 6503,n,Background(/tmp/media/networkdisk1/password1) //password1.wav Verification code error, please re-enter the verification code for appointment, and end with #
+exten = 6503,n,UserEvent(PlayPromptEnd,Ivrid: ${EXTEN})
+exten = 6503,n,WaitExten(4)
+exten = 6503,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = 6503,n,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = _X.#,1,UserEvent(DtmfEndString,Info: ${EXTEN})
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //holdon.wav Wait a moment, please
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //Play hold music
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/holdon) //Wait a moment, please
+exten = _X.#,n,Playback(/tmp/media/networkdisk1/macroform-the_simplicity) //Play hold music
+exten = _X.#,n,NoOp(exten:${EXTEN})
+exten = _X.#,n,Goto(ivrs,6503,1)
+exten = 6503,n,Goto(t,1)
+exten = t,1,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(Ivr2outbound)=yes))
+exten = t,2,ExecIf($[${Ivr2outbound} = yes]?Set(CDR(INGORELOCAL1CDR)=yes))
+exten = t,3,ExecIf($[${CHANDISABLERECORD} = yes]?Noop(skip setting disablerecord again):Set(CHANDISABLERECORD=no))
+exten = t,4,Goto(always-Hangup,h,1)
+exten = unknown,1,NoOp(No Action)</codeblock></p>
+                                </li>
+                            </ul>
+                        </p></li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

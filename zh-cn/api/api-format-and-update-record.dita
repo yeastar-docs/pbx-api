@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+  PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topicID">
+   <title>API
+Format and Update Record
+(新增更新记录部分)</title>
+   <body>
+      <section>
+         <title>
+            <b>API
+Format：</b>
+         </title>
+         <table>
+            <tgroup cols="2">
+               <thead>
+                  <row>
+                     <entry>
+                        <b>Symbol</b>
+                     </entry>
+                     <entry>
+                        <b>Description</b>
+                     </entry>
+                  </row>
+               </thead>
+               <tbody>
+                  <row>
+                     <entry>
+                        <b>&lt;&gt;</b>
+                     </entry>
+                     <entry>Required parameter. If it’s a request, the
+parameter is required for the request. If it’s a response,
+the parameter is required for the response.</entry>
+                  </row>
+                  <row>
+                     <entry>
+                        <b>&lt;X|Y|Z&gt;</b>
+                     </entry>
+                     <entry>Required parameter. The vertial bar means
+“or”.</entry>
+                  </row>
+                  <row>
+                     <entry>
+                        <b>[]</b>
+                     </entry>
+                     <entry>Optional parameter.</entry>
+                  </row>
+                  <row>
+                     <entry>
+                        <b>[X|Y|Z]</b>
+                     </entry>
+                     <entry>Optional parameter. The vertical bar means
+“or”.</entry>
+                  </row>
+               </tbody>
+            </tgroup>
+         </table>
+      </section>
+      <section>
+         <title>API
+版本号说明：</title>
+      </section>
+      <section>
+         <title>API Version
+Description：</title>
+         <p>
+在使用API请求的时候，请求地址必须带上API版本号。本说明书示例中的版本号均使用{version}变量替代。</p>
+         <p>When sending a API request, the request address must include the
+API version. All request samples in this guide use {version} to
+represent the API version.</p>
+         <p>
+            <b>版本号更新：</b>
+         </p>
+      </section>
+      <section>
+         <title>Version
+Update:</title>
+         <table>
+            <tgroup cols="4">
+               <thead>
+                  <row>
+                     <entry>Update Time</entry>
+                     <entry>API Version</entry>
+                     <entry>Firmware Version</entry>
+                     <entry>Interface Description Version</entry>
+                  </row>
+               </thead>
+               <tbody>
+                  <row>
+                     <entry>2017.9.14</entry>
+                     <entry>v1.0.1</entry>
+                     <entry>30.5.0.24</entry>
+                     <entry>v1.0</entry>
+                  </row>
+               </tbody>
+            </tgroup>
+         </table>
+      </section>
+   </body>
+</topic>

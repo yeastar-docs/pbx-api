@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_t3d_sdf_h2b">
+    <title>查询坐席状态</title>
+    <shortdesc>查询队列坐席的状态。</shortdesc>
+    <refbody>
+        <section>
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/queue/query_status?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_vjw_5qd_gdb">
+            <title>请求参数</title>
+            <table frame="all" id="table_tjr_cmh_mjb">
+                <tgroup cols="4">
+                    <colspec colname="c1" colnum="1" colwidth="1.18*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1.27*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c4" colnum="4" colwidth="4.54*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>参数</entry>
+                            <entry>是否必选</entry>
+                            <entry>类型</entry>
+                            <entry>描述</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>number</entry>
+                            <entry>是</entry>
+                            <entry>Integer</entry>
+                            <entry>队列号码。</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+        <section id="section_ncs_v2f_h2b">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_prf_vnm_qjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.61*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="3.23*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>queues</entry>
+                                <entry>Array <xref href="#reference_t3d_sdf_h2b/queuesinfo"
+                                        format="dita">&lt;QueueInfo></xref></entry>
+                                <entry>队列信息列表。</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="queuesinfo">QueueInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_fj5_hn4_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.9*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="1.64*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>队列号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry><?oxy_comment_start author="carol" timestamp="20191111T092649+0800" comment="这个参数，理论上应该定义为 Object，跟测试反馈一下。" id="ytj_4jr_rjb" mid="1"?><?oxy_comment_start author="Becky" timestamp="20191111T170753+0800" comment="和陈绍强反馈" parentID="ytj_4jr_rjb"?>queuestatus<?oxy_comment_end?><?oxy_comment_end mid="1"?></entry>
+                                        <entry>Array <xref
+                                                href="#reference_t3d_sdf_h2b/queuestatusInfo"
+                                                format="dita">&lt;QueuestatusInfo></xref></entry>
+                                        <entry>队列状态列表。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="queuestatusInfo">QueuestatusInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_rqg_tn4_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.61*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="2.39*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>callercount</entry>
+                                        <entry>Integer</entry>
+                                        <entry>当前队列等候人数。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>members</entry>
+                                        <entry>Array <xref href="#reference_t3d_sdf_h2b/membersinfo"
+                                                format="dita">&lt;MemberInfo></xref></entry>
+                                        <entry>队列成员信息列表。</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt id="membersinfo">MemberInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_art_g44_qjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.89*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="5.01*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>参数</entry>
+                                        <entry>类型</entry>
+                                        <entry>描述</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>agent</entry>
+                                        <entry>Integer</entry>
+                                        <entry>坐席号码。</entry>
+                                    </row>
+                                    <row>
+                                        <entry>agentstatus</entry>
+                                        <entry>Integer</entry>
+                                        <entry>坐席状态。<p>
+                                                <ul id="ul_fkp_lgf_h2b">
+                                                  <li>0-Unknown：未知</li>
+                                                  <li>1-Not In Use：坐席处于空闲状态</li>
+                                                  <li>2-In Use：坐席处于通话中</li>
+                                                  <li>3-Busy：未知</li>
+                                                  <li>4-Invalid：未知</li>
+                                                  <li>5-Unavailable：坐席分机未注册上</li>
+                                                  <li>6-Ringing：坐席分机正在响铃</li>
+                                                  <li>7-In Use Ringing：坐席通话中收到新来电</li>
+                                                  <li>8-On Hold：坐席保持当前通话</li>
+                                                  <li>9-Paused：坐席被暂停服务，不接收来电业务</li>
+                                                  <li>10-Warp-up time：坐席处于休息状态，不接收来电业务</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_ksn_f4d_gdb"><title>示例</title><p><b>请求示例</b></p><p>查询队列6700坐席的状态。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/queue/query_status?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "6700"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"queues": [
+		{
+			"number": "6700",
+			"queuestatus": [
+				{
+					"callercount": "0",
+					"members": [
+						{
+							"agent": "1000",
+							"agentstatus": "1"
+						},
+						{
+							"agent": "4000",
+							"agentstatus": "1"
+						}
+					]
+				}
+			]
+		}
+	]
+}</codeblock>
+            </p></section>
+    </refbody>
+</reference>

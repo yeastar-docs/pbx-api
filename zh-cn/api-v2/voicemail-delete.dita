@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="concept_aw3_sc2_j2b">
+    <title>删除语音留言</title>
+    <shortdesc>删除分机的语音留言。</shortdesc>
+    <refbody><section>
+            <title>请求地址</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/voicemail/delete?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section><section id="section_xc5_q4d_gdb">
+            <title>请求参数</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="2.89*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.59*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="8.03*"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>是否必选</entry>
+                                <entry> 类型</entry>
+                                <entry> 描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>是</entry>
+                                <entry>Integer</entry>
+                                <entry>分机号码。表示要删除哪个分机的语音留言文件。<p><b>取值范围</b>：<ul id="ul_btb_33w_rjb">
+                                            <li>单个分机号码：删除单个分机的语音留言文件。<p>例如：<codeph>"number":
+                                                  "4000"</codeph></p></li>
+                                            <li>多个分机号码：删除多个分机的语音留言文件。<p>例如：<codeph>"number":
+                                                  "4000,4001"</codeph></p></li>
+                                            <li>all：删除所有分机的语音留言文件。<p>例如：<codeph>"number":
+                                                  "all"</codeph></p></li>
+                                        </ul></p></entry>
+                            </row>
+                            <row>
+                                <entry>voicemailfile</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>语音留言的文件名称。<p><b>取值范围</b>：</p><p>
+                                        <ul id="ul_qqn_vby_pjb">
+                                            <li>单个语音文件名称：删除指定文件。<p>例如：<codeph>"voicemailfile":
+                                                  "msg0000.wav"</codeph></p></li>
+                                            <li>多个语音文件名称：删除多个文件。多个文件名称用半角逗号（,）隔开。<p>例如：<codeph>"voicemailfile":
+                                                  "msg0000.wav, msg0001.wav"</codeph></p></li>
+                                            <li>all：删除所有语音文件。<p>例如：<codeph>"number":"all"</codeph></p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>voicemailstatus</entry>
+                                <entry>是</entry>
+                                <entry>String</entry>
+                                <entry>语音留言的状态。<p><b>取值范围</b>：</p><ul id="ul_jsb_yk4_mjb">
+                                        <li>read：已读。</li>
+                                        <li>unread：未读。</li>
+                                        <li>all：忽略语音留言状态，删除所有语音留言文件。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+        <section id="section_xmy_3l4_mjb">
+            <title>响应参数</title>
+            <p>
+                <table frame="all" id="table_dxs_nsy_kjb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.38*" colsep="1" rowsep="1"/>
+                        <colspec colname="c3" colnum="3" colwidth="5.09*" colsep="1" rowsep="1"/>
+                        <thead>
+                            <row>
+                                <entry>参数</entry>
+                                <entry>类型</entry>
+                                <entry>描述</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>请求结果。<ul id="ul_vqj_qcz_pjb">
+                                        <li>Success：成功。</li>
+                                        <li>Failed：失败。</li>
+                                    </ul></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section><section id="section_ksn_f4d_gdb"
+                ><title>示例</title><p><b>请求示例</b></p><p>删除分机2023的未读语音留言文件“msg0000.wav”。</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/voicemail/delete?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "2023",
+	"voicemailfile": "msg0000.wav",
+	"voicemailstatus": "unread"
+}</codeblock>
+            </p><b>响应示例</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+    "status": "Success"
+}</codeblock>
+            </p></section></refbody>
+</reference>

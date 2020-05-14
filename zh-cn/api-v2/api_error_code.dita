@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_rbf_yq2_gdb">
+  <title>错误代码</title>
+  <refbody>
+    <table frame="all" rowsep="1" colsep="1" id="table_r2w_nsm_gdb">
+      <tgroup cols="2">
+        <colspec colname="c1" colnum="1" colwidth="1*"/>
+        <colspec colname="c2" colnum="2" colwidth="5.45*"/>
+        <thead>
+          <row>
+            <entry>错误代码</entry>
+            <entry>描述</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>10002</entry>
+            <entry>不支持 XML 数据封包格式</entry>
+          </row>
+          <row>
+            <entry>10003</entry>
+            <entry>API 不支持的请求号处理</entry>
+          </row>
+          <row>
+            <entry>10004</entry>
+            <entry>部分参数为空</entry>
+          </row>
+          <row>
+            <entry>10005</entry>
+            <entry>callid 不存在</entry>
+          </row>
+          <row>
+            <entry>10006</entry>
+            <entry>分机不存在</entry>
+          </row>
+          <row>
+            <entry>10007</entry>
+            <entry>通话不存在</entry>
+          </row>
+          <row>
+            <entry>10008</entry>
+            <entry>分机不处于空闲状态</entry>
+          </row>
+          <row>
+            <entry>10009</entry>
+            <entry>分机不允许被监听</entry>
+          </row>
+          <row>
+            <entry>10010</entry>
+            <entry>监听模式不匹配</entry>
+          </row>
+          <row>
+            <entry>10011</entry>
+            <entry>被叫号不存在</entry>
+          </row>
+          <row>
+            <entry>10012</entry>
+            <entry>IVR 不存在</entry>
+          </row>
+          <row>
+            <entry>10013</entry>
+            <entry>队列不存在</entry>
+          </row>
+          <row>
+            <entry>10014</entry>
+            <entry>响铃组不存在</entry>
+          </row>
+          <row>
+            <entry>10015</entry>
+            <entry>通话未桥接成功</entry>
+          </row>
+          <row>
+            <entry>10016</entry>
+            <entry>接受来电/拒绝来电超时</entry>
+          </row>
+          <row>
+            <entry>10017</entry>
+            <entry>配置分机失败</entry>
+          </row>
+          <row>
+            <entry>10018</entry>
+            <entry>配置 IVR 失败</entry>
+          </row>
+          <row>
+            <entry>10019</entry>
+            <entry>配置队列失败</entry>
+          </row>
+          <row>
+            <entry>10020</entry>
+            <entry>添加闹铃失败或者修改闹铃失败</entry>
+          </row>
+          <row>
+            <entry>10021</entry>
+            <entry>分机闹铃不存在</entry>
+          </row>
+          <row>
+            <entry>10022</entry>
+            <entry>分机闹铃已存在</entry>
+          </row>
+          <row>
+            <entry>10023</entry>
+            <entry>语音文件不存在</entry>
+          </row>
+          <row>
+            <entry>10024</entry>
+            <entry>分机没有呼出权限</entry>
+          </row>
+          <row>
+            <entry>10025</entry>
+            <entry>apply 太过频繁</entry>
+          </row>
+          <row product="s-series">
+            <entry>10026</entry>
+            <entry>GSM 模块名称不存在</entry>
+          </row>
+          <row product="s-series">
+            <entry>10027</entry>
+            <entry>GSM 模块正在使用或没有空闲的模块</entry>
+          </row>
+          <row>
+            <entry>10028</entry>
+            <entry>号码不能为空</entry>
+          </row>
+          <row product="s-series">
+            <entry>10029</entry>
+            <entry>短信文件打开失败</entry>
+          </row>
+          <row product="s-series">
+            <entry>10030</entry>
+            <entry>短信不能为空</entry>
+          </row>
+          <row>
+            <entry>10031</entry>
+            <entry>呼出号码不符合要求</entry>
+          </row>
+          <row>
+            <entry>10032</entry>
+            <entry>密码错误</entry>
+          </row>
+          <row>
+            <entry>10033</entry>
+            <entry>分机路由配置失败</entry>
+          </row>
+          <?oxy_comment_start author="Becky" timestamp="20191114T151008+0800" comment="从10034到10131新增"?>
+          <row product="k2 s-series">
+            <entry>10034</entry>
+            <entry>广播组添加失败</entry>
+          </row><?oxy_comment_end?>
+          <row product="k2 s-series">
+            <entry>10035</entry>
+            <entry>广播组重复添加失败</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10036</entry>
+            <entry>广播组不存在</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10037</entry>
+            <entry>广播组修改失败</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10038</entry>
+            <entry>广播组被删除不存在</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10039</entry>
+            <entry>广播组配置参数错误</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10040</entry>
+            <entry>广播组达到添加上限</entry>
+          </row>
+          <row product="k2 s-series">
+            <entry>10041</entry>
+            <entry>广播组分机成员达到添加上限</entry>
+          </row>
+          <row>
+            <entry>10042</entry>
+            <entry>外线名称错误</entry>
+          </row>
+          <row>
+            <entry>10043</entry>
+            <entry>外线名称重复</entry>
+          </row>
+          <row>
+            <entry>10044</entry>
+            <entry>外线类型错误</entry>
+          </row>
+          <row>
+            <entry>10045</entry>
+            <entry>外线主机地址错误</entry>
+          </row>
+          <row>
+            <entry>10046</entry>
+            <entry>外线端口错误</entry>
+          </row>
+          <row>
+            <entry>10047</entry>
+            <entry>外线域名错误</entry>
+          </row>
+          <row>
+            <entry>10048</entry>
+            <entry>外线用户名错误</entry>
+          </row>
+          <row>
+            <entry>10049</entry>
+            <entry>外线用户名重复</entry>
+          </row>
+          <row>
+            <entry>10050</entry>
+            <entry>外线认证名称错误</entry>
+          </row>
+          <row>
+            <entry>10051</entry>
+            <entry>外线 From 头域错误</entry>
+          </row>
+          <row>
+            <entry>10052</entry>
+            <entry>外线认证密码错误</entry>
+          </row>
+          <row>
+            <entry>10053</entry>
+            <entry>外线 DOD 配置不存在分机</entry>
+          </row>
+          <row>
+            <entry>10054</entry>
+            <entry>外线 DOD 配置不存在分机组</entry>
+          </row>
+          <row>
+            <entry>10055</entry>
+            <entry>外线 DOD 号码错误</entry>
+          </row>
+          <row>
+            <entry>10056</entry>
+            <entry>外线 DOD 号码长度错误</entry>
+          </row>
+          <row>
+            <entry>10057</entry>
+            <entry>外线 DOD 名称错误</entry>
+          </row>
+          <row>
+            <entry>10058</entry>
+            <entry>外线 DOD 名称长度错误</entry>
+          </row>
+          <row>
+            <entry>10059</entry>
+            <entry>外线 DOD 格式错误</entry>
+          </row>
+          <row>
+            <entry>10060</entry>
+            <entry>外线添加达到上限</entry>
+          </row>
+          <row>
+            <entry>10061</entry>
+            <entry>外线删除失败</entry>
+          </row>
+          <row>
+            <entry>10062</entry>
+            <entry>外线不存在</entry>
+          </row>
+          <row>
+            <entry>10063</entry>
+            <entry>呼入路由名称错误</entry>
+          </row>
+          <row>
+            <entry>10064</entry>
+            <entry>呼入路由重复</entry>
+          </row>
+          <row>
+            <entry>10065</entry>
+            <entry>呼入路由 DID 配置错误</entry>
+          </row>
+          <row>
+            <entry>10066</entry>
+            <entry>呼入路由来电匹配错误</entry>
+          </row>
+          <row>
+            <entry>10067</entry>
+            <entry>呼入路由外线不存在</entry>
+          </row>
+          <row>
+            <entry>10068</entry>
+            <entry>呼入路由目的类型错误</entry>
+          </row>
+          <row>
+            <entry>10069</entry>
+            <entry>呼入路由目的地错误</entry>
+          </row>
+          <row>
+            <entry>10070</entry>
+            <entry>呼入路由添加达到上限</entry>
+          </row>
+          <row>
+            <entry>10071</entry>
+            <entry>呼入路由删除失败</entry>
+          </row>
+          <row>
+            <entry>10072</entry>
+            <entry>呼入路由不存在</entry>
+          </row>
+          <row>
+            <entry>10073</entry>
+            <entry>呼出路由名称错误</entry>
+          </row>
+          <row>
+            <entry>10074</entry>
+            <entry>呼出路由重复</entry>
+          </row>
+          <row>
+            <entry>10075</entry>
+            <entry>呼出路由前缀错误</entry>
+          </row>
+          <row>
+            <entry>10076</entry>
+            <entry>呼出路由删除前缀数错误</entry>
+          </row>
+          <row>
+            <entry>10077</entry>
+            <entry>呼出路由前置错误</entry>
+          </row>
+          <row>
+            <entry>10078</entry>
+            <entry>呼出路由外线不存在</entry>
+          </row>
+          <row>
+            <entry>10079</entry>
+            <entry>呼出路由分机不存在</entry>
+          </row>
+          <row>
+            <entry>10080</entry>
+            <entry>呼出路由分机组不存在</entry>
+          </row>
+          <row>
+            <entry>10081</entry>
+            <entry>呼出路由添加达到上限</entry>
+          </row>
+          <row>
+            <entry>10082</entry>
+            <entry>呼出路由删除失败</entry>
+          </row>
+          <row>
+            <entry>10083</entry>
+            <entry>呼出路由不存在</entry>
+          </row>
+          <row>
+            <entry>10088</entry>
+            <entry>外线 DID 号码错误</entry>
+          </row>
+          <row>
+            <entry>10089</entry>
+            <entry>外线 DID 号码长度错误</entry>
+          </row>
+          <row>
+            <entry>10090</entry>
+            <entry>外线 DID 名称错误</entry>
+          </row>
+          <row>
+            <entry>10091</entry>
+            <entry>外线 DID 名称长度错误</entry>
+          </row>
+          <row>
+            <entry>10092</entry>
+            <entry>外线 DID 添加达到上限</entry>
+          </row>
+          <row>
+            <entry>10100</entry>
+            <entry>监听类型不存在</entry>
+          </row>
+          <row>
+            <entry>10101</entry>
+            <entry>调用参数超出该接口定义的功能范围，请检查 caller 参数和 callee
+              参数<?oxy_comment_start author="carol" timestamp="20191114T173423+0800" comment="之前描述错误，已重新描述。"?></entry><?oxy_comment_end?>
+          </row>
+          <row>
+            <entry>10102</entry>
+            <entry>会议室设置失败，因为部分参数有问题</entry>
+          </row>
+          <row>
+            <entry>10103</entry>
+            <entry>channelid 不存在</entry>
+          </row>
+          <row>
+            <entry>10104</entry>
+            <entry>提示音音量不在 0-20 范围内</entry>
+          </row>
+          <row>
+            <entry>10105</entry>
+            <entry>咨询转操作类型不存在</entry>
+          </row>
+          <row>
+            <entry>10106</entry>
+            <entry>不存在会话中的会议室</entry>
+          </row>
+          <row>
+            <entry>10107</entry>
+            <entry>未咨询转前，不能执行咨询操作</entry>
+          </row>
+          <row>
+            <entry>10110</entry>
+            <entry>会议室号不存在</entry>
+          </row>
+          <row>
+            <entry>10112</entry>
+            <entry>成员都不在会议中</entry>
+          </row>
+          <row>
+            <entry>10113</entry>
+            <entry>会议室号已存在</entry>
+          </row>
+          <row>
+            <entry>10115</entry>
+            <entry>值必须为数字和字母</entry>
+          </row>
+          <row>
+            <entry>10116</entry>
+            <entry>系统连接 AMI 出错</entry>
+          </row>
+          <row>
+            <entry>10117</entry>
+            <entry>临时会议室号不能在固定的会议室中</entry>
+          </row>
+          <row>
+            <entry>10118</entry>
+            <entry>提示音音量不是纯数字</entry>
+          </row>
+          <row>
+            <entry>10119</entry>
+            <entry>管理员成员不存在</entry>
+          </row>
+          <row>
+            <entry>10120</entry>
+            <entry>会议室成员数量达到上限</entry>
+          </row>
+          <row>
+            <entry>10121</entry>
+            <entry>会议室名字只能为数字和字母</entry>
+          </row>
+          <row>
+            <entry>10122</entry>
+            <entry>会议室创建时，呼叫管理员失败</entry>
+          </row>
+          <row>
+            <entry>10123</entry>
+            <entry>会议室 id 不存在</entry>
+          </row>
+          <row>
+            <entry>10124</entry>
+            <entry>会议室数量达到上限</entry>
+          </row>
+          <row>
+            <entry>10125</entry>
+            <entry>会议室静音失败</entry>
+          </row>
+          <row>
+            <entry>10126</entry>
+            <entry>会议室解除静音失败</entry>
+          </row>
+          <row>
+            <entry>10127</entry>
+            <entry>会议室踢出成员失败</entry>
+          </row>
+          <row>
+            <entry>10128</entry>
+            <entry>会议室 id 只能为数字和字母</entry>
+          </row>
+          <row>
+            <entry>10129</entry>
+            <entry>没有权限进行邀请</entry>
+          </row>
+          <row>
+            <entry>10130</entry>
+            <entry>外线不能进行咨询转</entry>
+          </row>
+          <row>
+            <entry>10131</entry>
+            <entry>号码超出范围</entry>
+          </row>
+          <row>
+            <entry>20000</entry>
+            <entry>只支持 JSON 的格式</entry>
+          </row>
+          <row>
+            <entry>20001</entry>
+            <entry>只支持 POST 的请求</entry>
+          </row>
+          <row>
+            <entry>20002</entry>
+            <entry>用户登录失败（被锁）</entry>
+          </row>
+          <row>
+            <entry>20003</entry>
+            <entry>用户登录失败（无效的用户名或密码）</entry>
+          </row>
+          <row>
+            <entry>20004</entry>
+            <entry>无此类 Token</entry>
+          </row>
+          <row>
+            <entry>20005</entry>
+            <entry>Token 为空</entry>
+          </row>
+          <row>
+            <entry>20006</entry>
+            <entry>Token 超时</entry>
+          </row>
+          <row>
+            <entry>20007</entry>
+            <entry>数据为空</entry>
+          </row>
+          <row>
+            <entry>20008</entry>
+            <entry>端口错误</entry>
+          </row>
+          <row>
+            <entry>20009</entry>
+            <entry>请求号为空</entry>
+          </row>
+          <row>
+            <entry>20010</entry>
+            <entry>请求发送给 apisrv 处理失败</entry>
+          </row>
+          <row>
+            <entry>20011</entry>
+            <entry>HeartBeat 请求配置失败</entry>
+          </row>
+          <row>
+            <entry>20012</entry>
+            <entry>录音文件随机串无效</entry>
+          </row>
+          <row>
+            <entry>20013</entry>
+            <entry>验证码错误</entry>
+          </row>
+          <row>
+            <entry>20014</entry>
+            <entry>录音文件不存在</entry>
+          </row>
+          <row>
+            <entry>20015</entry>
+            <entry>allowedip 错误</entry>
+          </row>
+          <row>
+            <entry>20016</entry>
+            <entry>语音留言状态参数有误</entry>
+          </row>
+          <row>
+            <entry>20017</entry>
+            <entry>语音留言随机串无效</entry>
+          </row>
+          <row>
+            <entry>20018</entry>
+            <entry>语音文件不存在</entry>
+          </row>
+          <row>
+            <entry>20019</entry>
+            <entry>CDR 时间格式错误</entry>
+          </row>
+          <row>
+            <entry>20020</entry>
+            <entry>CDR 随机串无效</entry>
+          </row>
+          <row>
+            <entry>20021</entry>
+            <entry>CDR 不存在</entry>
+          </row>
+          <row>
+            <entry>30001</entry>
+            <entry>JSON 申请空间失败</entry>
+          </row>
+          <?oxy_comment_start author="Sunmy" timestamp="20200403T102439+0800" comment="【【S系列】30.13.0.23+city+API没有推送】https://www.tapd.cn/32809406/bugtrace/bugs/view?bug_id=1132809406001022726"?>
+          <row>
+            <entry>30003</entry>
+            <entry>apisrv进程未启动</entry>
+          </row><?oxy_comment_end?>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

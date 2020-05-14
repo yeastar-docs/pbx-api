@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_wrf_jy2_gdb">
+  <title>Control Inbound Calls</title>
+  <prolog>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_lsp_d5t_gdb">
+      <p>If the trunk's API has <uicontrol>Inbound Call Answering Control</uicontrol> enabled, then
+        whenever there's a call to this trunk, the PBX will send the API report message of this
+        event—the invite event—to the application server. The application server will have a set
+        period of time (10 seconds by default and unchangable) to control the inbound call.</p>
+    </section>
+    <section id="section_rj2_qj2_hdb">
+      <p><b>Users on the 3rd-party application can accept or refuse the inbound calls</b><ul
+          id="ul_emv_dm2_hdb">
+          <li><b>Accept</b>: If the application server wants the PBX to continue handle the call,
+            then invoke the <xref href="api_accept_inbound_calls.dita#reference_gtw_4m2_hdb">Accept
+              API</xref>, and the call will be handled by the PBX accordingly.</li>
+          <li><b>Refuse</b>: If the application server wants the PBX to refuse the call (e.g.
+            because the number is blacklisted), then invoke the <xref
+              href="api_refuse_inbound_calls.dita#reference_nk3_qm2_hdb">Refuse API</xref>, and the
+            PBX will hang up the call directly.</li>
+        </ul></p>
+    </section>
+    <section id="section_vps_rj2_hdb">
+      <title>When Times Out</title>
+      <p>If the application server does not invoke any of the above two APIs in the set period of
+        time, by default, the call will be accepted by the PBX and go to the relevant
+        destination.</p>
+    </section>
+  </refbody>
+</reference>

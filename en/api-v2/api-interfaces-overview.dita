@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="topic_l4v_hrc_gdb">
+  <title>API Interfaces &amp; Events Overview</title>
+  <shortdesc>In this topic, we provide <ph keyref="product_name"/> API interfaces list and events
+    list.</shortdesc>
+  <refbody>
+    <section id="section_tfl_lwg_mjb">
+      <title>API authentication</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_x5k_nwg_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.66*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="login.dita#reference_blb_5ld_gdb">login</xref></entry>
+                <entry>Get API token.</entry>
+              </row>
+              <row>
+                <entry><xref href="token-refresh.dita#reference_dns_psf_hdb"
+                  >token/refresh</xref></entry>
+                <entry>Refresh API token.</entry>
+              </row>
+              <row>
+                <entry><xref href="heartbeat.dita#reference_ovf_3mg_h2b">heartbeat</xref></entry>
+                <entry>Extend token validity.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_wxn_ywj_wgb">
+      <title>System</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ytt_tck_wgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="3.01*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="deviceinfo-query.dita">deviceinfo/query</xref></entry>
+                <entry>Query PBX information.</entry>
+              </row>
+              <row>
+                <entry><xref href="logout.dita#reference_chw_zk2_gdb">logout</xref></entry>
+                <entry>Disconnect the application server and <ph keyref="product_name"/>
+                  API.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_p1c_bx2_xgb">
+      <title>Extension</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.41*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="extension-list.dita#reference_ibj_vr2_gdb"
+                  >extension/list</xref></entry>
+                <entry>Query extension list.</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-query.dita#reference_oc5_xr2_gdb"
+                    >extension/query</xref></entry>
+                <entry>Query the detailed settings of an extension, multiple extensions, or all
+                  extensions.</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-add.dita#extension-add">extension/add</xref></entry>
+                <entry>Add an extension.</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-update.dita#reference_g3t_zr2_gdb"
+                    >extension/update</xref></entry>
+                <entry>Edit extension settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="extension-delete.dita#extension-delete"
+                  >extension/delete</xref></entry>
+                <entry>Delete an extension.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xc5_dx2_xgb">
+      <title>Trunk</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.34*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="trunklist-query.dita"
+                  >trunk/list</xref></entry>
+                <entry>Query trunk list.</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-query.dita#reference_j5k_vdg_vgb"
+                    >trunk/query_siptrunk</xref></entry>
+                <entry>Query the detailed settings of a SIP trunk, multiple SIP trunks, or all SIP
+                  trunks.</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-add.dita#reference_oxq_zdg_vgb"
+                    >trunk/add_siptrunk</xref></entry>
+                <entry>Add a SIP trunk.</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-update.dita#reference_nt2_b2g_vgb"
+                    >trunk/update_siptrunk</xref></entry>
+                <entry>Edit SIP trunk settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="siptrunk-delete.dita#reference_s3v_g2g_vgb"
+                    >trunk/delete_siptrunk</xref></entry>
+                <entry>Delete a SIP trunk.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_s2r_fx2_xgb">
+      <title>Inbound Rroute </title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="inroute-query.dita#reference_fpw_p2g_vgb"
+                  >inroute/query</xref></entry>
+                <entry>Query the detailed settings of an inbound route, multiple inbound routes, or
+                  all inbound routes.</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-add.dita#reference_umf_t2g_vgb"
+                  >inroute/add</xref></entry>
+                <entry>Add an inbound route.</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-update.dita#reference_pvv_52g_vgb"
+                  >inroute/update</xref></entry>
+                <entry>Edit inbound route settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="inroute-delete.dita#reference_m5h_w2g_vgb"
+                  >inroute/delete</xref></entry>
+                <entry>Delete an inbound route.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_ap1_3x2_xgb">
+      <title>Outbound Route</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.07*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="outroute-query.dita#reference_rdd_z2g_vgb"
+                  >outroute/query</xref></entry>
+                <entry>Query the detailed settings of an outbound route, multiple outbound routes,
+                  or all outbound routes.</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-add.dita#reference_s32_bfg_vgb"
+                  >outroute/add</xref></entry>
+                <entry>Add an outbound route.</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-update.dita#reference_rzb_dfg_vgb"
+                    >outroute/update</xref></entry>
+                <entry>Edit outbound route settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="outroute-delete.dita"
+                    >outroute/delete</xref></entry>
+                <entry>Delete an outbound route.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_wlk_3x2_xgb">
+      <title>IVR</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="ivr-query.dita#reference_t3n_2s2_gdb">ivr/query</xref></entry>
+                <entry>Query the detailed settings of an IVR, multiple IVRs, or all IVRs.</entry>
+              </row>
+              <row>
+                <entry><xref href="ivr-update.dita#reference_yyz_gs2_gdb">ivr/update</xref></entry>
+                <entry>Edit IVR settings.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_xbx_lx2_xgb">
+      <title>Queue</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.82*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="queue-query.dita#reference_mr1_js2_gdb"
+                  >queue/query</xref></entry>
+                <entry>Query the detailed settings of a queue, multiple queues, or all
+                  queues.</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-update.dita#reference_jzx_bt2_gdb"
+                  >queue/update</xref></entry>
+                <entry>Edit queue settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="queuestatus-query.dita">queue/query_status</xref></entry>
+                <entry>Query agent status in a queue.</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"
+                    >queue/add_dynamicagent</xref></entry>
+                <entry>Dynamic agents log in a queue.</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-del-dynamicagent.dita#reference_a3w_ft2_gdb"
+                    >queue/delete_dynamicagent</xref></entry>
+                <entry>Dynamic agents log out of a queue.</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-pause-agent.dita#reference_o5r_whf_h2b"
+                    >queue/pause_agent</xref></entry>
+                <entry>Pause agents' service.</entry>
+              </row>
+              <row>
+                <entry><xref href="queue-unpause-agent.dita#reference_gs5_nqf_h2b"
+                    >queue/unpause_agent</xref></entry>
+                <entry>Resume agents' service.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_um1_rn1_4jb">
+      <title>Conference</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_td1_sn1_4jb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.75*"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="conference-query.dita#conference-query"
+                  >conference/query</xref></entry>
+                <entry>Query the detailed settings of conferences that are created on the PBX web
+                  interface.</entry>
+              </row>
+              <row>
+                <entry><xref href="instant-conference-query.dita#instant-conference-query"
+                    >instant_conference/query</xref></entry>
+                <entry>Query the detailed settings of instant conferences.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-query-in-session.dita#conference-query-in-session"
+                    >conference/query_in_session</xref></entry>
+                <entry>Query the detailed settings of in-session conferences.</entry>
+              </row>
+              <row>
+                <entry><xref href="instant-conference-create.dita#instant-conference-create"
+                    >instant_conference/start</xref></entry>
+                <entry>Start an instant conference.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-update.dita#conference-update"
+                    >conference/update</xref></entry>
+                <entry>Edit settings of conferences that are created on the PBX web
+                  interface.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-add-member.dita#conference-add-member"
+                    >conference/add_member</xref></entry>
+                <entry>Invite members to join a conference.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-kick-member.dita#conference-kick-member"
+                    >conference/kick_member</xref></entry>
+                <entry>Kick members out of a conference.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-mute.dita#conference-mute-and-conference-unmute"
+                    >conference/mute_member</xref></entry>
+                <entry>Mute conference members.</entry>
+              </row>
+              <row>
+                <entry><xref href="conference-unmute.dita#conference-unmute"
+                    >conference/unmute_member</xref></entry>
+                <entry>Unmute conference members.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_inp_nx2_xgb" product="k2 s-series">
+      <title>Paginggroup </title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="paginggrouplist-query.dita#reference_shx_bxf_vgb"
+                    >paginggrouplist/query</xref></entry>
+                <entry>Query paging group list.</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-query.dita#reference_wkv_4xf_vgb"
+                    >paginggroup/query</xref></entry>
+                <entry>Query the detailed settings of a paging group, multiple paging groups, or all
+                  paging groups.</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-add.dita#reference_ggs_txf_vgb"
+                    >paginggroup/add</xref></entry>
+                <entry>Add a paging group.</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-update.dita#reference_w3r_wxf_vgb"
+                    >paginggroup/update</xref></entry>
+                <entry>Edit paging group settings.</entry>
+              </row>
+              <row>
+                <entry><xref href="paginggroup-delete.dita#reference_z1j_yxf_vgb"
+                    >paginggroup/delete</xref></entry>
+                <entry>Delete a paging group.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_v3h_rx2_xgb">
+      <title>Voicemail</title>
+      <p>
+        <table id="table_jmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.37*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="voicemail-query.dita#concept_klh_ysd_j2b"
+                  >voicemail/query</xref></entry>
+                <entry>Query the voicemails of an extension, multiple extensions, or all
+                  extensions.</entry>
+              </row>
+              <row>
+                <entry><xref href="voicemail-delete.dita#concept_aw3_sc2_j2b"
+                    >voicemail/delete</xref></entry>
+                <entry>Delete extension voicemails.</entry>
+              </row>
+              <row>
+                <entry><xref href="voicemail-get-random.dita#concept_gsn_cm2_j2b"
+                    >voicemail/get_random</xref></entry>
+                <entry>Get the random string to download a voicemail.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_od3_sx2_xgb">
+      <title>CDR and recording </title>
+      <p>
+        <table id="table_kmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.25*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="recording-get-random.dita#topic_bb1_3q2_gdb"
+                    >recording/get_random</xref></entry>
+                <entry>Get the random string to download a recording.</entry>
+              </row>
+              <row>
+                <entry><xref href="cdr-get-random.dita#reference_vpd_43g_vgb"
+                  >cdr/get_random</xref></entry>
+                <entry>Get the random string to download a CDR.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_r4z_tx2_xgb">
+      <title>Hotel</title>
+      <p>
+        <table id="table_lmh_5zb_mjb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.06*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="wakeupcall-create.dita#reference_v5n_lz2_gdb"
+                    >wakeupcall/create</xref></entry>
+                <entry>Add a wake-up call.</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-query.dita#reference_wqf_nz2_gdb"
+                    >wakeupcall/query</xref></entry>
+                <entry>Query a wake-up call.</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-update.dita#reference_ymm_pz2_gdb"
+                    >wakeupcall/update</xref></entry>
+                <entry>Edit a wake-up call.</entry>
+              </row>
+              <row>
+                <entry><xref href="wakeupcall-delete.dita#reference_lnm_rz2_gdb"
+                    >wakeupcall/delete</xref></entry>
+                <entry>Delete a wake-up call.</entry>
+              </row>
+              <row product="s-series">
+                <entry><xref href="hotel-checkout.dita#reference_xpz_pyp_mfb"
+                  >hotel/checkout</xref></entry>
+                <entry>Hotel checkout.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section><section id="section_g1c_4x2_xgb">
+      <title>Call control</title>
+      <p>
+        <table>
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.84*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>API Endpoint</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="call-query.dita#reference_a5v_rt2_gdb">call/query</xref></entry>
+                <entry>Query a specified call or query calls by call types.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-dial.dita#reference_b2r_p3g_jjb">call/dial</xref></entry>
+                <entry>Make a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-accept-inbound.dita#reference_gtw_4m2_hdb"
+                    >call/accept_inbound</xref></entry>
+                <entry>Answer a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-refuse-inbound.dita#reference_nk3_qm2_hdb"
+                    >call/refuse_inbound</xref></entry>
+                <entry>Reject a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-listen.dita#reference_lyv_y3g_jjb"
+                  >call/listen</xref></entry>
+                <entry>Monitor a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-hold.dita#reference_cxb_bjg_jjb">call/hold</xref></entry>
+                <entry>Hold a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-unhold.dita#reference_dz3_cjg_jjb"
+                  >call/unhold</xref></entry>
+                <entry>Resume a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-mute.dita#reference_lw1_2jg_jjb">call/mute</xref></entry>
+                <entry>Mute a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-unmute.dita#reference_kzd_fjg_jjb"
+                  >call/unmute</xref></entry>
+                <entry>Unmute a call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-transfer.dita#reference_kz1_lhg_vgb"
+                  >call/transfer</xref></entry>
+                <entry>Call transfer (blind transfer).</entry>
+              </row>
+              <row>
+                <entry><xref href="call-attended-transfer.dita#reference_r1x_4jg_jjb"
+                    >call/attended_transfer</xref></entry>
+                <entry>Call transfer (attended transfer).</entry>
+              </row>
+              <row>
+                <entry><xref href="call-add-member.dita#reference_qyz_zjg_jjb"
+                    >call/add_member</xref></entry>
+                <entry>During a call, invite a member to join the call.</entry>
+              </row>
+              <row>
+                <entry><xref href="call-playprompt.dita#reference_fkh_jhg_jjb"
+                    >call/playprompt</xref></entry>
+                <entry>Play audio files.</entry>
+              </row>
+              <row>
+                <entry><xref href="hangup-paging-music.dita#reference_m1p_1kt_vgb"
+                    >paginggroup/hangup_music</xref></entry>
+                <entry>Stop playing audio prompt to a paging group.</entry>
+              </row>
+              <row product="s-series">
+                <entry><xref href="sms-send.dita#reference_tkh_zk2_hdb">sms/send</xref></entry>
+                <entry>Send SMS.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_wqx_mv1_4jb">
+      <title>Events type</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_gcz_nv1_4jb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.17*"/>
+            <thead>
+              <row>
+                <entry>Event</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="event-BootUp.dita#reference_lgt_lcf_gdb">BootUp</xref></entry>
+                <entry>System bootup event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-ConfigChange.dita#reference_oyn_ncf_gdb"
+                    >ConfigChange</xref></entry>
+                <entry>Configuration change event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-Invite.dita#reference_yl2_dw3_gdb">Invite</xref></entry>
+                <entry>
+                  <p>If <xref
+                      href="pbx-api-settings.dita#topic_itj_qhf_jjb/Control-Inbound-Call-Answering"
+                      >Control Inbound Call Answering</xref> is enabled, PBX would send an Invite
+                    report to the application server when receiving an inbound call on PBX. The
+                    application server has 10 seconds to decide whether to answer the call or
+                    not.</p>
+                </entry>
+              </row>
+              <row>
+                <entry><xref href="event-Incoming.dita#reference_gkj_3w3_gdb"
+                  >Incoming</xref></entry>
+                <entry>If <xref
+                    href="pbx-api-settings.dita#topic_itj_qhf_jjb/Control-Inbound-Call-Answering"
+                    >Control Inbound Call Answering</xref> is enabled, PBX would send an Incoming
+                  report to the application server when an inbound call to PBX is accepted. The
+                  application server has 10 seconds to control destination of the incoming call.<p>
+                    <note>The application server calls the <xref
+                        href="call-transfer.dita#reference_kz1_lhg_vgb">call/transfer</xref>
+                      interface to control the destination of inbound calls.</note>
+                  </p></entry>
+              </row>
+              <row>
+                <entry><xref href="event-ExtensionStatus.dita#reference_c12_pcf_gdb"
+                    >ExtensionStatus</xref></entry>
+                <entry>Event of extension status change.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallStatus.dita#reference_lv2_jfh_jjb"
+                  >CallStatus</xref></entry>
+                <entry>Event of call status change.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-NewCdr.dita#reference_imy_gw3_gdb">NewCdr</xref></entry>
+                <entry>New CDR event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallTransfer.dita#reference_cpy_zv3_gdb"
+                    >CallTransfer</xref></entry>
+                <entry>Call transfer event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallForward.dita#reference_qyn_qw5_jjb"
+                  >CallForward</xref></entry>
+                <entry>Call forwarding event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-CallFailed.dita#reference_bpk_bw3_gdb"
+                  >CallFailed</xref></entry>
+                <entry>Call failed event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-DTMF.dita#reference_zcj_fw3_gdb">DTMF</xref></entry>
+                <entry>DTMF event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-PlayPromptEnd.dita#reference_hdx_kw3_gdb"
+                    >PlayPromptEnd</xref></entry>
+                <entry>Event of prompt play end.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-satisfaction.dita#reference_qng_qw3_gdb"
+                    >satisfaction</xref></entry>
+                <entry>Satisfaction survey event.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-sms-send.dita#event-send-sms">sms-send</xref></entry>
+                <entry>Event of SMS sent status.</entry>
+              </row>
+              <row>
+                <entry><xref href="event-conference-status.dita#event-conference-status"
+                    >ConferenceStatus</xref></entry>
+                <entry>Event of conference members change.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section></refbody>
+</reference>

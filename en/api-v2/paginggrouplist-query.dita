@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_shx_bxf_vgb">
+    <title>Query Paging Group List</title>
+    <shortdesc>Query paging groups added on <ph keyref="product_name"/>.</shortdesc>
+    <refbody>
+        <section id="section_rfv_pxh_vgb">
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/paginggrouplist/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section>
+        <section id="section_sfv_pxh_vgb">
+            <title>Request parameters</title>
+            <p>No request parameters. Send the request directly to query paging group list.</p>
+        </section>
+        <section id="section_tfv_pxh_vgb">
+            <title>Response parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ufv_pxh_vgb">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1.54*"/>
+                        <colspec colname="c4" colnum="3" colwidth="2.9*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>paginggrouplist</entry>
+                                <entry>Array <xref href="#reference_shx_bxf_vgb/PaginggroupInfo"
+                                        format="dita">&lt;PaginggroupInfo></xref></entry>
+                                <entry>Paging group information.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="PaginggroupInfo">PaginggroupInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_blk_pqs_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.13*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="3.53*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry> Type</entry>
+                                        <entry> Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Paging group number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>name</entry>
+                                        <entry>String</entry>
+                                        <entry>Paging group name.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section>
+            <title>Examples</title>
+            <p><b>Request example</b></p>
+            <p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/paginggrouplist/query?token=277ac400357b509b4a587ff2157f7ad5
+Content-Type:application/json; charset=utf-8
+Host: 192.168.5.150</codeblock>
+            </p>
+            <p><b>Response example</b></p>
+            <p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"paginggrouplist": [
+		{
+			"number": "6300",
+			"name": "6300"
+		}
+	]
+}</codeblock>
+            </p>
+        </section>
+    </refbody>
+</reference>

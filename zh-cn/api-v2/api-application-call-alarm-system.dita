@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-application-call-alarm-system">
+    <title>IVR 预警系统应用方案</title>
+    <shortdesc>通过 API 对接 <ph keyref="product_name"/> 和预警系统，提供语音预警播报。</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>应用场景</dt>
+                <dd>预警系统常用于工业生产、气象灾害监测、消防等，是安全生产、防灾减灾、运营管理中的重要预防手段之一。预警信息传递渠道的单一性，往往导致险情预报时，不能够快速、及时、有效地传达警情信息。<ph
+                        keyref="product_name"/> 提供的 API 接口，可以将预警系统与 PBX 结合。当监测对象达到预警值时，可以通过 IVR
+                    自动呼叫相关人员，快速、有效地传达警报。相关人员可以根据不同的预警等级，联系不同的部门，进行联动防控。</dd>
+            </dlentry>
+        </dl>
+        <section id="section_edl_w25_xjb">
+            <title>IVR 拨打外线</title>
+            <p>
+                <ol id="ol_zlp_mbv_2lb">
+                    <li>预警系统向 PBX API 接口发送 IVR 外呼请求。</li>
+                    <li>PBX 收到请求，使用 IVR 呼叫相关人员。</li>
+                    <li>相关人员听到报警信息后，可以根据 IVR 语音提示，按相应的按键呼叫应急中心坐席或其它人员。</li>
+                </ol>
+            </p>
+            <p>对接接口请参阅 <xref href="call-dial.dita">IVR 拨打外线</xref>。</p><p><image
+                    href="../Images/pbx-api/api-alarm-system.png" width="650"
+                    id="image_lw3_m2v_2lb"/></p>
+        </section>
+        <section id="section_x4p_mbv_2lb">
+            <title>IVR 预警状态报告</title>
+            <p>PBX 向预警系统实时发送当前呼叫的状态。<ul id="ul_onp_pqt_2lb">
+                    <li>当呼出的通话被应答时，PBX 会向预警系统发送<xref href="event-CallStatus.dita"
+                            >“通话被应答”报告</xref>。<note>如果是模拟外线，呼出的通话默认都是被应答的，如果要区分“应答”或“未被应答”，需要模拟外线开通应答反极信号，并且在
+                            PBX 上开通“应答反极检测“。如果要准确的返回是否被应答，建议使用 E1 或 IMS 线路。</note></li>
+                    <li>PBX 给分机号码或外线号码播放提示音结束后，会发送<xref href="event-PlayPromptEnd.dita"
+                            >“语音播放结束”报告</xref>。通过记录语音播放结束时间，可以了解相关人员是否完整的听完了语音。</li>
+                    <li>当一通通话结束后，PBX 向预警系统实时发送 <xref href="event-NewCdr.dita">通话记录</xref>
+                        报告（CDR）。通过此报告，可以记录警情发生时间和频率。</li>
+                </ul></p>
+        </section>
+        <section id="section_ll4_lrt_xjb">
+            <title>IVR 设置</title>
+            <p>
+                <ol>
+                    <li>上传 IVR 播放的语音。<p>
+                        <ul id="ul_rvk_rst_xjb">
+                            <li>通过 PBX 上传 IVR 语音。<p>登录 PBX 网页界面，进入 <menucascade>
+                                <uicontrol>配置</uicontrol>
+                                <uicontrol> PBX</uicontrol>
+                                <uicontrol> 提示音</uicontrol>
+                                <uicontrol> 自定义提示音</uicontrol>
+                            </menucascade>，上传自定义的提示音。</p><p><image
+                                href="../Images/pbx-api/api-call-alarm-IVR.jpg"
+                                id="image_j34_lst_xjb" width="650"/></p></li>
+                            <li>
+                                <p>通过 FTP 上传录音文件。</p>
+                                <p>如下图所示，FTP
+                                    路径：/ysapps/pbxcenter/var/lib/asterisk/sounds/record/。</p>
+                                <p><image
+                                    href="../Images/pbx-api/api-call-alarm-IVR-FTP-upload.jpg"
+                                    id="image_b4l_k25_xjb"/></p>
+                            </li>
+                        </ul>
+                    </p></li>
+                    <li>设置 IVR。<p>进入 <menucascade>
+                        <uicontrol>配置</uicontrol>
+                        <uicontrol> PBX</uicontrol>
+                        <uicontrol> 呼叫功能</uicontrol>
+                        <uicontrol> IVR</uicontrol>
+                    </menucascade>，点击 <uicontrol>添加</uicontrol> 创建 IVR，选择提示音。</p><p><image
+                        href="../Images/pbx-api/api-call-alarm-create-IVR.jpg"
+                        id="image_ew2_q25_xjb" width="650"/></p></li>
+                    <li>设置按键事件。<p>用户接听后可以根据预警级别的不同，通过按键转给相应部门。</p><p><image
+                        href="../Images/pbx-api/api-call-alarm-IVR-key.jpg"
+                        id="image_h2s_525_xjb" width="650"/></p></li>
+                </ol>
+            </p>
+        </section>
+    </body>
+</topic>

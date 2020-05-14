@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_l4v_hrc_gdb">
+  <title>API Overview</title>
+  <shortdesc><ph keyref="product_name"/> provides API interfaces for you to integrate a 3rd party
+    application server. After the integration, you can achieve variable call features on the 3rd
+    party application server and the PBX will automatically send API reports to the 3rd party
+    application server.</shortdesc>
+  <body>
+    <section id="section_oxp_ds1_b2b">
+      <title>Compatibility</title>
+      <p product="cloudpbx">Yeastar Cloud PBX firmware version: 81.4.0.8 or later.</p>
+      <p product="s-series">Yeastar S50, S100, S300 firmware version 30.5.0.30 or later.</p>
+    </section>
+    <section id="section_wxn_ywj_wgb">
+      <title>System </title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ytt_tck_wgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.57*"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_pbx_information.dita"/></entry>
+                <entry> /api/v1.1.0/deviceinfo/query?token=<varname>{token}</varname>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_p1c_bx2_xgb">
+      <title>Extension</title>
+      <p>
+        <table id="table_upt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.41*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_extension_list.dita"/></entry>
+                <entry>/api/v1.1.0/extensionlist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_extension_settings.dita"/></entry>
+                <entry>/api/v1.1.0/extension/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_an_extension.dita"/></entry>
+                <entry>/api/v1.1.0/extension/update?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_xc5_dx2_xgb">
+      <title>Trunk</title>
+      <p>
+        <table id="table_vpt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.04*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_trunk_list.dita"/></entry>
+                <entry>/api/v1.1.0/trunklist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="query-sip-trunk-settings.dita"/></entry>
+                <entry>/api/v1.1.0/siptrunk/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-sip-trunk.dita"/></entry>
+                <entry>/api/v1.1.0/siptrunk/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-sip-trunk.dita"/></entry>
+                <entry>/api/v1.1.0/siptrunk/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-sip-trunk.dita"/></entry>
+                <entry>/api/v1.1.0/siptrunk/delete?token=<varname>｛token｝</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_s2r_fx2_xgb">
+      <title>Inbound Route</title>
+      <p>
+        <table id="table_wpt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.94*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-inbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/inroute/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-inbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/inroute/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-inbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/inroute/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-inbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/inroute/delete?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ap1_3x2_xgb">
+      <title>Outbound Route</title>
+      <p>
+        <table id="table_xpt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.62*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-outbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/outroute/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-outbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/outroute/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-outbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/outroute/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-outbound-route.dita"/></entry>
+                <entry>/api/v1.1.0/outroute/delete?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_wlk_3x2_xgb">
+      <title>IVR</title>
+      <p>
+        <table id="table_ypt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_ivr_settings.dita"/></entry>
+                <entry>/api/v1.1.0/ivr/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_an_ivr.dita"/></entry>
+                <entry>/api/v1.1.0/ivr/update?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_xbx_lx2_xgb">
+      <title>Queue</title>
+      <p>
+        <table id="table_zpt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.99*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_queue_settings.dita"/></entry>
+                <entry>/api/v1.1.0/queue/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modify_a_queue.dita"/></entry>
+                <entry>/api/v1.1.0/queue/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_queue_status.dita"/></entry>
+                <entry>/api/v1.1.0/queuestatus/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_log_in_a_queue.dita"/></entry>
+                <entry>/api/v1.1.0/queue/add_dynamicagent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_log_out_a_queue.dita"/></entry>
+                <entry>/api/v1.1.0/queue/del_dynamicagent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_pause_an_agent.dita"/></entry>
+                <entry>/api/v1.1.0/queue/pause_agent?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_resume_an_agent.dita"/></entry>
+                <entry>/api/v1.1.0/queue/unpause_agent?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_inp_nx2_xgb" product="k2 s-series">
+      <title>Paging Group</title>
+      <p>
+        <table id="table_aqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Paging Group</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="query-paging-group-list.dita"/></entry>
+                <entry>/api/v1.1.0/paginggrouplist/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="query-paging-group-settings.dita"/></entry>
+                <entry>/api/v1.1.0/paginggroup/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="add-paging-group.dita"/></entry>
+                <entry>/api/v1.1.0/paginggroup/add?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="edit-paging-group.dita"/></entry>
+                <entry>/api/v1.1.0/paginggroup/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="delete-paging-group.dita"/></entry>
+                <entry>/api/v1.1.0/paginggroup/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="call-to-paging-group.dita"/></entry>
+                <entry>/api/v1.1.0/extension/dial_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="hangup-paging-music.dita"/></entry>
+                <entry>/api/v1.1.0/paginggroup/hangup_music?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_g1c_4x2_xgb">
+      <title>Call Feature</title>
+      <p>
+        <table id="table_bqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="1.9*" rowsep="1" colsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_inbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/inbound/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_outbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/outbound/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_make_an_internal_call.dita"/></entry>
+                <entry>/api/v1.1.0/extension/dial_extension?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_make_an_outbound_call.dita"/></entry>
+                <entry>/api/v1.1.0/extension/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_extension_call.dita"/></entry>
+                <entry>/api/v1.1.0/extension/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_inbound_call.dita"/></entry>
+                <entry>/api/v1.1.0/inbound/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_disconnect_an_outbound_call.dita"/></entry>
+                <entry>/api/v1.1.0/outbound/hangup?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_hold_a_call.dita"/></entry>
+                <entry>/api/v1.1.0/extension/hold?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_resume_a_held_call.dita"/></entry>
+                <entry>/api/v1.1.0/extension/unhold?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_mute_an_extension.dita"/></entry>
+                <entry>/api/v1.1.0/extension/mute?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_unmute_an_extension.dita"/></entry>
+                <entry>/api/v1.1.0/extension/unmute?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_listen_monitor.dita"/></entry>
+                <entry>/api/v1.1.0/extension/listen?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_whisper_monitor.dita"/></entry>
+                <entry>/api/v1.1.0/extension/whisper?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_barge-in_monitor.dita"/></entry>
+                <entry>/api/v1.1.0/extension/barge?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="call-transfer.dita"/></entry>
+                <entry>/api/v1.1.0/calltransfer?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_transfer_inbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/inbound/transfer_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_transfer_outbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/outbound/transfer_number?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_call_an_extension_via_ivr.dita"/></entry>
+                <entry>/api/v1.1.0/ivr/dial_extension?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_call_an_external_number_via_ivr.dita"/></entry>
+                <entry>/api/v1.1.0/ivr/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_auto_dial_queue.dita"/></entry>
+                <entry>/api/v1.1.0/queue/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_auto_dial_ringgroup.dita"/></entry>
+                <entry>/api/v1.1.0/ringgroup/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_call_back.dita"/></entry>
+                <entry>/api/v1.1.0/outbound/dial_outbound?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_accept_inbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/inbound/accept?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_refuse_inbound_calls.dita"/></entry>
+                <entry>/api/v1.1.0/inbound/refuse?token=<varname>{token}</varname></entry>
+              </row>
+              <row product="k2 s-series">
+                <entry><xref href="api_send_sms_messages.dita"/></entry>
+                <entry>/api/v1.1.0/sms/send?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_gxk_px2_xgb">
+      <title>Play Prompts</title>
+      <p>
+        <table id="table_cqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.77*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_play_prompt_to_extension.dita"/></entry>
+                <entry>/api/v1.1.0/extension/playprompt?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_play_prompt_to_external_number.dita"/></entry>
+                <entry>/api/v1.1.0/outbound/playprompt?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_v3h_rx2_xgb">
+      <title>Voicemail</title>
+      <p>
+        <table id="table_dqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.12*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_query_voicemail.dita"/></entry>
+                <entry>/api/v1.1.0/voicemail/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_delete_voicemail.dita"/></entry>
+                <entry>/api/v1.1.0/voicemail/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_download_voicemail.dita"/></entry>
+                <entry>/api/v1.1.0/voicemail/get_random?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_od3_sx2_xgb">
+      <title>Recording and CDR</title>
+      <p>
+        <table id="table_eqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.44*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_get_recording_files.dita"/></entry>
+                <entry>/api/v1.1.0/recording/get_random?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="download-cdr.dita"/></entry>
+                <entry>/api/v1.1.0/cdr/get_random?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_r4z_tx2_xgb">
+      <title>Hotel</title>
+      <p>
+        <table id="table_fqt_1nm_xgb">
+          <tgroup cols="2">
+            <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.06*" colsep="1" rowsep="1"/>
+            <thead>
+              <row>
+                <entry>Function</entry>
+                <entry>Endpoint</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><xref href="api_add_an_alarm.dita"/></entry>
+                <entry>/api/v1.1.0/wakeupcall/create?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_query_an_alarm.dita"/></entry>
+                <entry>/api/v1.1.0/wakeupcall/query?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_modifty_an_alarm.dita"/></entry>
+                <entry>/api/v1.1.0/wakeupcall/update?token=<varname>{token}</varname></entry>
+              </row>
+              <row>
+                <entry><xref href="api_delete_an_alarm.dita"/></entry>
+                <entry>/api/v1.1.0/wakeupcall/delete?token=<varname>{token}</varname></entry>
+              </row>
+              <row product="k2 s-series">
+                <entry><xref href="api_hotel_checkout.dita"/></entry>
+                <entry>POST /api/v1.1.0/hotel/checkout?token=<varname>{token}</varname></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+  </body>
+</topic>

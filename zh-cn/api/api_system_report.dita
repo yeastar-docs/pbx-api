@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_dsn_qq2_gdb">
+  <title>系统报告</title>
+  <shortdesc>PBX主动向第三方应用上报系统配置变更等事件。</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/29"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/13"/>
+      <!--Carol-->
+      <revised modified="2018/08/14"/>
+    </critdates>
+  </prolog>
+  <body>
+    <section id="section_bs3_y24_t2b">
+      <title>系统事件类型</title>
+    </section>
+    <p>
+      <table frame="all" rowsep="1" colsep="1" id="table_phk_fvp_52b">
+        <tgroup cols="2">
+          <colspec colname="c1" colnum="1" colwidth="1*"/>
+          <colspec colname="c2" colnum="2" colwidth="3.26*"/>
+          <tbody>
+            <row>
+              <entry><b><codeph>action</codeph>参数值</b></entry>
+              <entry><b>描述</b></entry>
+            </row>
+            <row>
+              <entry>BootUp</entry>
+              <entry>系统启动事件。</entry>
+            </row>
+            <row>
+              <entry>ConfigChange</entry>
+              <entry>配置变更事件。</entry>
+            </row>
+            <row>
+              <entry>ExtensionStatus</entry>
+              <entry>分机状态变更事件。</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </p>
+  </body>
+</topic>

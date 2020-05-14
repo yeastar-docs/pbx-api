@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_igw_1w2_gdb">
+  <title>Transfer Outbound Call to IVR</title>
+  <shortdesc>Transfer an outbound call to an IVR.</shortdesc>
+  <prolog>
+    <author type="contributor">Yeastar</author>
+    <critdates>
+      <!--Carol-->
+      <revised modified="2018/06/27"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/14"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/15"/>
+      <!--Yeastar-->
+      <revised modified="2018/08/16"/>
+      <!--Carol-->
+      <revised modified="2018/08/20"/>
+      <!--Carol-->
+      <revised modified="2018/09/03"/>
+      <!--Carol-->
+      <revised modified="2018/10/22"/>
+      <!--Carol-->
+      <revised modified="2018/11/05"/>
+    </critdates>
+  </prolog>
+  <refbody>
+    <section id="section_usf_ys3_w2b">
+      <p>After the outbound call is transferred to an IVR:</p>
+      <p>
+        <ul id="ul_ykt_ft3_w2b">
+          <li>The PBX will play audio to the called party of the outbound call.</li>
+          <li>The called party can press a key to reach a pre-configured destination according to
+            the prompt.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Request Address </title>
+      <p product="cloudpbx">https://<codeph>{pbx domain}</codeph>/api/<codeph>{api
+          version}</codeph>/outbound/transfer_ivr?token=<codeph>{token}</codeph></p>
+      <p product="s-series">https://<codeph>{pbx ip}</codeph>:<codeph>{https
+          port}</codeph>/api/<codeph>{api
+          version}</codeph>/outbound/transfer_ivr?token=<codeph>{token}</codeph></p>
+      <p>
+        <note conref="api_login.dita#reference_blb_5ld_gdb/api_version_note"/>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1.48*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.17*"/>
+            <colspec colname="c3" colnum="3" colwidth="1*"/>
+            <colspec colname="c4" colnum="4" colwidth="5.92*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>outboundid</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>The outbound ID.</entry>
+              </row>
+              <row>
+                <entry><codeph>ivrid</codeph></entry>
+                <entry>Required</entry>
+                <entry>Int</entry>
+                <entry>The IVR number.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_lv1_syk_gdb">
+      <title>Response Parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_xwb_syk_gdb">
+          <tgroup cols="4">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c2" colnum="2" colwidth="1.25*"/>
+            <colspec colname="c3" colnum="3" colwidth="1.2*"/>
+            <colspec colname="c4" colnum="4" colwidth="6.27*"/>
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Importance</entry>
+                <entry>Type</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><codeph>status</codeph></entry>
+                <entry>Required</entry>
+                <entry>String</entry>
+                <entry>Request result:<ul id="ul_hfl_12r_52b2">
+                    <li>Failed.</li>
+                    <li>Success.</li>
+                  </ul></entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">Request successful</entry>
+              </row>
+              <row>
+                <entry><codeph>callid</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>A unique identifier for the call.</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c4">Request failed</entry>
+              </row>
+              <row>
+                <entry><codeph>errno</codeph></entry>
+                <entry>Optional</entry>
+                <entry>String</entry>
+                <entry>Error code.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+    </section>
+    <section id="section_ksn_f4d_gdb"><title>Examples</title><b>Request Example</b><p>
+      <codeblock outputclass="language-json">{
+    "outboundid": "1495700976.276",
+    "ivrid": "6500"
+}</codeblock>
+      </p><b>Response Example</b><p>
+        <codeblock outputclass="language-json">{
+    "status": "Success",
+    "callid": "1495698843.215"
+}</codeblock>
+      </p></section>
+  </refbody>
+</reference>

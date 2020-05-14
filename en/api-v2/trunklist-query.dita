@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_w23_cs2_gdb">
+  <title>Query Trunk List</title>
+  <shortdesc>Query basic information of the PBX trunk list, such as trunk name, trunk status, trunk
+    type, etc.</shortdesc>
+  <refbody>
+    <section id="section_off_dnd_gdb">
+      <title>Request URL</title>
+      <p>
+        <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/trunk/list?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+      </p>
+    </section>
+    <section id="section_xc5_q4d_gdb">
+      <title>Request parameters</title>
+      <p>No request parameters. Send the request directly to query trunk list.</p>
+    </section>
+    <section id="section_vjw_5qd_gdb">
+      <title>Response parameters</title>
+      <p>
+        <table frame="all" rowsep="1" colsep="1" id="table_ufv_bj2_gdb">
+          <tgroup cols="3">
+            <colspec colname="c1" colnum="1" colwidth="1*"/>
+            <colspec colname="c3" colnum="2" colwidth="1.5*"/>
+            <colspec colname="c4" colnum="3" colwidth="3.42*"/>
+            <thead>
+              <row>
+                <entry>Parameter</entry>
+                <entry> Type</entry>
+                <entry> Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>status</entry>
+                <entry>String</entry>
+                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                    <li>Success</li>
+                    <li>Failed</li>
+                  </ul></entry>
+              </row>
+              <row valign="middle">
+                <entry>trunklist</entry>
+                <entry>Array <xref href="#reference_w23_cs2_gdb/TrunkInfo" format="dita"
+                    >&lt;TrunkInfo></xref></entry>
+                <entry>Trunk list.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </p>
+      <dl>
+        <dlentry>
+          <dt id="TrunkInfo">TrunkInfo</dt>
+          <dd>
+            <table frame="all" id="table_vmz_qlt_sjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1.54*" colsep="1" rowsep="1"/>
+                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                <colspec colname="c3" colnum="3" colwidth="5.18*" colsep="1" rowsep="1"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry> Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row valign="middle">
+                    <entry>trunkname</entry>
+                    <entry>String</entry>
+                    <entry>Trunk name.</entry>
+                  </row>
+                  <row>
+                    <entry>id</entry>
+                    <entry>Integer</entry>
+                    <entry>The unique ID of a trunk.</entry>
+                  </row>
+                  <row product="cloudpbx k2" valign="middle">
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>Trunk type.</entry>
+                  </row>
+                  <row product="cloudpbx k2" valign="middle">
+                    <entry>status</entry>
+                    <entry>String</entry>
+                    <entry>Current status of the trunk.<ul id="ul_qnf_tlt_sjb">
+                        <li>Registering</li>
+                        <li>Failure</li>
+                        <li>Registered</li>
+                        <li>Disable</li>
+                        <li>Unknown</li>
+                      </ul></entry>
+                  </row>
+                  <row product="s-series" valign="middle">
+                    <entry>type</entry>
+                    <entry>String</entry>
+                    <entry>Trunk type.<ul id="ul_unf_tlt_sjb">
+                        <li>IAX: VoIP trunk based on IAX protocol.</li>
+                        <li>SIP: VoIP trunk based on SIP protocol.</li>
+                        <li>FXO: FXO analog trunk.</li>
+                        <li>GSM: GSM/3G/4G wireless trunk.</li>
+                        <li>BRI: BRI digital trunk.</li>
+                        <li>E1: E1/T1/J1 digital trunk.</li>
+                      </ul></entry>
+                  </row>
+                  <row valign="middle" product="s-series">
+                    <entry morerows="3">status</entry>
+                    <entry morerows="3">String</entry>
+                    <entry>
+                      <p>SIP/IAX trunk status.<ul id="ul_xnf_tlt_sjb">
+                          <li>Registering</li>
+                          <li>Failure</li>
+                          <li>Registered</li>
+                          <li>Disable</li>
+                          <li>Unknown</li>
+                        </ul></p>
+                    </entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>FXO trunk status.<p>
+                        <ul id="ul_b4f_tlt_sjb">
+                          <li>Fault</li>
+                          <li>Idle</li>
+                          <li>Busy</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>BRI/E1 trunk status.<p>
+                        <ul id="ul_e4f_tlt_sjb">
+                          <li>Fault</li>
+                          <li>Alarm</li>
+                          <li>Down</li>
+                          <li>Up</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>GSM/3G/4G trunk status.<p>
+                        <ul id="ul_i4f_tlt_sjb">
+                          <li> Power Off </li>
+                          <li>Alarm</li>
+                          <li>No SIM</li>
+                          <li>No Signal</li>
+                          <li>Pin Error</li>
+                          <li>Unregister</li>
+                          <li>Busy</li>
+                          <li>Idle</li>
+                        </ul>
+                      </p></entry>
+                  </row>
+                  <row product="s-series">
+                    <entry>port</entry>
+                    <entry>String</entry>
+                    <entry>Trunk port.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section>
+      <title>Examples</title>
+      <p><b>Request example</b></p>
+      <p>
+        <codeblock outputclass="language-json">POST /api/v2.0.0/trunk/list?token=277ac400357b509b4a587ff2157f7ad5 
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph></codeblock>
+      </p>
+      <p><b>Response example</b></p>
+      <p>
+        <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"trunklist": [
+		{
+			"trunkname": "siptrunk",
+			"id": "7",
+			"status": "registered",
+			"type": "SIP"
+		}
+	]
+}</codeblock>
+      </p>
+    </section>
+  </refbody>
+</reference>

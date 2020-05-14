@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_dxf_gr2_h2b">
+    <title>API Change Logs</title>
+    <shortdesc>When sending an API request, the request address must include the API version. All
+        request samples in this guide use {api version} to represent the API version.</shortdesc>
+    <conbody>
+        <section id="section_oq4_kzv_43b">
+            <title>API v1.1.0 (PBX 30.11.0.7)</title>
+            <p><b>This API update is compatible with Yeastar S-Series VoIP PBX 30.11.0.7 or
+                    later.</b></p>
+            <p>
+                <ul conref="../topic/v30.11.0.7.dita#v30.11.0.7/api-s-30.11.0.7" id="ul_a2s_vzv_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_iwf_xyv_43b">
+            <title>API v1.1.0 (PBX 30.10.0.67)</title>
+            <p><b>This API update is compatible with Yeastar S-Series VoIP PBX 30.10.0.67 or
+                    later.</b></p>
+            <p>
+                <ul conref="../topic/v30.10.0.67.dita#topic_p3b_1p4_4hb/api-s-30.10.0.67"
+                    id="ul_ukz_jzv_43b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_wp1_nkm_xgb">
+            <title> API v1.1.0 (PBX 30.10.0.59)</title>
+            <p><b>API v1.1.0 is compatible with Yeastar S-Series VoIP PBX 30.10.0.59 or
+                later.</b></p>
+            <p>
+                <note>We recommend you upgrade to 30.10.0.59 or later to use API v1.1.0.</note>
+            </p>
+            <p conref="../topic/v30.10.0.59.dita#topic_rnx_53p_tgb/api-s-30.10.0.59"/>
+        </section>
+        <section id="section_kr5_jyy_nfb">
+            <title>API Version v1.0.6</title>
+            <p><b>This API version is compatible with Yeastar S-Series VoIP PBX 30.10.0.9 or
+                    later.</b></p>
+            <p conref="../topic/v30.10.0.9.dita#topic_p42_dwb_kfb/api_1.0.6_s"/>
+        </section>
+       
+       
+       
+        <section id="section_dwg_bng_j2b">
+            <title>API Version v1.0.5</title>
+            <p><b>This API version is compatible with Yeastar S-Series VoIP PBX 30.8.0.8 or
+                    later.</b></p>
+            <p>
+                <ul conref="../topic/v30.8.0.8.dita#concept_lwk_kph_f2b/ul_a4n_p5h_f2b"
+                    id="ul_wjv_fng_j2b">
+                    <li/>
+                </ul>
+            </p>
+            <p><b>In the Yeastar S-Series VoIP PBX 30.8.0.14, fixed the following API
+                issues:</b></p>
+            <p>
+                <ul conref="../topic/v30.8.0.14.dita#concept_tcx_ttb_n2b/s_series_api_1.0.5_a"
+                    id="ul_mjw_54d_2gb">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_ajt_lbg_h2b">
+            <title>API Version v1.0.4</title>
+            <p><b>This API version is compatible with Yeastar S-Series VoIP PBX 30.7.0.35 or
+                    later.</b></p>
+            <p>
+                <ul conref="../topic/v30.7.0.35.dita#topic_w2l_y41_pdb/s_api_1.0.4"
+                    id="ul_fbd_rbg_h2b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_m2n_1t2_h2b">
+            <title>API Version v1.0.2</title>
+            <p><b>This API version is compatible with Yeastar S-Series VoIP PBX 30.7.0.11 or
+                    later.</b></p>
+            <p>
+                <ul conref="../topic/v30.7.0.11.dita#topic_ev3_g4k_jdb/s_api_1.0.2"
+                    id="ul_zrk_fbg_h2b">
+                    <li/>
+                </ul>
+                <ul conref="../topic/v30.7.0.27.dita#topic_gqb_v4k_ldb/s_api_1.0.2"
+                    id="ul_zzj_kbg_h2b">
+                    <li/>
+                </ul>
+            </p>
+        </section>
+        <section id="section_s3c_yr2_h2b">
+            <title>API Version v1.0.1</title>
+            <p>The first API version for Yeastar S-Series VoIP PBX.</p>
+            <p><b>This API version is compatible with Yeastar S-Series VoIP PBX 30.5.0.30.</b></p>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_hdx_kw3_gdb">
+  <title>PlayPromptEnd</title>
+  <shortdesc>After the audio prompt ends, the PBX will send a PlayPromptEnd report to the
+    application server.</shortdesc>
+  <refbody>
+    <section id="section_lv1_syk_gdb">
+      <title>Report parameters</title>
+      <dl>
+        <dlentry>
+          <dt>The specified audio played ends</dt>
+          <dd>
+            <table frame="all" rowsep="1" colsep="1" id="table_ehr_3v2_hdb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.71*"/>
+                <colspec colname="c3" colnum="3" colwidth="3.16*"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                    <entry/>
+                  </row>
+                  <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                    <entry/>
+                  </row>
+                  <row>
+                    <entry>members</entry>
+                    <entry>Array <xref href="#reference_hdx_kw3_gdb/membertype" format="dita"
+                        >&lt;MemberType></xref></entry>
+                    <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+                  </row>
+                  <row>
+                    <entry>prompt</entry>
+                    <entry>String</entry>
+                    <entry>File name of the audio prompt to be played.</entry>
+                  </row>
+                  <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                    <entry/>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+      <p>
+        <dl>
+          <dlentry>
+            <dt>IVR audio played ends</dt>
+            <dd>
+              <table frame="all" rowsep="1" colsep="1" id="table_dmv_1rv_qjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1.72*"/>
+                  <colspec colname="c3" colnum="3" colwidth="3.14*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/event">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/callid">
+                      <entry/>
+                    </row>
+                    <row>
+                      <entry>members</entry>
+                      <entry>Array <xref href="#reference_hdx_kw3_gdb/membertype" format="dita"
+                          >&lt;MemberType></xref></entry>
+                      <entry conref="call-query.dita#reference_a5v_rt2_gdb/members-info"/>
+                    </row>
+                    <row>
+                      <entry>ivr</entry>
+                      <entry>Object <xref href="#reference_hdx_kw3_gdb/IVRInfo" format="dita"
+                          >&lt;IVRInfo></xref></entry>
+                      <entry>IVR information.</entry>
+                    </row>
+                    <row conref="event-BootUp.dita#reference_lgt_lcf_gdb/sn">
+                      <entry/>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </dd>
+          </dlentry>
+        </dl>
+      </p>
+      <dl>
+        <dlentry id="membertype">
+          <dt>MemberType</dt>
+          <dd>
+            <table frame="all" rowsep="1" colsep="1" id="table_hmk_1px_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>ext</entry>
+                    <entry>Object <xref href="#reference_hdx_kw3_gdb/extensioninfo" format="dita"
+                        >&lt;ExtensionInfo></xref></entry>
+                    <entry>Extension information.</entry>
+                  </row>
+                  <row>
+                    <entry>inbound</entry>
+                    <entry>Object <xref href="#reference_hdx_kw3_gdb/inboundinfo" format="dita"
+                        >&lt;InboundInfo></xref></entry>
+                    <entry>The information of inbound calls.</entry>
+                  </row>
+                  <row>
+                    <entry>outbound</entry>
+                    <entry>Object <xref href="#reference_hdx_kw3_gdb/outboundinfo" format="dita"
+                        >&lt;OutboundInfo></xref></entry>
+                    <entry>The information of outbound calls.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+        <dlentry id="extensioninfo">
+          <dt>ExtensionInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_lhq_ynx_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/ext-number">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    <row>
+                      <entry>callpath</entry>
+                      <entry>Integer</entry>
+                      <entry>The call path that indicates how the call is established.<p>For
+                          example, IVR (6500) audio prompt ends, <codeph>callpath</codeph> value is
+                          6500.</p></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+        <dlentry id="inboundinfo">
+          <dt>InboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_k1j_j4x_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-inbound">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    <row>
+                      <entry>callpath</entry>
+                      <entry>Integer</entry>
+                      <entry>The call path that indicates how the call is established.<p>For
+                          example, IVP (6500) audio prompt ends, <codeph>callpath</codeph> value is
+                          6500.</p></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+        <dlentry id="outboundinfo">
+          <dt>OutboundInfo</dt>
+          <dd>
+            <p>
+              <table frame="all" rowsep="1" colsep="1" id="table_phm_j4x_pjb">
+                <tgroup cols="3">
+                  <colspec colname="c1" colnum="1" colwidth="1.84*"/>
+                  <colspec colname="c2" colnum="2" colwidth="1*"/>
+                  <colspec colname="c3" colnum="3" colwidth="7.37*"/>
+                  <thead>
+                    <row>
+                      <entry>Parameter</entry>
+                      <entry> Type</entry>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/from">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/to">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/trunkname-outbound">
+                      <entry/>
+                    </row>
+                    <row conref="call-query.dita#reference_a5v_rt2_gdb/channelid-response">
+                      <entry/>
+                    </row>
+                    <row>
+                      <entry>callpath</entry>
+                      <entry>Integer</entry>
+                      <entry>The call path that indicates how the call is established.<p>For
+                          example, IVR (6500) audio prompt ends, <codeph>callpath</codeph> value is
+                          6500.</p></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+            </p>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry id="IVRInfo">
+          <dt>IVRInfo</dt>
+          <dd>
+            <table frame="all" rowsep="1" colsep="1" id="table_hd5_lyx_pjb">
+              <tgroup cols="3">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1.95*"/>
+                <colspec colname="c3" colnum="3" colwidth="3.74*"/>
+                <thead>
+                  <row>
+                    <entry>Parameter</entry>
+                    <entry> Type</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>number</entry>
+                    <entry>Integer</entry>
+                    <entry>The IVR number.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="section_off_dnd_gdb">
+      <title>Report example 1</title>
+      <p>Play audio prompt to members in a Paging Group.</p>
+      <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "PlayPromptEnd",
+	"callid": "1571965641.241",
+	"members": [
+		{
+			"ext": {
+				"number": "2023",
+				"channelid": "PJSIP/2023-0000008f"
+			}
+		},
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000090"
+			}
+		}
+	],
+	"prompt": "music1",
+	"sn": "369451090405"
+}</codeblock>
+    </section>
+    <section id="section_wsp_cqq_mjb"><title>Report example 2</title>Play audio prompt to an
+      external number after the outbound call is
+      answered.<codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "PlayPromptEnd",
+	"callid": "1571909302.194",
+	"members": [
+		{
+			"outbound": {
+				"from": "prompt",
+				"to": "2000",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-00000074"
+			}
+		}
+	],
+	"prompt": "music1",
+	"sn": "369451090405"
+}</codeblock></section>
+    <section id="section_zhn_2qq_mjb">
+      <title>Report example 3</title>
+      <p>Play IVR prompt to an extension after the extension dials in
+        IVR.<codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "PlayPromptEnd",
+	"callid": "1571910100.203",
+	"members": [
+		{
+			"ext": {
+				"number": "1023",
+				"channelid": "PJSIP/1023-00000079",
+                            "callpath":"6500"
+			}
+		}
+	],
+	"ivr": {
+		"number": "6500"
+	},
+	"sn": "369451090405"
+}</codeblock></p>
+    </section>
+    <section id="section_ygn_2qq_mjb">
+      <title>Report example 4</title>
+      <p>Play IVR prompt to an external number after the inbound call is answered.</p>
+      <p>
+        <codeblock outputclass="language-json">POST / HTTP/1.1
+<ph product="k2 s-series">Host: 192.168.5.150: 8260</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "PlayPromptEnd",
+	"callid": "1571910690.206",
+	"members": [
+		{
+			"inbound": {
+				"from": "2000",
+				"to": "6500",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-0000007b",
+                            "callpath":"6500"
+			}
+		}
+	],
+	"ivr": {
+		"number": "6500"
+	},
+	"sn": "369451090405"
+}</codeblock>
+      </p>
+    </section>
+    <section id="section_yrb_hrv_mjb">
+      <title>Report example 5 </title>
+      <p>Place an outbound call via IVR, and play IVR prompt to the external
+        number.<codeblock outputclass="language-json">POST / HTTP/1.1
+Host: 192.168.5.150: 8260Host: api.yeastarcloud.com
+Accept: application/json
+User-Agent: WebAPI
+Content-Type: application/json
+Accept: application/json
+
+{
+	"event": "PlayPromptEnd",
+	"callid": "1571979960.74",
+	"members": [
+		{
+			"outbound": {
+				"from": "6501",
+				"to": "2100",
+				"trunkname": "siptrunk",
+				"channelid": "PJSIP/trunk-siptrunk-endpoint-00000014",
+                            "callpath":"6500"
+			}
+		}
+	],
+	"ivr": {
+		"number": "6501"
+	},
+	"sn": "369451090405"
+}</codeblock></p>
+    </section>
+  </refbody>
+</reference>

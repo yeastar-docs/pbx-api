@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="concept_gsn_cm2_j2b">
+    <title>Download Voicemail Files</title>
+    <shortdesc>Download voicemail files of a specific extension.</shortdesc>
+    <refbody>
+        <section id="section_y3g_rlv_mjb">
+            <title>Steps to download a  voicemail file</title>
+            <p>
+                <ol id="ol_k5n_slv_mjb">
+                    <li>Get the random string of voicemail file.</li>
+                    <li>Combine the random string with other parameters to form a <xref
+                            href="#concept_gsn_cm2_j2b/section_ckz_xn2_hdb" format="dita">download
+                            link</xref>.<note>The random string is only valid for 30 seconds, and
+                            each random string can be used only once.</note></li>
+                </ol>
+            </p>
+        </section><section>
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/voicemail/get_random?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section><section id="section_xc5_q4d_gdb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.6*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.05*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="4.91*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Extension number, which means which extension's voicemail
+                                    file will be downloaded.</entry>
+                            </row>
+                            <row>
+                                <entry>voicemailfile</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Voicemail filename.</entry>
+                            </row>
+                            <row>
+                                <entry>voicemailstatus</entry>
+                                <entry>Yes</entry>
+                                <entry>String</entry>
+                                <entry>Voicemail status.<p><b>Valid values</b>:</p><p>
+                                        <ul id="ul_zbz_1d2_j2b">
+                                            <li>read: The voicemail file to be downloaded is read
+                                                and will be downloaded from read folder.</li>
+                                            <li>unread: The voicemail file to be downloaded is
+                                                unread and will be downloaded from unread
+                                                folder.</li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                            <row>
+                                <entry>allowedip</entry>
+                                <entry>No</entry>
+                                <entry>String</entry>
+                                <entry>
+                                    <p>Specify the IP address which is allowed to download voicemail
+                                        file. By default, <codeph>allowedip</codeph> is not carried,
+                                        which means only the application server can download
+                                        voicemail files.</p>
+                                    <p><b>Valid values</b>:</p>
+                                    <p>
+                                        <ul id="ul_h3h_dtv_vgb">
+                                            <li>Leave the value of <codeph>allowedip</codeph> blank:
+                                                Only the application server can download voicemail
+                                                  files.<p>Example: <codeph>"allowedip":"
+                                                  "</codeph></p></li>
+                                            <li>IP address: Only the application server or a server
+                                                with this IP address can download voicemail
+                                                  files.<p>Example:
+                                                  <codeph>"allowedip":"192.168.5.20"</codeph></p></li>
+                                        </ul>
+                                    </p>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section><section id="section_xzw_zn2_j2b">
+            <title>Response parameters</title>
+            <table frame="all" id="table_aj2_2r4_mjb">
+                <tgroup cols="3">
+                    <colspec colname="c1" colnum="1" colwidth="1.11*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c3" colnum="3" colwidth="4.46*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>Parameter</entry>
+                            <entry>Type</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>status</entry>
+                            <entry>String</entry>
+                            <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                    <li>Success</li>
+                                    <li>Failed</li>
+                                </ul></entry>
+                        </row>
+                        <row>
+                            <entry>number</entry>
+                            <entry>Integer</entry>
+                            <entry>Extension number, which means which extension's voicemail file
+                                was downloaded.</entry>
+                        </row>
+                        <row>
+                            <entry>voicemailstatus</entry>
+                            <entry>String</entry>
+                            <entry>Voicemail status.<p>
+                                    <ul id="ul_srd_gr4_mjb">
+                                        <li>read</li>
+                                        <li>unread</li>
+                                    </ul>
+                                </p></entry>
+                        </row>
+                        <row>
+                            <entry>voicemailfile</entry>
+                            <entry>String</entry>
+                            <entry>Voicemail filename.</entry>
+                        </row>
+                        <row>
+                            <entry>random</entry>
+                            <entry>String</entry>
+                            <entry>A random string for voicemail file.<p>Combine the random string
+                                    with other parameters to form a download link.</p></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section><section><title>Examples</title><p><b>Request example</b></p><p>Get the random string of voicemail
+                file "msg0000.wav" for extension 1023.</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/voicemail/get_random?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">
+Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "1023",
+	"voicemailfile": "msg0000.wav",
+	"voicemailstatus": "unread"
+}</codeblock>
+            </p><b>Response example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"number": "1023",
+	"voicemailstatus": "unread",
+	"voicemailfile": "msg0000.wav",
+	"random": "7d48ba0d1fb647346ed81d6b677f7423"
+}</codeblock>
+            </p></section><section id="section_ckz_xn2_hdb">
+            <title>Download Link
+                <?oxy_comment_start author="carol" timestamp="20191120T113457+0800" comment="把下面的链接放在codeblock 里面" flag="done"?>Example<?oxy_comment_end?></title>
+            <p>Use the API responded random as a component of a specified request address for
+                downloading the voicemail file.</p>
+            <p><b>Download link
+                format</b>:<codeblock product="k2 s-series">https://<varname>{pbx ip}</varname>:<varname>{https port}</varname>/api/v2.0.0/voicemail/download?number=<varname>｛number｝</varname>&amp;voicemailstatus=<varname>｛voicemailstatus｝</varname>&amp;token=<varname>｛token｝</varname>&amp;voicemailfile=<varname>{voicemailfile}</varname>&amp;random=<varname>｛random｝</varname></codeblock></p>
+            <codeblock product="cloudpbx">https://<varname>{pbx domain}</varname>/api/v2.0.0/voicemail/download?number=<varname>｛number｝</varname>&amp;voicemailstatus=<varname>｛voicemailstatus｝</varname>&amp;token=<varname>｛token｝</varname>&amp;voicemailfile=<varname>{voicemailfile}</varname>&amp;random=<varname>｛random｝</varname></codeblock>
+            <p><b>Download link
+                example</b>:<codeblock product="k2 s-series">https://192.168.5.150:8088/api/v2.0.0/voicemail/download?number=1005&amp;voicemailstatus=unread&amp;token=72d6640a05811af51e0279461e5272ce&amp;voicemailfile=msg0000.wav&amp;random=1635079c6517f8b82f811cb11e5860d8</codeblock></p>
+            <codeblock product="cloudpbx">https://api.yeastarcloud.com/api/v2.0.0/voicemail/download?number=1005&amp;voicemailstatus=unread&amp;token=72d6640a05811af51e0279461e5272ce&amp;voicemailfile=msg0000.wav&amp;random=1635079c6517f8b82f811cb11e5860d8</codeblock>
+        </section></refbody>
+</reference>

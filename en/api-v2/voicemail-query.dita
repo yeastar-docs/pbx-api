@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="concept_klh_ysd_j2b">
+    <title>Query Voicemail Files</title>
+    <shortdesc>Query voicemail files of an extension, multiple extensions, or all
+        extensions.</shortdesc>
+    <refbody><section>
+            <title>Request URL</title>
+            <p>
+                <codeblock><ph id="request-address"><xref href="api-request-structure.dita#topic_dqt_mvb_wgb/base-url"><varname>{base_url}</varname></xref>/<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/api-path"><varname>{api_path}</varname></xref></ph>/voicemail/query?token=<xref href="api-request-structure.dita#topic_dqt_mvb_wgb/token"><varname>{token}</varname></xref></codeblock>
+            </p>
+        </section><section id="section_xc5_q4d_gdb">
+            <title>Request parameters</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_abq_pvd_gdb">
+                    <tgroup cols="4">
+                        <colspec colname="c1" colnum="1" colwidth="1.19*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1.3*"/>
+                        <colspec colname="c3" colnum="3" colwidth="1*"/>
+                        <colspec colname="c4" colnum="4" colwidth="5.68*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry>Required</entry>
+                                <entry> Type</entry>
+                                <entry> Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry> number</entry>
+                                <entry>Yes</entry>
+                                <entry>Integer</entry>
+                                <entry>Extension number, which means which extension's voicemails
+                                    will be queried.<p><b>Valid values</b>:</p><p>
+                                        <ul>
+                                            <li>An extension number: Query voicemails of the
+                                                specified extension.<p>Example:
+                                                  <codeph>"number":"1000"</codeph></p></li>
+                                            <li>Multiple extension numbers: Query voicemails of
+                                                multiple extensions. Separate multiple extension
+                                                numbers with <codeph>,</codeph>.<p>Example:
+                                                  <codeph>"number":"1000,1001"</codeph></p></li>
+                                            <li>all: Query voicemails of all extensions.<p>Example:
+                                                  <codeph>"number":"all"</codeph></p></li>
+                                        </ul>
+                                    </p></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section><section id="section_rlt_gvd_j2b">
+            <title>Response parameters</title>
+            <p>
+                <note>If the queried extension doesn't have any voicemails, the PBX will respond the
+                    request result only.</note>
+            </p>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_ztp_3vd_j2b">
+                    <tgroup cols="3">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c3" colnum="2" colwidth="1.7*"/>
+                        <colspec colname="c4" colnum="3" colwidth="3.05*"/>
+                        <thead>
+                            <row>
+                                <entry>Parameter</entry>
+                                <entry> Type</entry>
+                                <entry>Description</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>status</entry>
+                                <entry>String</entry>
+                                <entry>Request result.<ul id="ul_okb_xvy_kjb">
+                                        <li>Success</li>
+                                        <li>Failed</li>
+                                    </ul></entry>
+                            </row>
+                            <row>
+                                <entry>voicemails</entry>
+                                <entry>Array <xref href="#concept_klh_ysd_j2b/VoicemailInfo"
+                                        format="dita">&lt;VoicemailInfo></xref></entry>
+                                <entry>Voicemails list.</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+            <dl>
+                <dlentry>
+                    <dt id="VoicemailInfo">VoicemailInfo</dt>
+                    <dd>
+                        <table frame="all" id="table_ul4_54s_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1.62*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="2.2*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry> Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>number</entry>
+                                        <entry>Integer</entry>
+                                        <entry>Extension number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>voicemail</entry>
+                                        <entry>Array <xref
+                                                href="#concept_klh_ysd_j2b/ExtensionVoicemail"
+                                                format="dita">&lt;ExtensionVoicemail></xref></entry>
+                                        <entry>Voicemail information of the specified
+                                            extension.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+            <dl>
+                <dlentry>
+                    <dt id="ExtensionVoicemail">ExtensionVoicemail</dt>
+                    <dd>
+                        <table frame="all" id="table_xlw_z4s_sjb">
+                            <tgroup cols="3">
+                                <colspec colname="c1" colnum="1" colwidth="1.27*" colsep="1"
+                                    rowsep="1"/>
+                                <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                                <colspec colname="c3" colnum="3" colwidth="2.94*" colsep="1"
+                                    rowsep="1"/>
+                                <thead>
+                                    <row>
+                                        <entry>Parameter</entry>
+                                        <entry> Type</entry>
+                                        <entry>Description</entry>
+                                    </row>
+                                </thead>
+                                <tbody>
+                                    <row>
+                                        <entry>voicemailfile</entry>
+                                        <entry>String</entry>
+                                        <entry>Voicemail file name.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>messagefrom</entry>
+                                        <entry>String</entry>
+                                        <entry>The voicemail was sent by which number.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>voicemailstatus</entry>
+                                        <entry>String</entry>
+                                        <entry>Voicemail status.<p>
+                                                <ul id="ul_q4y_bps_sjb">
+                                                  <li>read</li>
+                                                  <li>unread</li>
+                                                </ul>
+                                            </p></entry>
+                                    </row>
+                                    <row>
+                                        <entry>voicemaildate</entry>
+                                        <entry>String</entry>
+                                        <entry>Date and time on which the voicemail was
+                                            received.</entry>
+                                    </row>
+                                    <row>
+                                        <entry>voicemaillength</entry>
+                                        <entry>String</entry>
+                                        <entry>Voicemail duration.</entry>
+                                    </row>
+                                </tbody>
+                            </tgroup>
+                        </table>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section><section id="section_ksn_f4d_gdb"><title>Examples</title><p><b>Request example</b></p><p>Query the
+                voicemail of extension 4000.</p><p>
+                <codeblock outputclass="language-json">POST /api/v2.0.0/voicemail/query?token=1e3b3ebb6a974cb42ed31de5413df52d
+Content-Type:application/json; charset=utf-8
+<ph product="k2 s-series">Host: 192.168.5.150</ph><ph product="cloudpbx">Host: api.yeastarcloud.com</ph>
+
+{
+	"number": "4000"
+}</codeblock>
+            </p><b>Response example</b><p>
+                <codeblock outputclass="language-json">HTTP/1.1 200 OK
+Server: Boa/0.94.14rc21
+Accept-Ranges: bytes
+Connection: close
+Content-Type: application/json
+Access-control-allow-origin: *
+Access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+
+{
+	"status": "Success",
+	"voicemails": [
+		{
+			"number": "4000",
+			"voicemail": [
+				{
+					"voicemailfile": "msg0000.wav",
+					"messagefrom": "3000",
+					"voicemailstatus": "unread",
+					"voicemaildate": "2019-10-20 21:41:42",
+					"voicemaillength": "77"
+				},
+				{
+					"voicemailfile": "msg0001.wav",
+					"messagefrom": "2000",
+					"voicemailstatus": "unread",
+					"voicemaildate": "2019-10-20 21:49:35",
+					"voicemaillength": "18"
+				}
+			]
+		}
+	]
+}</codeblock>
+            </p></section></refbody>
+</reference>
