@@ -12,10 +12,13 @@
                 <dl>
                     <dlentry>
                         <dt>PBX version</dt>
-                        <dd>This documentation is based on API 2.0.0, you need to upgrade PBX
-                            firmware to the version that is applicable to API 2.0.0.</dd>
-                        <dd product="cloudpbx">PBX version requirement: Firmware version 81.13.0.30
-                            or later.</dd>
+                        <dd>This documentation is based on API 2.0.0, you need to upgrade PBX <ph
+                                product="k2 s-series">firmware</ph><ph product="cloudpbx"
+                                ><?oxy_comment_start author="Becky" timestamp="20200518T154603+0800" comment="+"?>software<?oxy_comment_end?></ph>
+                            to the version that is applicable to API 2.0.0.</dd>
+                        <dd product="cloudpbx">PBX version requirement:
+                            <?oxy_comment_start author="Becky" timestamp="20200518T154615+0800" comment="改"?>Software<?oxy_comment_end?>
+                            version 81.13.0.30 or later.</dd>
                         <dd product="s-series">PBX version requirement: Firmware version 30.13.0.30
                             or later.</dd>
                         <dd product="k2">PBX version requirement: Firmware version 80.13.0.30 or

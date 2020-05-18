@@ -8,8 +8,7 @@
         <section id="section_lwk_sxw_mjb">
             <title>
                 <ph keyref="product_name"/> API</title>
-            <p><ph product="k2 s-series">Yeastar</ph>
-                <ph keyref="product_name"/> offers API (Application Programming Interface).
+            <p><ph keyref="product_name"/> offers API (Application Programming Interface).
                 Developers can use API to develop or connect to application servers, such as call
                 center, hotel, CRM (Customer Relationship Management), OA (Office Automation),
                 billing system, etc.</p>
