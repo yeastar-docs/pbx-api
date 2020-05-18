@@ -2,13 +2,14 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="concept_rrc_5yw_mjb">
     <title>API 调用概述</title>
-    <shortdesc>本文介绍 API 调用的通信协议、通信端口和交互流程。</shortdesc>
+    <shortdesc>本文介绍 API 调用的通信协议<ph product="k2 s-series">、通信端口</ph>和交互流程。</shortdesc>
     <conbody>
         <section id="section_j1r_sfg_4jb">
             <title>通信协议</title>
-            <p>API 调用接口采用 HTTP/HTTPS POST 方法、TCP 短连接的方式，每个 API 请求都会重新建立一个 TCP 连接。</p>
+            <p>API 调用接口采用 HTTP/HTTPS POST 方法<ph product="k2 s-series">、TCP 短连接的方式</ph>，每个 API
+                请求都会重新建立一个 TCP 连接。</p>
         </section>
-        <section id="section_msh_vfg_4jb">
+        <section id="section_msh_vfg_4jb" product="k2 s-series">
             <title>通信端口</title>
             <p>API 调用的通信端口与 PBX 网页访问端口一致。默认使用 HTTPS 8088 和 HTTP 80。</p>
             <p>

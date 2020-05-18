@@ -2,13 +2,17 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="topic_ocs_zmc_wgb">
     <title>API 事件推送</title>
-    <shortdesc>本文介绍 <ph keyref="product_name"/> 两种不同的事件推送方式及其通信协议、通信端口和交互流程。</shortdesc>
+    <shortdesc>本文介绍 <ph keyref="product_name"/>
+        <ph product="k2 s-series">两种不同</ph>的事件推送方式及其通信协议、通信端口和交互流程。</shortdesc>
     <conbody>
         <section id="section_tfk_ykg_4jb">
-            <title>事件推送方式配置</title>
-            <p>
+            <title>事件推送方式<ph product="k2 s-series">配置</ph></title>
+            <p product="k2 s-series">
                 <ph keyref="product_name"/> 支持 TCP 长连接向应用服务器推送 TCP 事件报告，也支持 TCP 短连接向应用服务器推送 HTTP
                 事件报告。你可以在 <xref href="pbx-api-settings.dita"/>页面，选择发送事件报告的方式。</p>
+            <?oxy_comment_start author="Becky" timestamp="20200518T170320+0800" comment="+"?>
+            <p product="cloudpbx"><ph keyref="product_name"/> 支持 TCP 短连接向应用服务器推送 HTTP
+            事件报告。</p><?oxy_comment_end?>
         </section>
         <section id="http-report">
             <title>HTTP 事件推送</title>
@@ -50,7 +54,7 @@
                 </dl>
             </p>
         </section>
-        <section id="section_lth_hmg_4jb">
+        <section id="section_lth_hmg_4jb" product="k2 s-series">
             <title>TCP 事件推送</title>
             <p>
                 <dl>
@@ -91,8 +95,7 @@ Version: <varname>{version}</varname></codeblock>
                                         <uicontrol>二次开发接口</uicontrol> 页面配置的 API 访问用户名。</li>
                                 <li><varname>{password}</varname>：在 PBX
                                         <uicontrol>二次开发接口</uicontrol> 页面设置的 API 访问密码明文。</li>
-                                <li><varname>{version}</varname>：API 版本号。本次版本为
-                                    2.0.0。</li>
+                                <li><varname>{version}</varname>：API 版本号。本次版本为 2.0.0。</li>
                             </ul>
                         </dd>
                     </dlentry>

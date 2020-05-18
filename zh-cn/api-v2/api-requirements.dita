@@ -15,7 +15,7 @@
                         <dd product="cloudpbx"
                             ><?oxy_comment_start author="carol" timestamp="20191030T151200+0800" comment="待确定"?>PBX
                             版本要求：固件版本 81.13.0.30 或更高版本</dd>
-                        <dd product="s-series">PBX 版本要求：固件版本 30.13.0.30</dd>
+                        <dd product="s-series">PBX 版本要求：固件版本 30.13.0.30 或更高版本</dd>
                         <dd product="k2">PBX 版本要求：固件版本<?oxy_comment_end?> 80.13.0.30 或更高版本</dd>
                     </dlentry>
                 </dl>

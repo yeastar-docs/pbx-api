@@ -20,8 +20,7 @@ Content-Type:application/json; charset=utf-8
             </p>
             <p>
                 <ul id="ul_qhp_rfc_wgb">
-                    <li><?oxy_comment_start author="Becky" timestamp="20191119T095651+0800" comment="改"?><codeph>POST</codeph>
-                        表示请求方式。</li>
+                    <li><codeph>POST</codeph> 表示请求方式。</li>
                     <li><codeph>/api/v2.0.0</codeph> 即 API 路径，表示 API 版本号。</li>
                     <li><codeph>queue/add_dynamicagent</codeph> 表示要调用的 API 接口<xref
                             href="queue-add-dynamicagent.dita#reference_ngn_dt2_gdb"/>。</li>
@@ -29,10 +28,12 @@ Content-Type:application/json; charset=utf-8
                         token。</li>
                     <li><codeph>Content-Type:application/json; charset=utf-8</codeph> 表示请求内容格式。</li>
                     <li><codeph>Host</codeph> 表示<ph product="k2 s-series"><ph keyref="product_name"
-                            />的 IP 地址。</ph><ph product="cloudpbx"><ph keyref="product_name"/>
-                            的域名。</ph></li>
+                            />的 IP
+                            地址。</ph><?oxy_comment_start author="Becky" timestamp="20200518T175623+0800" comment="+"?><ph
+                            product="cloudpbx"><ph keyref="product_name"/>
+                        的域名。</ph><?oxy_comment_end?></li>
                     <li><codeph>queuenumber</codeph>、<codeph>extnumber</codeph>、<codeph>password</codeph>
-                        表示具体请求参数。</li><?oxy_comment_end?>
+                        表示具体请求参数。</li>
                 </ul>
             </p>
         </section>

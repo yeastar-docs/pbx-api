@@ -125,28 +125,14 @@
                     </p>
                   </note><p><b>Valid values</b>:</p><p>
                     <ul id="ul_edl_k2q_tjb">
-                      <li>0: The URL is a relative URL.<p>For example, <ph product="k2 s-series">the
-                            IP address of the application server is 110.22.2.3,</ph><ph
-                            product="cloudpbx"
-                            ><?oxy_comment_start author="Becky" timestamp="20200518T152057+0800" comment="+"?>the
-                            domain of the application server is yeastar.com<?oxy_comment_end?></ph>,
-                            <codeph>port</codeph> is 8260, <codeph>url</codeph> is "report"; PBX
-                          will send the API reports to <ph product="k2 s-series"
-                            >110.22.2.3:8260/report</ph><?oxy_comment_start author="Becky" timestamp="20200518T152151+0800" comment="+"?><ph
-                            product="cloudpbx"
-                        >yeastar.com:8260/report</ph><?oxy_comment_end?>.</p></li>
-                      <li>1: The URL is an absolute URL.<p>For example,<ph product="k2 s-series">
-                            the IP address of the application server is 110.22.2.3,</ph>
-                          <?oxy_comment_start author="Becky" timestamp="20200518T152528+0800" comment="+"?><ph
-                            product="cloudpbx">the domain of the application server is
-                            yeastar.com</ph><?oxy_comment_end?>
-                          <codeph>url</codeph> is <ph product="k2 s-series"
-                            >"110.22.2.3:8260/report"</ph><?oxy_comment_start author="Becky" timestamp="20200518T152533+0800" comment="+"?><ph
-                            product="cloudpbx">yeastar.com:8260/report</ph><?oxy_comment_end?>; PBX
-                          will send the API reports to <ph product="k2 s-series"
-                            >"110.22.2.3:8260/report"</ph><?oxy_comment_start author="Becky" timestamp="20200518T152541+0800" comment="+"?><ph
-                            product="cloudpbx"
-                        >yeastar.com:8260/report</ph><?oxy_comment_end?>.</p></li>
+                      <li>0: The URL is a relative URL.<p>For example, the IP address of the
+                          application server is 110.22.2.3,<codeph>port</codeph> is 8260,
+                            <codeph>url</codeph> is "report"; PBX will send the API reports to
+                            <ph>110.22.2.3:8260/report</ph>.</p></li>
+                      <li>1: The URL is an absolute URL.<p>For example, the IP address of the
+                          application server is 110.22.2.3,<codeph>url</codeph> is
+                            <ph>"110.22.2.3:8260/report"</ph>; PBX will send the API reports to
+                            <ph>"110.22.2.3:8260/report"</ph>.</p></li>
                     </ul>
                   </p><p><b>Default values</b>: 0.</p></entry>
               </row>

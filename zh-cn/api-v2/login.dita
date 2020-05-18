@@ -2,14 +2,16 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="reference_blb_5ld_gdb">
   <title>获取 API token</title>
-  <shortdesc><ph keyref="product_name"/>
-    API采用用户名和密码的方式验证，只有用户名和密码验证通过的应用服务器，API才会处理其发送的请求。</shortdesc>
+  <shortdesc><ph keyref="product_name"/> API 采用用户名和密码的方式验证，只有用户名和密码验证通过的应用服务器，API
+    才会处理其发送的请求。</shortdesc>
   <refbody>
     <section>
       <p>
         <note>
-          <p>如果密码连续错误五次，则应用服务器的的 IP 将会被锁 10 分钟。登录 PBX 网页，可以马上<xref
-              href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip">删除被拉黑 IP 地址</xref>。</p>
+          <p>如果密码连续错误五次，则应用服务器的的 <ph product="k2 s-series">IP</ph><ph product="cloudpbx"
+              ><?oxy_comment_start author="Becky" timestamp="20200518T172146+0800" comment="+"?>域名<?oxy_comment_end?></ph>将会被锁
+            10 分钟。登录 PBX 网页，可以马上<xref href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip"
+              >删除被拉黑 IP 地址</xref>。</p>
         </note>
       </p>
     </section>
@@ -69,8 +71,10 @@
                 <entry>
                   <p>应用服务器要监听此端口，接收 PBX 发送的事件报告。</p>
                   <p>
-                    <note>如果你选择 <xref href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods"
-                        >报告发送方式</xref> 为 HTTP，此参数必填。</note>
+                    <?oxy_comment_start author="Becky" timestamp="20200518T172218+0800" comment="+ attribute"?>
+                    <note product="k2 s-series">如果你选择 <xref
+                        href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">报告发送方式</xref>
+                      为 HTTP，此参数必填。</note><?oxy_comment_end?>
                   </p>
                   <p><b>默认值</b>：8260。</p>
                 </entry>
@@ -82,9 +86,11 @@
                 <entry>应用服务器获取事件报告的 URL。<p>
                     <note>
                       <ul id="ul_dtc_xjr_rjb">
-                        <li>此参数仅适用于  <xref
+                        <?oxy_comment_start author="Becky" timestamp="20200518T172236+0800" comment="+ attribute
+"?>
+                        <li product="k2 s-series">此参数仅适用于 <xref
                             href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods"
-                            >报告发送方式</xref>  为 HTTP 的情况。</li>
+                            >报告发送方式</xref> 为 HTTP 的情况。</li><?oxy_comment_end?>
                         <li>如果不带此参数，则 PBX 默认向应用服务器的 IP 地址发送事件报告。</li>
                       </ul>
                     </note>
@@ -94,9 +100,11 @@
                 <entry>urltag</entry>
                 <entry>否</entry>
                 <entry>String</entry>
-                <entry>指定 URL 的类型。<note>此参数仅适用于  <xref
-                      href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">报告发送方式</xref>  为
-                    HTTP 的情况。</note><p><b>取值范围</b>：</p><p>
+                <entry>指定 URL
+                    的类型。<?oxy_comment_start author="Becky" timestamp="20200518T172251+0800" comment="+ attribute"?><note
+                    product="k2 s-series">此参数仅适用于 <xref
+                      href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">报告发送方式</xref> 为
+                    HTTP 的情况。</note><?oxy_comment_end?><p><b>取值范围</b>：</p><p>
                     <ul id="ul_dq2_yv2_j2b">
                       <li>0：定义<codeph>url</codeph>的值为相对路径。PBX 会将相对路径的<codeph>url</codeph>与应用服务器的 IP
                           地址结合起来，发送事件报告到具体的路径。<p>例如：应用服务器 IP
@@ -155,12 +163,13 @@
               <row id="transport">
                 <entry>transport</entry>
                 <entry>String</entry>
-                <entry>PBX 向应用服务器推送报告的协议。<p>
+                <entry>PBX 向应用服务器推送报告的协议。<ph product="cloudpbx">PBX 采用 TCP 短连接的方式发送 HTTP 事件报告。</ph><p>
                     <ul id="ul_vby_sfp_4jb">
-                      <li>HTTP：PBX 采用 TCP 短连接的方式发送 HTTP 事件报告。</li>
-                      <li>TCP：PBX 采用 TCP 长连接的方式发送 TCP 事件报告。</li>
+                      <li product="k2 s-series">HTTP：PBX 采用 TCP 短连接的方式发送 HTTP 事件报告。</li>
+                      <li product="k2 s-series">TCP：PBX 采用 TCP 长连接的方式发送 TCP 事件报告。</li>
                     </ul>
-                  </p><p>关于两种事件报告发送形式的说明，请参见<xref href="api-reports.dita"/>。</p></entry>
+                  </p><p>关于<ph product="k2 s-series">两种</ph>事件报告发送形式的说明，请参见<xref
+                      href="api-reports.dita"/>。</p></entry>
               </row>
             </tbody>
           </tgroup>

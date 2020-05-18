@@ -7,8 +7,7 @@
         <section id="section_lwk_sxw_mjb">
             <title>
                 <ph keyref="product_name"/> API</title>
-            <p><ph product="k2 s-series">朗视</ph>
-                <ph keyref="product_name"/> 提供二次开发接口（API）。开发者可以利用 API 开发或者对接呼叫中心、酒店管理系统、CRM、OA
+            <p><ph keyref="product_name"/> 提供二次开发接口（API）。开发者可以利用 API 开发或者对接呼叫中心、酒店管理系统、CRM、OA
                 办公系统、计费系统等应用服务器。</p>
         </section>
         <section id="section_ix4_dfh_4jb">
@@ -18,7 +17,7 @@
                     调用概述</xref>和<xref href="api-reports.dita"/>。</p>
             <p>
                 <ul id="ul_f1b_hyw_mjb">
-                    <li><b>应用服务器通过 API 接口对 PBX进行操作</b>：<p>参数查询、状态查询、参数配置、呼叫操控等。</p></li>
+                    <li><b>应用服务器通过 API 接口对 PBX 进行操作</b>：<p>参数查询、状态查询、参数配置、呼叫操控等。</p></li>
                     <li><b>PBX 实时向应用服务器推送事件报告</b>：<p>系统状态变更、分机状态变更、中继状态变更、呼叫状态变更、DTMF
                             按键信息、通话记录等。</p></li>
                 </ul>
@@ -38,4 +37,3 @@
         </section>
     </conbody>
 </concept>
-<?oxy_options track_changes="on"?>
