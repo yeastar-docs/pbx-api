@@ -6,7 +6,7 @@
     <body>
         <section id="section_ezw_ndp_4jb">
             <title id="api-basic-settings">二次开发接口- 基本设置</title>
-            <p>使用 API 功能，你必须启用API 并做好基本设置。</p>
+            <p>使用 API 功能，你必须启用 API 并做好基本设置。</p>
             <p>登录 PBX 网页，进入 <menucascade>
                     <uicontrol>配置</uicontrol>
                     <uicontrol>PBX</uicontrol>
@@ -14,11 +14,14 @@
                     <uicontrol>二次开发接口</uicontrol>
                 </menucascade>，启用并更改 API 基本设置。</p>
             <p><image href="../Images/pbx-api/api-basic-settings.png" width="650"
-                    id="image_nmz_hhp_4jb"/></p>
+                    id="image_nmz_hhp_4jb" product="k2 s-series"/></p>
+            <p><image id="image_bfm_mtn_slb"
+                    href="../Images/pbx-api/api-basic-settings-cloudpbx.png" product="cloudpbx"
+                /></p>
             <p>
                 <ul id="ul_ewz_mgp_4jb">
                     <li><uicontrol>启用</uicontrol>：是否启用 API 功能。</li>
-                    <li id="report-methods"
+                    <li id="report-methods" product="k2 s-series"
                             ><uicontrol>报告发送方法</uicontrol>：选择发送事件报告的方式。关于两种事件报告发送形式的说明，请参见<xref
                             href="api-reports.dita"/>。<p>
                             <ul id="ul_vby_sfp_4jb">
@@ -54,16 +57,16 @@
                         <dd>选择是否监控分机的状态。</dd>
                         <dd>当该分机状态有变更时（如：分机状态从忙变为空闲），PBX 会主动向应用服务器发送<xref
                                 href="event-ExtensionStatus.dita"/>。</dd>
-                        <dd><image href="../Images/admin/enable_api_extension.png"
-                                id="image_lhz_chd_gdb"/></dd>
+                        <dd><image href="../Images/pbx-api/enable_api_extension.png"
+                                id="image_lhz_chd_gdb" width="650"/></dd>
                     </dlentry>
                 </dl>
                 <dl>
                     <dlentry>
                         <dt>中继</dt>
                         <dd>选择是否控制中继的来电、是否监控中继的通话状态。</dd>
-                        <dd><image href="../Images/admin/enable_api_trunk.png"
-                                id="image_pq2_whd_gdb"/></dd>
+                        <dd><image href="../Images/pbx-api/enable_api_trunk.png"
+                                id="image_pq2_whd_gdb" width="650"/></dd>
                         <dd>
                             <ul>
                                 <li id="inbound-control"><uicontrol
@@ -113,15 +116,25 @@
                 IP，你可以将这个 IP 从黑名单列表中删除。</p>
             <p>
                 <ol id="ol_an3_xl5_4jb">
-                    <li>进入 <menucascade>
+                    <li product="k2 s-series">进入 <menucascade>
                             <uicontrol>PBX</uicontrol>
                             <uicontrol>系统</uicontrol>
                             <uicontrol>安全中心</uicontrol>
                             <uicontrol>IP自动防御</uicontrol>
                             <uicontrol>IP黑名单</uicontrol>
-                        </menucascade>，查看被拉黑的 IP。<p><image href="../Images/admin/api_blocked_ip.png"
-                                width="650" id="image_bns_q2d_nfb"/></p></li>
-                    <li>选择 IP 地址，点击 <image href="../Images/ui_icons/delete.png" width="20"
+                        </menucascade>，查看被拉黑的 IP。<p><image
+                                href="../Images/pbx-api/api_blocked_ip.png" width="650"
+                                id="image_bns_q2d_nfb"/></p></li>
+                    <li product="cloudpbx">进入 <menucascade>
+                            <uicontrol>配置</uicontrol>
+                            <uicontrol>系统</uicontrol>
+                            <uicontrol>安全中心</uicontrol>
+                            <uicontrol>访问控制</uicontrol>
+                            <uicontrol>IP 黑名单</uicontrol>
+                        </menucascade>，查看被拉黑的 IP。<p><image id="image_ppn_j5n_slb"
+                                href="../Images/pbx-api/api_blocked_ip_cloudpbx.png" width="650"
+                            /></p></li>
+                    <li>选择 IP 地址，点击 <image href="../Images/pbx-api/delete.png" width="20"
                             id="image_mlx_s2d_nfb"/>。</li>
                 </ol>
             </p>

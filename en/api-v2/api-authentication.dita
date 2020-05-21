@@ -4,9 +4,10 @@
     <title>API Authentication Methods</title>
     <shortdesc>This topic introduces API authentication methods for API requests and API events. </shortdesc>
     <conbody>
-        <section id="section_v5p_tgn_4jb"><title>Authentication methods</title>API requests use
-            token for authentication; API events use different authentication methods according to
-            different event protocols.<p>
+        <section id="section_v5p_tgn_4jb"><title>Authentication methods</title><ph
+                product="k2 s-series">API requests use token for authentication; API events use
+                different authentication methods according to different event protocols.</ph><p
+                product="cloudpbx">API requests and events use token for authentication.</p><p>
                 <ul id="ul_qkj_ffn_4jb">
                     <li><b>API requests</b><p>The application server should get an API token from
                             PBX using API username and password (a 32-digit lowercase string,
@@ -27,9 +28,9 @@
                                     product="k2 s-series">or extend API token validity</ph> to
                                 ensure token validity.</note>
                         </p></li>
-                    <li><b>TCP events</b><p>After a TCP connection between the application server
-                            and PBX is established, the application server should send <xref
-                                href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP login
+                    <li product="k2 s-series"><b>TCP events</b><p>After a TCP connection between the
+                            application server and PBX is established, the application server should
+                            send <xref href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP login
                                 data</xref> to PBX using API username and password (cleartext).
                             After the authentication is passed, PBX will send events to the
                             application server.</p><p>
@@ -54,4 +55,3 @@
         </section>
     </conbody>
 </concept>
-<?oxy_options track_changes="on"?>

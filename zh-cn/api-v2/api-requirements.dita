@@ -12,11 +12,9 @@
                     <dlentry>
                         <dt>PBX 版本</dt>
                         <dd>本文档的描述基于 API 2.0.0，你需要升级 PBX 固件到适配 API 2.0.0 接口的版本。</dd>
-                        <dd product="cloudpbx"
-                            ><?oxy_comment_start author="carol" timestamp="20191030T151200+0800" comment="待确定"?>PBX
-                            版本要求：固件版本 81.13.0.30 或更高版本</dd>
-                        <dd product="s-series">PBX 版本要求：固件版本 30.13.0.30</dd>
-                        <dd product="k2">PBX 版本要求：固件版本<?oxy_comment_end?> 80.13.0.30 或更高版本</dd>
+                        <dd product="cloudpbx">PBX 版本要求：固件版本 81.13.0.30 或更高版本</dd>
+                        <dd product="s-series">PBX 版本要求：固件版本 30.13.0.30 或更高版本</dd>
+                        <dd product="k2">PBX 版本要求：固件版本 80.13.0.30 或更高版本</dd>
                     </dlentry>
                 </dl>
                 <dl>

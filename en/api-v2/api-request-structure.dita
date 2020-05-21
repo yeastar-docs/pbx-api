@@ -23,7 +23,8 @@ Content-Type:application/json; charset=utf-8
             </p>
             <p>
                 <ul id="ul_qhp_rfc_wgb">
-                    <li><codeph>POST</codeph>indicates the request method.</li>
+                    <li><codeph>POST</codeph><?oxy_insert_start author="Becky" timestamp="20200518T150255+0800"?>
+                        <?oxy_insert_end?>indicates the request method.</li>
                     <li><codeph>/api/v2.0.0</codeph> is the API path which indicates the API
                         version.</li>
                     <li><codeph>queue/add_dynamicagent</codeph> indicates the target API <xref

@@ -10,8 +10,9 @@
         </section>
         <section id="section_msh_vfg_4jb">
             <title>通信端口</title>
-            <p>API 调用的通信端口与 PBX 网页访问端口一致。默认使用 HTTPS 8088 和 HTTP 80。</p>
-            <p>
+            <p product="k2 s-series">API 调用的通信端口与 PBX 网页访问端口一致。默认使用 HTTPS 8088 和 HTTP 80。</p>
+            <p product="cloudpbx">API 调用的通信端口与 PBX 网页访问端口一致，使用 HTTPS 443。</p>
+            <p product="k2 s-series">
                 <note>
                     <ul id="ul_q3s_zfg_4jb">
                         <li>由于 PBX 默认启用 HTTPS <uicontrol>80端口重定向</uicontrol>，所以默认端口为 HTTPS 8088 或

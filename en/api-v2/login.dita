@@ -8,9 +8,10 @@
     <section>
       <p>
         <note>
-          <p>If login fails for five times, IP address of the application server will be locked for
-            10 minutes. You can log in PBX web interface and <xref
-              href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip">Delete blacklisted API
+          <p>If login fails for five times, <ph product="k2 s-series">IP address</ph><ph
+              product="cloudpbx">domain</ph> of the application server will be locked for 10
+            minutes. You can log in PBX web interface and <xref
+              href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip">delete blacklisted API
               IP</xref>.</p>
         </note>
       </p>
@@ -76,7 +77,7 @@
                   <p>The application server would monitor the port and receive events sent from PBX
                     through this port.</p>
                   <p>
-                    <note>If you select HTTP as <xref
+                    <note product="k2 s-series">If you select HTTP as <xref
                         href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
                         method</xref>, the parameter is required.</note>
                   </p>
@@ -91,11 +92,12 @@
                   of events to the application server.<p>
                     <note>
                       <ul id="ul_dtc_xjr_rjb">
-                        <li>The parameter is only applicable when the <xref
+                        <li product="k2 s-series">The parameter is only applicable when the <xref
                             href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
                             method</xref> is HTTP.</li>
-                        <li>If the parameter is not specified, the event will be sent to the IP
-                          address of the application server.</li>
+                        <li>If the parameter is not specified, the event will be sent to the <ph
+                            product="k2 s-series">IP address </ph><ph product="cloudpbx">domain</ph>
+                          of the application server.</li>
                       </ul>
                     </note>
                   </p></entry>
@@ -104,10 +106,10 @@
                 <entry>urltag</entry>
                 <entry>No</entry>
                 <entry>String</entry>
-                <entry>Specify the URL type.<?oxy_comment_start author="carol" timestamp="20191118T164911+0800" comment="保留1.0 的描述" flag="done"?><note><?oxy_comment_end?>
+                <entry>Specify the URL type.<note>
                     <p>
                       <ul id="ul_klj_n2q_tjb">
-                        <li>The parameter is only applicable when the <xref
+                        <li product="k2 s-series">The parameter is only applicable when the <xref
                             href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
                             method</xref> is HTTP.</li>
                         <li>Using an absolute URL will ensure the API reports to be sent
@@ -117,13 +119,13 @@
                   </note><p><b>Valid values</b>:</p><p>
                     <ul id="ul_edl_k2q_tjb">
                       <li>0: The URL is a relative URL.<p>For example, the IP address of the
-                          application server is 110.22.2.3, <codeph>port</codeph> is 8260,
+                          application server is 110.22.2.3,<codeph>port</codeph> is 8260,
                             <codeph>url</codeph> is "report"; PBX will send the API reports to
-                          110.22.2.3:8260/report .</p></li>
+                            <ph>110.22.2.3:8260/report</ph>.</p></li>
                       <li>1: The URL is an absolute URL.<p>For example, the IP address of the
-                          application server is 110.22.2.3, <codeph>url</codeph> is
-                          "110.22.2.3:8260/report"; PBX will send the API reports to
-                          "110.22.2.3:8260/report".</p></li>
+                          application server is 110.22.2.3,<codeph>url</codeph> is
+                            <ph>"110.22.2.3:8260/report"</ph>; PBX will send the API reports to
+                            <ph>"110.22.2.3:8260/report"</ph>.</p></li>
                     </ul>
                   </p><p><b>Default values</b>: 0.</p></entry>
               </row>
@@ -176,7 +178,8 @@
                 <entry>The transport of API events.<p>
                     <ul id="ul_vby_sfp_4jb">
                       <li>HTTP: PBX sends HTTP events by short-live TCP flows.</li>
-                      <li>TCP: PBX sends TCP events by keep-alive TCP flows.</li>
+                      <li product="k2 s-series">TCP: PBX sends TCP events by keep-alive TCP
+                        flows.</li>
                     </ul>
                   </p><p>For events details, refer to <xref href="api-reports.dita"/>.</p></entry>
               </row>

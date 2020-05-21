@@ -109,7 +109,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.34*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.48*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -152,7 +152,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.33*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.43*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -190,7 +190,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.38*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -228,7 +228,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.13*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.37*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -238,7 +238,7 @@
             <tbody>
               <row>
                 <entry><xref href="ivr-query.dita#reference_t3n_2s2_gdb">ivr/query</xref></entry>
-                <entry>查询单个 IVR、多个 IVR或所有 IVR 的详细配置。</entry>
+                <entry>查询单个 IVR、多个 IVR 或所有 IVR 的详细配置。</entry>
               </row>
               <row>
                 <entry><xref href="ivr-update.dita#reference_yyz_gs2_gdb">ivr/update</xref></entry>
@@ -254,7 +254,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="1.79*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.32*" rowsep="1" colsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -308,7 +308,7 @@
         <table frame="all" rowsep="1" colsep="1" id="table_td1_sn1_4jb">
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*"/>
-            <colspec colname="c2" colnum="2" colwidth="1.72*"/>
+            <colspec colname="c2" colnum="2" colwidth="2.25*"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -449,7 +449,7 @@
         <table id="table_kmh_5zb_mjb">
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.21*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.28*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -478,7 +478,7 @@
         <table id="table_lmh_5zb_mjb">
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="2.06*" colsep="1" rowsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.26*" colsep="1" rowsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -522,7 +522,7 @@
         <table>
           <tgroup cols="2">
             <colspec colname="c1" colnum="1" colwidth="1*" rowsep="1" colsep="1"/>
-            <colspec colname="c2" colnum="2" colwidth="1.87*" rowsep="1" colsep="1"/>
+            <colspec colname="c2" colnum="2" colwidth="2.21*" rowsep="1" colsep="1"/>
             <thead>
               <row>
                 <entry>API Endpoint</entry>
@@ -593,9 +593,8 @@
                 <entry>播放语音文件。</entry>
               </row>
               <row>
-                <entry><?oxy_comment_start author="Becky" timestamp="20191119T134117+0800" comment="新增"?><xref
-                    href="hangup-paging-music.dita#reference_m1p_1kt_vgb"
-                    >paginggroup/hangup/music</xref><?oxy_comment_end?></entry>
+                <entry><xref href="hangup-paging-music.dita#reference_m1p_1kt_vgb"
+                    >paginggroup/hangup/music</xref></entry>
                 <entry>挂断广播语音。</entry>
               </row>
               <row product="s-series">
