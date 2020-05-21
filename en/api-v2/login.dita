@@ -8,13 +8,11 @@
     <section>
       <p>
         <note>
-          <p>If login fails for five times, <ph product="k2 s-series"
-              ><?oxy_comment_start author="Becky" timestamp="20200518T160659+0800" comment="+ attribute"?>IP
-              address<?oxy_comment_end?></ph><ph product="cloudpbx"
-              ><?oxy_comment_start author="Becky" timestamp="20200518T160713+0800" comment="+"?>domain<?oxy_comment_end?></ph>
-            of the application server will be locked for 10 minutes. You can log in PBX web
-            interface and <xref href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip">delete
-              blacklisted API IP</xref>.</p>
+          <p>If login fails for five times, <ph product="k2 s-series">IP address</ph><ph
+              product="cloudpbx">domain</ph> of the application server will be locked for 10
+            minutes. You can log in PBX web interface and <xref
+              href="pbx-api-settings.dita#topic_itj_qhf_jjb/delete-api-ip">delete blacklisted API
+              IP</xref>.</p>
         </note>
       </p>
     </section>
@@ -79,10 +77,9 @@
                   <p>The application server would monitor the port and receive events sent from PBX
                     through this port.</p>
                   <p>
-                    <?oxy_comment_start author="Becky" timestamp="20200518T151724+0800" comment="+ attribute"?>
                     <note product="k2 s-series">If you select HTTP as <xref
                         href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
-                        method</xref>, the parameter is required.</note><?oxy_comment_end?>
+                        method</xref>, the parameter is required.</note>
                   </p>
                   <p><b>Default value</b>: 8260.</p>
                 </entry>
@@ -95,13 +92,11 @@
                   of events to the application server.<p>
                     <note>
                       <ul id="ul_dtc_xjr_rjb">
-                        <?oxy_comment_start author="Becky" timestamp="20200518T151757+0800" comment="+"?>
                         <li product="k2 s-series">The parameter is only applicable when the <xref
                             href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
-                            method</xref> is HTTP.</li><?oxy_comment_end?>
+                            method</xref> is HTTP.</li>
                         <li>If the parameter is not specified, the event will be sent to the <ph
-                            product="k2 s-series">IP address </ph><ph product="cloudpbx"
-                            ><?oxy_comment_start author="Becky" timestamp="20200518T160226+0800" comment="+"?>domain<?oxy_comment_end?></ph>
+                            product="k2 s-series">IP address </ph><ph product="cloudpbx">domain</ph>
                           of the application server.</li>
                       </ul>
                     </note>
@@ -111,14 +106,12 @@
                 <entry>urltag</entry>
                 <entry>No</entry>
                 <entry>String</entry>
-                <entry>Specify the URL type.<?oxy_comment_start author="carol" timestamp="20191118T164911+0800" comment="保留1.0 的描述" flag="done"?><note><?oxy_comment_end?>
+                <entry>Specify the URL type.<note>
                     <p>
                       <ul id="ul_klj_n2q_tjb">
-                        <?oxy_comment_start author="Becky" timestamp="20200518T160247+0800" comment="+ attribute
-"?>
                         <li product="k2 s-series">The parameter is only applicable when the <xref
                             href="pbx-api-settings.dita#topic_itj_qhf_jjb/report-methods">report
-                            method</xref> is HTTP.</li><?oxy_comment_end?>
+                            method</xref> is HTTP.</li>
                         <li>Using an absolute URL will ensure the API reports to be sent
                           successfully in a complicated network environment.</li>
                       </ul>
@@ -182,15 +175,12 @@
               <row id="transport">
                 <entry>transport</entry>
                 <entry>String</entry>
-                <entry>The transport of API events.
-                    <?oxy_comment_start author="Becky" timestamp="20200518T152847+0800" comment="+"?><ph
-                    product="cloudpbx"><ph keyref="product_name"/> sends HTTP events by short-live
-                    TCP flows.</ph><?oxy_comment_end?><p product="k2 s-series">
-                    <?oxy_comment_start author="Becky" timestamp="20200518T160404+0800" comment="+ attribute"?>
+                <entry>The transport of API events.<p>
                     <ul id="ul_vby_sfp_4jb">
                       <li>HTTP: PBX sends HTTP events by short-live TCP flows.</li>
-                      <li>TCP: PBX sends TCP events by keep-alive TCP flows.</li>
-                    </ul><?oxy_comment_end?>
+                      <li product="k2 s-series">TCP: PBX sends TCP events by keep-alive TCP
+                        flows.</li>
+                    </ul>
                   </p><p>For events details, refer to <xref href="api-reports.dita"/>.</p></entry>
               </row>
             </tbody>

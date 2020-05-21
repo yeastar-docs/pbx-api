@@ -15,13 +15,13 @@
                 </menucascade>，启用并更改 API 基本设置。</p>
             <p><image href="../Images/pbx-api/api-basic-settings.png" width="650"
                     id="image_nmz_hhp_4jb" product="k2 s-series"/></p>
-            <p><?oxy_comment_start author="Becky" timestamp="20200518T170840+0800" comment="+"?><image
-                    id="image_bfm_mtn_slb" href="../Images/pbx-api/api-basic-settings-cloudpbx.png"
-                    product="cloudpbx"/><?oxy_comment_end?></p>
+            <p><image id="image_bfm_mtn_slb"
+                    href="../Images/pbx-api/api-basic-settings-cloudpbx.png" product="cloudpbx"
+                /></p>
             <p>
                 <ul id="ul_ewz_mgp_4jb">
                     <li><uicontrol>启用</uicontrol>：是否启用 API 功能。</li>
-                    <li id="report-methods" product="cloudpbx s-series"
+                    <li id="report-methods" product="k2 s-series"
                             ><uicontrol>报告发送方法</uicontrol>：选择发送事件报告的方式。关于两种事件报告发送形式的说明，请参见<xref
                             href="api-reports.dita"/>。<p>
                             <ul id="ul_vby_sfp_4jb">

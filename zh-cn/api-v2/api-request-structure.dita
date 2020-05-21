@@ -28,10 +28,8 @@ Content-Type:application/json; charset=utf-8
                         token。</li>
                     <li><codeph>Content-Type:application/json; charset=utf-8</codeph> 表示请求内容格式。</li>
                     <li><codeph>Host</codeph> 表示<ph product="k2 s-series"><ph keyref="product_name"
-                            />的 IP
-                            地址。</ph><?oxy_comment_start author="Becky" timestamp="20200518T175623+0800" comment="+"?><ph
-                            product="cloudpbx"><ph keyref="product_name"/>
-                        的域名。</ph><?oxy_comment_end?></li>
+                            />的 IP 地址。</ph><ph product="cloudpbx"><ph keyref="product_name"/>
+                            的域名。</ph></li>
                     <li><codeph>queuenumber</codeph>、<codeph>extnumber</codeph>、<codeph>password</codeph>
                         表示具体请求参数。</li>
                 </ul>

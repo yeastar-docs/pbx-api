@@ -4,9 +4,10 @@
     <title>API Authentication Methods</title>
     <shortdesc>This topic introduces API authentication methods for API requests and API events. </shortdesc>
     <conbody>
-        <section id="section_v5p_tgn_4jb"><title>Authentication methods</title>API requests use
-            token for authentication; API events use different authentication methods according to
-            different event protocols.<p>
+        <section id="section_v5p_tgn_4jb"><title>Authentication methods</title><ph
+                product="k2 s-series">API requests use token for authentication; API events use
+                different authentication methods according to different event protocols.</ph><p
+                product="cloudpbx">API requests and events use token for authentication.</p><p>
                 <ul id="ul_qkj_ffn_4jb">
                     <li><b>API requests</b><p>The application server should get an API token from
                             PBX using API username and password (a 32-digit lowercase string,
@@ -27,8 +28,6 @@
                                     product="k2 s-series">or extend API token validity</ph> to
                                 ensure token validity.</note>
                         </p></li>
-                    <?oxy_comment_start author="Becky" timestamp="20200518T160027+0800" comment="+ attribute"?>
-                    <?oxy_attributes product="&lt;change type=&quot;inserted&quot; author=&quot;Becky&quot; timestamp=&quot;20200518T151128+0800&quot; /&gt;"?>
                     <li product="k2 s-series"><b>TCP events</b><p>After a TCP connection between the
                             application server and PBX is established, the application server should
                             send <xref href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP login
@@ -38,7 +37,7 @@
                             <note>When PBX or the application server reboots or meets with network
                                 error, the application server should establish a new TCP connection
                                 and send TCP login data again.</note>
-                        </p></li><?oxy_comment_end?>
+                        </p></li>
                 </ul>
             </p></section>
         <section id="section_zby_phh_4jb">
@@ -56,4 +55,3 @@
         </section>
     </conbody>
 </concept>
-<?oxy_options track_changes="on"?>

@@ -26,10 +26,9 @@
                     <dd><image id="image_ibz_kpr_rjb" width="700"
                             href="../Images/pbx-api/api-demo.png" product="k2 s-series"/></dd>
                     <dd>
-                        <p><?oxy_comment_start author="Becky" timestamp="20200518T163714+0800" comment="+"?><image
-                                id="image_kls_mpn_slb"
+                        <p><image id="image_kls_mpn_slb"
                                 href="../Images/pbx-api/api-demo-cloudpbx.png" width="700"
-                                product="cloudpbx"/><?oxy_comment_end?></p>
+                                product="cloudpbx"/></p>
                     </dd>
                 </dlentry>
             </dl>
@@ -49,15 +48,12 @@
                     <dd>
                         <ol>
                             <li>在 API demo 中填写 API 版本、 PBX 的<ph product="k2 s-series"> IP 地址</ph><ph
-                                    product="cloudpbx"
-                                    ><?oxy_comment_start author="Becky" timestamp="20200518T164004+0800" comment="+"?>域名<?oxy_comment_end?></ph>和通信端口。<p><image
+                                    product="cloudpbx">域名</ph>和通信端口。<p><image
                                         href="../Images/pbx-api/api-demo-setup1.png" width="500"
-                                        id="image_k15_ctr_rjb" product="k2 s-series"
-                                        /></p><p><?oxy_comment_start author="Becky" timestamp="20200518T180149+0800" comment="+"?><image
+                                        id="image_k15_ctr_rjb" product="k2 s-series"/></p><p><image
                                         id="image_zkr_fqn_slb"
                                         href="../Images/pbx-api/api-demo-setup1-cloudpbx.png"
-                                        width="500" product="cloudpbx"/><?oxy_comment_end?></p><ul
-                                    id="ul_flf_3n4_4jb">
+                                        width="500" product="cloudpbx"/></p><ul id="ul_flf_3n4_4jb">
                                     <li><uicontrol>版本号</uicontrol>：填写 API 版本号 <i>2.0.0</i>。<p>
                                             <note>本文档中，所有接口和事件报告均采用的 API 版本为 2.0.0。</note>
                                         </p></li>
@@ -66,20 +62,17 @@
                                         <li><uicontrol>HTTP/HTTPS</uicontrol>：<ph
                                                 product="k2 s-series">选择通信协议。</ph>
                                             <ph product="cloudpbx">选择
-                                                  <uicontrol><?oxy_comment_start author="Becky" timestamp="20200518T175203+0800" comment="+"?>HTTPS<?oxy_comment_end?></uicontrol></ph>。<p>
+                                                <uicontrol>HTTPS</uicontrol></ph>。<p>
                                                 <note product="k2 s-series">本示例中使用的通信端口为 HTTPS
                                                   8088。如果你更改了 PBX 的网页访问协议和端口，在 demo 中需要根据 PBX
                                                   的实际配置填写。</note>
                                             </p></li>
                                         <li><uicontrol>目标地址</uicontrol>：<ph product="k2 s-series">填写
-                                                PBX 的 IP
-                                                地址。</ph><?oxy_comment_start author="Becky" timestamp="20200518T164546+0800" comment="+"?><ph
-                                                product="cloudpbx">填写 PBX
-                                            的域名。</ph><?oxy_comment_end?></li>
+                                                PBX 的 IP 地址。</ph><ph product="cloudpbx">填写 PBX
+                                                的域名。</ph></li>
                                         <li><uicontrol>端口</uicontrol>：填写 PBX 的网页端口。本示例填写 <ph
                                                 product="k2 s-series">8088</ph><ph
-                                                product="cloudpbx"
-                                                ><?oxy_comment_start author="Becky" timestamp="20200518T164551+0800" comment="+"?>443<?oxy_comment_end?></ph>。</li>
+                                                product="cloudpbx">443</ph>。</li>
                                     </ul>
                                 </p></li>
                             <li>在 API demo 中配置监听端口，并点击 <uicontrol>打开服务器</uicontrol>，监听该端口。<p>PBX
@@ -96,10 +89,10 @@
                             <li>调用 <xref href="login.dita#reference_blb_5ld_gdb">login</xref> 接口获取
                                 API token。<p><image href="../Images/pbx-api/api-demo-login.png"
                                         width="500" id="image_lxh_w5r_rjb" product="k2 s-series"
-                                    /></p><p><?oxy_comment_start author="Becky" timestamp="20200518T165017+0800" comment="+"?><image
+                                    /></p><p><image
                                         href="../Images/pbx-api/api-demo-login-cloudpbx.png"
                                         id="image_d4m_grn_slb" width="500" product="cloudpbx"
-                                    /><?oxy_comment_end?></p></li>
+                                /></p></li>
                         </ol>
                     </dd>
                 </dlentry>
@@ -115,10 +108,9 @@
                                     <codeblock>{"caller": "1001","callee": "1018"}</codeblock>
                                 </p><p><image href="../Images/pbx-api/api-demo-calldial.png"
                                         width="500" id="image_rqx_cwr_rjb" product="k2 s-series"
-                                    /></p><p><?oxy_comment_start author="Becky" timestamp="20200518T165522+0800" comment="+"?><image
-                                        id="image_sgq_xrn_slb"
+                                    /></p><p><image id="image_sgq_xrn_slb"
                                         href="../Images/pbx-api/api-demo-calldial-cloudpbx.png"
-                                        width="500" product="cloudpbx"/><?oxy_comment_end?></p></li>
+                                        width="500" product="cloudpbx"/></p></li>
                         </ol>
                     </dd>
                 </dlentry>

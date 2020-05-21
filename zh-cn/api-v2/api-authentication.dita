@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="concept_ejm_vhf_jjb">
-    <?oxy_comment_start author="Becky" timestamp="20200518T171813+0800" comment="="?>
-    <title>API 认证机制</title><?oxy_comment_end?>
+    <title>API 认证机制</title>
     <shortdesc>本文介绍 API 调用和推送事件报告的认证机制。</shortdesc>
     <conbody>
         <section id="section_v5p_tgn_4jb"><title>认证机制</title><ph product="k2 s-series">API 调用采用
-                token 进行认证；事件报告的认证机制，根据推送方式的不同，采用不同的认证机制。</ph><ph product="cloudpbx"
-                ><?oxy_comment_start author="Becky" timestamp="20200518T172950+0800" comment="+"?>API
-                调用和事件报告采用 token 进行认证。<?oxy_comment_end?></ph><p>
+                token 进行认证；事件报告的认证机制，根据推送方式的不同，采用不同的认证机制。</ph><ph product="cloudpbx">API 调用和事件报告采用
+                token 进行认证。</ph><p>
                 <ul id="ul_qkj_ffn_4jb">
                     <li><b>API 调用</b><p>应用服务器需要通过 API 用户名和密码（MD5 加密32位小写字母）向 PBX 获取 API token，每次调用
                             API 接口都要带上有效的 token。</p><p>
