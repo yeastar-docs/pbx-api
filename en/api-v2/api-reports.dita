@@ -14,9 +14,7 @@
             <p product="k2 s-series">
                 <ph keyref="product_name"/> supports to send HTTP events and TCP events.. You can go
                 to <xref href="pbx-api-settings.dita"/>, and select the report method.</p>
-            <?oxy_comment_start author="Becky" timestamp="20200518T094155+0800" comment="+"?>
-            <p product="cloudpbx"><ph keyref="product_name"/> supports to send HTTP
-            events.</p><?oxy_comment_end?>
+            <p product="cloudpbx"><ph keyref="product_name"/> supports to send HTTP events.</p>
         </section>
         <section id="http-report">
             <title>HTTP events</title>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="reference_ovf_3mg_h2b">
-    <title><?oxy_comment_start author="carol" timestamp="20191118T163356+0800" comment="中文改成“API token 续活”" flag="done"?>Keep
-        API token alive<?oxy_comment_end?></title>
+    <title>Keep API token alive</title>
     <shortdesc>A token expires after 30 minutes. To ensure  communication between PBX and
         application server, you should call this API interface to keep the API token
         alive.</shortdesc>

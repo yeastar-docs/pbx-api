@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="concept_rrc_5yw_mjb">
-    <?oxy_comment_start author="Becky" timestamp="20200518T150228+0800" comment="="?>
-    <title>API Request Overview</title><?oxy_comment_end?>
+    <title>API Request Overview</title>
     <shortdesc>In this topic, we introduce communication protocols, communication ports, and API
         request flow.</shortdesc>
     <conbody>
-        <section id="section_j1r_sfg_4jb" product="k2 s-series">
+        <section id="section_j1r_sfg_4jb">
             <title>Communication protocols</title>
-            <p><ph keyref="product_name"/> supports POST requests over HTTP/HTTPS protocol. A new
-                TCP connection is established every time the application server sends an API request
-                to the PBX.</p>
+            <p><ph keyref="product_name"/> supports POST requests over <ph product="k2 s-series"
+                    >HTTP and </ph>HTTPS protocol. A new TCP connection is established every time
+                the application server sends an API request to the PBX.</p>
         </section>
-        <section id="section_sp3_bdn_slb" product="cloudpbx">
-            <title>Communication protocol</title>
-            <p>The API requests and API responses are served over HTTPS.</p>
-        </section>
-        <section id="section_msh_vfg_4jb" product="k2 s-series">
+        <section id="section_msh_vfg_4jb">
             <title>Communication ports</title>
-            <p>The API communication port is the same as the web access port of PBX. By default, the
-                communication ports are HTTPS 8088 and HTTP 80.</p>
+            <p product="k2 s-series">The API communication port is the same as the web access port
+                of PBX. By default, the communication ports are HTTPS 8088 and HTTP 80.</p>
+            <p product="cloudpbx">The API communication port is the same as the web access port of
+                PBX. The communication port is HTTPS 443.</p>
             <p>
-                <note>
+                <note product="k2 s-series">
                     <ul id="ul_q3s_zfg_4jb">
                         <li>By default, <uicontrol>Redirect from port 80</uicontrol> is enabled for
-                            <?oxy_comment_start author="Becky" timestamp="20191114T085530+0800" comment="中文写的HTTP，但是看网页是HTTPS才有从80端口重定向这个选项" id="vnc_kp4_tjb" flag="done"?><?oxy_comment_start author="carol" timestamp="20191118T113527+0800" comment="没错" parentID="vnc_kp4_tjb" flag="done" mid="2"?>HTTPS<?oxy_comment_end mid="2"?><?oxy_comment_end?>
-                            protocol on PBX. So the default ports are HTTPS 8088 and HTTP 80.</li>
+                            HTTPS protocol on PBX. So the default ports are HTTPS 8088 and HTTP
+                            80.</li>
                         <li>For communication security, we recommend that you use HTTPS protocol,
                             and upload an HTTPS certificate made by Certificate Authority to the
                             PBX.</li>
