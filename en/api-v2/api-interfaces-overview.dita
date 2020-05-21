@@ -702,12 +702,10 @@
                     >satisfaction</xref></entry>
                 <entry>Satisfaction survey event.</entry>
               </row>
-              <?oxy_comment_start author="Becky" timestamp="20200518T112854+0800" comment="+ attribute
-"?>
               <row product="s-series">
                 <entry><xref href="event-sms-send.dita#event-send-sms">sms-send</xref></entry>
                 <entry>Event of SMS sent status.</entry>
-              </row><?oxy_comment_end?>
+              </row>
               <row>
                 <entry><xref href="event-conference-status.dita#event-conference-status"
                     >ConferenceStatus</xref></entry>

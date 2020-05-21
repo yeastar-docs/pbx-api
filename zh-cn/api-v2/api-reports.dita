@@ -10,9 +10,7 @@
             <p product="k2 s-series">
                 <ph keyref="product_name"/> 支持 TCP 长连接向应用服务器推送 TCP 事件报告，也支持 TCP 短连接向应用服务器推送 HTTP
                 事件报告。你可以在 <xref href="pbx-api-settings.dita"/>页面，选择发送事件报告的方式。</p>
-            <?oxy_comment_start author="Becky" timestamp="20200518T170320+0800" comment="+"?>
-            <p product="cloudpbx"><ph keyref="product_name"/> 支持 TCP 短连接向应用服务器推送 HTTP
-            事件报告。</p><?oxy_comment_end?>
+            <p product="cloudpbx"><ph keyref="product_name"/> 支持 TCP 短连接向应用服务器推送 HTTP 事件报告。</p>
         </section>
         <section id="http-report">
             <title>HTTP 事件推送</title>

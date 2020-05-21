@@ -6,13 +6,9 @@
     <body>
         <section id="section_efq_xln_4jb">
             <title>Requirements</title>
-            <p>Before using API feature, make sure PBX <ph product="k2 s-series">firmware</ph><ph
-                    product="cloudpbx"
-                    ><?oxy_comment_start author="Becky" timestamp="20200518T154706+0800" comment="+"?>software<?oxy_comment_end?></ph>
-                version meets the requirement and the API feature is enabled.</p>
-            <p>For PBX <ph product="k2 s-series">firmware</ph><ph product="cloudpbx"
-                    ><?oxy_comment_start author="Becky" timestamp="20200518T154715+0800" comment="+"?>software<?oxy_comment_end?></ph>
-                requirements, refer to <xref href="api-requirements.dita"/>.</p>
+            <p>Before using API feature, make sure PBX firmware version meets the requirement and
+                the API feature is enabled.</p>
+            <p>For PBX firmware requirements, refer to <xref href="api-requirements.dita"/>.</p>
             <p>For descriptions of PBX API settings, refer to <xref href="pbx-api-settings.dita"
                 />.</p>
         </section>
@@ -33,11 +29,9 @@
                         <dd>See the following figure to get familiar with the user interface of the
                             demo tool.</dd>
                         <dd><image href="../Images/pbx-api/api-demo.png" id="image_ibz_kpr_rjb"
-                                width="700" product="k2 s-series"
-                                    /><p><?oxy_comment_start author="Becky" timestamp="20200518T140226+0800" comment="+"?><image
-                                    id="image_bj4_brl_slb"
+                                width="700" product="k2 s-series"/><p><image id="image_bj4_brl_slb"
                                     href="../Images/pbx-api/api-demo-cloudpbx.png" width="650"
-                                    product="cloudpbx"/><?oxy_comment_end?></p></dd>
+                                    product="cloudpbx"/></p></dd>
                     </dlentry>
                 </dl>
             </p>
@@ -58,16 +52,13 @@
                     <dd>
                         <ol>
                             <li>In API demo, enter API version, the <ph product="k2 s-series">IP
-                                    address</ph><ph product="cloudpbx"
-                                    ><?oxy_comment_start author="Becky" timestamp="20200518T140332+0800" comment="+"?>domain<?oxy_comment_end?></ph>
-                                of PBX, and the communication port.<p><image
+                                    address</ph><ph product="cloudpbx">domain</ph> of PBX, and the
+                                communication port.<p><image
                                         href="../Images/pbx-api/api-demo-setup1.png" width="500"
-                                        id="image_k15_ctr_rjb" product="k2 s-series"
-                                        /></p><p><?oxy_comment_start author="Becky" timestamp="20200518T140726+0800" comment="+"?><image
+                                        id="image_k15_ctr_rjb" product="k2 s-series"/></p><p><image
                                         id="image_ndq_mvm_slb"
                                         href="../Images/pbx-api/api-demo-setup1-cloudpbx.png"
-                                        width="500" product="cloudpbx"/><?oxy_comment_end?></p><ul
-                                    id="ul_flf_3n4_4jb">
+                                        width="500" product="cloudpbx"/></p><ul id="ul_flf_3n4_4jb">
                                     <li><uicontrol>Version</uicontrol>: Enter API version
                                             <i>2.0.0</i>.<p>
                                             <note>In this documentation, all API interfaces and
@@ -75,13 +66,10 @@
                                         </p></li>
                                 </ul><p>
                                     <ul id="ul_gqh_rm4_4jb">
-                                        <li><uicontrol>HTTP/HTTPS</uicontrol>:
-                                                <?oxy_comment_start author="Becky" timestamp="20200518T155649+0800" comment="+ atttibute"?><ph
+                                        <li><uicontrol>HTTP/HTTPS</uicontrol>: <ph
                                                 product="k2 s-series">Select communication
-                                                protocol.</ph><?oxy_comment_end?><ph
-                                                product="cloudpbx"
-                                                ><?oxy_comment_start author="Becky" timestamp="20200518T141326+0800" comment="+"?>Choose
-                                                  <uicontrol>HTTPS</uicontrol>.<?oxy_comment_end?></ph><p>
+                                                protocol.</ph><ph product="cloudpbx">Choose
+                                                  <uicontrol>HTTPS</uicontrol>.</ph><p>
                                                 <note product="k2 s-series">In this example, we use
                                                   HTTPS 8088 as communication port. If you change
                                                   the web access protocol and port on PBX, you
@@ -90,13 +78,11 @@
                                             </p></li>
                                         <li><uicontrol>Destination</uicontrol>: <ph
                                                 product="k2 s-series">Enter the IP address of
-                                                PBX.</ph><?oxy_comment_start author="Becky" timestamp="20200518T141404+0800" comment="+"?><ph
-                                                product="cloudpbx">Enter the domain of
-                                            PBX.</ph><?oxy_comment_end?></li>
+                                                PBX.</ph><ph product="cloudpbx">Enter the domain of
+                                                PBX.</ph></li>
                                         <li><uicontrol>Port</uicontrol>: Enter the web access port
                                             of PBX. In this example, enter <ph product="k2 s-series"
-                                                >8088</ph><ph product="cloudpbx"
-                                                ><?oxy_comment_start author="Becky" timestamp="20200518T155720+0800" comment="+"?>443<?oxy_comment_end?></ph>.</li>
+                                                >8088</ph><ph product="cloudpbx">443</ph>.</li>
                                     </ul>
                                 </p></li>
                             <li>In API demo, configure the port that you want to monitor. Click
@@ -110,14 +96,7 @@
             </dl>
             <dl>
                 <dlentry>
-                    <?oxy_comment_start author="carol" timestamp="20191118T160735+0800" comment="这边得拆分一下，中文同步修改。
-
-set up API authentication
-调用login
-
-Send API request
-调用call/dial" flag="done"?>
-                    <dt>S<?oxy_comment_end?>et up API authentication</dt>
+                    <dt>Set up API authentication</dt>
                     <dd>
                         <p>
                             <ol id="ol_xtm_ksv_tjb">
@@ -125,10 +104,10 @@ Send API request
                                     to get an API token.<p><image
                                             href="../Images/pbx-api/api-demo-login.png" width="500"
                                             id="image_lxh_w5r_rjb" product="k2 s-series"
-                                            /></p><p><?oxy_comment_start author="Becky" timestamp="20200518T144027+0800" comment="+"?><image
+                                            /></p><p><image
                                             href="../Images/pbx-api/api-demo-login-cloudpbx.png"
                                             id="image_hcn_21n_slb" width="500" product="cloudpbx"
-                                        /><?oxy_comment_end?></p></li>
+                                        /></p></li>
                             </ol>
                         </p>
                     </dd>
@@ -143,11 +122,10 @@ Send API request
                                     parameters are as
                                     follows:<codeblock>{"caller":"4001","callee":"4003"}</codeblock></p><image
                                     href="../Images/pbx-api/api-demo-calldial.png" width="500"
-                                    id="image_rqx_cwr_rjb" product="k2 s-series"
-                                        /><p><?oxy_comment_start author="Becky" timestamp="20200518T145639+0800" comment="+"?><image
+                                    id="image_rqx_cwr_rjb" product="k2 s-series"/><p><image
                                         id="image_w5v_q1n_slb"
                                         href="../Images/pbx-api/api-demo-calldial-cloudpbx.png"
-                                        width="500" product="cloudpbx"/><?oxy_comment_end?></p></li>
+                                        width="500" product="cloudpbx"/></p></li>
                         </ol>
                     </dd>
                 </dlentry>

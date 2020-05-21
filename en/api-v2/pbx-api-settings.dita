@@ -14,16 +14,13 @@
                     <uicontrol>General</uicontrol>
                     <uicontrol>API</uicontrol>
                 </menucascade>, enable API and configure relevant settings.</p>
-            <p><?oxy_comment_start author="Becky" timestamp="20200518T092547+0800" comment="+"?><image
-                    href="../Images/pbx-api/api-basic-settings.png" width="650"
-                    id="image_nmz_hhp_4jb" product="k2 s-series"/><?oxy_comment_end?></p>
-            <p><?oxy_comment_start author="Becky" timestamp="20200518T092554+0800" comment="+"?><image
-                    href="../Images/pbx-api/api-basic-settings-cloudpbx.png" id="image_fdj_wkl_slb"
-                    product="cloudpbx"/><?oxy_comment_end?></p>
+            <p><image href="../Images/pbx-api/api-basic-settings.png" width="650"
+                    id="image_nmz_hhp_4jb" product="k2 s-series"/></p>
+            <p><image href="../Images/pbx-api/api-basic-settings-cloudpbx.png"
+                    id="image_fdj_wkl_slb" product="cloudpbx"/></p>
             <p>
                 <ul id="ul_ewz_mgp_4jb">
                     <li><uicontrol>Enabled</uicontrol>: Whether to enable API feature or not.</li>
-                    <?oxy_comment_start author="Becky" timestamp="20200518T092633+0800" comment="+"?>
                     <li id="report-methods" product="k2 s-series"><uicontrol>Report
                             Method</uicontrol>: Select the protocol which is used to sending events.
                         For details of the two report methods, refer to <xref
@@ -34,7 +31,7 @@
                                 <li><uicontrol>TCP</uicontrol>: PBX sends TCP events by keep-alive
                                     TCP flows.</li>
                             </ul>
-                        </p></li><?oxy_comment_end?>
+                        </p></li>
                     <li><uicontrol>Username</uicontrol>: User-defined name.</li>
                     <li><uicontrol>Password</uicontrol>: User-defined password.<p>
                             <note>The username and password are the credentials for the application
@@ -145,10 +142,9 @@
         </section>
         <section id="delete-api-ip">
             <title>Delete blacklisted API IP</title>
-            <?oxy_comment_start author="Becky" timestamp="20191114T132506+0800" comment="中文没有链接" flag="done"?>
             <p>If an IP address fails to log in the PBX by calling <xref href="login.dita"/> for too
-                many times in a short time<?oxy_comment_end?>, PBX will blacklist and classify the
-                IP address as "API-IP". </p>
+                many times in a short time, PBX will blacklist and classify the IP address as
+                "API-IP". </p>
             <p>If the IP address is a trusted IP address, you can delete it from the Blocked IP
                 Address list.</p>
             <p>
@@ -162,7 +158,6 @@
                         </menucascade> to check the blacklisted IP address.<p><image
                                 href="../Images/pbx-api/api_blocked_ip.png" id="image_qlt_fll_slb"
                                 width="650"/></p></li>
-                    <?oxy_comment_start author="Becky" timestamp="20200518T093858+0800" comment="+"?>
                     <li product="cloudpbx">Go to <menucascade>
                             <uicontrol>Settings</uicontrol>
                             <uicontrol>System</uicontrol>
@@ -171,7 +166,7 @@
                             <uicontrol>Blocked IP Address</uicontrol>
                         </menucascade> to check the blacklisted IP address.<p><image
                                 href="../Images/pbx-api/api_blocked_ip_cloud.png"
-                                id="image_bqk_4ml_slb" width="650"/></p></li><?oxy_comment_end?>
+                                id="image_bqk_4ml_slb" width="650"/></p></li>
                     <li>Select an IP address, and click <image href="../Images/ui_icons/delete.png"
                             width="20" id="image_mlx_s2d_nfb"/>.</li>
                 </ol>
