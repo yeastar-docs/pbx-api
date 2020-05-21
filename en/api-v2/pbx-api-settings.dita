@@ -39,7 +39,7 @@
                                     <li>In the request of <xref href="login.dita"/>, the password is
                                         a 32-digit lowercase string, encrypted by MD5
                                         (Message-Digest Algorithm).</li>
-                                    <li>In the <xref
+                                    <li product="k2 s-series">In the <xref
                                             href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP
                                             login data</xref>, the password is a clear-text
                                         password.</li>

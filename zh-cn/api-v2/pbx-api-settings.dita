@@ -34,8 +34,9 @@
                             <note>此处的用户名和密码是应用服务器对接到 PBX 时要用到的用户名及密码。<ul id="ul_dbp_s2p_4jb">
                                     <li>请求<xref href="login.dita"/> 带的 password 参数为MD5
                                         加密后的32位小写字符串。</li>
-                                    <li>发送 <xref href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login"
-                                            >TCP login 数据包</xref>带的 password 参数为此处填写的明文密码。</li>
+                                    <li product="k2 s-series">发送 <xref
+                                            href="api-reports.dita#topic_ocs_zmc_wgb/tcp-login">TCP
+                                            login 数据包</xref>带的 password 参数为此处填写的明文密码。</li>
                                 </ul></note>
                         </p></li>
                 </ul>
